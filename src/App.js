@@ -17,6 +17,7 @@ import SearchPage from "./Components/SearchPage/SearchPage";
 import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
+import VideoPlayer from "./Pages/Player/VideoPlayer";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -48,10 +49,11 @@ class App extends React.Component {
         <Header currentRoute={this.props.location.pathname} />
         <Switch>
           <Route exact path="/" component={Movies} />
-          <Route path="/movies/:title" component={MovieItemPage} />
+          <Route path="/live/:channel" component={VideoPlayer}/>
+          {/* <Route path="/movies/:title" component={MovieItemPage} />
           <Route path="/movies" component={Movies} />
           <Route path="/tvshows/:name" component={TVShowItemPage} />
-          <Route path="/tvshows" component={TvShow} />
+          <Route path="/tvshows" component={TvShow} /> */}
           <Route
             exact
             path="/signin"

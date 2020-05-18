@@ -6,6 +6,7 @@ import {
   selectIsMovieFetching
 } from "../../Redux/Movie/movie-selectors";
 import { getMovies } from "../../Redux/Movie/movie-actions";
+import ChannelList from "../Live/ChannelList";
 
 const CollectionGridMovie = React.lazy(() => import("../../Components/CollectionGrid/CollectionGridMovie"));
 
@@ -24,9 +25,10 @@ class Movies extends React.Component {
     return (
       <div className="movies">
         <Suspense fallback={<div></div>}>
-          <CollectionGridMovie movies />
-          <CollectionOverviewMovie movies />
-          <Footer />
+          <ChannelList />
+          {/* <CollectionGridMovie movies />
+          <CollectionOverviewMovie movies /> */}
+          {/* <Footer /> */}
         </Suspense>
       </div>
     );
