@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import videojs from 'video.js';
-import Player from 'griffith';
+// import Player from 'griffith';
 
 
 import config from '../../Utils/config';
@@ -54,7 +54,7 @@ class VideoPlayer extends Component {
           }
         return(
             <div style={{width: "200px !important"}}>
-                <Player {...props} />
+                {/* <Player {...props} /> */}
             </div>
             // <div alt="snap"
             //     key="media"

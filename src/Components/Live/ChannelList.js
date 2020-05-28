@@ -40,7 +40,7 @@ class ChannelList extends Component {
         };
 
         return (
-            <div style={{height: "150px", color: "white", position: "relative", top: "150px", paddingLeft: "10%", paddingRight: "10%"}}>
+            <div style={{height: "150px", color: "white", position: "relative", paddingLeft: "10%", paddingRight: "10%"}}>
                     <Carousel
                         swipeable={false}
                         draggable={false}

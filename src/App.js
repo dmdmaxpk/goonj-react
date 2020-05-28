@@ -18,6 +18,9 @@ import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
 import VideoPlayer from "./Pages/Player/VideoPlayer";
+import Home from "./Pages/Home/Index";
+
+
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -48,7 +51,7 @@ class App extends React.Component {
       <div>
         <Header currentRoute={this.props.location.pathname} />
         <Switch>
-          <Route exact path="/" component={Movies} />
+          <Route exact path="/" component={Home} />
           <Route path="/live/:channel" component={VideoPlayer}/>
           {/* <Route path="/movies/:title" component={MovieItemPage} />
           <Route path="/movies" component={Movies} />
