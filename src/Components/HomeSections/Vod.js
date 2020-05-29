@@ -4,7 +4,7 @@ import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
 
-class ProgramsSection extends Component {
+class VodSection extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -13,7 +13,7 @@ class ProgramsSection extends Component {
     render() {
         return (
             <div className="sectionContainers">
-                <Heading heading="Programs" />
+                <Heading heading={this.props.title} />
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={6}>
                         <img className="childImg" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" />
@@ -64,4 +64,4 @@ class ProgramsSection extends Component {
     }
 }
  
-export default ProgramsSection;
+export default VodSection;

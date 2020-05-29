@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Plyr from 'plyr';
+import config from '../../Utils/config';
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -24,7 +25,7 @@ class VideoPlayer extends Component {
 
         return(
                 <div class="container">
-                    <video controls crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+                    <video controls crossorigin playsinline poster={`${config.channelLogoUrl}/${this.props.location.state.logo}`}>
                         <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4" size="576" />
                             <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720" />
                             <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080" />

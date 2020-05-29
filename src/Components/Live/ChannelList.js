@@ -4,7 +4,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
-import Heading from '../Home/Heading';
+import Heading from '../HomeSections/Heading';
 
 class ChannelList extends Component {
     constructor(props) {
