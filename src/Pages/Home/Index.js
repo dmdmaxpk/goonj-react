@@ -14,10 +14,10 @@ class Home extends Component {
     render(){ 
         return(
             <div>
-                <PosterSlider />
-                <ChannelList /> <br /><br/>
+                <PosterSlider /> <br />
+                <ChannelList /> <br /><br/><br/><br/>
                 <DramasSection />
-                <ChannelList /> <br /><br/>
+                <ChannelList /> <br /><br/><br /><br/>
                 <SportsSection />
                 <ProgramsSection />
             </div>

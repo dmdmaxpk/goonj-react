@@ -4,6 +4,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
+import Heading from '../Home/Heading';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class ChannelList extends Component {
 
         return (
             <div style={{height: "150px", color: "white", position: "relative", paddingLeft: "10%", paddingRight: "10%"}}>
+                <Heading heading="Live Channels" />
                     <Carousel
                         swipeable={false}
                         draggable={false}
