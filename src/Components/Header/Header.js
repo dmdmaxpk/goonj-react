@@ -19,7 +19,7 @@ import NavMenu from "./NavMenu";
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   return (
     <div className="header">
-      <div className="header__logo-box" onClick={() => history.push("/movies")}>
+      <div className="header__logo-box" onClick={() => history.push("/")}>
         <img src={Logo} alt="logo" className="header__logo" />
       </div>
 
