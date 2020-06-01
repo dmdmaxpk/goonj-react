@@ -2,10 +2,6 @@ import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Movies from "./Pages/Movies/Movies";
-import TvShow from "./Pages/TVShows/TvShow";
-import MovieItemPage from "./Pages/MovieItemPage/MovieItemPage";
-import TVShowItemPage from "./Pages/TVShowItemPage/TVShowItemPage";
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import { auth } from "./Firebase/firebase.utils";
@@ -17,8 +13,8 @@ import SearchPage from "./Components/SearchPage/SearchPage";
 import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
-import VideoPlayer from "./Pages/Player/VideoPlayer";
 import Home from "./Pages/Home/Index";
+import LiveChannel from "./Pages/LiveChannel";
 
 
 
@@ -52,7 +48,7 @@ class App extends React.Component {
         <Header currentRoute={this.props.location.pathname} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/live/:channel" component={VideoPlayer}/>
+          <Route path="/live/:channel" component={LiveChannel}/>
           {/* <Route path="/movies/:title" component={MovieItemPage} />
           <Route path="/movies" component={Movies} />
           <Route path="/tvshows/:name" component={TVShowItemPage} />

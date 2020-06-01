@@ -1,0 +1,24 @@
+.react-multi-carousel-item {
+    width: 150px !important;
+    margin: 20px 10px;
+}
+.react-multiple-carousel__arrow, .react-multiple-carousel__arrow:hover, .react-multiple-carousel__arrow::before {
+    background: transparent;
+    color: black;
+}
+.channelListContainer{
+    padding: 0 10%;
+    margin-bottom: 5%;
+}
+.channelListImg{
+    width: 150px;
+    height: 200px;
+    border-radius: 10px;
+}
+.channelListName{
+    font-size: small;
+    color: white;
+    margin-top: 5px;
+    text-transform: capitalize;
+    text-align: center;
+}

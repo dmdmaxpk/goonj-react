@@ -16,27 +16,32 @@ class VodSection extends Component {
                 <Heading heading={this.props.title} />
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={6}>
-                        <img className="childImg" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" />
-                        <span style={{position: "relative", bottom: "50%", left: "45%"}}>
-                            <img src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
-                        </span>
+                        <div>
+                            <img className="childImg" src="https://unsplash.com/photos/5Oe8KFH5998/download" />
+                            <span className="blockOneSpan">
+                                <img src={require('../../Assets/playBtn.png')} className="blockOneImg"/>
+                                <div className="blockOneDiv">
+                                    <p className="floatLeft marginZero headlineText">Psl 5 ki iftitahi taqreeb!</p>
+                                    <p className="floatRight marginZero daysAgoText" >2 days ago</p>
+                                    <div className="clearfix marginZero"/>
+                                    <p className="floatLeft marginZero categoryText">Psl 5 ki iftitahi tarqreeb aaj Karachi me shaam ho</p>
+                                    <p className="floatRight marginZero channelNameText">Express news</p>
+                                </div>
+                            </span>
+                        </div>
                     </GridItem>
                     <GridItem xs={12} sm={12} md={4}>
-                        {/* <img className="childImg" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" /> */}
-                        {/* <span style={{position: "relative", bottom: "45%", left: "45%"}}> */}
-                            {/* <img src={require('../../Assets/playBtn.png')} style={{width: "40px", position: "relative", bottom: "45%", left: "45%"}} /> */}
-                        {/* </span> */}
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={12}>
-                                <img style={{width:"100%", height:"123px"}} className="childImg" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" />
-                                <span style={{position: "relative", bottom: "50%", left: "45%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                <img className="childImg blockTwo" src="https://unsplash.com/photos/5Oe8KFH5998/download" />
+                                <span className="blockTwoSpan">
+                                    <img src={require('../../Assets/playBtn.png')} />
                                 </span>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={12}>
-                                <img style={{width:"100%", height:"123px"}} className="childImg" src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" />
-                                <span style={{position: "relative", bottom: "50%", left: "45%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                <img className="childImg blockTwo" src="https://unsplash.com/photos/5Oe8KFH5998/download" />
+                                <span className="blockTwoSpan">
+                                    <img src={require('../../Assets/playBtn.png')} />
                                 </span>
                             </GridItem>
                         </GridContainer>
@@ -44,15 +49,15 @@ class VodSection extends Component {
                     <GridItem xs={12} sm={12} md={2}>
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={12}>
-                                <img style={{width:"90%", height:"123px"}} className="childImg" src="https://lh3.googleusercontent.com/proxy/oCdFX3v_AZo6BAhkuaUdXFnX83E5GsxjD182GmN_MCB3ZSBtclvczdurYbKZmbuPxlYkKCpC7JHN6D_6arHu5rEwWRK97eNuM2aswFKTbApi47NI" />
-                                <span style={{position: "relative", bottom: "50%", left: "40%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                <img className="childImg blockThree" src="https://imagevars.gulfnews.com/2020/03/11/Reader-picture_170c9c693f4_original-ratio.jpg" />
+                                <span className="blockThreeSpan">
+                                    <img src={require('../../Assets/playBtn.png')} />
                                 </span>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={12}>
-                                <img style={{width:"90%", height:"123px"}} className="childImg" src="https://lh3.googleusercontent.com/proxy/oCdFX3v_AZo6BAhkuaUdXFnX83E5GsxjD182GmN_MCB3ZSBtclvczdurYbKZmbuPxlYkKCpC7JHN6D_6arHu5rEwWRK97eNuM2aswFKTbApi47NI" />
-                                <span style={{position: "relative", bottom: "50%", left: "40%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                <img className="childImg blockThree" src="https://imagevars.gulfnews.com/2020/03/11/Reader-picture_170c9c693f4_original-ratio.jpg" />
+                                <span className="blockThreeSpan">
+                                    <img src={require('../../Assets/playBtn.png')} />
                                 </span>
                             </GridItem>
                         </GridContainer>

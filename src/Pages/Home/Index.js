@@ -14,9 +14,9 @@ class Home extends Component {
         return(
             <div>
                 <PosterSlider /> <br />
-                <ChannelList /> <br /><br/><br/><br/>
+                <ChannelList />
                 <DramasSection />
-                <ChannelList /> <br /><br/><br /><br/>
+                <ChannelList />
                 <VodSection title="Sports" />
                 <VodSection title="Programs" />
             </div>

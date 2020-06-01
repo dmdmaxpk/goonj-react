@@ -5,6 +5,7 @@ import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
+import './Live.scss';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -24,9 +25,9 @@ class ChannelList extends Component {
         const responsive = {
             desktop: {
               breakpoint: { max: 4000, min: 1024 },
-              items: 4,
-              slidesToSlide: 1, // optional, default to 1.
-              partialVisibilityGutter: 40
+              items: 6,
+              slidesToSlide: 2, // optional, default to 1.
+              partialVisibilityGutter: 0
             },
             tablet: {
               breakpoint: { max: 1024, min: 464 },
@@ -41,11 +42,11 @@ class ChannelList extends Component {
         };
 
         return (
-            <div style={{height: "150px", color: "white", position: "relative", paddingLeft: "10%", paddingRight: "10%"}}>
+            <div className="channelListContainer">
                 <Heading heading="Live Channels" />
                     <Carousel
-                        swipeable={false}
-                        draggable={false}
+                        swipeable={true}
+                        draggable={true}
                         showDots={false}
                         responsive={responsive}
                         ssr={true} // means to render carousel on server-side.
@@ -56,7 +57,7 @@ class ChannelList extends Component {
                         focusOnSelect={true}
                         centerMode={true}
                         customTransition="all 1"
-                        transitionDuration={500}
+                        transitionDuration={1000}
                         containerClass="carousel-container"
                         // removeArrowOnDeviceType={["tablet", "mobile"]}
                         deviceType={this.props.deviceType}
@@ -65,16 +66,16 @@ class ChannelList extends Component {
                     >
                         {this.state.data.length > 1 ?
                             this.state.data.map(item =>
-                                <div key={item.slug}>
-                                    <Link to={{
+                                <div className="channelListDiv" key={item.slug}>
+                                    <Link style={{textDecoration: "none"}} to={{
                                         pathname: `/live/${item.slug}`,
                                         state: {
                                             logo: item.thumbnail
                                         }
                                         }}>
-                                        <img style={{width: "150px", height: "150px", borderRadius: "10px"}} src={`${config.channelLogoUrl}/${item.thumbnail}`} ></img>
+                                        <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
+                                        <p className="channelListName">{item.name}</p>
                                     </Link>
-                                    {/* <p>{item.name}</p> */}
                                 </div>
                             )
                             : ""

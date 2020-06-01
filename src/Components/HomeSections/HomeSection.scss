@@ -6,3 +6,76 @@
     height: auto;
     border-radius: 5px;
 }
+.blockOneSpan{
+    display: block;
+    position: relative;
+    bottom: 20vh;
+}
+.blockOneImg{
+    width: 50px;
+    position: relative;
+    bottom: 10vh;
+    left: 45%;
+}
+.blockOneDiv{
+    height: 10vh;
+    color: white;
+    background: #00000075;
+    display: block;
+    top: 3.5vh;
+    position: relative;
+    padding: 15px;
+    border-radius: 0 0 8px 8px
+}
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
+}
+.marginZero{
+    margin: 0;
+}
+.headlineText{
+    font-size: large;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.daysAgoText{
+    font-size: small;
+    color: #0000EE;
+}
+.categoryText{
+    font-size: small;
+    font-weight: 100;
+    text-transform: capitalize;
+}
+.channelNameText{
+    font-size: small;
+    font-weight: 100;
+    text-transform: capitalize;
+}
+.blockTwo{
+    width: 100%;
+    height: 185px;
+}
+.blockTwoSpan{
+    position: relative;
+    bottom: 50%;
+    left: 45%;
+}
+.blockTwoSpan > img{
+    width: 25px;
+}
+.blockThree{
+    width: 90%;
+    height: 185px;
+}
+.blockThreeSpan{
+    position: relative;
+    bottom: 50%;
+    left: 40%;
+}
+.blockThreeSpan > img{
+    width: 25px;
+}
