@@ -35,15 +35,10 @@ class SearchBar extends React.Component {
     return (
       <div className="container-1">
         <div className="container-2">
+          <input onChange={this.handleChange} type="search" id="search" placeholder="Search..." />
           <span className="search-icon">
             <i className="fa fa-search"></i>
           </span>
-          <input
-            onChange={this.handleChange}
-            type="search"
-            id="search"
-            placeholder="Movies, TV Shows..."
-          />
         </div>
       </div>
     );

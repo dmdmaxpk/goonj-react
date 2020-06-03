@@ -25,7 +25,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
       <div className="header__options">
         <div className="header__options-primary">
-          <Link className="header__option" to="/movies">
+          {/* <Link className="header__option" to="/movies">
             Movies
           </Link>
 
@@ -35,18 +35,31 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
           <Link className="header__option" to="/mylist">
             My List
-          </Link>
+          </Link> */}
         </div>
 
         <div className="header__searchbar">
           <SearchBar currentRoute={currentRoute} />
         </div>
+        
+        <div className="header__option">
+          <button className="headerLiveBtn">
+            <img src={require('../../Assets/btnBg.png')} />
+            <p>Live TV</p>
+          </button>
+        </div>
+
+        <div className="">
+          <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en">
+            <img src={require('../../Assets/playstore-header.png')} />
+          </a>
+        </div>
 
         {currentUser ? (
-          <div className="header__options-secondary">
-            <Link className="header__option" to="">
+          <div className="header__option">
+            {/* <Link className="header__option" to="">
               Hi, {currentUser.displayName}
-            </Link>
+            </Link> */}
             <div
               className="header__option header__option--signout"
               onClick={() => auth.signOut()}
@@ -55,10 +68,10 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
             </div>
           </div>
         ) : (
-          <div className="header__options-secondary">
-            <Link className="header__option" to="">
+          <div className="header__option">
+            {/* <Link className="header__option" to="">
               Hi, Guest
-            </Link>
+            </Link> */}
             <Link
               className="header__option header__option--signin"
               to="/signin"

@@ -5,9 +5,9 @@ import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
-import './Live.scss';
+import './ListSections.scss';
 
-class ChannelList extends Component {
+class PopularList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +17,7 @@ class ChannelList extends Component {
     componentDidMount(){
         AxiosInstance.get('/live')
         .then(res =>{
-            console.log(res.data);
+            // console.log(res.data);
             this.setState({data: res.data})
         })
     }
@@ -25,7 +25,7 @@ class ChannelList extends Component {
         const responsive = {
             desktop: {
               breakpoint: { max: 4000, min: 1024 },
-              items: 6,
+              items: 4,
               slidesToSlide: 2, // optional, default to 1.
               partialVisibilityGutter: 0
             },
@@ -43,8 +43,9 @@ class ChannelList extends Component {
 
         return (
             <div className="channelListContainer">
-                <Heading heading="Live Channels" />
+                <Heading heading="Popular on Goonj" />
                     <Carousel
+                        className="popularListCarousel"
                         swipeable={true}
                         draggable={true}
                         showDots={false}
@@ -66,14 +67,14 @@ class ChannelList extends Component {
                     >
                         {this.state.data.length > 1 ?
                             this.state.data.map(item =>
-                                <div className="channelListDiv" key={item.slug}>
+                                <div className="popularListDiv" key={item.slug}>
                                     <Link style={{textDecoration: "none"}} to={{
-                                        pathname: `/live/${item.slug}`,
+                                        pathname: `/channel/${item.slug}`,
                                         state: {
-                                            logo: item.thumbnail
+                                            logo: item.thumbnail                                            
                                         }
                                         }}>
-                                        <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
+                                        <img className="popularListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
                                         <p className="channelListName">{item.name}</p>
                                     </Link>
                                 </div>
@@ -86,4 +87,4 @@ class ChannelList extends Component {
     }
 }
  
-export default ChannelList;
+export default PopularList;

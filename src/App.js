@@ -15,44 +15,18 @@ import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
 import Home from "./Pages/Home/Index";
 import LiveChannel from "./Pages/LiveChannel";
+import Footer from "./Components/Footer/Footer";
 
 
 
 class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await CreateUserProfileDocument(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          this.props.setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      } else {
-        this.props.setCurrentUser(userAuth);
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
   render() {
     return (
       <div>
         <Header currentRoute={this.props.location.pathname} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/live/:channel" component={LiveChannel}/>
-          {/* <Route path="/movies/:title" component={MovieItemPage} />
-          <Route path="/movies" component={Movies} />
-          <Route path="/tvshows/:name" component={TVShowItemPage} />
-          <Route path="/tvshows" component={TvShow} /> */}
+          <Route path="/channel/:slug" component={LiveChannel}/>
           <Route
             exact
             path="/signin"
@@ -70,23 +44,10 @@ class App extends React.Component {
           <Route exact path="/searchresults" component={SearchPage} />
           <Route exact path="/mylist" component={ListOverview} />
         </Switch>
+        <Footer />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(App);
+export default (withRouter)(App);

@@ -5,10 +5,18 @@
 .react-multiple-carousel__arrow, .react-multiple-carousel__arrow:hover, .react-multiple-carousel__arrow::before {
     background: transparent;
     color: black;
+    position: absolute;
+}
+.channelListCarousel .react-multiple-carousel__arrow{
+    top: 30%;
+}
+.popularListCarousel .react-multiple-carousel__arrow{
+    top: 25%;
 }
 .channelListContainer{
     padding: 0 10%;
     margin-bottom: 5%;
+    margin-top: -5%;
 }
 .channelListImg{
     width: 150px;
@@ -21,4 +29,13 @@
     margin-top: 5px;
     text-transform: capitalize;
     text-align: center;
+}
+.popularListImg{
+    width: 160px;
+    height: 110px;
+    border-radius: 10px;
+}
+.popularListDiv{
+    // margin-left: 50px;
+    // margin-right: 50px;
 }
