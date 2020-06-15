@@ -6,6 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, persistor } from "./Redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
+import JavascriptTimeAgo from 'javascript-time-ago';
+ 
+import en from 'javascript-time-ago/locale/en';
+ 
+JavascriptTimeAgo.addLocale(en);
 
 ReactDOM.render(
   <Provider store={store}>

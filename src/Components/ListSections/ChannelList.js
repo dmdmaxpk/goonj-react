@@ -42,46 +42,48 @@ class ChannelList extends Component {
         };
 
         return (
-            <div className="channelListContainer">
+            <div>
                 <Heading heading="Live Channels" />
-                    <Carousel
-                        className="channelListCarousel"
-                        swipeable={true}
-                        draggable={true}
-                        showDots={false}
-                        responsive={responsive}
-                        ssr={true} // means to render carousel on server-side.
-                        infinite={true}
-                        autoPlay={false}
-                        autoPlaySpeed={1000}
-                        keyBoardControl={true}
-                        focusOnSelect={true}
-                        centerMode={true}
-                        customTransition="all 1"
-                        transitionDuration={1000}
-                        containerClass="carousel-container"
-                        // removeArrowOnDeviceType={["tablet", "mobile"]}
-                        deviceType={this.props.deviceType}
-                        dotListClass="custom-dot-list-style"
-                        itemClass="carousel-item-padding"
-                    >
-                        {this.state.data.length > 1 ?
-                            this.state.data.map(item =>
-                                <div className="channelListDiv" key={item.slug}>
-                                    <Link style={{textDecoration: "none"}} to={{
-                                        pathname: `/channel/${item.slug}`,
-                                        state: {
-                                            logo: item.thumbnail                                            
-                                        }
-                                        }}>
-                                        <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
-                                        <p className="channelListName">{item.name}</p>
-                                    </Link>
-                                </div>
-                            )
-                            : ""
-                        }
-                    </Carousel>
+                <div className="channelListContainer channelContainerMargin">
+                        <Carousel
+                            className="channelListCarousel"
+                            swipeable={true}
+                            draggable={true}
+                            showDots={false}
+                            responsive={responsive}
+                            ssr={true} // means to render carousel on server-side.
+                            infinite={true}
+                            autoPlay={false}
+                            autoPlaySpeed={1000}
+                            keyBoardControl={true}
+                            focusOnSelect={true}
+                            centerMode={true}
+                            customTransition="all 1"
+                            transitionDuration={1000}
+                            containerClass="carousel-container"
+                            // removeArrowOnDeviceType={["tablet", "mobile"]}
+                            deviceType={this.props.deviceType}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding"
+                        >
+                            {this.state.data.length > 1 ?
+                                this.state.data.map(item =>
+                                    <div className="channelListDiv" key={item.slug}>
+                                        <Link style={{textDecoration: "none"}} to={{
+                                            pathname: `/channel/${item.slug}`,
+                                            state: {
+                                                logo: item.thumbnail                                            
+                                            }
+                                            }}>
+                                            <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
+                                            <p className="channelListName">{item.name}</p>
+                                        </Link>
+                                    </div>
+                                )
+                                : ""
+                            }
+                        </Carousel>
+                </div>
             </div>
         );
     }

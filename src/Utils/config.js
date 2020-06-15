@@ -2,11 +2,13 @@
 const config = {
     development: {
         apiBaseUrl: "http://api.goonj.pk/v2",
-        channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo"
+        channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
+        videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb"
     },
     staging: {
         apiBaseUrl: 'http://api.goonj.pk/v2',
-        channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo"
+        channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
+        videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb"
     },
     production: {
         apiBaseUrl: process.env.REACT_APP_PRODUCTION_BE_URL

@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import VideoPlayer from '../Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
 import PopularList from '../../Components/ListSections/PopularList';
+import VodVideoPlayer from './vodVideoPlayer';
 
-class LiveChannel extends Component {
+class VodPage extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.slug !== nextProps.match.params.slug) {
+        if(this.props.match.params.vodID !== nextProps.match.params.vodID) {
             window.location.reload();
         }
     }
 
     render(){
-        const logo = this.props.location.state.logo;
         return(
-            <div style={{marginTop: "7%"}}>
-                <VideoPlayer logo={logo} /> <br /><br />
+            <div style={{marginTop: "3%"}}>
+                <VodVideoPlayer data={this.props.history.location.state.data} /> <br /><br />
                 <ChannelList />
                 <PopularList />
             </div>
@@ -26,4 +25,4 @@ class LiveChannel extends Component {
     }
 }
  
-export default LiveChannel;
+export default VodPage;

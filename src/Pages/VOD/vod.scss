@@ -1,0 +1,78 @@
+.vodCategroyContainer{
+    padding: 5% 5% 5% 8%;
+}
+.heading{
+    color: white;
+    font-weight: 900;
+    font-size: x-large;
+    text-transform: uppercase;
+}
+.vodGridItem{
+    margin-bottom: 0 !important;
+    height: 100%;
+    cursor: pointer;
+    // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    // transition: 0.3s;
+}
+.vodGridItem:hover{
+    -moz-box-shadow: 0 0 10px #4aa6e5;
+    -webkit-box-shadow: 0 0 10px #4aa6e5;
+    box-shadow: 0 0 10px #4aa6e5;
+}
+.imgDiv{
+    width: 100%;
+    height: 150px;
+}
+.videoLogo{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
+}
+.playBtn{
+    position: relative;
+    top: 60%;
+    left: 42%;
+}
+.playBtn > img{
+    width: 30px;
+    z-index: 9999;
+}
+.vodDetailsDiv{
+    // height: 150px;
+    margin-top: 30px;
+    padding: 5% 0;
+    border-radius: 0 0 5px 5px;
+    // background-color: white;
+    color: white;
+    font-weight: 100;
+}
+.title{
+    height: 55px;
+    overflow: hidden;
+    font-size: small;
+}
+.source{
+    color: #ccc;
+    font-size: smaller;
+    float: left;
+    text-transform: capitalize;
+}
+.source > a{
+    color: #ccc;
+}
+.daysAgo{
+    color: #4aa6e5;
+    font-size: smaller;
+    float: right;
+}
+.paginationDiv{
+    position: relative;
+    left: 37%;
+    top: 30px;
+}
+.pagination > ul > li > a, .pagination > ul > li > div{
+    color: white !important;
+}
+.MuiPaginationItem-textPrimary.Mui-selected{
+    background-color: #4aa6e5 !important;
+}

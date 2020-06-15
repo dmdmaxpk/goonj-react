@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
         this.props.history.push("/searchresults")
       );
     } else if (Number(value.length) === 0) {
-      this.props.history.push(`${this.state.currentPath}`);
+      // this.props.history.push(`${this.state.currentPath}`);
     } else if (Number(value.length) > 1) {
       this.props.history.push("/searchresults");
     }

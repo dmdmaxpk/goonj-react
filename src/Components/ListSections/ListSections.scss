@@ -14,9 +14,25 @@
     top: 25%;
 }
 .channelListContainer{
-    padding: 0 10%;
-    margin-bottom: 5%;
-    margin-top: -5%;
+    padding: 0 0 0 5%;
+    margin-bottom: 0;
+    // margin-top: -5%;
+}
+.gradient {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+.gradient:before {
+background: transparent;
+box-shadow: 0 0 0 1000p;
+position: absolute;
+height: 10%;
+width: 1%;
+content: '';
+left: 0;
+top: 0;
 }
 .channelListImg{
     width: 150px;
