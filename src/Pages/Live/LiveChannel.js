@@ -20,7 +20,7 @@ class LiveChannel extends Component {
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer logo={logo} /> <br /><br />
                 <ChannelList />
-                <PopularList />
+                <PopularList title="Popular on Goonj" />
             </div>
         );
     }

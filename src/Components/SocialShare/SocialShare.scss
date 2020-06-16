@@ -1,0 +1,19 @@
+.shareBtn{
+    background: none;
+    border: none;
+    margin-top: 5px;
+  }
+.shareBtn > img{
+width: 110px;
+}
+.shareBtn > p{
+position: relative;
+margin-top: -30%;
+color: white;
+font-size: small;
+font-weight: 900;
+text-transform: uppercase;
+}
+.MuiPopover-paper {
+    background-color: white !important;
+}

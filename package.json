@@ -27,6 +27,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
     "react-slick": "^0.25.2",
+    "react-social-sharing": "^3.0.1",
     "react-thanos": "^1.0.2",
     "react-time-ago": "^6.0.0",
     "redux": "^4.0.4",
@@ -34,6 +35,7 @@
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "share-buttons": "^1.5.0",
     "video.js": "^7.0.3"
   },
   "scripts": {

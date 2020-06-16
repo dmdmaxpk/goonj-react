@@ -80,6 +80,7 @@
     font-size: smaller;
     font-weight: 100;
     text-transform: capitalize;
+    width: 80%;
 }
 .channelNameText{
     font-size: small;
@@ -109,4 +110,7 @@
 }
 .blockThreeSpan > img{
     width: 25px;
+}
+.vodGI{
+    cursor: pointer;
 }

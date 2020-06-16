@@ -17,9 +17,9 @@ class VodPage extends Component {
     render(){
         return(
             <div style={{marginTop: "3%"}}>
-                <VodVideoPlayer data={this.props.history.location.state.data} /> <br /><br />
+                <VodVideoPlayer data={this.props.history.location.state.data} /> <br />
                 <ChannelList />
-                <PopularList />
+                <PopularList title="Popular on Goonj" />
             </div>
         );
     }

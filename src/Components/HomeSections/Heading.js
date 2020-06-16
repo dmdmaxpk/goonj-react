@@ -12,7 +12,7 @@ class Heading extends Component {
                     <div style={{float:"left", textTransform:"uppercase"}}>
                         <h4 style={{fontWeight: "900"}}>{this.props.heading}</h4>
                     </div>
-                    <div style={{float:"right", fontSize:"small", marginRight:"15px", marginTop:"15px"}}>
+                    <div className="viewMore" style={{float:"right", fontSize:"small", marginRight:"15px", marginTop:"15px"}}>
                         <Link to={this.props.url}>View More</Link>
                     </div>
                 </GridItem>

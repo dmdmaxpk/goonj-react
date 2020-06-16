@@ -14,12 +14,13 @@ import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
 import Home from "./Pages/Home/Home";
-import LiveChannel from "./Pages/LiveChannel/LiveChannel";
+import LiveChannel from "./Pages/Live/LiveChannel";
 import Footer from "./Components/Footer/Footer";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import ChannelVodPage from "./Pages/VOD/ChannelVods";
 import CategoryVodPage from "./Pages/VOD/CategoryVods";
 import VodPage from "./Pages/VOD/VodPage";
+import LiveTv from "./Pages/Live/LiveTvList";
 
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <SignUp />
             }
           />
+          <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/searchresults" component={SearchPage} />
           <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />

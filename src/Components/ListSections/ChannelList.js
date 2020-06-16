@@ -43,7 +43,7 @@ class ChannelList extends Component {
 
         return (
             <div>
-                <Heading heading="Live Channels" />
+                <Heading heading="Live Channels" url="/live-tv" />
                 <div className="channelListContainer channelContainerMargin">
                         <Carousel
                             className="channelListCarousel"

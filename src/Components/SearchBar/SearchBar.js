@@ -21,14 +21,22 @@ class SearchBar extends React.Component {
       this.props.currentRoute !== "/searchresults"
     ) {
       this.setState({ currentPath: this.props.currentRoute }, () =>
-        this.props.history.push("/searchresults")
+        this.props.history.push({
+          pathname: "/searchresults",
+          state: {searchValue: value}
+        })  
       );
-    } else if (Number(value.length) === 0) {
-      // this.props.history.push(`${this.state.currentPath}`);
-    } else if (Number(value.length) > 1) {
-      this.props.history.push("/searchresults");
     }
-    return value ? this.props.dispatch(getSearchData(value)) : null;
+    else if (Number(value.length) === 0) {
+      // this.props.history.push(`${this.state.currentPath}`);
+    }
+    else if (Number(value.length) > 0) {
+      this.props.history.push({
+        pathname: "/searchresults",
+        state: {searchValue: value}
+      });
+    }
+    // return value ? this.props.dispatch(getSearchData(value)) : null;
   };
 
   render() {

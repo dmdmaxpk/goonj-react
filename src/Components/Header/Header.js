@@ -43,7 +43,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
         </div>
         
         <div className="header__option">
-          <button className="headerLiveBtn">
+          <button className="headerLiveBtn" onClick={() => history.push('/live-tv')}>
             <img src={require('../../Assets/btnBg.png')} />
             <p>Live TV</p>
           </button>
