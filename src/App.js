@@ -21,6 +21,7 @@ import ChannelVodPage from "./Pages/VOD/ChannelVods";
 import CategoryVodPage from "./Pages/VOD/CategoryVods";
 import VodPage from "./Pages/VOD/VodPage";
 import LiveTv from "./Pages/Live/LiveTvList";
+import Binjee from "./Pages/Binjee/Binjee";
 
 
 class App extends React.Component {
@@ -31,7 +32,6 @@ class App extends React.Component {
         <Sidebar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/channel/:slug" component={LiveChannel}/>
           <Route
             exact
             path="/signin"
@@ -47,10 +47,12 @@ class App extends React.Component {
             }
           />
           <Route exact path="/live-tv" component={LiveTv} />
+          <Route exact path="/channel/:slug" component={LiveChannel}/>
           <Route exact path="/searchresults" component={SearchPage} />
           <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
           <Route exact path="/:vodID" component={VodPage} />
+          {/* <Route exact path="/binjee/binjee" component={Binjee} /> */}
           <Route exact path="/mylist" component={ListOverview} />
         </Switch>
         <Footer />
