@@ -28,7 +28,7 @@ class VideoPlayer extends Component {
           });
         let generatedToken = akamai_auth.generateToken();
         let token = "hdnts=" + generatedToken;
-        const source = `//weblive.goonj.pk/${this.props.data.slug}.m3u8?${token}`;
+        const source = `//weblive.goonj.pk/${this.props.data.hls_link}?${token}`;
         const video = document.querySelector('video');
         
         // For more options see: https://github.com/sampotts/plyr/#options
