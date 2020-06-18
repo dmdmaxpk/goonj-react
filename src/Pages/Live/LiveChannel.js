@@ -15,10 +15,11 @@ class LiveChannel extends Component {
     }
 
     render(){
-        const logo = this.props.location.state.logo;
+        const data = this.props.location.state.data;
+        // console.log("channelData", data);
         return(
             <div style={{marginTop: "3%"}}>
-                <VideoPlayer logo={logo} /> <br /><br />
+                <VideoPlayer data={data} /> <br /><br />
                 <ChannelList />
                 <PopularList title="Popular on Goonj" />
             </div>

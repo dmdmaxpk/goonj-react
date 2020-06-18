@@ -17,7 +17,7 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
-        console.log("logo", this.props.logo);
+        console.log("logo", this.props.data);
 
         akamai_auth.setConfig({
             key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
@@ -28,8 +28,7 @@ class VideoPlayer extends Component {
           });
         let generatedToken = akamai_auth.generateToken();
         let token = "hdnts=" + generatedToken;
-        console.log("hdnts=" + token);
-        const source = `http://teststream.goonj.pk/samaaweb.m3u8?${token}`;
+        const source = `//weblive.goonj.pk/${this.props.data.slug}.m3u8?${token}`;
         const video = document.querySelector('video');
         
         // For more options see: https://github.com/sampotts/plyr/#options
@@ -59,7 +58,7 @@ class VideoPlayer extends Component {
     render(){
         return(
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
-                    <video className="" autoPlay controls crossOrigin={true} playsInline poster={`${config.channelLogoUrl}/${this.props.logo}`}>
+                    <video className="" autoPlay controls crossOrigin={true} playsInline poster={`${config.channelLogoUrl}/${this.props.data.thumbnail}`}>
                         {/* <source src="http://teststream.goonj.pk/samaaweb.m3u8" type="video/m3u8" size="1080" /> */}
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />

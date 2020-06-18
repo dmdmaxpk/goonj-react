@@ -72,7 +72,7 @@ class ChannelList extends Component {
                                         <Link style={{textDecoration: "none"}} to={{
                                             pathname: `/channel/${item.slug}`,
                                             state: {
-                                                logo: item.thumbnail                                            
+                                                data: item                                           
                                             }
                                             }}>
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
