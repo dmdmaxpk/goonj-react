@@ -9,7 +9,7 @@ class VideoPlayer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            urlLink: "//35.210.176.230"
+            urlLink: "//teststream.goonj.pk"
         }
     }
     componentWillMount(){
@@ -30,7 +30,7 @@ class VideoPlayer extends Component {
           });
         let generatedToken = akamai_auth.generateToken();
         let token = "hdnts=" + generatedToken;
-        const source = `//35.210.176.230/${this.props.data.hls_link}?${token}`;
+        const source = `//teststream.goonj.pk/${this.props.data.hls_link}?${token}`;
         const video = document.querySelector('video');
         
         // For more options see: https://github.com/sampotts/plyr/#options
