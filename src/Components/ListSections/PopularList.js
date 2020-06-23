@@ -70,7 +70,7 @@ class PopularList extends Component {
                                 this.state.data.map(item =>
                                     <div className="popularListDiv" key={item.slug}>
                                         <Link style={{textDecoration: "none"}} to={{
-                                            pathname: `/channel/${item.slug}`,
+                                            // pathname: `/channel/${item.slug}`,
                                             state: {
                                                 logo: item.thumbnail                                            
                                             }
