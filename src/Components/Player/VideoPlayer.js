@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Plyr from 'plyr';
 import config from '../../Utils/config';
 import Hls from 'hls.js';
-
+import './LiveVP.scss';
 import akamai_auth from 'akamai-edge-auth-generator';
 
 class VideoPlayer extends Component {
     constructor(props){
         super(props);
-        this.state = {  }
+        this.state = {
+            urlLink: "//35.210.176.230"
+        }
     }
     componentWillMount(){
         window.scrollTo({
@@ -28,7 +30,7 @@ class VideoPlayer extends Component {
           });
         let generatedToken = akamai_auth.generateToken();
         let token = "hdnts=" + generatedToken;
-        const source = `//teststream.goonj.pk/${this.props.data.hls_link}?${token}`;
+        const source = `//35.210.176.230/${this.props.data.hls_link}?${token}`;
         const video = document.querySelector('video');
         
         // For more options see: https://github.com/sampotts/plyr/#options
@@ -58,8 +60,10 @@ class VideoPlayer extends Component {
     render(){
         return(
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
-                    <video className="" autoPlay controls crossOrigin={true} playsInline poster={`${config.channelLogoUrl}/${this.props.data.thumbnail}`}>
-                        {/* <source src="http://teststream.goonj.pk/samaaweb.m3u8" type="video/m3u8" size="1080" /> */}
+                    <video className="liveVP" autoPlay controls crossOrigin={true} playsInline poster={`${config.channelLogoUrl}/${this.props.data.thumbnail}`}>
+                        <source src={`${this.state.urlLink}/${this.props.data.hls_link.split('.')[0]}_144p/index.m3u8`} type="video/m3u8" size="144" />
+                        <source src={`${this.state.urlLink}/${this.props.data.hls_link.split('.')[0]}_360p/index.m3u8`} type="video/m3u8" size="360" />
+                        <source src={`${this.state.urlLink}/${this.props.data.hls_link.split('.')[0]}_480p/index.m3u8`} type="video/m3u8" size="480" />
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}

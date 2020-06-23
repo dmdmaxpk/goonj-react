@@ -27,6 +27,8 @@ import PersonIcon from '@material-ui/icons/Person';
 
 import './Sidebar.scss';
 
+import {Link} from 'react-router-dom';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -148,15 +150,17 @@ export default function MiniDrawer() {
                 <ListItemText className="sidebarTabsText" primary="Home" />
             </ListItem>
             <Divider />
-            <ListItem button key="vods" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><VideocamIcon /></ListItemIcon>
+            <ListItem button key="world" style={{color:"white"}}>
+                <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
                 <ListItemText className="sidebarTabsText" primary="Video On Demand" />
             </ListItem>
             <Divider />
-            <ListItem button key="world" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="World" />
-            </ListItem>
+            <Link to="/binjee">
+              <ListItem button key="vods" style={{color:"red"}}>
+                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+                  <ListItemText className="sidebarTabsText" primary="Binjee" />
+              </ListItem>
+            </Link>
             <Divider />
             <ListItem button key="cricket" style={{color:"white"}}>
                 <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon>

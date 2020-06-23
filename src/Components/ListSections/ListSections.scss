@@ -2,10 +2,11 @@
     width: 150px !important;
     margin: 20px 10px;
 }
-.react-multiple-carousel__arrow, .react-multiple-carousel__arrow:hover, .react-multiple-carousel__arrow::before {
+.react-multiple-carousel__arrow, .react-multiple-carousel__arrow:hover, .react-multiple-carousel__arrow::before, .react-multiple-carousel__arrow:focus {
     background: transparent;
     color: black;
     position: absolute;
+    outline: none;
 }
 .channelListCarousel .react-multiple-carousel__arrow{
     top: 30%;

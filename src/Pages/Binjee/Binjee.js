@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Binjee.scss';
 
 class Binjee extends Component {
     state = {}
@@ -6,7 +7,7 @@ class Binjee extends Component {
         return(
             <iframe
                 src="https://goonj.binjee.com/"
-                style={{maxWidth:"100vw !important", width: "100vw", height: "100vh"}}
+                className="iframe"
                 allowfullscreen="true"
                 webkitallowfullscreen="true"
                 mozallowfullscreen="true"

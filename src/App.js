@@ -28,8 +28,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentRoute={this.props.location.pathname} />
-        <Sidebar />
+        {this.props.location.pathname !== "/binjee" ?
+          <div>
+            <Header currentRoute={this.props.location.pathname} />
+            <Sidebar />
+          </div>
+          :
+          ''
+        }
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -51,11 +57,15 @@ class App extends React.Component {
           <Route exact path="/searchresults" component={SearchPage} />
           <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
+          <Route exact path="/binjee" component={Binjee} />
           <Route exact path="/:vodID" component={VodPage} />
-          {/* <Route exact path="/binjee/binjee" component={Binjee} /> */}
           <Route exact path="/mylist" component={ListOverview} />
         </Switch>
-        <Footer />
+        {this.props.location.pathname !== "/binjee" ?
+          <Footer />
+        :
+          ''
+        }
       </div>
     );
   }
