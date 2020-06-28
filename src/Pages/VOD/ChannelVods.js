@@ -34,7 +34,6 @@ class ChannelVodPage extends Component {
         
         AxiosInstance.get(apiUrl)
         .then(res =>{
-            console.log(res.data);
             this.setState({data: res.data});
         })
     }
@@ -46,7 +45,6 @@ class ChannelVodPage extends Component {
     
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
-        console.log("url", url);
         this.props.history.push({
             pathname: `/${url}`,
             state: {data: item}
@@ -59,7 +57,6 @@ class ChannelVodPage extends Component {
         return url;
     }
     render(){
-        console.log(this.props);
         return(
             <div className="vodCategroyContainer">
                 <p className="heading">{this.props.match.params.source}</p>

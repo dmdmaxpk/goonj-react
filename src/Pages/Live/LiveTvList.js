@@ -13,11 +13,11 @@ class LiveTv extends Component {
         this.state = {
             data: []
         }
+        this.handleRedirect = this.handleRedirect.bind(this);
     }
     componentDidMount(){
         AxiosInstance.get('/live')
         .then(res =>{
-            console.log(res.data);
             this.setState({
                 data: res.data
             })
@@ -26,8 +26,14 @@ class LiveTv extends Component {
             console.log(err);
         })
     }
+    handleRedirect(item){
+        let userVerified = localStorage.getItem('userVerified');
+        let url = userVerified ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        return url;
+    }
     render(){
         let data = this.state.data;
+
         return(
             <GridContainer className="liveTvContainer">
                 <GridItem xs={12} sm={12} md={12}>
@@ -36,9 +42,9 @@ class LiveTv extends Component {
 
                 {data.length > 0 ?
                     data.map(item =>
-                        <GridItem xs={6} sm={4} md={2} className="liveGI">
+                        <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
                             <Link style={{textDecoration: "none"}} to={{
-                                pathname: `/channel/${item.slug}`,
+                                pathname: this.handleRedirect(item),
                                 state: {
                                     logo: item.thumbnail,
                                     data: item                                 

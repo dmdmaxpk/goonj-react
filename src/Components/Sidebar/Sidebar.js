@@ -157,13 +157,14 @@ export default function MiniDrawer() {
             <Divider />
             <Link to="/binjee">
               <ListItem button key="vods" style={{color:"red"}}>
-                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
                   <ListItemText className="sidebarTabsText" primary="Binjee" />
               </ListItem>
             </Link>
             <Divider />
             <ListItem button key="cricket" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon>
+                {/* <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon> */}
+                <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/cp.jpeg')} /></ListItemIcon>
                 <ListItemText className="sidebarTabsText" primary="Cricket" />
             </ListItem>
             <Divider />

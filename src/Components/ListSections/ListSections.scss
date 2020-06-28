@@ -55,7 +55,51 @@ top: 0;
     height: 110px;
     border-radius: 10px;
 }
-.popularListDiv{
-    // margin-left: 50px;
-    // margin-right: 50px;
+
+// Recommendation List CSS
+.recomListContainer{
+    color: white;
+}
+.recomHeading{
+    font-weight: 600;
+    font-size: large;
+    text-transform: uppercase;
+}
+.recomLink{
+    text-decoration: none !important;
+}
+.recomDiv{
+    height: 105px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+.recomImg{
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 8px;
+    float: left;
+}
+.recomPlayBtn{
+    width: 20px;
+    position: relative;
+    right: 115px;
+    top: 45px;
+}
+.recomTextDiv{
+    position: relative;
+    bottom: 20px;
+    height: 105px;
+    overflow: hidden;
+}
+.recomTitle{
+    font-size: small;
+    font-weight: 600;
+    color: white;
+    // margin-bottom: 0.5rem;
+}
+.grey{
+    font-size: small;
+    font-weight: 600;
+    margin-bottom: 0 !important;
+    color: #ccc;
 }

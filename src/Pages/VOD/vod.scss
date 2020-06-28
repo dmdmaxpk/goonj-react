@@ -1,7 +1,7 @@
 .vodCategroyContainer{
     padding: 5% 5% 5% 8%;
 }
-.heading{
+.headingVOD{
     color: white;
     font-weight: 900;
     font-size: x-large;
@@ -103,10 +103,11 @@
 }
 .viewCountGI{
     color: white;
-    text-align: right;
+    text-align: center;
     font-size: x-small;
     position: relative;
     right: 15px;
+    height: 10px;
 }
 .titleGI{
     color: white;
@@ -114,7 +115,15 @@
     font-weight: 600;
 }
 .shareGI{
-    text-align: right;
+    text-align: center;
     color: white;
+    position: relative;
+    bottom: 5px;
     // display: none;
+}
+.recommendationGI{
+    height: 500px;
+    max-width: 520px !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }

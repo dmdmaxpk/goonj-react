@@ -22,7 +22,6 @@ class Home extends Component {
         // Dramas API call
         AxiosInstance.get(`/video?category=entertainment&limit=5`)
         .then(res => {
-            console.log("dramas", res.data);
             this.setState({dramas: res.data});
         })
         .catch(err =>{
@@ -32,7 +31,6 @@ class Home extends Component {
         // Sports API call
         AxiosInstance.get(`/video?category=sports&limit=5`)
         .then(res => {
-            console.log("sports", res.data);
             this.setState({sports: res.data});
         })
         .catch(err =>{
@@ -42,7 +40,6 @@ class Home extends Component {
         // Programs API call
         AxiosInstance.get(`/video?category=programs&limit=5`)
         .then(res => {
-            console.log("programs", res.data);
             this.setState({programs: res.data});
         })
         .catch(err =>{

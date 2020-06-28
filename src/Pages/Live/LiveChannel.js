@@ -15,11 +15,10 @@ class LiveChannel extends Component {
     }
 
     render(){
-        const data = this.props.location.state.data;
-        // console.log("channelData", data);
+        const slug = this.props.match.params.slug;
         return(
             <div style={{marginTop: "3%"}}>
-                <VideoPlayer data={data} /> <br /><br />
+                <VideoPlayer slug={slug} /> <br /><br />
                 <ChannelList />
                 <PopularList title="Popular on Goonj" />
             </div>

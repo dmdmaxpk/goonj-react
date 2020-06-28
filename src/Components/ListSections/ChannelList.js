@@ -13,13 +13,18 @@ class ChannelList extends Component {
         this.state = {
             data: []
         }
+        this.handleRedirect = this.handleRedirect.bind(this);
     }
     componentDidMount(){
         AxiosInstance.get('/live')
         .then(res =>{
-            // console.log(res.data);
             this.setState({data: res.data})
         })
+    }
+    handleRedirect(item){
+        let userVerified = localStorage.getItem('userVerified');
+        let url = userVerified ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        return url;
     }
     render() {
         const responsive = {
@@ -70,7 +75,7 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <Link style={{textDecoration: "none"}} to={{
-                                            pathname: `/channel/${item.slug}`,
+                                            pathname: this.handleRedirect(item),
                                             state: {
                                                 data: item                                           
                                             }

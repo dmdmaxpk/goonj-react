@@ -19,7 +19,8 @@ class CategoryVodPage extends Component {
             data: [],
             skip: 60,
             limit: 60,
-            page: this.props.match.params.pageNumber
+            page: this.props.match.params.pageNumber,
+            isPremium: true
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
@@ -31,10 +32,9 @@ class CategoryVodPage extends Component {
         });
 
         let apiUrl = `/video?category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
-        
-        AxiosInstance.get(apiUrl)
+        let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
+        AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
-            console.log(res.data);
             this.setState({data: res.data});
         })
     }
@@ -45,7 +45,6 @@ class CategoryVodPage extends Component {
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
-        console.log("url", url);
         this.props.history.push({
             pathname: `/${url}`,
             state: {data: item}
@@ -58,10 +57,9 @@ class CategoryVodPage extends Component {
         return url;
     }
     render(){
-        console.log(this.props);
         return(
             <div className="vodCategroyContainer">
-                <p className="heading">{this.props.match.params.category}</p>
+                <p className="headingVOD">{this.props.match.params.category}</p>
                 <GridContainer>
                     {this.state.data.length > 1 ?
                         this.state.data.map(item =>
@@ -83,19 +81,23 @@ class CategoryVodPage extends Component {
                     }
                     <GridItem sm={12} md={12} xs={12} >
                         <div className="paginationDiv">
-                            <Pagination
-                                page={parseInt(this.props.match.params.pageNumber)}
-                                className="pagination"
-                                count={10}
-                                color="primary"
-                                renderItem={(item) => (
-                                    <PaginationItem
-                                    component={Link}
-                                    to={`/category/${this.props.match.params.category}/page/${item.page}`}
-                                    {...item}
-                                    />
-                                )}
-                            />
+                            {this.state.data.length >= this.state.limit ?
+                                <Pagination
+                                    page={parseInt(this.props.match.params.pageNumber)}
+                                    className="pagination"
+                                    count={10}
+                                    color="primary"
+                                    renderItem={(item) => (
+                                        <PaginationItem
+                                        component={Link}
+                                        to={`/category/${this.props.match.params.category}/page/${item.page}`}
+                                        {...item}
+                                        />
+                                        )}
+                                />
+                                :
+                                ""
+                            }
                         </div>
                     </GridItem>
                 </GridContainer>

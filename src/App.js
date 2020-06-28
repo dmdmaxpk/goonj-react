@@ -22,9 +22,14 @@ import CategoryVodPage from "./Pages/VOD/CategoryVods";
 import VodPage from "./Pages/VOD/VodPage";
 import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
+import LivePaywall from "./Pages/Paywall/LivePaywall";
+import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
 
 
 class App extends React.Component {
+  componentDidMount(){
+    localStorage.setItem('source', "web");
+  }
   render() {
     return (
       <div>
@@ -59,6 +64,8 @@ class App extends React.Component {
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
           <Route exact path="/binjee" component={Binjee} />
           <Route exact path="/:vodID" component={VodPage} />
+          <Route exact path="/paywall/live" component={LivePaywall} />
+          <Route exact path="/paywall/comedy" component={ComedyPaywall} />
           <Route exact path="/mylist" component={ListOverview} />
         </Switch>
         {this.props.location.pathname !== "/binjee" ?

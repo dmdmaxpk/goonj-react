@@ -24,7 +24,6 @@ class VodSection extends Component {
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
-        console.log("url", url);
         this.props.history.push({
             pathname: `/${url}`,
             state: {data: item}
@@ -38,7 +37,6 @@ class VodSection extends Component {
     }
     render() {
         const data = this.props.data.length > 0 ? this.props.data : '';
-        console.log(data.length > 1 ? `${config.videoLogoUrl}/${data[0].thumbnail}` : '');
         return (
             <div className={this.props.classname}>
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />

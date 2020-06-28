@@ -17,7 +17,6 @@ class PopularList extends Component {
     componentDidMount(){
         AxiosInstance.get('/live')
         .then(res =>{
-            // console.log(res.data);
             this.setState({data: res.data})
         })
     }

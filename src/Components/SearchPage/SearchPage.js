@@ -31,7 +31,6 @@ class SearchPage extends Component {
       
       AxiosInstance.get(apiUrl)
       .then(res =>{
-          // console.log(res.data);
           this.setState({data: res.data});
       })
   }
@@ -41,7 +40,6 @@ class SearchPage extends Component {
         
     //     AxiosInstance.get(apiUrl)
     //     .then(res =>{
-    //         // console.log(res.data);
     //         this.setState({data: res.data});
     //     })
     //     .catch(err =>{
@@ -60,7 +58,6 @@ class SearchPage extends Component {
           
           AxiosInstance.get(apiUrl)
           .then(res =>{
-              // console.log(res.data);
               this.setState({data: res.data});
           })
           .catch(err =>{
@@ -70,7 +67,6 @@ class SearchPage extends Component {
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
-        console.log("url", url);
         this.props.history.push({
             pathname: `/${url}`,
             state: {data: item}

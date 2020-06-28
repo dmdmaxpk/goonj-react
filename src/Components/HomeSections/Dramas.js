@@ -24,7 +24,6 @@ class DramasSection extends Component {
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
-        console.log("url", url);
         this.props.history.push({
             pathname: `/${url}`,
             state: {data: item}

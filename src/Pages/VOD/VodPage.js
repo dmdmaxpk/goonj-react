@@ -15,9 +15,11 @@ class VodPage extends Component {
     }
 
     render(){
+        let pathname = window.location.pathname;
+        let id = pathname.split('_')[0].split('/')[1];
         return(
             <div style={{marginTop: "3%"}}>
-                <VodVideoPlayer data={this.props.history.location.state.data} /> <br />
+                <VodVideoPlayer id={id} /> <br />
                 <ChannelList />
                 <PopularList title="Popular on Goonj" />
             </div>
