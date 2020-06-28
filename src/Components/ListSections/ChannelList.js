@@ -74,15 +74,10 @@ class ChannelList extends Component {
                             {this.state.data.length > 1 ?
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
-                                        <Link style={{textDecoration: "none"}} to={{
-                                            pathname: this.handleRedirect(item),
-                                            state: {
-                                                data: item                                           
-                                            }
-                                            }}>
+                                        <a href={this.handleRedirect(item)}>
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
                                             <p className="channelListName">{item.name}</p>
-                                        </Link>
+                                        </a>
                                     </div>
                                 )
                                 : ""

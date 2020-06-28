@@ -43,17 +43,11 @@ class LiveTv extends Component {
                 {data.length > 0 ?
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
-                            <Link style={{textDecoration: "none"}} to={{
-                                pathname: this.handleRedirect(item),
-                                state: {
-                                    logo: item.thumbnail,
-                                    data: item                                 
-                                }
-                                }}
-                            >
+
+                            <a href={this.handleRedirect(item)}>
                                 <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail}`}  />
                                 <p className="channelName">{item.name}</p>
-                            </Link>
+                            </a>
                         </GridItem>
                     )
                 :
