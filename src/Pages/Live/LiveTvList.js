@@ -27,8 +27,9 @@ class LiveTv extends Component {
         })
     }
     handleRedirect(item){
-        let userVerified = localStorage.getItem('userVerified');
-        let url = userVerified ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let permission = localStorage.getItem('live');
+        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let url = permission ? `/channel/${item.slug}` : `/paywall/live?slug=${item.slug}`;
         return url;
     }
     render(){

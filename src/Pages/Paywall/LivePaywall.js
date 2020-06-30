@@ -32,7 +32,10 @@ class LivePaywall extends Component {
         })
     }
       
-    render(){ 
+    render(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let slug = urlParams.get("slug");
         return(
             <div className="liveComponent">
                 <div className="goonjLivePage">
@@ -42,7 +45,18 @@ class LivePaywall extends Component {
                             <br />
                             <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
                             <p className = "aText1b aText3 aText3b">24hrs free trial for first time users</p>
-                            <Box packageID={this.state.packageID} packageID1={this.state.packageID1} packageID2={this.state.packageID2} pkgPrice1={this.state.packagePrice1} pkgPrice2={this.state.packagePrice2} msisdn={this.props.msisdn} slug={this.props.slug} source={this.props.source}/>
+                            <Box
+                                url={`/channel/${slug}`}
+                                slug={slug}
+                                permission={"live"}
+                                packageID={this.state.packageID}
+                                packageID1={this.state.packageID1}
+                                packageID2={this.state.packageID2}
+                                pkgPrice1={this.state.packagePrice1}
+                                pkgPrice2={this.state.packagePrice2}
+                                msisdn={this.props.msisdn}
+                                source={this.props.source}
+                            />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
                             <font color="#319fe7">{this.state.packagePrice2}</font> Weekly charges after free trial 

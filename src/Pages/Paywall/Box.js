@@ -12,7 +12,7 @@ class Box extends React.Component {
     super(props);
     this.state = {
       data: [],
-      step: 0,
+      step: 0, // 0 => Landed permission, 1 => verify otp, 2 => graced permission 
       msisdn: '',
       source: localStorage.getItem('source'),
       otp: '',
@@ -28,7 +28,7 @@ class Box extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
-    console.log(this.props.packageID2);
+    console.log(this.props);
   }
   handleChange(e){
     console.log(e.target.name, e.target.value);
@@ -48,7 +48,7 @@ class Box extends React.Component {
       AxiosInstance.post('/payment/otp/send', msisdnData)
       .then(res =>{
         const result = res.data;
-        if(result.code === 11){
+        if(result.code === 0){
           this.setState({step: 1});
         }
         else if(result.code === -1){
@@ -69,7 +69,7 @@ class Box extends React.Component {
   verifyOtp(e){
     e.preventDefault();
     const {msisdn, source, otp} = this.state;
-    const {packageID2} = this.props;
+    const {packageID2, url, permission} = this.props;
     let otpData = {
       msisdn,
       source,
@@ -81,11 +81,14 @@ class Box extends React.Component {
       const result = res.data;
       if(result.is_allowed_to_stream === true){
         if(result.subscription_status === "billed" || result.subscription_status === "trial"){
-
+          localStorage.setItem(permission, true);
+          this.props.history.push(`${url}`);
         }
       }
       else if(result.subscription_status === "graced" && result.is_allowed_to_stream === false){
-
+        this.setState({
+          step: 2
+        })
       }
       else if(result.code == 7){
         var token = result.access_token;
@@ -101,39 +104,40 @@ class Box extends React.Component {
     .catch(err =>{
       alert(err);
     })
-    this.setState({
-      step: 2
-    })
   }
 
   subscribe(){
     this.setState({loading: true});
     const {msisdn, source} = this.state;
-    const {packageID2} = this.props;
+    const {packageID2, permission, url} = this.props;
 
-    const userData = {
+    const permissionData = {
       msisdn,
       package_id: packageID2,
       source,
     }
-    AxiosInstance.post(`${config.base_url}/payment/subscribe`, userData)
+    AxiosInstance.post(`/payment/subscribe`, permissionData)
     .then(res =>{
-      if(res.data.code === -1){
+      const result = res.data;
+      if(result.code === -1){
         this.setState({loading: false});
         alert(res.data.message);
       }
-      if(res.data.code === 11 && res.data.message === "Trial period activated!"){
+      else if(result.code === 10 || result.code === 11){
+        localStorage.setItem(permission, true);
+        this.props.history.push(`${url}`);
+      }
+      // if(res.data.code === 11 && res.data.message === "Trial period activated!"){
         
-      }
-      else if(res.data.code === 10 && res.data.message === "In queue for billing!"){
-      }
+      // }
+      // else if(res.data.code === 10 && res.data.message === "In queue for billing!"){
+      // }
     })
     .catch(err =>{
       this.setState({loading: false});
       alert("Something went wrong! :(");
     })
   }
-
   cancel(){
     this.setState({doubleConsent: false});
   }
@@ -144,7 +148,7 @@ class Box extends React.Component {
             {
             this.state.step === 0 ?
               <div>
-                <input className="msisdnInput" type="number" name="msisdn" value={this.state.msisdn} placeholder="03xxxxxxxxx" onChange={this.handleChange} />
+                <input className="msisdnInput" type="number" name="msisdn" value={this.state.msisdn} placeholder="03xxxxxxxxx" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.sendOtp}>
                     <img className="btnSubImg" src={require("../../Assets/subBtn.png")} />
@@ -155,7 +159,7 @@ class Box extends React.Component {
               <div>
                 <label className="otpLabel"> Enter OTP </label>
                 <br />
-                <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" onChange={this.handleChange} />
+                <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.verifyOtp}>
                     <div>
