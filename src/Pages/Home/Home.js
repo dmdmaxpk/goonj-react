@@ -1,12 +1,12 @@
 import React, { Component, Suspense } from 'react';
 import PosterSlider from '../../Components/HomeSections/PosterSlider';
-import './Home.scss';
 import ChannelList from '../../Components/ListSections/ChannelList';
 import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
 import Loader from '../../Components/Loader/Loader';
 import AxiosInstance from '../../Utils/AxiosInstance';
+import './Home.scss';
 
 class Home extends Component {
     constructor(props) {
@@ -59,15 +59,17 @@ class Home extends Component {
                         <Loader color="secondary" />
                     </div>
                 :
-                    <Suspense fallback={<div></div>}>
+                    <div className="homeContainer">
                         <PosterSlider />
-                        <PopularList title="Popular on Goonj" />
-                        <ChannelList />
-                        <DramasSection data={this.state.dramas} category="entertainment" />
-                        <PopularList title="Headlines" />
-                        <VodSection title="Sports" data={this.state.sports} category="sports" />
-                        <VodSection title="Programs" data={this.state.programs} category="programs" classname="programsContainer" />
-                    </Suspense>
+                        <div className="homeSections">
+                            <PopularList title="Popular on Goonj" />
+                            <ChannelList />
+                            <DramasSection data={this.state.dramas} category="entertainment" />
+                            <PopularList title="Headlines" />
+                            <VodSection title="Sports" data={this.state.sports} category="sports" />
+                            <VodSection title="Programs" data={this.state.programs} category="programs" classname="programsContainer" />
+                        </div>
+                    </div>
                 }
             </div>
         );

@@ -34,7 +34,7 @@ class App extends React.Component {
         {this.props.location.pathname !== "/binjee" ?
           <div>
             <Header currentRoute={this.props.location.pathname} />
-            <Sidebar />
+            <Sidebar position={"left"} />
           </div>
           :
           ''

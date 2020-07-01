@@ -16,16 +16,24 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
                         <div className="carousel-item active">
-                        <img src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-batman.jpg" className="d-block w-100" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-1.jpg" className="d-block w-100" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://cdn.collider.com/wp-content/uploads/2012/05/dark-knight-rises-movie-poster-banner-catwoman.jpg" className="d-block w-100" alt="Second slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-2.jpg" className="d-block w-100" alt="Second slide" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://www.itl.cat/pngfile/big/209-2097310_batman-vs-superman-hd.jpg" className="d-block w-100" alt="Third slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-3.jpg" className="d-block w-100" alt="Third slide" />
+                        </div>
+                        <div className="carousel-item">
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-4.jpg" className="d-block w-100" alt="Fourth slide" />
+                        </div>
+                        <div className="carousel-item">
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-5.jpg" className="d-block w-100" alt="Fifth slide" />
                         </div>
                     </div>
                     {/* <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

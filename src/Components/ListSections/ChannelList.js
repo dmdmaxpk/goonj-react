@@ -64,13 +64,13 @@ class ChannelList extends Component {
                             keyBoardControl={true}
                             focusOnSelect={true}
                             centerMode={true}
-                            customTransition="all 1"
-                            transitionDuration={1000}
+                            transitionDuration={0}
                             containerClass="carousel-container"
-                            // removeArrowOnDeviceType={["tablet", "mobile"]}
                             deviceType={this.props.deviceType}
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding"
+                            // customTransition="all 1"
+                            // removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
                             {this.state.data.length > 1 ?
                                 this.state.data.map(item =>

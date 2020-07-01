@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -113,7 +113,7 @@ export default function MiniDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <Drawer
-        anchor={"left"}
+        anchor={props.position}
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
