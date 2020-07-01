@@ -44,11 +44,18 @@ class CategoryVodPage extends Component {
         }
     }
     handleClick(item){
+        let {history} = this.props;
+        let cat = this.props.match.params.category;
         let url = this.getVodUrl(item.title, item._id);
-        this.props.history.push({
-            pathname: `/${url}`,
-            state: {data: item}
-          });
+        if(cat === "comedy"){
+            let permission = localStorage.getItem('CPPermission');
+            // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+            console.log(url);
+            permission ? window.location.href = `/${url}` : window.location.href = `/paywall/comedy?postUrl=${url}`;
+        }
+        else{
+            history.push(`/${url}`);
+        }
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');

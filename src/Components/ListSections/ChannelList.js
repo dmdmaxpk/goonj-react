@@ -22,7 +22,7 @@ class ChannelList extends Component {
         })
     }
     handleRedirect(item){
-        let permission = localStorage.getItem('live');
+        let permission = localStorage.getItem('livePermission');
         // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         let url = permission ? `/channel/${item.slug}` : `/paywall/live?slug=${item.slug}`;
         return url;

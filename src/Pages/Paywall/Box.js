@@ -69,7 +69,7 @@ class Box extends React.Component {
   verifyOtp(e){
     e.preventDefault();
     const {msisdn, source, otp} = this.state;
-    const {packageID2, url, permission} = this.props;
+    const {packageID2, url, slug, permission, pkgIdKey, msisdnKey} = this.props;
     let otpData = {
       msisdn,
       source,
@@ -79,9 +79,12 @@ class Box extends React.Component {
     AxiosInstance.post('/payment/otp/verify', otpData)
     .then(res =>{
       const result = res.data;
+      console.log(result);
       if(result.is_allowed_to_stream === true){
         if(result.subscription_status === "billed" || result.subscription_status === "trial"){
           localStorage.setItem(permission, true);
+          localStorage.setItem(pkgIdKey, packageID2);
+          localStorage.setItem(msisdnKey, msisdn);
           this.props.history.push(`${url}`);
         }
       }
@@ -109,7 +112,7 @@ class Box extends React.Component {
   subscribe(){
     this.setState({loading: true});
     const {msisdn, source} = this.state;
-    const {packageID2, permission, url} = this.props;
+    const {packageID2, permission, url, slug, msisdnKey, pkgIdKey} = this.props;
 
     const permissionData = {
       msisdn,
@@ -125,6 +128,8 @@ class Box extends React.Component {
       }
       else if(result.code === 10 || result.code === 11){
         localStorage.setItem(permission, true);
+        localStorage.setItem(pkgIdKey, packageID2);
+        localStorage.setItem(msisdnKey, packageID2);
         this.props.history.push(`${url}`);
       }
       // if(res.data.code === 11 && res.data.message === "Trial period activated!"){

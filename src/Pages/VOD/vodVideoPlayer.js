@@ -6,7 +6,6 @@ import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import { Divider } from '@material-ui/core';
 import SocialShare from '../../Components/SocialShare/SocialShare';
-import AxiosInstance from '../../Utils/AxiosInstance';
 import RecommendationList from '../../Components/ListSections/RecommendationList';
 import Loader from '../../Components/Loader/Loader';
 
@@ -32,39 +31,32 @@ class VodVideoPlayer extends Component {
         return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
     }
     componentDidMount(){
-        AxiosInstance.get(`/video?_id=${this.props.id}`)
-        .then(res =>{
-            this.setState({data: res.data, topics: res.data.topics}, function(){
-                let item = this.state.data;
-                const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
-                const video = document.querySelector('video');
-                
-                // For more options see: https://github.com/sampotts/plyr/#options
-                // captions.update is required for captions to work with hls.js
-                const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-                if (!Hls.isSupported()) {
-                    video.src = source;
-                } else {
-                    // For more Hls.js options, see https://github.com/dailymotion/hls.js
-                    const hls = new Hls();
-                    hls.loadSource(source);
-                    hls.attachMedia(video);
-                    window.hls = hls;
-                    
-                    // Handle changing captions
-                    player.on('languagechange', () => {
-                        // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-                        setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-                    });
-                }
-                
-                // Expose player so it can be used from the console
-                window.player = player;
-            })
-        })
-        .catch(err =>{
-            console.log(err);
-        })
+        let item = this.props.data;
+        console.log(item);
+        const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
+        const video = document.querySelector('video');
+        
+        // For more options see: https://github.com/sampotts/plyr/#options
+        // captions.update is required for captions to work with hls.js
+        const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
+        if (!Hls.isSupported()) {
+            video.src = source;
+        } else {
+            // For more Hls.js options, see https://github.com/dailymotion/hls.js
+            const hls = new Hls();
+            hls.loadSource(source);
+            hls.attachMedia(video);
+            window.hls = hls;
+            
+            // Handle changing captions
+            player.on('languagechange', () => {
+                // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
+                setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+            });
+        }
+        
+        // Expose player so it can be used from the console
+        window.player = player;
     }
     removeExtension(filename){
         let file = filename.split(".");
@@ -72,10 +64,10 @@ class VodVideoPlayer extends Component {
     }
 
     render(){
-        let {topics, data} = this.state
+        let {topics, data} = this.props;
         let item = data;
         return(
-            this.state.data.length !== 0 ?
+            data.length !== 0 ?
                 <GridContainer className="videoPlayerContainer">
                     <GridItem xs={12} sm={12} md={12}>
                         {item ?
@@ -88,7 +80,7 @@ class VodVideoPlayer extends Component {
                                     </video>
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={5} className="recommendationGI">
-                                    <RecommendationList topics={item.length > 0 ? item.topics : ''} id={item._id} />
+                                    <RecommendationList topics={topics} id={item._id} />
                                 </GridItem>
                                 <GridItem className="topicGI" xs={9} sm={9} md={5}>
                                     {topics ?

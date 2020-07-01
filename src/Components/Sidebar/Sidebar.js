@@ -144,16 +144,19 @@ export default function MiniDrawer() {
         </div>
         <List>
           {/* {['Home', 'Video', 'World', 'Cricket', 'All mail', 'User'].map((text, index) => ( */}
-            <ListItem button key="home" style={{color:"white"}}>
-                {/* <img className="activeTabImg" src={require('../../Assets/searchBg.png')} /> */}
-                <ListItemIcon className="sibebarTabs activeTab"><HomeIcon /></ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="Home" />
-            </ListItem>
+            <Link to="/">
+              <ListItem button key="home" style={{color:"white"}}>
+                  <ListItemIcon className="sibebarTabs activeTab"><HomeIcon /></ListItemIcon>
+                  <ListItemText className="sidebarTabsText" primary="Home" />
+              </ListItem>
+            </Link>
             <Divider />
-            <ListItem button key="world" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="Video On Demand" />
-            </ListItem>
+            <Link to="/live-tv">
+              <ListItem button key="world" style={{color:"white"}}>
+                  <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
+                  <ListItemText className="sidebarTabsText" primary="Video On Demand" />
+              </ListItem>
+            </Link>
             <Divider />
             <Link to="/binjee">
               <ListItem button key="vods" style={{color:"red"}}>
@@ -162,11 +165,13 @@ export default function MiniDrawer() {
               </ListItem>
             </Link>
             <Divider />
-            <ListItem button key="cricket" style={{color:"white"}}>
-                {/* <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon> */}
-                <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/cp.jpeg')} /></ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="Cricket" />
-            </ListItem>
+            <Link to="/category/comedy/page/1">
+              <ListItem button key="cricket" style={{color:"white"}}>
+                  {/* <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon> */}
+                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
+                  <ListItemText className="sidebarTabsText" primary="Cricket" />
+              </ListItem>
+            </Link>
             <Divider />
             <ListItem button key="content" style={{color:"white"}}>
                 <ListItemIcon className="sibebarTabs"><SupervisedUserCircleIcon /> </ListItemIcon>

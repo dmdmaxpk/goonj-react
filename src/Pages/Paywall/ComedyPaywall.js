@@ -31,7 +31,10 @@ class ComedyPaywall extends Component {
         })
     }
       
-    render(){ 
+    render(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let id = urlParams.get("postUrl");
         return(
             <div className="liveComponent">
                 <div className="goonjLivePage">
@@ -40,7 +43,20 @@ class ComedyPaywall extends Component {
                             <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} />
                             <br />
                             <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
-                            <Box packageID={this.state.packageID} packageID1={this.state.packageID1} packageID2={this.state.packageID2} pkgPrice1={this.state.packagePrice1} pkgPrice2={this.state.packagePrice2} msisdn={this.props.msisdn} slug={this.props.slug} source={this.props.source}/>
+                            <Box
+                                url={id ? `/${id}` : '/category/comedy/page/1'}
+                                id={id}
+                                permission={"CPPermission"}
+                                msisdnKey={"CPMsisdn"}
+                                pkgIdKey={"CPPackageId"}
+                                packageID={this.state.packageID}
+                                packageID1={this.state.packageID1}
+                                packageID2={this.state.packageID2}
+                                pkgPrice1={this.state.packagePrice1}
+                                pkgPrice2={this.state.packagePrice2}
+                                msisdn={this.props.msisdn}
+                                source={this.props.source}
+                                />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
                             <font color="#319fe7">{this.state.packagePrice2}</font> Weekly charges deducted 

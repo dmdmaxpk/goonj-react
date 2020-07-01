@@ -46,9 +46,11 @@ class LivePaywall extends Component {
                             <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
                             <p className = "aText1b aText3 aText3b">24hrs free trial for first time users</p>
                             <Box
-                                url={`/channel/${slug}`}
+                                url={slug? `/channel/${slug}` : '/live-tv'}
                                 slug={slug}
-                                permission={"live"}
+                                permission={"livePermission"}
+                                msisdnKey={"liveMsisdn"}
+                                pkgIdKey={"livePackageId"}
                                 packageID={this.state.packageID}
                                 packageID1={this.state.packageID1}
                                 packageID2={this.state.packageID2}

@@ -4,13 +4,7 @@ import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
-import { auth } from "./Firebase/firebase.utils";
-import { CreateUserProfileDocument } from "./Firebase/firebase.utils";
-import { setCurrentUser } from "./Redux/User/user-actions";
-import { selectCurrentUser } from "./Redux/User/user-selectors";
-import { connect } from "react-redux";
 import SearchPage from "./Components/SearchPage/SearchPage";
-import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
 import Home from "./Pages/Home/Home";
@@ -24,12 +18,16 @@ import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
+import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
 
 
 class App extends React.Component {
   componentDidMount(){
     localStorage.setItem('source', "web");
-  }
+    // getPackages();
+    CheckLiveStatus();
+    CheckCPStatus();
+;  }
   render() {
     return (
       <div>
