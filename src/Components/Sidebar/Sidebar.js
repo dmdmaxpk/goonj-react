@@ -152,9 +152,9 @@ export default function MiniDrawer() {
             </Link>
             <Divider />
             <Link to="/live-tv">
-              <ListItem button key="world" style={{color:"white"}}>
+              <ListItem button key="Live TV" style={{color:"white"}}>
                   <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Video On Demand" />
+                  <ListItemText className="sidebarTabsText" primary="Live TV" />
               </ListItem>
             </Link>
             <Divider />
@@ -166,10 +166,10 @@ export default function MiniDrawer() {
             </Link>
             <Divider />
             <Link to="/category/comedy/page/1">
-              <ListItem button key="cricket" style={{color:"white"}}>
+              <ListItem button key="comedyPortal" style={{color:"white"}}>
                   {/* <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon> */}
                   <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Cricket" />
+                  <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
               </ListItem>
             </Link>
             <Divider />
