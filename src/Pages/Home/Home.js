@@ -52,6 +52,7 @@ class Home extends Component {
         })
     }
     render(){
+        const {dramas, sports, programs} = this.state;
         return(
             <div>
                 {this.state.loading === true ?
@@ -64,10 +65,10 @@ class Home extends Component {
                         <div className="homeSections">
                             <PopularList title="Popular on Goonj" />
                             <ChannelList />
-                            <DramasSection data={this.state.dramas} category="entertainment" />
+                            {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
                             <PopularList title="Headlines" />
-                            <VodSection title="Sports" data={this.state.sports} category="sports" />
-                            <VodSection title="Programs" data={this.state.programs} category="programs" classname="programsContainer" />
+                            {sports.length !== 0 ? <VodSection title="Sports" data={sports} category="sports" /> : <Loader />}
+                            {programs.length !== 0 ? <VodSection title="Programs" data={programs} category="programs" classname="programsContainer" /> : <Loader />}
                         </div>
                     </div>
                 }
