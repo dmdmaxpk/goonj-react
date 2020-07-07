@@ -67,12 +67,6 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
           </div>
         )}
       </div>
-      {/* <FontAwesomeIcon
-        icon={faBars}
-        className="header__nav-menu-icon"
-        onClick={ToggleMenuHidden}
-      />
-      {hidden ? null : <NavMenu />} */}
     </div>
   );
 };
