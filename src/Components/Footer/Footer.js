@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Footer.scss";
 import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
+import Hidden from '@material-ui/core/Hidden';
 
 class Footer extends Component {
   render(){
@@ -10,12 +11,12 @@ class Footer extends Component {
     return(
       <div className="footer">
           <GridContainer className="footerContainerOne">
-            <GridItem xs={12} sm={12} md={12}>
+          <Hidden mdDown> <GridItem xs={12} sm={12} md={12}>
                 <img src={require('../../Assets/logo.png')} />
-            </GridItem>
+            </GridItem></Hidden>
           </GridContainer>
           <GridContainer className="footerContainerTwo">
-            <GridItem xs={6} sm={6} md={3}>
+            <GridItem xs={12} sm={12} md={3}>
               <p className="footerHeadings">Goonj Tv</p>
               <p className="footerPs">
                 We believe in the changing media consumption 
@@ -30,7 +31,7 @@ class Footer extends Component {
                 manner to our users. 
               </p>
             </GridItem>
-            <GridItem xs={6} sm={6} md={3}>
+            <GridItem xs={12} sm={12} md={3}>
               <p className="footerHeadings">Download Our App</p>
               <p className="footerPs">
                 Go Mobile with our app.{'\n'}
@@ -46,6 +47,7 @@ class Footer extends Component {
                 <img className="footerPlaystoreImg" src={require('../../Assets/playstore-footer.png')} />
               </a>
             </GridItem>
+            <Hidden mdDown>
             <GridItem xs={6} sm={6} md={3}>
               <p className="footerHeadings">Live Channels</p>
               <p className="footerPs">
@@ -83,11 +85,14 @@ class Footer extends Component {
                 </GridItem>
               </GridContainer>
             </GridItem>
+            </Hidden>
           </GridContainer>
           <GridContainer className="footerContainerThree">
+          <Hidden mdDown> 
             <GridItem xs={12} sm={12} md={12}>
-              <p>Copyright &copy; {year} <font color="#4aa6e5">GoonjTV</font>. All Rights Reserved.</p>
+            <p>Copyright &copy; {year} <font color="#4aa6e5">GoonjTV</font>. All Rights Reserved.</p>
             </GridItem>
+          </Hidden>
           </GridContainer>
       </div>
     );

@@ -6,6 +6,11 @@ $footerBg: url('../../Assets/footer-bg.png');
   height: 55vh;
   padding: 0 10%;
 }
+.footer{
+  position: static;
+  width: 100%;
+  bottom: 0;
+}
 .footerContainerOne{
   text-align: center;
   padding-bottom: 4%;
@@ -44,4 +49,16 @@ $footerBg: url('../../Assets/footer-bg.png');
   float: left;
   font-size: large;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 640px) {
+  .footerHeadings{
+    font-size: 12px;
+  }
+  .footerPs{
+    font-size: 11px;
+  }
+  .footerPlaystoreImg{
+    width: 25%;
+  }
 }

@@ -45,34 +45,34 @@ class DramasSection extends Component {
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
                                 <img className="childImg blockOne" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
-                                <span style={{position: "relative", bottom: "50%", left: "45%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
+                                <span className="play_btn_position1" style={{position: "relative", bottom: "50%", left: "45%"}}>
+                                    <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                 </span>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={4} className="vodGI" onClick={()=> this.handleClick(data[1])}>
-                                <img className="childImg" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
-                                <span style={{position: "relative", bottom: "16vh", left: "45%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
+                                <img className="childImg drama_pic_2" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
+                                <span  className="play_btn_position2" style={{position: "relative", bottom: "16vh", left: "45%"}}>
+                                    <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                 </span>
                                 <GridContainer>
                                     <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[2])}>
                                         <img className="childImg dramaBlockThree" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
-                                        <span style={{position: "relative", bottom: "50%", left: "40%"}}>
-                                            <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                        <span className="play_btn_position3" style={{position: "relative", bottom: "50%", left: "40%"}}>
+                                            <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
                                         </span>
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[3])}>
                                         <img className="childImg dramaBlockThree" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
-                                        <span style={{position: "relative", bottom: "50%", left: "40%"}}>
-                                            <img src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
+                                        <span className="play_btn_position4" style={{position: "relative", bottom: "50%", left: "40%"}}>
+                                            <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
                                         </span>
                                     </GridItem>
                                 </GridContainer>
                             </GridItem>
                             <GridItem xs={12} sm={12} md={2} className="vodGI" onClick={()=> this.handleClick(data[4])}>
                                 <img className="childImg dramaBlockFour" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
-                                <span style={{position: "relative", bottom: "50%", left: "35%"}}>
-                                    <img src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
+                                <span className="play_btn_position5" style={{position: "relative", bottom: "50%", left: "35%"}}>
+                                    <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                 </span>
                             </GridItem>
 

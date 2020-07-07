@@ -8,14 +8,25 @@ class Heading extends Component {
     render() { 
         return (
             <GridContainer style={{color:"white", marginBottom:"10px", padding: "0 10%"}}>
-                <GridItem xs={12} sm={12} md={12}>
+                {/* <GridItem xs={10} sm={8} md={8}>
                     <div style={{float:"left", textTransform:"uppercase"}}>
                         <h4 style={{fontWeight: "900"}}>{this.props.heading}</h4>
                     </div>
-                    <div className="viewMore" style={{float:"right", fontSize:"small", marginRight:"15px", marginTop:"15px"}}>
+                 
+                </GridItem>
+                <GridItem xs={2}>
+                <div className="viewMore" style={{float:"right", fontSize:"small", marginRight:"15px", marginTop:"15px"}}>
                         <Link to={this.props.url}>View More</Link>
                     </div>
-                </GridItem>
+                    </GridItem> */}
+                    <div className="heading_container">
+                    <div style={{textTransform:"uppercase"}}>
+                        <h4 className="heading_text" >{this.props.heading}</h4>
+                    </div>
+                    <div>
+                    <Link className="view_more_text" to={this.props.url}>View More</Link>
+                    </div>
+                    </div>
             </GridContainer>
         );
     }

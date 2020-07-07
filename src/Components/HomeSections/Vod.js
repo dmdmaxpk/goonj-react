@@ -44,19 +44,21 @@ class VodSection extends Component {
                 <div className="sectionContainers">
                     <GridContainer>
                         <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
-                            <div>
-                                <img className="childImg blockOne" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
+                                <img className="childImg blockOne blockOnesm" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
                                 <span className="blockOneSpan">
                                     <img src={require('../../Assets/playBtn.png')} className="blockOneImg"/>
                                     <div className="blockOneDiv">
-                                        <p className="floatLeft marginZero headlineText">{data[0].title}</p>
-                                        <p className="floatRight marginZero daysAgoText" ><ReactTimeAgo date={data[0].publish_dtm}/></p>
-                                        <div className="clearfix marginZero"/>
-                                        <p className="floatLeft marginZero categoryText">{this.removeDescTags(data[0].description)}</p>
-                                        <p className="floatRight marginZero channelNameText">{data[0].source}</p>
+                                        <div className="title_and_discription">
+                                            <p className="floatLeft marginZero headlineText">{data[0].title}</p>
+                                            <p className="floatLeft marginZero categoryText">{this.removeDescTags(data[0].description)}</p>
+                                           
+                                        </div>
+                                        <div className="clearfix marginZero publish_date_and_channel">
+                                            <p className="floatRight marginZero daysAgoText" ><ReactTimeAgo date={data[0].publish_dtm}/></p>
+                                            <p className="floatRight marginZero channelNameText">{data[0].source}</p>
+                                        </div>
                                     </div>
-                                </span>
-                            </div>
+                                </span>                         
                         </GridItem>
                         <GridItem xs={12} sm={12} md={4}>
                             <GridContainer>

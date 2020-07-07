@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
 import Loader from '../Loader/Loader';
 import './ListSections.scss';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class PopularList extends Component {
     constructor(props) {
@@ -56,30 +59,66 @@ class PopularList extends Component {
                 thumbnail: 'channel04.png'
             },
         ];
-        const responsive = {
-            desktop: {
-              breakpoint: { max: 3000, min: 1024 },
-              items: 4,
-              slidesToSlide: 1, // optional, default to 1.
-              partialVisibilityGutter: 0
-            },
-            tablet: {
-              breakpoint: { max: 1024, min: 464 },
-              items: 2,
-              slidesToSlide: 1 // optional, default to 1.
-            },
-            mobile: {
-              breakpoint: { max: 464, min: 0 },
-              items: 1,
-              slidesToSlide: 1 // optional, default to 1.
-            }
-        };
+        // const responsive = {
+        //     desktop: {
+        //       breakpoint: { max: 3000, min: 1024 },
+        //       items: 4,
+        //       slidesToSlide: 1, // optional, default to 1.
+        //       partialVisibilityGutter: 0
+        //     },
+        //     tablet: {
+        //       breakpoint: { max: 1024, min: 464 },
+        //       items: 2,
+        //       slidesToSlide: 1 // optional, default to 1.
+        //     },
+        //     mobile: {
+        //       breakpoint: { max: 464, min: 0 },
+        //       items: 1,
+        //       slidesToSlide: 1 // optional, default to 1.
+        //     }
+        // };
+
+        var settings = {
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                  breakpoint: 1600,
+                  settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    arrow: true
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                    
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2,
+                    arrows: true
+                  }
+                }
+            ]
+          };
 
         return (
             <div>
                 <Heading heading={this.props.title} />
                 <div className="channelListContainer">
-                        <Carousel
+                        {/* <Carousel
                             className="popularListCarousel"
                             swipeable={true}
                             draggable={true}
@@ -111,7 +150,20 @@ class PopularList extends Component {
                                 )
                                 : <Loader />
                             }
-                        </Carousel>
+                        </Carousel> */}
+                        <Slider {...settings}>
+                            {popularList.length > 0 ?
+                                popularList.map(item =>
+                                    <div className="popularListDiv" key={item.slug}>
+                                        <Link style={{textDecoration: "none"}} to={`${item.url}`}>
+                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} />
+                                            <p className="channelListName popularListName">{item.name}</p>
+                                        </Link>
+                                    </div>
+                                )
+                                : <Loader />
+                            }
+                         </Slider>
                 </div>
             </div>
         );
