@@ -110,12 +110,12 @@ export default function MiniDrawer(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} sidebar`}>
       <CssBaseline />
       <Drawer
         anchor={props.position}
         variant="permanent"
-        className={clsx(classes.drawer, {
+        className={clsx(`${classes.drawer} drawer`, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
         })}

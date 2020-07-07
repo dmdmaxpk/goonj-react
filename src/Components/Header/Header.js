@@ -24,32 +24,18 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
       </div>
 
       <div className="header__options">
-        <div className="header__options-primary">
-          {/* <Link className="header__option" to="/movies">
-            Movies
-          </Link>
-
-          <Link className="header__option" to="/tvshows">
-            TV Shows
-          </Link>
-
-          <Link className="header__option" to="/mylist">
-            My List
-          </Link> */}
-        </div>
-
         <div className="header__searchbar">
           <SearchBar currentRoute={currentRoute} />
         </div>
         
-        <div className="header__option">
+        <div className="header__option header__LiveTvBtn">
           <button className="headerLiveBtn" onClick={() => history.push('/live-tv')}>
             <img src={require('../../Assets/btnBg.png')} />
             <p>Live TV</p>
           </button>
         </div>
 
-        <div className="">
+        <div className="header__playstoreBtn">
           <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en">
             <img src={require('../../Assets/playstore-header.png')} />
           </a>
@@ -68,7 +54,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
             </div>
           </div>
         ) : (
-          <div className="header__option">
+          <div className="header__option header__signin">
             {/* <Link className="header__option" to="">
               Hi, Guest
             </Link> */}
@@ -81,12 +67,6 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
           </div>
         )}
       </div>
-      <FontAwesomeIcon
-        icon={faBars}
-        className="header__nav-menu-icon"
-        onClick={ToggleMenuHidden}
-      />
-      {hidden ? null : <NavMenu />}
     </div>
   );
 };

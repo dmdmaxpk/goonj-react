@@ -32,3 +32,8 @@
 .sidebarTabsText{
     margin-left: 10px
 }
+@media screen and (max-width: 480px){
+    .drawer{
+        display: none !important;
+    }
+}

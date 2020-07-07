@@ -148,3 +148,17 @@
   font-weight: 900;
   text-transform: uppercase;
 }
+
+@media screen and (max-width: 480px){
+  .header{
+    padding: 4%;
+    background-color: #242c4a;
+    height: 60px;
+  }
+  .header__logo-box{
+    margin-left: 0;
+  }
+  .header__searchbar, .header__playstoreBtn, .header__LiveTvBtn, .header__signin{
+    display: none;
+  }
+}
