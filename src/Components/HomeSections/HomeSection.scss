@@ -16,10 +16,32 @@
     font-weight: 900;
 }
 .view_more_text{
-    font-size: 15px;
+    font-size: small;
 }
 .carouselDiv{
     height: 700px;
+}
+.headlinesContainer{
+    margin-bottom: 5vh;
+}
+.headlinesSlider .slick-prev, .headlinesSlider .slick-next{
+    // top: 40% !important;
+}
+.headlinesPlayBtn{
+    width: 30px;
+    position: relative;
+    bottom: 12vh;
+    margin-bottom: -12px;
+    left: 45%;
+}
+.headlineTitle{
+    font-size: small;
+    margin: 0 !important;
+}
+.headnlineSource{
+
+    color: grey;
+    font-size: small;
 }
 @media only screen and (max-width: 640px) {
     .programsContainer{

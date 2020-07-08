@@ -3,7 +3,6 @@ import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
-import Loader from '../Loader/Loader';
 import ResponsiveDramas from "../HomeSections/ResponsiveDramas"
 import Hidden from '@material-ui/core/Hidden';
 import config from '../../Utils/config';

@@ -122,7 +122,7 @@ class ChannelList extends Component {
                                 : ""
                             }
                         </Carousel> */}
-                        <Slider {...settings}>
+                        <Slider className="channelSlider" {...settings}>
                             {this.state.data.length > 1 ?
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
