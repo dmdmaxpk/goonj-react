@@ -88,18 +88,11 @@
 .videoPlayerDiv{
     margin-left: 9% !important;
 }
-.GridItem-grid-12 .videoPlayerGI{
-}
 .videoPlayerGI{
     width: 900px;
     height: 500px;
     margin-bottom: 20px !important;
     // float: left;
-}
-.videoPlayer{
-}
-.topicGI{
-    // margin-top: 20px;
 }
 .viewCountGI{
     color: white;
@@ -123,9 +116,42 @@
 }
 .recommendationGI{
     height: 500px;
-    max-width: 520px !important;
+    max-width: 32% !important;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+.recomTitle {
+    height: 36px !important;
+   
+}
+.title_div{
+    display: flex;
+    justify-content: space-between;
+    margin-left: -2%;
+    margin-top: 2%;
+}
+.title_hashTag_and_heading{
+    display: flex;
+    flex-direction: column;;
+    font-size: 20px;
+    color: white;
+}
+
+.videoPlayerContainer{
+    margin-bottom: 4% !important;
+}
+
+.views_text{
+    color: white;
+    text-align: end;
+}
+
+
+
+@media only screen and (min-width: 1440px) {
+    .vod_main_div{
+        margin-left: 0% !important;
+    }
 }
 @media screen and (max-width: 600px){
     .paginationDiv {
@@ -133,3 +159,68 @@
         top: 10px;
     }
 }
+@media only screen and (max-width: 480px) {
+    .recommendationGI{
+        margin-top: 63px !important;
+    }
+
+    .hashtagTopic{
+        font-size: 11px;
+    }
+    .videoPlayerContainer{
+        width: 100% !important;
+        height: 100% !important;
+       
+    }
+    .videoPlayerDiv{
+        margin-left: 0.001% !important;
+    
+    }
+    .videoPlayerGI {
+        height: auto;
+    }
+    .recomImg {
+        height: 80% !important;
+
+    }
+    .grey {
+        font-size: 11px !important;
+    }
+    .recomendation_details_div{
+    margin-top: -14px;
+    }
+    .recomTitle {
+        height: 39px !important;
+        width: 1% !important;
+    }
+    .recommendationGI{
+        max-width: 520px !important;
+    }
+    .MuiGrid-item {
+        margin-left: -5px !important;
+    }
+ 
+    .title_hashTag_and_heading{
+        font-size: 16px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .hashtagTopic{
+        font-size: 9px;
+    }
+    .title_hashTag_and_heading{
+        font-size: 13px;
+    }
+  
+  }
+
+  @media only screen and (max-width: 320px) {
+    .hashtagTopic{
+        font-size: 7px;
+    }
+    .title_hashTag_and_heading{
+        font-size: 11px;
+    }
+  
+  }

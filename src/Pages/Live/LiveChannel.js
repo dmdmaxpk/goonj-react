@@ -42,7 +42,7 @@ class LiveChannel extends Component {
                 })
             }
             else{
-                this.props.history.push(`/paywall/live`);
+                // this.props.history.push(`/paywall/live`);
             }
         })
     }

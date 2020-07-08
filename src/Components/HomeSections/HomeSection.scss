@@ -57,7 +57,7 @@
         font-size: 16px;
     }
     .view_more_text{
-        font-size: 13px;
+        font-size: 11px;
   
     }
     .blockOne{
@@ -158,6 +158,10 @@
 
   }
   @media only screen and (max-width: 480px) {
+    .slider_images_all{
+        border-radius: 5px;
+        height: 210px !important;
+    }
     .carouselDiv {
         height: 420px;
     }
@@ -167,27 +171,50 @@
         margin-top: -22%;
     }
 
+
   }
+ 
   @media only screen and (max-width: 425px) {
+
+    .slider_images_all{
+        height: 200px !important;
+    }
     .carouselDiv {
-        height: 380px;
+        height: 334px;
     }
     .blockOneDiv{
         height: 11vh !important;
         // top: 5.1vh !important;
         margin-top: -25%;
     }
+  
+
+  }
+  @media only screen and (max-width: 414px) {
+    .slider_images_all{
+        height: 198px !important;
+    }
+    .carouselDiv {
+        height: 322px;
+    }
+
 
   }
 
+ 
+
+
   @media only screen and (max-width: 375px) {
+    .slider_images_all{
+        height: 195px !important;
+    }
     .blockOneDiv{
         height: 11vh !important;
         // top: 5.1vh !important;
         margin-top: -30%;
     }
     .carouselDiv {
-        height: 350px;
+        height: 312px;
     }
     .headlineText{
         font-size: 11px !important;
@@ -217,14 +244,26 @@
         justify-content: space-between;
     }
   }
+  @media only screen and (max-width: 360px) {
+    .slider_images_all{
+        height: 195px !important;
+    }
+    .carouselDiv {
+        height: 307px;
+    }
+
+  }
   @media only screen and (max-width: 320px) {
+    .slider_images_all{
+        height: 165px !important;
+    }
     .blockOneDiv{
         height: 11vh !important;
         // top: 5.1vh !important;
         margin-top: -35%;
     }
     .carouselDiv {
-        height: 315px;
+        height: 300px;
     }
     .heading_text{
         font-weight: 600;
@@ -268,6 +307,7 @@
 }
 .program_lower_4{
     display: flex;
+    margin-top: -6%;
 }
 
 .drama_pic_responsive_1, .drama_pic_responsive_2, .drama_pic_responsive_3, .drama_pic_responsive_4{
@@ -431,3 +471,4 @@
     padding: 15px;
     border-radius: 0 0 8px 8px;
 }
+

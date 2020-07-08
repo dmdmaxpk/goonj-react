@@ -105,6 +105,14 @@ top: 0;
         width: 92%;
         height: 130px;
     }
+    .recomTitle{
+        font-size: 11px !important;
+        height: 45px !important;
+
+    }
+    .grey{
+        font-size: 9px !important;
+    }
 
   }
 .popularListCarousel .react-multi-carousel-item{
@@ -161,6 +169,7 @@ top: 0;
     overflow: hidden;
 }
 .recomTitle{
+    width: 87% !important;
     font-size: small;
     font-weight: 600;
     color: white;
