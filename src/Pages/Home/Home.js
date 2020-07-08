@@ -77,7 +77,7 @@ class Home extends Component {
                             <PopularList title="Popular on Goonj" />
                             <ChannelList />
                             {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
-                            {headlines.length !== 0 ? <HeadlinesSection data={headlines} title="Headlines" /> : <Loader />}
+                            {headlines.length !== 0 ? <HeadlinesSection data={headlines} category="news" title="Headlines" /> : <Loader />}
                             {sports.length !== 0 ? <VodSection title="Sports" data={sports} category="sports" /> : <Loader />}
                             {programs.length !== 0 ? <VodSection title="Programs" data={programs} category="programs" classname="programsContainer" /> : <Loader />}
                         </div>

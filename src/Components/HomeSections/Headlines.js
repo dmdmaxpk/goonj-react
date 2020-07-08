@@ -77,7 +77,7 @@ class HeadlinesSection extends Component {
         };
         return(
             <div className="headlinesContainer">
-                <Heading heading={this.props.title} />
+                <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 <div>
                     <Slider className="headlinesSlider" {...settings}>
                         {data.map(item =>
