@@ -25,8 +25,8 @@ class App extends React.Component {
   componentDidMount(){
     localStorage.setItem('source', "web");
     // getPackages();
-    CheckLiveStatus();
-    CheckCPStatus();
+    // CheckLiveStatus();
+    // CheckCPStatus();
 ;  }
   render() {
     return (

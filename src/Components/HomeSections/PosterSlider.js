@@ -21,19 +21,19 @@ class PosterSlider extends Component {
                     </ol>
                     <div className="carousel-inner carouselDiv">
                         <div className="carousel-item active">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-1.jpg" className="d-block w-100" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-1.jpg" className="d-block w-100 slider_images_all" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-2.jpg" className="d-block w-100" alt="Second slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-2.jpg" className="d-block w-100 slider_images_all" alt="Second slide" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-3.jpg" className="d-block w-100" alt="Third slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-3.jpg" className="d-block w-100 slider_images_all" alt="Third slide" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-4.jpg" className="d-block w-100" alt="Fourth slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-4.jpg" className="d-block w-100 slider_images_all" alt="Fourth slide" />
                         </div>
                         <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-5.jpg" className="d-block w-100" alt="Fifth slide" />
+                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-5.jpg" className="d-block w-100 slider_images_all" alt="Fifth slide" />
                         </div>
                     </div>
                     {/* <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

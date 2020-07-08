@@ -28,7 +28,7 @@ class SocialShare extends Component {
             <div>
                 <button id="btnShare" className="shareBtn" onClick={this.handleOpen}>
                     <img src={require('../../Assets/btnBg.png')} />
-                    <p>Share</p>
+                    <p className="share_text">Share</p>
                 </button>
                 <Popover
                     id="btnShare"

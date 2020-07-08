@@ -9,6 +9,7 @@ import SocialShare from '../../Components/SocialShare/SocialShare';
 import RecommendationList from '../../Components/ListSections/RecommendationList';
 import Loader from '../../Components/Loader/Loader';
 
+
 class VodVideoPlayer extends Component {
     constructor(props){
         super(props);
@@ -62,13 +63,15 @@ class VodVideoPlayer extends Component {
         let file = filename.split(".");
         return file[0];
     }
+    
 
     render(){
         let {topics, data} = this.props;
         let item = data;
+        
         return(
             data.length !== 0 ?
-                <GridContainer className="videoPlayerContainer">
+                <GridContainer className="">
                     <GridItem xs={12} sm={12} md={12}>
                         {item ?
                             <GridContainer xs={12} sm={12} md={12} className="videoPlayerDiv">
@@ -78,20 +81,32 @@ class VodVideoPlayer extends Component {
                                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
                                         <a href="" download>Download</a>
                                     </video>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={5} className="recommendationGI">
-                                    <RecommendationList topics={topics} id={item._id} />
-                                </GridItem>
-                                <GridItem className="topicGI" xs={9} sm={9} md={5}>
+
+                                <GridItem className="topicGI" xs={12} >
+                                <div className="title_div">
+                                   <div className="title_hashTag_and_heading"> 
+                                       <div className="title_hashTag">
                                     {topics ?
                                         topics.map(topic =>
                                             <p key={item._id} className="hashtagTopic">#{topic}</p>
                                         )
                                         :
                                         ''
-                                    }
+                                    }</div>
+                                    <div>  {item.title}</div>
+                                    </div>
+
+                                   <div>
+                                    <div className="views_text"> 
+                                    {this.kFormatter(item.views_count)} views
+                                    </div >  
+                                    <SocialShare />
+                                    </div> 
+
+                                </div>
                                 </GridItem>
-                                <GridItem className="viewCountGI" xs={3} sm={3} md={3}>
+
+                                {/* <GridItem className="viewCountGI" xs={3} sm={3} md={3}>
                                     {this.kFormatter(item.views_count)} views
                                 </GridItem>
                                 <GridItem className="titleGI" xs={12} sm={12} md={5}>
@@ -99,7 +114,13 @@ class VodVideoPlayer extends Component {
                                 </GridItem>
                                 <GridItem className="shareGI" xs={12} sm={12} md={3}>
                                     <SocialShare />
+                                </GridItem> */}
                                 </GridItem>
+                                <GridItem xs={12} sm={12} md={5} className="recommendationGI">
+                                    <RecommendationList topics={topics} id={item._id} />
+                                </GridItem>
+                               
+                                
                                 <Divider />
                             </GridContainer>
                         :''}
