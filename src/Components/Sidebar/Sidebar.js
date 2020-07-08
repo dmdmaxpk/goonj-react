@@ -2,32 +2,24 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
 import HomeIcon from '@material-ui/icons/Home';
-import VideocamIcon from '@material-ui/icons/Videocam';
 import LanguageIcon from '@material-ui/icons/Language';
-import SportsCricketIcon from '@material-ui/icons/SportsCricket';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import PersonIcon from '@material-ui/icons/Person';
 
+import {Link} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar';
+
 import './Sidebar.scss';
 
-import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -36,20 +28,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     backgroundColor: "#14182a !important"
   },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+  mobileRoot: {
+    backgroundColor: "#14182a !important"
   },
   menuButton: {
     marginLeft: 5,
@@ -82,21 +62,24 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9) + 1,
     },
   },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
+  hidePaper:  {
+    height: "60px",
+    backgroundColor: "transparent !important",
+    border: "none",
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
+  }
 }));
 
 export default function MiniDrawer(props) {
+  console.log(props);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -109,82 +92,123 @@ export default function MiniDrawer(props) {
     setOpen(false);
   };
 
+  const isActive = (value) => (window.location.pathname === value ? 'sidebarTabs activeTab' : 'sidebarTabs')
+  const ListComponent = () => {
+    return(
+      <List key="sidebar">
+          <ListItem component={Link} to="/" button key="home" style={{color:"white"}}>
+              <ListItemIcon className={isActive('/')}><HomeIcon /></ListItemIcon>
+              <ListItemText className="sidebarTabsText" primary="Home" />
+          </ListItem>
+        <Divider />
+          <ListItem component={Link} to="/live-tv" button key="Live TV" style={{color:"white"}}>
+              <ListItemIcon className={isActive('/live-tv')}><LanguageIcon /></ListItemIcon>
+              <ListItemText className="sidebarTabsText" primary="Live TV" />
+          </ListItem>
+        <Divider />
+          <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
+              <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+              <ListItemText className="sidebarTabsText" primary="Binjee" />
+          </ListItem>
+        <Divider />
+          <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
+              <ListItemIcon className={isActive('/category/comedy/page/1')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
+              <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+          </ListItem>
+        <Divider />
+        <ListItem component={Link} to="/profile" button key="profile" style={{color:"white"}}>
+            <ListItemIcon className={isActive('/profile')}><PersonIcon /></ListItemIcon>
+            <ListItemText className="sidebarTabsText" primary="User Profile" />
+        </ListItem>
+        <Hidden smUp>
+          <Divider />
+          <ListItem button key="searchbar">
+              <ListItemText>
+                <SearchBar currentRoute={window.location.pathname} />
+              </ListItemText>
+          </ListItem>
+        </Hidden>
+    </List>       
+    )
+  }
+  console.log("currentRouteSidebar",window.location.pathname);
   return (
-    <div className={`${classes.root} sidebar`}>
-      <CssBaseline />
-      <Drawer
-        anchor={props.position}
-        variant="permanent"
-        className={clsx(`${classes.drawer} drawer`, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+    <div>
+    <div className={classes.root}>
+      <Hidden mdDown>
+        <CssBaseline />
+        <Drawer
+          anchor="left"
+          variant="permanent"
+          className={clsx(`${classes.drawer} drawer`, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className="">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <img src={require("../../Assets/menu.png")} />
-          </IconButton>
-          <IconButton onClick={handleDrawerClose}>
-            <img src={require("../../Assets/menu.png")} />
-          </IconButton>
-        </div>
-        <List>
-          {/* {['Home', 'Video', 'World', 'Cricket', 'All mail', 'User'].map((text, index) => ( */}
-            <Link to="/">
-              <ListItem button key="home" style={{color:"white"}}>
-                  <ListItemIcon className="sibebarTabs activeTab"><HomeIcon /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Home" />
-              </ListItem>
-            </Link>
-            <Divider />
-            <Link to="/live-tv">
-              <ListItem button key="Live TV" style={{color:"white"}}>
-                  <ListItemIcon className="sibebarTabs"><LanguageIcon /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Live TV" />
-              </ListItem>
-            </Link>
-            <Divider />
-            <Link to="/binjee">
-              <ListItem button key="vods" style={{color:"red"}}>
-                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Binjee" />
-              </ListItem>
-            </Link>
-            <Divider />
-            <Link to="/category/comedy/page/1">
-              <ListItem button key="comedyPortal" style={{color:"white"}}>
-                  {/* <ListItemIcon className="sibebarTabs"><SportsCricketIcon /></ListItemIcon> */}
-                  <ListItemIcon className="sibebarTabs"><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
-                  <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
-              </ListItem>
-            </Link>
-            <Divider />
-            <ListItem button key="content" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><SupervisedUserCircleIcon /> </ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="Unknown Section" />
-            </ListItem>
-            <Divider />
-            <ListItem button key="profile" style={{color:"white"}}>
-                <ListItemIcon className="sibebarTabs"><PersonIcon /></ListItemIcon>
-                <ListItemText className="sidebarTabsText" primary="User Profile" />
-            </ListItem>
-          {/* ))} */}
-        </List>
-      </Drawer>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+        >
+          <div className="">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open,
+              })}
+            >
+              <img src={require("../../Assets/menu.png")} />
+            </IconButton>
+            <IconButton onClick={handleDrawerClose}>
+              <img src={require("../../Assets/menu.png")} />
+            </IconButton>
+          </div>
+          <ListComponent />
+         </Drawer>
+      </Hidden>
+    </div>
+    <div>
+      <Hidden smUp>
+        <Drawer
+          anchor="right"
+          variant="permanent"
+          style={{display: "inline"}}
+          className={clsx(`${classes.drawer} drawerMobile`, {
+            [classes.drawerOpen]: open,
+            [classes.hidePaper]: !open,
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.hidePaper]: !open,
+            }),
+          }}
+        >
+          <div className="sidebarSMdiv">
+            <IconButton
+              style={{position:"relative", right:"10px"}}
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open,
+              })}
+            >
+              <img src={require("../../Assets/menu.png")} />
+            </IconButton>
+            <IconButton onClick={handleDrawerClose}>
+              <img src={require("../../Assets/menu.png")} />
+            </IconButton>
+          </div>
+          <ListComponent />
+        </Drawer>
+      </Hidden>
+    </div>
     </div>
   );
 }

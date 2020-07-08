@@ -32,8 +32,11 @@
 .sidebarTabsText{
     margin-left: 10px
 }
+.drawerMobile .makeStyles-hidePaper-8{
+    position: absolute !important;
+}
 @media screen and (max-width: 480px){
-    .drawer{
-        display: none !important;
-    }
+    // .drawer{
+    //     display: none !important;
+    // }
 }

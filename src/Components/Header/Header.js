@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavMenu from "./NavMenu";
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
+  console.log("currentRoute", currentRoute);
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/")}>

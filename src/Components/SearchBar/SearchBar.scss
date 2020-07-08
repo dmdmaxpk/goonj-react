@@ -77,3 +77,15 @@ $searchFontBg: url('../../Assets/searchBg.png');
 .container-2:hover .search-icon {
   color: white;
 }
+
+@media screen and (max-width: 480px){
+  .container-2{
+    width: 45vw;
+  }
+  .container-2 input#search{
+    border-radius: 5px;
+  }
+  .container-2 > span{
+    display: none;
+  }
+}
