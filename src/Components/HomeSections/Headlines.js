@@ -60,7 +60,7 @@ class HeadlinesSection extends Component {
                 {
                   breakpoint: 600,
                   settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 2,
                     slidesToScroll: 2
                     
                   }
@@ -68,7 +68,7 @@ class HeadlinesSection extends Component {
                 {
                   breakpoint: 480,
                   settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     arrows: true
                   }
