@@ -375,7 +375,7 @@
         display: none;
     }
     .aText1b{
-        font-size: x-large;
+        font-size: larger;
         margin-top: 2em !important;
     }
     .aText3b{
@@ -397,6 +397,9 @@
     }
     .pkgTitleCP, .pricePCP{
         font-size: x-small;
+    }
+    .msisdnInput{
+        width: 45vw;
     }
 }
 @media screen and (max-width: 420px) {

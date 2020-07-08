@@ -92,12 +92,14 @@ export default function MiniDrawer(props) {
     setOpen(false);
   };
 
-  const isActive = (value) => (window.location.pathname === value ? 'sidebarTabs activeTab' : 'sidebarTabs')
+  const isActive = (value) => (
+    window.location.pathname.startsWith(value) ? 'sidebarTabs activeTab' : 'sidebarTabs'
+    )
   const ListComponent = () => {
     return(
       <List key="sidebar">
-          <ListItem component={Link} to="/" button key="home" style={{color:"white"}}>
-              <ListItemIcon className={isActive('/')}><HomeIcon /></ListItemIcon>
+          <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
+              <ListItemIcon className={isActive('/home')}><HomeIcon /></ListItemIcon>
               <ListItemText className="sidebarTabsText" primary="Home" />
           </ListItem>
         <Divider />
@@ -112,7 +114,7 @@ export default function MiniDrawer(props) {
           </ListItem>
         <Divider />
           <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
-              <ListItemIcon className={isActive('/category/comedy/page/1')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
+              <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
               <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
           </ListItem>
         <Divider />
@@ -172,7 +174,7 @@ export default function MiniDrawer(props) {
       </Hidden>
     </div>
     <div>
-      <Hidden smUp>
+      <Hidden mdUp>
         <Drawer
           anchor="right"
           variant="permanent"

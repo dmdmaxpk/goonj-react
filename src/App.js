@@ -23,6 +23,9 @@ import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls
 
 class App extends React.Component {
   componentDidMount(){
+    if(this.props.location.pathname === '/'){
+      this.props.history.push('/home');
+    }
     localStorage.setItem('source', "web");
     // getPackages();
     CheckLiveStatus();
@@ -40,19 +43,19 @@ class App extends React.Component {
           ''
         }
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route
             exact
-            path="/signin"
+            path="/paywall/live"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignIn />
+              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
           <Route
             exact
-            path="/signup"
+            path="/paywall/live"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignUp />
+              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
           <Route exact path="/live-tv" component={LiveTv} />

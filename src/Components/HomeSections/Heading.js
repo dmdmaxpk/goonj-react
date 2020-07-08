@@ -23,7 +23,7 @@ class Heading extends Component {
                     <div style={{textTransform:"uppercase"}}>
                         <h4 className="heading_text" >{this.props.heading}</h4>
                     </div>
-                    <div>
+                    <div className={this.props.viewMoreClass}>
                     <Link className="view_more_text" to={this.props.url}>View More</Link>
                     </div>
                     </div>

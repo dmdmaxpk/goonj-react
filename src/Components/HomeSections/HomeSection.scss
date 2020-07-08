@@ -39,9 +39,11 @@
     margin: 0 !important;
 }
 .headnlineSource{
-
     color: grey;
     font-size: small;
+}
+.hidden{
+    display: none;
 }
 @media only screen and (max-width: 640px) {
     .programsContainer{
@@ -148,12 +150,11 @@
 .blockThreeSpan{
     position: relative;
     bottom: 50%;
-    left: 45% !important;}
-
-    .posterSlider{
-        margin-left: 13px;
-        margin-right: 15px;
-    }
+    left: 45% !important;
+}
+.posterSlider{
+    margin: 2vh 15px 0 13px;
+}
 
   }
   @media only screen and (max-width: 480px) {
