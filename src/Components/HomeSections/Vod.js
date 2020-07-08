@@ -5,6 +5,8 @@ import Heading from './Heading';
 import './HomeSection.scss';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
+import ResponsiveVod from "../HomeSections/ResponsiveVod"
+import Hidden from '@material-ui/core/Hidden';
 import { withRouter } from 'react-router-dom';
 
 class VodSection extends Component {
@@ -42,9 +44,10 @@ class VodSection extends Component {
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                 <div className="sectionContainers">
+                    <Hidden smDown>
                     <GridContainer>
                         <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
-                                <img className="childImg blockOne blockOnesm" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
+                                <img className="childImg vod_first_image" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
                                 <span className="blockOneSpan">
                                     <img src={require('../../Assets/playBtn.png')} className="blockOneImg"/>
                                     <div className="blockOneDiv">
@@ -69,7 +72,7 @@ class VodSection extends Component {
                                     </span>
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[2])}>
-                                    <img className="childImg blockTwo" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
+                                    <img className="childImg vodBlockThree" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
                                     <span className="blockTwoSpan">
                                         <img src={require('../../Assets/playBtn.png')} />
                                     </span>
@@ -79,14 +82,14 @@ class VodSection extends Component {
                         <GridItem xs={12} sm={12} md={2}>
                             <GridContainer>
                                 <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[3])}>
-                                    <img className="childImg blockThree" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
+                                    <img className=" vodBlockFour childImg" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
                                     <span className="blockThreeSpan">
                                         <img src={require('../../Assets/playBtn.png')} />
                                     </span>
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[4])}>
-                                    <img className="childImg blockThree" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
-                                    <span className="blockThreeSpan">
+                                    <img className=" vodBlockFive childImg" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
+                                    <span className="blockFourSpan">
                                         <img src={require('../../Assets/playBtn.png')} />
                                     </span>
                                 </GridItem>
@@ -94,6 +97,10 @@ class VodSection extends Component {
                         </GridItem>
 
                     </GridContainer>
+                    </Hidden>
+                    <Hidden smUp>
+                        <ResponsiveVod data={data} />
+                    </Hidden>
                 </div>
                 :
                 ''

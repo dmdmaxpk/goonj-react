@@ -4,6 +4,8 @@ import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
 import Loader from '../Loader/Loader';
+import ResponsiveDramas from "../HomeSections/ResponsiveDramas"
+import Hidden from '@material-ui/core/Hidden';
 import config from '../../Utils/config';
 import { withRouter } from 'react-router-dom';
 
@@ -42,6 +44,7 @@ class DramasSection extends Component {
                 <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                     <div className="sectionContainers">
+                        <Hidden smDown>
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
                                 <img className="childImg blockOne" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
@@ -49,19 +52,19 @@ class DramasSection extends Component {
                                     <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                 </span>
                             </GridItem>
-                            <GridItem xs={12} sm={12} md={4} className="vodGI" onClick={()=> this.handleClick(data[1])}>
+                            <GridItem xs={3} sm={3} md={4} className="vodGI" onClick={()=> this.handleClick(data[1])}>
                                 <img className="childImg drama_pic_2" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
                                 <span  className="play_btn_position2" style={{position: "relative", bottom: "16vh", left: "45%"}}>
                                     <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                 </span>
                                 <GridContainer>
-                                    <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[2])}>
+                                    <GridItem xs={3} sm={3} md={6} className="vodGI" onClick={()=> this.handleClick(data[2])}>
                                         <img className="childImg dramaBlockThree" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
                                         <span className="play_btn_position3" style={{position: "relative", bottom: "50%", left: "40%"}}>
                                             <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
                                         </span>
                                     </GridItem>
-                                    <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[3])}>
+                                    <GridItem xs={3} sm={3} md={6} className="vodGI" onClick={()=> this.handleClick(data[3])}>
                                         <img className="childImg dramaBlockThree" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
                                         <span className="play_btn_position4" style={{position: "relative", bottom: "50%", left: "40%"}}>
                                             <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "25px"}} />
@@ -69,7 +72,7 @@ class DramasSection extends Component {
                                     </GridItem>
                                 </GridContainer>
                             </GridItem>
-                            <GridItem xs={12} sm={12} md={2} className="vodGI" onClick={()=> this.handleClick(data[4])}>
+                            <GridItem xs={3} sm={3} md={2} className="vodGI" onClick={()=> this.handleClick(data[4])}>
                                 <img className="childImg dramaBlockFour" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
                                 <span className="play_btn_position5" style={{position: "relative", bottom: "50%", left: "35%"}}>
                                     <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
@@ -77,7 +80,12 @@ class DramasSection extends Component {
                             </GridItem>
 
                         </GridContainer>
+                        </Hidden>
+                        <Hidden smUp>
+                        <ResponsiveDramas data={data} />
+                        </Hidden>
                     </div>
+                   
                 : ""}
             </div>
         );

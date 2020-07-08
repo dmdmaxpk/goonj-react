@@ -77,7 +77,7 @@ class ChannelList extends Component {
                 {
                   breakpoint: 480,
                   settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 4,
                     slidesToScroll: 2,
                     arrows: true
                   }

@@ -22,8 +22,11 @@
     height: 700px;
 }
 @media only screen and (max-width: 640px) {
+    .programsContainer{
+        margin-top: 0px !important;
+    }
     .carouselDiv {
-        height: 430px;
+        height: 400px;
     }
     .heading_text{
         font-weight: 600;
@@ -38,9 +41,7 @@
         height: 100% !important;
         border-radius: 5px;
     }
-  .drama_pic_2{
-      margin-top: 20px;
-  }
+
   .dramaBlockThree{
       width: 100% !important;
       height: 194px !important;
@@ -55,35 +56,36 @@
   
   }
   .play_btn_position1{
-     bottom: 54% !important;
+     bottom: 62% !important;
       
   }
   .play_btn_position2{
-    bottom: 14vh !important;
+    bottom: 50% !important;
       
 }
 .play_btn_position3{
     bottom: 50% !important;
-    left: 45% !important;
+    left: 35% !important;
       
 }
 .play_btn_position4{
-    left: 45% !important;
+    left: 35% !important;
     bottom: 50% !important;
 }
 .play_btn_position5{
     bottom: 50% !important;
-      left: 45% !important;
+      left: 35% !important;
 }
 .blockOneImg{
     width: 35px !important;
     position: relative;
-    bottom: -5vh !important;
+    bottom: 7vh !important;
     left: 45%;
 }
 .blockOneDiv{
     height: 11vh !important;
-    top: 4.8vh !important;
+    // top: 5.1vh !important;
+    margin-top: -22%;
 }
 .headlineText{
     font-size: 12px !important;
@@ -98,7 +100,7 @@
 }
 .blockOne{
     width: 60px;
-    height: 195px;
+    height: 100%;
 }
 .blockOnesm{
     height: auto !important;
@@ -109,11 +111,10 @@
     position: relative;
     bottom: 8.5vh !important;
 }
-.blockThree{
-    width: 100% !important;
-}
+
 .categoryText{
     margin-top: 3px !important;
+    overflow: hidden;
 }
 .publish_date_and_channel{
     margin-top: 20px !important;
@@ -127,10 +128,43 @@
     bottom: 50%;
     left: 45% !important;}
 
+    .posterSlider{
+        margin-left: 13px;
+        margin-right: 15px;
+    }
+
   }
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 480px) {
     .carouselDiv {
-        height: 400px;
+        height: 420px;
+    }
+    .blockOneDiv{
+        height: 11vh !important;
+        // top: 5.1vh !important;
+        margin-top: -22%;
+    }
+
+  }
+  @media only screen and (max-width: 425px) {
+    .carouselDiv {
+        height: 380px;
+    }
+    .blockOneDiv{
+        height: 11vh !important;
+        // top: 5.1vh !important;
+        margin-top: -25%;
+    }
+
+  }
+
+  @media only screen and (max-width: 375px) {
+    .blockOneDiv{
+        height: 11vh !important;
+        // top: 5.1vh !important;
+        margin-top: -30%;
+    }
+    .carouselDiv {
+        height: 350px;
     }
     .headlineText{
         font-size: 11px !important;
@@ -161,8 +195,13 @@
     }
   }
   @media only screen and (max-width: 320px) {
+    .blockOneDiv{
+        height: 11vh !important;
+        // top: 5.1vh !important;
+        margin-top: -35%;
+    }
     .carouselDiv {
-        height: 360px;
+        height: 315px;
     }
     .heading_text{
         font-weight: 600;
@@ -201,6 +240,20 @@
     }
   }
  
+  .drama_lower_4{
+    display: flex;
+}
+.program_lower_4{
+    display: flex;
+}
+
+.drama_pic_responsive_1, .drama_pic_responsive_2, .drama_pic_responsive_3, .drama_pic_responsive_4{
+    margin-top: 10px;
+    width: 90%;
+    margin-left: 5%;
+    height: 70px;
+}
+
 
   
 .carousel-indicators{
@@ -216,21 +269,21 @@
 }
 
 .childImg{
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 50%;
     border-radius: 5px;
 }
 .dramaBlockThree{
-    height: 142px;
+    height: 100%;
 }
 .dramaBlockFour{
     width: 90%;
-    height: 392px;
+    height: 90%;
     overflow-y: hidden;
 }
 .blockOne{
-    width: 605px;
-    height: 395px;
+    width: 100%;
+    height: 90%;
 }
 .blockOneSpan{
     display: block;
@@ -248,7 +301,7 @@
     color: white;
     background: #00000075;
     display: flex;
-    top: 3.5vh;
+    top: 5.5vh;
     flex-direction: row;
     justify-content: space-between;
     position: relative;
@@ -277,8 +330,6 @@
 .categoryText{
     font-size: smaller;
     font-weight: 100;
-    overflow: scroll;
-    text-overflow: ellipsis;
     text-transform: capitalize;
     width: 80%;
 }
@@ -289,7 +340,7 @@
 }
 .blockTwo{
     width: 100%;
-    height: 185px;
+    height: 74%;
 }
 .blockTwoSpan{
     position: relative;
@@ -305,8 +356,16 @@
 }
 .blockThreeSpan{
     position: relative;
+    bottom: 84%;
+    left: 40%;
+}
+.blockFourSpan{
+    position: relative;
     bottom: 50%;
     left: 40%;
+}
+.blockFourSpan > img{
+    width: 25px;
 }
 .blockThreeSpan > img{
     width: 25px;
@@ -318,4 +377,34 @@
     display: flex;
     flex-direction: column;
     
+}
+.vod_first_image{
+    width: 100%;
+    height: 80%;
+}
+.vodBlockThree{
+    width: 100% !important;
+    height: 84% !important;
+    margin-top: -9% !important;
+}
+.vodBlockFour{
+    height: 143%;
+}
+
+.vodBlockFive{
+    margin-top: 45%;
+    height: 86%;
+}
+
+.responsives_block_one_span{
+    height: 10vh;
+    color: white;
+    background: #00000075;
+    display: flex;
+    top: -14.5vh;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
 }

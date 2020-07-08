@@ -58,8 +58,8 @@ top: 0;
     color: #4aa6e5 !important;
 }
 .channelListImg{
-    width: 150px;
-    height: 200px;
+    width: 92%;
+    height: 230px;
     margin: 0 auto;
     border-radius: 10px;
 }
@@ -71,18 +71,22 @@ top: 0;
   
     
 }
-@media only screen and (max-width: 650px) {
 
+@media only screen and (max-width: 480px) {
+   
     .channelListImg{
-        width: 105px;
+        width: 92%;
+        height: 150px;
     }
   }
+
 @media only screen and (max-width: 375px) {
     .channelListName {
        font-size: 11px;
     }
     .channelListImg{
-        width: 105px;
+        width: 92%;
+        height: 140px;
     }
   }
   @media only screen and (max-width: 320px) {
@@ -90,7 +94,8 @@ top: 0;
         font-size: 10px;
     }
     .channelListImg{
-        width: 90px;
+        width: 92%;
+        height: 130px;
     }
 
   }
