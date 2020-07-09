@@ -22,7 +22,8 @@
     height: 700px;
 }
 .headlinesContainer{
-    // margin-bottom: 5vh;
+    // margin-left: 4%;
+    // margin-right: 4%;
 }
 .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
     top:31% !important;
@@ -63,6 +64,10 @@
 @media only screen and (max-width: 640px) {
     .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
         top: 21% !important;
+    }
+    .headlinesContainer{
+        margin-left: 4%;
+        margin-right: 4%;
     }
     .programsContainer{
         margin-top: 0px !important;
@@ -226,6 +231,18 @@
 
 
   }
+
+  @media only screen and (max-width: 413px) and (min-width: 411px)  {
+    .slider_images_all{
+        height: 198px !important;
+    }
+    .carouselDiv {
+        height: 304px;
+    }
+
+
+  }
+
 
  
 
