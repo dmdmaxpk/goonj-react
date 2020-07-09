@@ -57,6 +57,7 @@ class LivePaywall extends Component {
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
                                 source={this.props.source}
+                                unsubStatus={"liveSub"}
                             />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
@@ -67,7 +68,7 @@ class LivePaywall extends Component {
                                 <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
                             </p>
                             </div>
-                            <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p>
+                            {/* <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p> */}
                         </div>
                     </div>
             </div>

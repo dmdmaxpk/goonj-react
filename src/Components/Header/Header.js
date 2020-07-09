@@ -58,15 +58,16 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
             </div>
           ) : (
             <div className="header__option header__signin">
-              {/* <Link className="header__option" to="">
-                Hi, Guest
-              </Link> */}
-              <Link
-                className="header__option header__option--signin"
-                to="/paywall/live"
-              >
-                Sign In
-              </Link>
+              {!(localStorage.getItem('livePermission') || localStorage.getItem('CPPermission')) ?
+                <Link
+                  className="header__option header__option--signin"
+                  to="/paywall/live"
+                  >
+                  Sign In
+                </Link>
+              :
+              ''
+              }
             </div>
           )}
         </div>

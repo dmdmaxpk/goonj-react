@@ -173,7 +173,9 @@
 .posterSlider{
     margin: 2vh 15px 0 13px;
 }
-
+.headnlineSource{
+    font-size: xx-small;
+}
   }
   @media only screen and (max-width: 480px) {
     .slider_images_all{
@@ -351,6 +353,7 @@
     width: 90%;
     margin-left: 5%;
     height: 70px;
+    border-radius: 4px;
 }
 
 

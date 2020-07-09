@@ -39,19 +39,21 @@ export function CheckLiveStatus(){
                 localStorage.removeItem('livePermission');
                 localStorage.removeItem('liveMsisdn');
                 localStorage.removeItem('livePackageId');
+                localStorage.removeItem('liveSub');
             }
             else if(result.is_allowed_to_stream === true){
                 if(result.subscription_status == "trial" || result.subscription_status == "billed" || (result.queued === true && result.subscription_status == "not_billed")){
                     localStorage.setItem('livePermission', true);
                     localStorage.setItem('liveMsisdn', msisdn);
                     localStorage.setItem('livePackageId', livePackageId);
+                    localStorage.setItem('liveSubExpiry', result.next_billing_timestamp);
                     if(refresh){
                         window.location.href = window.location.pathname;
                     }
                 }
             }
             if(result.auto_renewal == true){
-                localStorage.setItem('liveUnsubOp', true);
+                localStorage.setItem('liveSub', "active");
             }
             else if(result.subscription_status == "graced" && result.is_allowed_to_stream === false){
                 localStorage.setItem('liveGraced', true)
@@ -78,18 +80,21 @@ export function CheckCPStatus(){
                 localStorage.removeItem('CPPermission');
                 localStorage.removeItem('CPMsisdn');
                 localStorage.removeItem('CPPackageId');
+                localStorage.removeItem('CPSub');
             }
             else if(result.is_allowed_to_stream === true){
                 if(result.subscription_status == "trial" || result.subscription_status == "billed" || (result.queued === true && result.subscription_status == "not_billed")){
                     localStorage.setItem('CPPermission', true);
-                    localStorage.setItem('CPMsisdn', msisdn);
+                    localStorage.setItem('CPMsisdn', CPmsisdn);
+                    localStorage.setItem('CPPackageId', CPPackageId);
+                    localStorage.setItem('CPSubExpiry', result.next_billing_timestamp);
                     if(refresh){
                         window.location.href = window.location.pathname;
                     }
                 }
             }
             if(result.auto_renewal == true){
-                localStorage.setItem('CPUnsubOp', true);
+                localStorage.setItem('CPSub', "active");
             }
             else if(result.subscription_status == "graced" && result.is_allowed_to_stream === false){
                 localStorage.setItem('CPGraced', true)

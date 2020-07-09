@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
+import CategoryDD from '../../Components/VOD/categoryDropdown';
 
 
 class CategoryVodPage extends Component {
@@ -39,7 +40,7 @@ class CategoryVodPage extends Component {
         })
     }
     componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber) {
+        if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber || this.props.match.params.category !== nextProps.match.params.category) {
             window.location.reload();
         }
     }
@@ -66,7 +67,10 @@ class CategoryVodPage extends Component {
     render(){
         return(
             <div className="vodCategroyContainer">
-                <p className="headingVOD">{this.props.match.params.category}</p>
+                <div>
+                    <p className="headingVOD floatLeft">{this.props.match.params.category}</p>
+                    <CategoryDD category={this.props.match.params.category} />
+                </div>
                 <GridContainer>
                     {this.state.data.length > 1 ?
                         this.state.data.map(item =>

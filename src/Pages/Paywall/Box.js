@@ -79,7 +79,6 @@ class Box extends React.Component {
     AxiosInstance.post('/payment/otp/verify', otpData)
     .then(res =>{
       const result = res.data;
-      console.log(result);
       if(result.is_allowed_to_stream === true){
         if(result.subscription_status === "billed" || result.subscription_status === "trial"){
           localStorage.setItem(permission, true);

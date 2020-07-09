@@ -3,6 +3,7 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
+import { Link } from 'react-router-dom';
 
 class ComedyPaywall extends Component {
     constructor(props) {
@@ -56,6 +57,7 @@ class ComedyPaywall extends Component {
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
                                 source={this.props.source}
+                                unsubStatus={"CPSub"}
                                 />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
@@ -66,7 +68,7 @@ class ComedyPaywall extends Component {
                                 <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
                             </p>
                             </div>
-                            <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p>
+                            {/* <p className="loginLinkText">Already signed up? <Link to="/live" className="loginLink">click here to login</Link> </p> */}
                         </div>
                     </div>
             </div>

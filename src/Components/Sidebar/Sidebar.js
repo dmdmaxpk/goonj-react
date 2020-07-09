@@ -122,14 +122,14 @@ export default function MiniDrawer(props) {
             <ListItemIcon className={isActive('/profile')}><PersonIcon /></ListItemIcon>
             <ListItemText className="sidebarTabsText" primary="User Profile" />
         </ListItem>
-        <Hidden smUp>
+        {/* <Hidden smUp>
           <Divider />
           <ListItem button key="searchbar">
               <ListItemText>
                 <SearchBar currentRoute={window.location.pathname} />
               </ListItemText>
           </ListItem>
-        </Hidden>
+        </Hidden> */}
     </List>       
     )
   }
