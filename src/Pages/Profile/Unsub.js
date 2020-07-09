@@ -8,6 +8,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import {Link} from 'react-router-dom';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import ErrorComponent from './Error';
 
 
 class Unsub extends Component {
@@ -186,12 +187,7 @@ class Unsub extends Component {
                             </GridItem>
                         </GridContainer>
                     :
-                        <GridContainer className="userInfoContainer">
-                            <GridItem xs={12} sm={12} md={12} className="errorGridItem">
-                                <RemoveCircleOutlineIcon className="errorIcon" style={{fontSize: 100}} />
-                                <p className="loginErrorText">Please <Link to='/paywall/live?access=login'>login</Link> to continue.</p>
-                            </GridItem>
-                        </GridContainer>
+                        <ErrorComponent />
                     }
                 </Collapse>
             </div>
