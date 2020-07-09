@@ -6,6 +6,7 @@ import './LiveVP.scss';
 import akamai_auth from 'akamai-edge-auth-generator';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
+import SocialShare from '../SocialShare/SocialShare';
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -15,6 +16,7 @@ class VideoPlayer extends Component {
             thumbnail: '',
             urlLink: "//teststream.goonj.pk",
         }
+        this.kFormatter = this.kFormatter.bind(this);
     }
     componentWillMount(){
         window.scrollTo({
@@ -68,8 +70,12 @@ class VideoPlayer extends Component {
         console.log(err);
     })
     }
-
+    kFormatter(num) {
+        let kFormat = Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
+        return kFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     render(){
+        let {data} = this.state;
         return(
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
@@ -79,6 +85,19 @@ class VideoPlayer extends Component {
                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
                         <a href="" download>Download</a>
                     </video>
+                                <div className="title_div">
+                                    <div className="title_hashTag_and_heading channelTitle"> 
+                                        <div>{data.name}</div>
+                                    </div>
+
+                                    <div>
+                                        <div className="views_text"> 
+                                            {this.kFormatter(data.views_count)} views
+                                        </div >  
+                                        <SocialShare />
+                                    </div> 
+
+                                </div>
                 </div>
             :
             <Loader />

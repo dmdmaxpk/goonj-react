@@ -74,7 +74,7 @@ class Home extends Component {
                     <div className="homeContainer">
                         <PosterSlider />
                         <div className="homeSections">
-                            <PopularList title="Popular on Goonj" />
+                            <PopularList title="Popular on Goonj" class="popularContainer" />
                             <ChannelList />
                             {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
                             {headlines.length !== 0 ? <HeadlinesSection data={headlines} category="news" title="Headlines" /> : <Loader />}

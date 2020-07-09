@@ -97,7 +97,7 @@ class PopularList extends Component {
           };
 
         return (
-            <div>
+            <div className={this.props.class}>
                 <Heading heading={this.props.title} viewMoreClass="hidden" />
                 <div className="channelListContainer">
                         <Slider className="propularSlider" {...settings}>

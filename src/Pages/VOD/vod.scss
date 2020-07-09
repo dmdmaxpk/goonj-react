@@ -178,6 +178,7 @@
     }
     .videoPlayerGI {
         height: auto;
+        margin-bottom: 5vh !important;
     }
     .recomImg {
         height: 80% !important;
@@ -202,6 +203,13 @@
  
     .title_hashTag_and_heading{
         font-size: 16px;
+    }
+    .source{
+        font-size: x-small;
+        width: 5rem;
+    }
+    .views_text, .daysAgo{
+        font-size: x-small;
     }
   }
 

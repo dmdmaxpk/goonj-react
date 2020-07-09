@@ -75,9 +75,9 @@ class VodPage extends Component {
             data.length !== 0 && loading === false && status === true ?
                 <div className="vod_main_div" style={{marginTop: "3%", marginLeft: "3%"}}>
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
-                    <br/><br/><br/><br/>
-                    <ChannelList  />
-                    <PopularList title="Popular on Goonj" />
+                    <br/>
+                    <ChannelList class="vodPageMargin"/>
+                    <PopularList title="Popular on Goonj"/>
                 </div>
             :
             <Loader />

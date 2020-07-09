@@ -22,7 +22,7 @@
     height: 700px;
 }
 .headlinesContainer{
-    margin-bottom: 5vh;
+    // margin-bottom: 5vh;
 }
 .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
     top: 40% !important;
@@ -166,12 +166,14 @@
         height: 420px;
     }
     .blockOneDiv{
-        height: 11vh !important;
-        // top: 5.1vh !important;
-        margin-top: -22%;
+        display: none !important;
+        // height: 11vh !important;
+        // top: 4.25vh !important;
+        // margin-top: -22%;
     }
-
-
+    .recomListContainer{
+        margin-top: 5vh;
+    }
   }
  
   @media only screen and (max-width: 425px) {
@@ -364,7 +366,7 @@
     color: white;
     background: #00000075;
     display: flex;
-    top: 5.5vh;
+    top: 3.5vh;
     flex-direction: row;
     justify-content: space-between;
     position: relative;

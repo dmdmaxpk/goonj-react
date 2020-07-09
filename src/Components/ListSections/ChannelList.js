@@ -86,42 +86,9 @@ class ChannelList extends Component {
           };
 
         return (
-            <div>
+            <div className={this.props.class}>
                 <Heading heading="Live Channels" url="/live-tv" />
                 <div className="channelListContainer channelContainerMargin">
-                        {/* <Carousel
-                            className="channelListCarousel"
-                            swipeable={true}
-                            draggable={true}
-                            showDots={false}
-                            responsive={responsive}
-                            ssr={true} // means to render carousel on server-side.
-                            infinite={true}
-                            autoPlay={false}
-                            autoPlaySpeed={1000}
-                            keyBoardControl={true}
-                            focusOnSelect={true}
-                            centerMode={true}
-                            transitionDuration={0}
-                            containerClass="carousel-container"
-                            deviceType={this.props.deviceType}
-                            dotListClass="custom-dot-list-style"
-                            itemClass="carousel-item-padding"
-                            // customTransition="all 1"
-                            // removeArrowOnDeviceType={["tablet", "mobile"]}
-                        >
-                            {this.state.data.length > 1 ?
-                                this.state.data.map(item =>
-                                    <div className="channelListDiv" key={item.slug}>
-                                        <a href={this.handleRedirect(item)}>
-                                            <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail}`} />
-                                            <p className="channelListName">{item.name}</p>
-                                        </a>
-                                    </div>
-                                )
-                                : ""
-                            }
-                        </Carousel> */}
                         <Slider className="channelSlider" {...settings}>
                             {this.state.data.length > 1 ?
                                 this.state.data.map(item =>

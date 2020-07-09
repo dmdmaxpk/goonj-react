@@ -85,6 +85,7 @@ class Box extends React.Component {
           localStorage.setItem(permission, true);
           localStorage.setItem(pkgIdKey, packageID2);
           localStorage.setItem(msisdnKey, msisdn);
+          localStorage.setItem('userID', result.user_id);
           this.props.history.push(`${url}`);
         }
       }
@@ -126,7 +127,7 @@ class Box extends React.Component {
         this.setState({loading: false});
         alert(res.data.message);
       }
-      else if(result.code === 10 || result.code === 11){
+      else if(result.code === 10 || result.code === 11 || result.code === 0){
         localStorage.setItem(permission, true);
         localStorage.setItem(pkgIdKey, packageID2);
         localStorage.setItem(msisdnKey, packageID2);
