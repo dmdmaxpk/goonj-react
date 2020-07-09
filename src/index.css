@@ -1,12 +1,19 @@
 body {
-  margin: 0;
+  margin: 60px 0 0 0 !important;
   padding: 0;
   box-sizing: border-box;
   font-family: helvetica;
-  background-color: black;
+  background-color: #14182a !important;
   backface-visibility: hidden;
   height: 100%;
-  width: 100%;
+  width: 101%;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+button{
+  outline: none !important;
 }
 
-/*#141414*/

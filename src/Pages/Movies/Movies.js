@@ -23,11 +23,9 @@ class Movies extends React.Component {
   render() {
     return (
       <div className="movies">
-        <Suspense fallback={<div></div>}>
-          <CollectionGridMovie movies />
-          <CollectionOverviewMovie movies />
-          <Footer />
-        </Suspense>
+        {/* <Suspense fallback={<div></div>}> */}
+          {/* <ChannelList /> */}
+        {/* </Suspense> */}
       </div>
     );
   }

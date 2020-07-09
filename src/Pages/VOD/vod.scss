@@ -1,0 +1,234 @@
+.vodCategroyContainer{
+    padding: 5% 5% 5% 8%;
+}
+.headingVOD{
+    color: white;
+    font-weight: 900;
+    font-size: x-large;
+    text-transform: uppercase;
+}
+.vodGridItem{
+    margin-bottom: 0 !important;
+    height: 100%;
+    cursor: pointer;
+    // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    // transition: 0.3s;
+}
+.vodGridItem:hover{
+    -moz-box-shadow: 0 0 10px #4aa6e5;
+    -webkit-box-shadow: 0 0 10px #4aa6e5;
+    box-shadow: 0 0 10px #4aa6e5;
+}
+.imgDiv{
+    width: 100%;
+    height: 150px;
+}
+.videoLogo{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
+}
+.playBtn{
+    position: relative;
+    top: 60%;
+    left: 42%;
+}
+.playBtn > img{
+    width: 30px;
+    z-index: 9999;
+}
+.vodDetailsDiv{
+    // height: 150px;
+    margin-top: 30px;
+    padding: 5% 0;
+    border-radius: 0 0 5px 5px;
+    // background-color: white;
+    color: white;
+    font-weight: 100;
+}
+.title{
+    height: 55px;
+    overflow: hidden;
+    font-size: small;
+}
+.source{
+    color: #ccc;
+    font-size: smaller;
+    float: left;
+    text-transform: capitalize;
+}
+.source > a{
+    color: #ccc;
+}
+.daysAgo{
+    color: #4aa6e5;
+    font-size: smaller;
+    float: right;
+}
+.paginationDiv{
+    position: relative;
+    left: 37%;
+    top: 30px;
+}
+.pagination > ul > li > a, .pagination > ul > li > div{
+    color: white !important;
+}
+.MuiPaginationItem-textPrimary.Mui-selected{
+    background-color: #4aa6e5 !important;
+}
+.hashtagTopic{
+    float: left;
+    color: #4aa6e5;
+    font-size: x-small;
+    font-weight: 900;
+    margin-right: 5px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.videoPlayerDiv{
+    margin-left: 9% !important;
+}
+.videoPlayerGI{
+    width: 900px;
+    height: 500px;
+    margin-bottom: 20px !important;
+    // float: left;
+}
+.viewCountGI{
+    color: white;
+    text-align: center;
+    font-size: x-small;
+    position: relative;
+    right: 15px;
+    height: 10px;
+}
+.titleGI{
+    color: white;
+    font-size: large;
+    font-weight: 600;
+}
+.shareGI{
+    text-align: center;
+    color: white;
+    position: relative;
+    bottom: 5px;
+    // display: none;
+}
+.recommendationGI{
+    height: 500px;
+    max-width: 32% !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.recomTitle {
+    height: 36px !important;
+   
+}
+.title_div{
+    display: flex;
+    justify-content: space-between;
+    margin-left: -2%;
+    margin-top: 2%;
+}
+.title_hashTag_and_heading{
+    display: flex;
+    flex-direction: column;;
+    font-size: 20px;
+    color: white;
+}
+
+.videoPlayerContainer{
+    margin-bottom: 4% !important;
+}
+
+.views_text{
+    color: white;
+    text-align: end;
+}
+
+
+
+@media only screen and (min-width: 1440px) {
+    .vod_main_div{
+        margin-left: 0% !important;
+    }
+}
+@media screen and (max-width: 600px){
+    .paginationDiv {
+        left: 0%;
+        top: 10px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .recommendationGI{
+        margin-top: 63px !important;
+    }
+
+    .hashtagTopic{
+        font-size: 11px;
+    }
+    .videoPlayerContainer{
+        width: 100% !important;
+        height: 100% !important;
+       
+    }
+    .videoPlayerDiv{
+        margin-left: 0.001% !important;
+    
+    }
+    .videoPlayerGI {
+        height: auto;
+        margin-bottom: 5vh !important;
+    }
+    .recomImg {
+        height: 80% !important;
+
+    }
+    .grey {
+        font-size: 11px !important;
+    }
+    .recomendation_details_div{
+    margin-top: -14px;
+    }
+    .recomTitle {
+        height: 39px !important;
+        width: 1% !important;
+    }
+    .recommendationGI{
+        max-width: 520px !important;
+    }
+    .MuiGrid-item {
+        margin-left: -5px !important;
+    }
+ 
+    .title_hashTag_and_heading{
+        font-size: 16px;
+    }
+    .source{
+        font-size: x-small;
+        width: 5rem;
+    }
+    .views_text, .daysAgo{
+        font-size: x-small;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .hashtagTopic{
+        font-size: 9px;
+    }
+    .title_hashTag_and_heading{
+        font-size: 13px;
+    }
+  
+  }
+
+  @media only screen and (max-width: 320px) {
+    .hashtagTopic{
+        font-size: 7px;
+    }
+    .title_hashTag_and_heading{
+        font-size: 11px;
+    }
+  
+  }

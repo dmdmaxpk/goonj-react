@@ -1,0 +1,16 @@
+.liveVP .plyr__controls .plyr__controls__item.plyr__time, .liveVP .plyr__progress input[type=range], .liveVP .plyr__progress__buffer{
+    display: none !important;
+}
+.channelTitle{
+    margin-left: 1vw;
+}
+@media only screen and (max-width: 480px) {
+    .videoPlayerContainer{
+            height: 210px !important;
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+    }
+    .channelTitle{
+        margin-left: 2vw;
+    }
+  }

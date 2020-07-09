@@ -1,0 +1,446 @@
+.landing_page_background {
+    background-image: url("../../Assets/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 90vh;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-top: 3%;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+
+    /* display: flex; */
+    /* align-items: center; */
+  }
+.liveComponent{
+    height: 100%;
+    overflow-y: scroll;
+}
+.liveComponent::-webkit-scrollbar{
+    display: none;
+}
+.liveContainer{
+    position: relative;
+    top: 5%;
+}
+.gLogo{
+    width: 200px;
+    margin-bottom: 5vh;
+}
+.box{
+    text-align: center;
+    margin: 2% 0;
+}
+.goonjLogo{
+    margin-top: 2%;
+}
+.liveText1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 60px;
+}
+.boxBgDiv{
+    position: relative;
+    /* background-image: url("../../Assets/boxbg.png"); */
+}
+.boxBgImg{
+    background-image: url("../../Assets/boxbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 30%;
+}
+.bbTextDiv{
+    position: absolute;
+    top: 10%;
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.text0{
+    font-size: 30px;
+}
+.text1{
+    font-size: x-large;
+    text-transform: uppercase;
+    margin-bottom: 0 !important;
+}
+.text2{
+    font-size: small;
+    margin-top: 0 !important;
+    color: #bbf525;
+}
+.text3{
+    font-size: small;
+}
+.btnSub{
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 25%;
+}
+.btnSubImg{
+    width: 70%;
+}
+.loginLinkText{
+    font-weight: 100;
+}
+.loginLink{
+    color: #319fe7;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.otpLabel{
+    font-size: x-large;
+    margin-bottom: 4vh;
+}
+.btnNextText{
+    color: white;
+    font-size: large;
+    font-weight: 900;
+    margin-top: -10%;
+    margin-bottom: 0;
+}
+.text4{
+    text-transform: none;
+    font-size: xx-small;
+    margin-top: 2%;
+}
+.btnSubConfirm{
+    margin-top: 1%;
+    background-color: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+}
+.btnConfirmText{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 100%;
+    font-size: large;
+}
+.aText1b{
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 0 !important;
+  }
+.aText3b{
+    color: #bbf525;
+    margin-top: 5px !important;
+}
+.chargesBox{
+    padding: 1% 2% 0 2%;
+    border: 1px solid #cccccc5c;
+    width: 30%;
+    position: relative;
+    left: 35%;
+    font-weight: 600;
+}
+.cancelText{
+    font-weight: 100;
+}
+.selectPkgDiv{
+    float: left;
+    position: relative;
+    left: 40%;
+    border: 1px solid #cccccc5c;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+.pkgTitle{
+    font-size: small;
+}
+.priceP{
+    font-size: smaller;
+    font-weight: 100;
+    color: #319fe7;
+}
+.selectPkgDivCP{
+    float: left;
+    position: relative;
+    left: 37%;
+    border: 1px solid #cccccc5c;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+.pkgTitleCP{
+    font-size: small;
+}
+.pricePCP{
+    font-size: smaller;
+    font-weight: 100;
+    color: #319fe7;
+}
+.msisdnInput{
+    width: 15vw;
+    height: 5vh;
+    text-align: center;
+    font-size: large;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    margin-bottom: 4vh;
+}
+.msisdnInput::-webkit-outer-spin-button,
+.msisdnInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@media screen and (max-width: 1690px) {
+    .liveText1{
+        margin: 2% 0 2% 0;
+    }
+    .bbTextDiv{
+        top: 0;
+    }
+    .btnSubImg{
+        /* width: 50%; */
+        /* float: left; */
+    }
+    .teamsImg{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1475px) {
+    .boxBgImg{
+        width: 30%;
+    }
+    .teamsImg{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 1450px) {
+    .goonjLogo{
+        width: 15%;
+    }
+    .liveText1{
+        font-size: 40px;
+    }
+    .boxBgImg{
+        width: 35%;
+    }
+    .teamsImg{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 1230px) {
+    .boxBgImg{
+        width: 40%;
+    }
+    .teamsImg{
+        width: 45%;
+    }
+}
+@media screen and (max-width: 1080px) {
+    .boxBgImg{
+        width: 45%;
+    }
+    .teamsImg{
+        width: 55%;
+    }
+    .selectPkgDiv{
+        left: 35%;
+    }
+    .selectPkgDivCP{
+        left: 30%;
+    }
+}
+@media screen and (max-width: 960px) {
+    .boxBgImg{
+        width: 50%;
+    }
+    .teamsImg{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 850px) {
+    .liveContainer{
+        top: 2%;
+    }
+    .aText1b, .aText3b {
+        font-size: large;
+    }
+    .text1{
+        font-size: small;
+    }
+    .confirmBtnImg{
+        width: 55%;
+    }
+    .btnConfirmText{
+        font-size: smaller;
+    }
+    .chargesBox{
+        padding: 1% 2% 0 2%;
+        border: 1px solid #cccccc5c;
+        width: 30%;
+        position: relative;
+        left: 35%;
+        // width: 40%;
+        // left: 28%;
+    }
+    .cbText1, .cbText2 {
+        font-size: x-small;
+    }
+    .selectPkgDiv{
+        left: 30%;
+    }
+    .selectPkgDivCP{
+        left: 25%;
+    }
+}
+@media screen and (max-width: 705px) {
+    .boxBgImg{
+        width: 70%;
+    }
+    .teamsImg{
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    .boxBgImg{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 525px) {
+    .boxBgImg{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 490px) {
+    .bbTextDiv{
+        background-size: cover;
+        background-image: url("../../Assets/m-bg.png");
+        margin-top: 60%;
+        width: 90%;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+        padding: 8% 2% 8% 2%;
+        text-transform: capitalize;
+    }
+    .goonjLogo{
+        width: 50%;
+        margin-top: 15%;
+    }
+    .liveText1{
+        font-size: 30px;
+        margin: 3rem 0 3rem 0;
+    }
+    .boxBgImg{
+        width: 85%;
+    }
+    .text0{
+        font-size: large;
+    }
+    .text1{
+        font-size: small;
+        margin-bottom: 5% !important;
+    }
+    .text2{
+        font-size: x-small;
+        margin-bottom: 0 !important;
+    }
+    .text3{
+        margin-top: 0 !important;
+        font-size: x-small;
+
+    }
+    .box{
+        margin-bottom: 10%;
+    }
+    .btnSub{
+        width: 80%;
+    }
+    .btnSubImg{
+        float: none;
+    }
+    .text4{
+        font-size: 8px;
+    }
+    .teamsImg{
+        display: none;
+    }
+    .aText1b{
+        font-size: larger;
+        margin-top: 2em !important;
+    }
+    .aText3b{
+        font-size: x-large;
+        margin: 10% !important;
+    }
+    .chargesBox{
+        width: 90%;
+        left: 2.5%;
+    }
+    .cbText1, .cbText2 {
+        font-size: small;
+    }
+    .selectPkgDiv{
+        left: 10%;
+    }
+    .selectPkgDivCP{
+        left: 10%;
+    }
+    .pkgTitleCP, .pricePCP{
+        font-size: x-small;
+    }
+    .msisdnInput{
+        width: 45vw;
+    }
+}
+@media screen and (max-width: 420px) {
+    .boxBgImg{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .selectPkgDiv{
+        left: 6%;
+    }
+    .selectPkgDivCP{
+        left: 6%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .selectPkgDiv{
+        left: 4%;
+    }
+    .selectPkgDivCP{
+        left: 4%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .aText1b, .aText3b{
+        font-size: large;
+    }
+    .selectPkgDiv{
+        left: 8%;
+    }
+    .pkgTitle{
+        font-size: x-small;
+    }
+    .priceP{
+        font-size: xx-small;
+    }
+    .selectPkgDivCP{
+        left: 4%;
+    }
+    .pkgTitleCP, .pricePCP{
+        font-size: xx-small;
+    }
+}

@@ -1,6 +1,9 @@
 .header {
-  height: 80px;
-  width: 100%;
+  height: 70px;
+  width: 101%;
+  padding-left: 8%;
+  background: #1b2039;
+  box-shadow: 5px 1px #14182a;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
@@ -22,11 +25,11 @@
   }
 
   &__logo {
-    height: 100%;
-    width: 120px;
-    margin-left: 20px;
+    // height: 100%;
+    width: 112px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin: 17% 15% 15% 0;
+
 
     @media screen and (max-width: 800px) {
       margin: unset;
@@ -126,5 +129,33 @@
         transform: scale(1.1);
       }
     }
+  }
+}
+
+.headerLiveBtn{
+  background: none;
+  border: none;
+  margin-top: 5px;
+}
+.headerLiveBtn > img{
+  width: 120px;
+}
+.headerLiveBtn > p{
+  position: relative;
+  margin-top: -28%;
+  color: white;
+  font-size: small;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px){
+  .header{
+    padding: 4%;
+    background-color: #242c4a;
+    height: 60px;
+  }
+  .header__logo-box{
+    margin-left: 0;
   }
 }

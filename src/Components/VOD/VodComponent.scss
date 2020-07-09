@@ -1,0 +1,19 @@
+.categoryDDContainer{
+    float: right;
+    color: white !important;
+}
+.catLabel, .catSelect, .catMenuItem{
+    color: white !important;
+}
+.catLabel{
+    font-size: large !important;
+    font-weight: bold !important;
+}
+.catSelect{
+    width: 10vw;
+}
+@media screen and (max-width: 480px){
+    .catSelect{
+        width: 25vw;
+    }
+}

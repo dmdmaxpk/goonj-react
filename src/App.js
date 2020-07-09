@@ -2,90 +2,82 @@ import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Movies from "./Pages/Movies/Movies";
-import TvShow from "./Pages/TVShows/TvShow";
-import MovieItemPage from "./Pages/MovieItemPage/MovieItemPage";
-import TVShowItemPage from "./Pages/TVShowItemPage/TVShowItemPage";
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
-import { auth } from "./Firebase/firebase.utils";
-import { CreateUserProfileDocument } from "./Firebase/firebase.utils";
-import { setCurrentUser } from "./Redux/User/user-actions";
-import { selectCurrentUser } from "./Redux/User/user-selectors";
-import { connect } from "react-redux";
 import SearchPage from "./Components/SearchPage/SearchPage";
-import { compose } from "redux";
 import { withRouter } from "react-router";
 import ListOverview from "./Components/ListOverview/ListOverview";
+import Home from "./Pages/Home/Home";
+import LiveChannel from "./Pages/Live/LiveChannel";
+import Footer from "./Components/Footer/Footer";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import ChannelVodPage from "./Pages/VOD/ChannelVods";
+import CategoryVodPage from "./Pages/VOD/CategoryVods";
+import VodPage from "./Pages/VOD/VodPage";
+import LiveTv from "./Pages/Live/LiveTvList";
+import Binjee from "./Pages/Binjee/Binjee";
+import LivePaywall from "./Pages/Paywall/LivePaywall";
+import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
+import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
+import Profile from './Pages/Profile/Profile';
+
 
 class App extends React.Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await CreateUserProfileDocument(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          this.props.setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      } else {
-        this.props.setCurrentUser(userAuth);
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
+  componentDidMount(){
+    if(this.props.location.pathname === '/'){
+      this.props.history.push('/home');
+    }
+    localStorage.setItem('source', "web");
+    // getPackages();
+    CheckLiveStatus();
+    CheckCPStatus();
+;  }
   render() {
     return (
       <div>
-        <Header currentRoute={this.props.location.pathname} />
+        {this.props.location.pathname !== "/binjee" ?
+          <div>
+            <Header currentRoute={this.props.location.pathname} /> 
+             <Sidebar position={"left"} /> 
+          </div>
+          :
+          ''
+        }
         <Switch>
-          <Route exact path="/" component={Movies} />
-          <Route path="/movies/:title" component={MovieItemPage} />
-          <Route path="/movies" component={Movies} />
-          <Route path="/tvshows/:name" component={TVShowItemPage} />
-          <Route path="/tvshows" component={TvShow} />
+          <Route exact path="/home" component={Home} />
           <Route
             exact
-            path="/signin"
+            path="/paywall/live"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignIn />
+              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
           <Route
             exact
-            path="/signup"
+            path="/paywall/live"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignUp />
+              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/live-tv" component={LiveTv} />
+          <Route exact path="/channel/:slug" component={LiveChannel}/>
           <Route exact path="/searchresults" component={SearchPage} />
-          <Route exact path="/mylist" component={ListOverview} />
+          <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
+          <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
+          <Route exact path="/binjee" component={Binjee} />
+          <Route exact path="/:vodID" component={VodPage} />
+          <Route exact path="/paywall/live" component={LivePaywall} />
+          <Route exact path="/paywall/comedy" component={ComedyPaywall} />
         </Switch>
+        {this.props.location.pathname !== "/binjee" ?
+          <Footer/>
+        :
+          ''
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default compose(
-  withRouter,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
-)(App);
+export default (withRouter)(App);
