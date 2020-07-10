@@ -71,7 +71,7 @@ class PopularList extends Component {
                 {
                   breakpoint: 1600,
                   settings: {
-                    slidesToShow: 6,
+                    slidesToShow: 6.25,
                     slidesToScroll: 3,
                     infinite: true,
                     arrow: true

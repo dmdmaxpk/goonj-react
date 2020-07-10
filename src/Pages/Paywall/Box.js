@@ -10,6 +10,7 @@ class Box extends React.Component {
 
   constructor(props){
     super(props);
+    console.log("box", props);
     this.state = {
       data: [],
       step: 0, // 0 => Landed permission, 1 => verify otp, 2 => graced permission 
@@ -39,7 +40,8 @@ class Box extends React.Component {
 
   sendOtp(e){
     e.preventDefault();
-    const {msisdn, source} = this.state;
+    const {msisdn} = this.state;
+    const {source} = this.props;
     const msisdnData = {
       msisdn,
       source
@@ -68,8 +70,8 @@ class Box extends React.Component {
 
   verifyOtp(e){
     e.preventDefault();
-    const {msisdn, source, otp} = this.state;
-    const {packageID2, url, slug, permission, pkgIdKey, msisdnKey} = this.props;
+    const {msisdn, otp} = this.state;
+    const {packageID2, url, slug, permission, pkgIdKey, msisdnKey, source} = this.props;
     let otpData = {
       msisdn,
       source,
@@ -111,14 +113,26 @@ class Box extends React.Component {
 
   subscribe(){
     this.setState({loading: true});
-    const {msisdn, source} = this.state;
-    const {packageID2, permission, url, slug, msisdnKey, pkgIdKey} = this.props;
+    const {msisdn} = this.state;
+    const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
+    let mid = localStorage.getItem('mid');
+    let tid = localStorage.getItem('tid');
+    const permissionData = (source === "affiliate_web") ?
+        {
+          msisdn,
+          package_id: packageID2,
+          source,
+          marketing_source: mid,
+          affiliate_unique_transaction_id: tid,
+          affiliate_mid: mid
+        }
+      :
+        {
+          msisdn,
+          package_id: packageID2,
+          source,
+        };
 
-    const permissionData = {
-      msisdn,
-      package_id: packageID2,
-      source,
-    }
     AxiosInstance.post(`/payment/subscribe`, permissionData)
     .then(res =>{
       const result = res.data;

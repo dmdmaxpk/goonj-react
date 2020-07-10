@@ -56,7 +56,7 @@ class ComedyPaywall extends Component {
                                 pkgPrice1={this.state.packagePrice1}
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
-                                source={this.props.source}
+                                source={"web"}
                                 unsubStatus={"CPSub"}
                                 />
                             <div className="chargesBox lightFont">

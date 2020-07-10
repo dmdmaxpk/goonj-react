@@ -155,34 +155,40 @@ class Unsub extends Component {
                         <GridContainer className="userInfoContainer">
                             <GridItem xs={12} sm={12} md={12} className="pkgGridItem">
                                 <p className="subPkgHeading">Live tv</p>
-                                {liveSubs.map(item =>
-                                    <div className="subPkgDiv">
-                                        <p className="floatLeft pkgName">{item.name}</p>
-                                        {currentLivePkg === item.packageID && liveSubStatus === "active" && msisdn ?
-                                            <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
-                                            :
-                                            <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
-                                        }
-                                        <div className="clearfix" />
-                                    </div>
-                                )
+                                {localStorage.getItem('liveMsisdn') ?
+                                    liveSubs.map(item =>
+                                        <div className="subPkgDiv">
+                                            <p className="floatLeft pkgName">{item.name}</p>
+                                            {currentLivePkg === item.packageID && liveSubStatus === "active" && msisdn ?
+                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
+                                                :
+                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
+                                            }
+                                            <div className="clearfix" />
+                                        </div>
+                                    )
+                                :
+                                <ErrorComponent paywall="live" />
                                 }
                                 <Divider />
                                 <br />
                             </GridItem>
                             <GridItem xs={12} sm={12} md={12} className="pkgGridItem">
                                 <p className="subPkgHeading">Comedy Portal</p>
-                                {comedySubs.map(item =>
-                                    <div className="subPkgDiv">
-                                        <p className="floatLeft pkgName">{item.name}</p>
-                                        {currentCPPkg === item.packageID && CPSubStatus === "active" && CPmsisdn ?
-                                            <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
-                                            :
-                                            <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
-                                        }
-                                        <div className="clearfix" />
-                                    </div>
-                                )
+                                {localStorage.getItem('CPMsisdn') ?
+                                    comedySubs.map(item =>
+                                        <div className="subPkgDiv">
+                                            <p className="floatLeft pkgName">{item.name}</p>
+                                            {currentCPPkg === item.packageID && CPSubStatus === "active" && CPmsisdn ?
+                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
+                                                :
+                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
+                                            }
+                                            <div className="clearfix" />
+                                        </div>
+                                    )
+                                :
+                                <ErrorComponent paywall="comedy" />
                                 }
                             </GridItem>
                         </GridContainer>
