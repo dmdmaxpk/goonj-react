@@ -8,6 +8,7 @@ import './ListSections.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import config from '../../Utils/config';
 
 class PopularList extends Component {
     constructor(props) {
@@ -25,17 +26,17 @@ class PopularList extends Component {
             },
             {
                 name: "Geo Aur Jeenay Do",
-                url: `/channel/geo-news/`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png'
             },
             {
                 name: "Samaa News",
-                url: `/channel/samaa-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : `${config.hepage}?slug=samaa-news`,
                 thumbnail: 'channel02.png'
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
-                url: `/channel/dunya-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : `${config.hepage}?slug=dunya-news`,
                 thumbnail: 'channel04.png'
             },
             {
@@ -45,17 +46,17 @@ class PopularList extends Component {
             },
             {
                 name: "Geo Aur Jeenay Do",
-                url: `/channel/geo-news/`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png'
             },
             {
                 name: "Samaa News",
-                url: `/channel/samaa-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : `${config.hepage}?slug=samaa-news`,
                 thumbnail: 'channel02.png'
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
-                url: `/channel/dunya-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : `${config.hepage}?slug=dunya-news`,
                 thumbnail: 'channel04.png'
             }
         ];
@@ -104,10 +105,10 @@ class PopularList extends Component {
                             {popularList.length > 0 ?
                                 popularList.map(item =>
                                     <div className="popularListDiv" key={item.slug}>
-                                        <Link style={{textDecoration: "none"}} to={`${item.url}`}>
+                                        <a style={{textDecoration: "none"}} href={`${item.url}`}>
                                             <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} />
                                             <p className="channelListName popularListName">{item.name}</p>
-                                        </Link>
+                                        </a>
                                     </div>
                                 )
                                 : <Loader />

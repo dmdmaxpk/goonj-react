@@ -7,12 +7,12 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let urlMsisdn = urlParams.get("msisdn");
 let urlPkgId = urlParams.get("package_id");
-let refresh = urlParams.get("refresh");
-let source = localStorage.getItem('source');
-let msisdn = urlMsisdn ? urlMsisdn : localStorage.getItem('liveMsisdn');
+let localSource = urlParams.get("source");
+let source = localSource ? localSource : localStorage.getItem('source');
+let liveMsisdn = urlMsisdn ? urlMsisdn : localStorage.getItem('liveMsisdn');
 let CPmsisdn = urlMsisdn ? urlMsisdn : localStorage.getItem('CPMsisdn');
-let livePackageId = urlPkgId ? urlPkgId : localStorage.getItem('livePackageId');
-let CPPackageId = urlPkgId ? urlPkgId : localStorage.getItem('CPPackageId');
+let livePackageId = (urlPkgId == "QDfC" || urlPkgId == "QDfG") ? urlPkgId : localStorage.getItem('livePackageId');
+let CPPackageId = (urlPkgId === "QDfH" || urlPkgId === "QDfI") ? urlPkgId : localStorage.getItem('CPPackageId');
 
 export function getPackages(){
     AxiosInstance.get(`/paywall?source=${source}`)
@@ -25,13 +25,14 @@ export function getPackages(){
 };
 
 export function CheckLiveStatus(){
+    console.log("live Status", liveMsisdn, livePackageId);
     let statusData = {
         source,
-        msisdn,
+        msisdn: liveMsisdn,
         package_id: livePackageId
     }
-    if(msisdn && livePackageId){
-        AxiosInstance.post('/payment/status', statusData)
+    if(liveMsisdn && livePackageId){
+        AxiosInstance.post('/payment/status?live', statusData)
         .then(res =>{
             const result = res.data.data;
             console.log(result);
@@ -44,12 +45,12 @@ export function CheckLiveStatus(){
             else if(result.is_allowed_to_stream === true){
                 if(result.subscription_status == "trial" || result.subscription_status == "billed" || (result.queued === true && result.subscription_status == "not_billed")){
                     localStorage.setItem('livePermission', true);
-                    localStorage.setItem('liveMsisdn', msisdn);
+                    localStorage.setItem('liveMsisdn', liveMsisdn);
                     localStorage.setItem('livePackageId', livePackageId);
                     localStorage.setItem('liveSubExpiry', result.next_billing_timestamp);
-                    if(refresh){
-                        window.location.href = window.location.pathname;
-                    }
+                    // if(refresh){
+                    //     window.location.href = window.location.pathname;
+                    // }
                 }
             }
             if(result.auto_renewal == true){
@@ -66,10 +67,9 @@ export function CheckLiveStatus(){
 }
 
 export function CheckCPStatus(){
-    console.log("CP check", msisdn, CPmsisdn, urlPkgId, CPPackageId);
     let statusData = {
         source,
-        CPmsisdn,
+        msisdn: CPmsisdn,
         package_id: CPPackageId
     }
     console.log("status Data",statusData);
@@ -90,9 +90,9 @@ export function CheckCPStatus(){
                     localStorage.setItem('CPMsisdn', CPmsisdn);
                     localStorage.setItem('CPPackageId', CPPackageId);
                     localStorage.setItem('CPSubExpiry', result.next_billing_timestamp);
-                    if(refresh){
-                        window.location.href = window.location.pathname;
-                    }
+                    // if(refresh){
+                    //     window.location.href = window.location.pathname;
+                    // }
                 }
             }
             if(result.auto_renewal == true){
