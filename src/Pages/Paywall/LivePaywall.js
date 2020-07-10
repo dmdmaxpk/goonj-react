@@ -33,6 +33,7 @@ class LivePaywall extends Component {
     }
       
     render(){
+        let source = localStorage.getItem('source');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let slug = urlParams.get("slug");
@@ -56,7 +57,7 @@ class LivePaywall extends Component {
                                 pkgPrice1={this.state.packagePrice1}
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
-                                source={this.props.source}
+                                source={source}
                                 unsubStatus={"liveSub"}
                             />
                             <div className="chargesBox lightFont">
