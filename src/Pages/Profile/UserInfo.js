@@ -86,7 +86,7 @@ class UserInfo extends Component {
                 </div>
                 <div className="clearfix" />
                 <Collapse in={this.state.showProfile} timeout="auto" unmountOnExit={true}>
-                        {localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn')  ?
+                        {/* {localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn')  ? */}
                             <GridContainer className="userInfoContainer">
                                     <GridItem xs={6} sm={6} md={6}>
                                         <label className="profileLabel">Name</label>
@@ -109,9 +109,9 @@ class UserInfo extends Component {
                                         <button className="profileBtnSubmit" onClick={this.saveProfileInfo}>Submit</button>
                                     </GridItem>
                             </GridContainer>
-                        :
+                        {/* :
                             <ErrorComponent />
-                        }
+                        } */}
                 </Collapse>
             </div>
         );
