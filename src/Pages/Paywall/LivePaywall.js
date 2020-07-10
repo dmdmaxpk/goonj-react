@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Box from './Box';
 import config from '../../Utils/config';
@@ -18,6 +19,10 @@ class LivePaywall extends Component {
         }
     }
     componentDidMount(){
+        let livePermission = localStorage.getItem('livePermission');
+        if(livePermission === true){
+            this.props.history.push('/live-tv');
+        }
         let source = localStorage.getItem('source');
         AxiosInstance.get(`${config.apiBaseUrl}/package?source=${source}&slug=live`)
         .then(res =>{
@@ -78,4 +83,4 @@ class LivePaywall extends Component {
     }
 }
  
-export default LivePaywall;
+export default withRouter(LivePaywall);

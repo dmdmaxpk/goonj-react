@@ -21,6 +21,7 @@ import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
 import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
 import Profile from './Pages/Profile/Profile';
 import { setParams } from "./Services/flowIntegrations";
+import PageNotFound from "./Pages/NotFound/PageNotFound";
 
 
 class App extends React.Component {
@@ -60,6 +61,7 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
+          <Route exact path="/404" component={PageNotFound} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel}/>
@@ -70,6 +72,7 @@ class App extends React.Component {
           <Route exact path="/:vodID" component={VodPage} />
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
+          <Redirect to="/404" />
         </Switch>
         {this.props.location.pathname !== "/binjee" ?
           <Footer/>

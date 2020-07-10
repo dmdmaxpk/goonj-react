@@ -12,13 +12,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import LanguageIcon from '@material-ui/icons/Language';
-import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import PersonIcon from '@material-ui/icons/Person';
 
 import {Link} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 
 import './Sidebar.scss';
+import { ClickAwayListener, Tooltip } from '@material-ui/core';
 
 
 const drawerWidth = 240;
@@ -97,30 +97,40 @@ export default function MiniDrawer(props) {
     )
   const ListComponent = () => {
     return(
-      <List key="sidebar">
-          <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
+      <List key="sidebar" onClick={handleDrawerClose}>
+        <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
+            <Tooltip title="Home" placement="right">
               <ListItemIcon className={isActive('/home')}><HomeIcon /></ListItemIcon>
-              <ListItemText className="sidebarTabsText" primary="Home" />
-          </ListItem>
+            </Tooltip>
+            <ListItemText className="sidebarTabsText" primary="Home" />
+        </ListItem>
         <Divider />
-          <ListItem component={Link} to="/live-tv" button key="Live TV" style={{color:"white"}}>
+        <ListItem component={Link} to="/live-tv" button key="Live TV" style={{color:"white"}}>
+            <Tooltip title="Live TV" placement="right">
               <ListItemIcon className={isActive('/live-tv')}><LanguageIcon /></ListItemIcon>
-              <ListItemText className="sidebarTabsText" primary="Live TV" />
-          </ListItem>
+            </Tooltip>
+            <ListItemText className="sidebarTabsText" primary="Live TV" />
+        </ListItem>
         <Divider />
-          <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
-              <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
-              <ListItemText className="sidebarTabsText" primary="Binjee" />
-          </ListItem>
+        <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
+          <Tooltip title="Binjee" placement="right">  
+            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+          </Tooltip>
+          <ListItemText className="sidebarTabsText" primary="Binjee" />
+        </ListItem>
         <Divider />
-          <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
-              <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
-              <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
-          </ListItem>
+        <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
+          <Tooltip title="Comedy Portal" placement="right">
+            <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
+          </Tooltip>
+          <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+        </ListItem>
         <Divider />
         <ListItem component={Link} to="/profile" button key="profile" style={{color:"white"}}>
+          <Tooltip title="User Profile" placement="right">  
             <ListItemIcon className={isActive('/profile')}><PersonIcon /></ListItemIcon>
-            <ListItemText className="sidebarTabsText" primary="User Profile" />
+          </Tooltip>
+          <ListItemText className="sidebarTabsText" primary="User Profile" />
         </ListItem>
         {/* <Hidden smUp>
           <Divider />
@@ -139,76 +149,80 @@ export default function MiniDrawer(props) {
     <div className={classes.root}>
       <Hidden mdDown>
         <CssBaseline />
-        <Drawer
-          anchor="left"
-          variant="permanent"
-          className={clsx(`${classes.drawer} drawer`, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          })}
-          classes={{
-            paper: clsx({
+        <ClickAwayListener onClickAway={handleDrawerClose}>
+          <Drawer
+            anchor="left"
+            variant="permanent"
+            className={clsx(`${classes.drawer} drawer`, {
               [classes.drawerOpen]: open,
               [classes.drawerClose]: !open,
-            }),
-          }}
-        >
-          <div className="">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open,
-              })}
-            >
-              <img src={require("../../Assets/menu.png")} />
-            </IconButton>
-            <IconButton onClick={handleDrawerClose}>
-              <img src={require("../../Assets/menu.png")} />
-            </IconButton>
-          </div>
-          <ListComponent />
-         </Drawer>
+            })}
+            classes={{
+              paper: clsx({
+                [classes.drawerOpen]: open,
+                [classes.drawerClose]: !open,
+              }),
+            }}
+          >
+            <div className="">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, {
+                  [classes.hide]: open,
+                })}
+              >
+                <img src={require("../../Assets/menu.png")} />
+              </IconButton>
+              <IconButton onClick={handleDrawerClose}>
+                <img src={require("../../Assets/menu.png")} />
+              </IconButton>
+            </div>
+            <ListComponent />
+          </Drawer>
+        </ClickAwayListener>
       </Hidden>
     </div>
     <div>
       <Hidden mdUp>
-        <Drawer
-          anchor="right"
-          variant="permanent"
-          style={{display: "inline"}}
-          className={clsx(`${classes.drawer} drawerMobile`, {
-            [classes.drawerOpen]: open,
-            [classes.hidePaper]: !open,
-          })}
-          classes={{
-            paper: clsx({
+        <ClickAwayListener onClickAway={handleDrawerClose}>
+          <Drawer
+            anchor="right"
+            variant="permanent"
+            style={{display: "inline"}}
+            className={clsx(`${classes.drawer} drawerMobile`, {
               [classes.drawerOpen]: open,
               [classes.hidePaper]: !open,
-            }),
-          }}
-        >
-          <div className="sidebarSMdiv">
-            <IconButton
-              style={{position:"relative", right:"10px"}}
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open,
-              })}
-            >
-              <img src={require("../../Assets/menu.png")} />
-            </IconButton>
-            <IconButton onClick={handleDrawerClose}>
-              <img src={require("../../Assets/menu.png")} />
-            </IconButton>
-          </div>
-          <ListComponent />
-        </Drawer>
+            })}
+            classes={{
+              paper: clsx({
+                [classes.drawerOpen]: open,
+                [classes.hidePaper]: !open,
+              }),
+            }}
+          >
+            <div className="sidebarSMdiv">
+              <IconButton
+                style={{position:"relative", right:"10px"}}
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, {
+                  [classes.hide]: open,
+                })}
+              >
+                <img src={require("../../Assets/menu.png")} />
+              </IconButton>
+              <IconButton onClick={handleDrawerClose}>
+                <img src={require("../../Assets/menu.png")} />
+              </IconButton>
+            </div>
+            <ListComponent />
+          </Drawer>
+        </ClickAwayListener>
       </Hidden>
     </div>
     </div>

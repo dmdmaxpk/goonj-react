@@ -29,7 +29,7 @@ class LiveTv extends Component {
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
         // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        let url = permission ? `/channel/${item.slug}` : `/paywall/live?slug=${item.slug}`;
+        let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render(){
@@ -44,7 +44,6 @@ class LiveTv extends Component {
                 {data.length > 0 ?
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
-
                             <a href={this.handleRedirect(item)}>
                                 <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail}`}  />
                                 <p className="channelName">{item.name}</p>

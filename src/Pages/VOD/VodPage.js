@@ -4,6 +4,7 @@ import PopularList from '../../Components/ListSections/PopularList';
 import VodVideoPlayer from './vodVideoPlayer';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../../Components/Loader/Loader';
+import { withRouter } from 'react-router-dom';
 
 class VodPage extends Component {
     constructor(props) {
@@ -29,6 +30,9 @@ class VodPage extends Component {
             const result = res.data
             this.setState({data: result, topics: result.topics, category: result.category});
             this.checkStatus(result.category);
+            if(result.length === 0){
+                this.props.history.push('/404');
+            }
         })
         .catch(err =>{
             console.log(err);
@@ -85,4 +89,4 @@ class VodPage extends Component {
     }
 }
  
-export default VodPage;
+export default withRouter(VodPage);

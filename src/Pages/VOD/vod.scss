@@ -136,7 +136,7 @@
 }
 .title_hashTag_and_heading{
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
     font-size: 20px;
     color: white;
 }
@@ -149,7 +149,9 @@
     color: white;
     text-align: end;
 }
-
+.plyr__control__items{
+    display: none !important;
+}
 
 
 @media only screen and (min-width: 1440px) {

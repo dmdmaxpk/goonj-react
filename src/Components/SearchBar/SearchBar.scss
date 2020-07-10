@@ -20,7 +20,7 @@ $searchFontBg: url('../../Assets/searchBg.png');
   -webkit-border-radius: 5px 0 0 5px;
   -moz-border-radius: 5px 0 0 5px;
   border-radius: 5px 0 0 5px;
-  color: #ccc;
+  color: #000;
   outline: none;
   width: 100%;
   background: white;
@@ -33,21 +33,21 @@ $searchFontBg: url('../../Assets/searchBg.png');
 }
 
 .container-2 input#search::-webkit-input-placeholder {
-  color: #65737e;
+  color: #000;
 }
 
 .container-2 input#search:-moz-placeholder {
   /* Firefox 18- */
-  color: #65737e;
+  color: #000;
 }
 
 .container-2 input#search::-moz-placeholder {
   /* Firefox 19+ */
-  color: #65737e;
+  color: #000;
 }
 
 .container-2 input#search:-ms-input-placeholder {
-  color: #65737e;
+  color: #000;
 }
 
 .container-2 .search-icon {
@@ -67,11 +67,11 @@ $searchFontBg: url('../../Assets/searchBg.png');
 
 .container-2 input#search:focus,
 .container-2 input#search:active {
-  color: #ccc;
+  color: #000;
 }
 
 .container-2:hover input#search {
-  color: #ccc;
+  color: #000;
 }
 
 .container-2:hover .search-icon {

@@ -21,6 +21,8 @@ class VodVideoPlayer extends Component {
         }
         this.removeExtension = this.removeExtension.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
+        this.initializeVideoPlayer = this.initializeVideoPlayer.bind(this);
+        this.showError = this.showError.bind(this)
     }
     componentWillMount(){
         window.scrollTo({
@@ -33,6 +35,9 @@ class VodVideoPlayer extends Component {
         return kFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     componentDidMount(){
+        this.initializeVideoPlayer();
+    }
+    initializeVideoPlayer(){
         let item = this.props.data;
         console.log(item);
         const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
@@ -64,6 +69,9 @@ class VodVideoPlayer extends Component {
         let file = filename.split(".");
         return file[0];
     }
+    showError(){
+        this.initializeVideoPlayer();
+    }
     
 
     render(){
@@ -77,7 +85,7 @@ class VodVideoPlayer extends Component {
                         {item ?
                             <GridContainer xs={12} sm={12} md={12} className="videoPlayerDiv">
                                 <GridItem className="videoPlayerGI" xs={12} sm={12} md={7}>
-                                    <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail}`}>
+                                    <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail}`} onError={this.showError} >
                                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
                                         <a href="" download>Download</a>
