@@ -32,9 +32,11 @@
 
 
     @media screen and (max-width: 800px) {
-      margin: unset;
+      // margin: unset;
     }
   }
+
+  
 
   &__options-primary,
   &__options-secondary {
@@ -150,6 +152,9 @@
 }
 
 @media screen and (max-width: 600px){
+  .header__logo{
+    margin: unset;
+  }
   .header{
     padding: 4%;
     background-color: #242c4a;
@@ -158,4 +163,13 @@
   .header__logo-box{
     margin-left: 0;
   }
+}
+
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 900px) 
+and (orientation: landscape) {
+  .header__logo-box{
+  // padding-top: 20px !important;
+  }
+
 }
