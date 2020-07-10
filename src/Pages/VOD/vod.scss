@@ -65,6 +65,10 @@
     font-size: smaller;
     float: right;
 }
+.MuiPagination-ul{
+    margin: auto !important;
+}
+
 .paginationDiv{
     position: relative;
     left: 37%;
@@ -160,6 +164,15 @@
     }
 }
 @media only screen and (max-width: 480px) {
+    .headingVOD {
+        font-size: 21px !important;
+    }
+    .catLabel{
+        font-size: 14px !important;
+    }
+    .MuiInputBase-root{
+        font-size: 10px !important;
+    }
     .recommendationGI{
         margin-top: 63px !important;
     }
@@ -224,6 +237,15 @@
   }
 
   @media only screen and (max-width: 320px) {
+    .headingVOD {
+        font-size: 18px !important;
+    }
+    .MuiInputBase-root {
+        font-size: 8px !important;
+    }
+    .catLabel {
+        font-size: 13px !important;
+    }
     .hashtagTopic{
         font-size: 7px;
     }

@@ -44,7 +44,7 @@ class VodSection extends Component {
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                 <div className="sectionContainers">
-                    <Hidden smDown>
+                    <div className="vod_div">
                     <GridContainer>
                         <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
                                 <img className="childImg vod_first_image" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
@@ -97,10 +97,10 @@ class VodSection extends Component {
                         </GridItem>
 
                     </GridContainer>
-                    </Hidden>
-                    <Hidden smUp>
+                    </div>
+                    <div className="responsive_vod_div">
                         <ResponsiveVod data={data} />
-                    </Hidden>
+                    </div>
                 </div>
                 :
                 ''

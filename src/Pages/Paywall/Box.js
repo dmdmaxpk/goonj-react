@@ -181,7 +181,7 @@ class Box extends React.Component {
                 <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.verifyOtp}>
-                    <div>
+                    <div className="button_outer_div">
                       <img className="btnNext" src={require("../../Assets/Shape-2.png")} />
                       <p className="btnNextText">NEXT</p>
                     </div>

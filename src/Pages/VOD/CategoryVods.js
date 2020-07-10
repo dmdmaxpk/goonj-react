@@ -97,6 +97,7 @@ class CategoryVodPage extends Component {
                                     page={parseInt(this.props.match.params.pageNumber)}
                                     className="pagination"
                                     count={10}
+                                    size="small"
                                     color="primary"
                                     renderItem={(item) => (
                                         <PaginationItem
