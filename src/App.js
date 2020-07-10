@@ -29,10 +29,21 @@ class App extends React.Component {
     if(this.props.location.pathname === '/'){
       this.props.history.push('/home');
     }
-    // getPackages();
     setParams();
-    CheckLiveStatus();
-    CheckCPStatus();
+
+    let pathname = this.props.location.pathname.split('/')[1];
+    if(pathname === "channel"){
+    }
+    else{
+      CheckLiveStatus();
+    }
+
+    if(pathname.split('_')[0].length === 4 && pathname.includes('_')){
+    }
+    else{
+      CheckCPStatus();
+    }
+    
 ;  }
   render() {
     return (
