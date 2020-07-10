@@ -49,7 +49,7 @@ class ComedyPaywall extends Component {
                             <br />
                             <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
                             <Box
-                                url={id ? `/${id}` : '/category/comedy/page/1'}
+                                url={id ? `${id}` : '/category/comedy/page/1'}
                                 id={id}
                                 permission={"CPPermission"}
                                 msisdnKey={"CPMsisdn"}

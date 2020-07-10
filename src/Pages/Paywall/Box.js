@@ -100,7 +100,6 @@ class Box extends React.Component {
       else if(result.code == 7){
         var token = result.access_token;
         if(result.subscription_status == undefined){
-          localStorage.setItem('status', "trialActivated");
         }
         this.subscribe();
       }
