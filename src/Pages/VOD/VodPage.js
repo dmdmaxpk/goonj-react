@@ -40,9 +40,15 @@ class VodPage extends Component {
     }
     checkStatus(cat){
         if(cat === "comedy"){
-            const msisdn = localStorage.getItem('CPMsisdn');
-            const source = localStorage.getItem('source');
-            const package_id = localStorage.getItem('CPPackageId');
+            console.log("comedy page");
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let urlMsisdn = urlParams.get("msisdn");
+            let urlPkgId = urlParams.get("package_id");
+            let urlSource = urlParams.get("source");
+            const msisdn = localStorage.getItem('CPMsisdn') ? localStorage.getItem('CPMsisdn') : urlMsisdn;
+            const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
+            const package_id = localStorage.getItem('CPPackageId') ? localStorage.getItem('CPPackageId') : urlPkgId;
             const statusData = {
                 msisdn,
                 source,
@@ -51,7 +57,7 @@ class VodPage extends Component {
             AxiosInstance.post('/payment/status', statusData)
             .then(res =>{
                 const result = res.data.data;
-                if(result.is_allowed_to_stream){
+                if(result.is_allowed_to_stream === true){
                     this.setState({
                         loading: false,
                         status: true
