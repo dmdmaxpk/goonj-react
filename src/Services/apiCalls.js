@@ -66,11 +66,13 @@ export function CheckLiveStatus(){
 }
 
 export function CheckCPStatus(){
+    console.log("CP check", msisdn, CPmsisdn, urlPkgId, CPPackageId);
     let statusData = {
         source,
         CPmsisdn,
         package_id: CPPackageId
     }
+    console.log("status Data",statusData);
     if(CPmsisdn && CPPackageId){
         AxiosInstance.post('/payment/status', statusData)
         .then(res =>{

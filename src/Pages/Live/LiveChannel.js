@@ -24,9 +24,14 @@ class LiveChannel extends Component {
         this.checkStatus();
     }
     checkStatus(){
-        const msisdn = localStorage.getItem('liveMsisdn');
-        const source = localStorage.getItem('source');
-        const package_id = localStorage.getItem('livePackageId');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let urlMsisdn = urlParams.get("msisdn");
+        let urlPkgId = urlParams.get("package_id");
+        let urlSource = urlParams.get("source");
+        const msisdn = localStorage.getItem('liveMsisdn') ? localStorage.getItem('liveMsisdn') : urlMsisdn;
+        const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
+        const package_id = localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : urlPkgId;
         const statusData = {
             msisdn,
             source,
