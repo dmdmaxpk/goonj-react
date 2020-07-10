@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import config from '../../Utils/config';
+import { Link } from 'react-router-dom';
 
 
 class PosterSlider extends Component {
@@ -8,7 +10,34 @@ class PosterSlider extends Component {
     }
     componentDidMount(){
     }
-    render(){ 
+    render(){
+        let banners = [
+            {
+                name: "1",
+                url: "/category/entertainment/page/1",
+                class: "carousel-item active"
+            },
+            {
+                name: "2",
+                url: "/live-tv",
+                class: "carousel-item"
+            },
+            {
+                name: "3",
+                url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
+                class: "carousel-item"
+            },
+            {
+                name: "4",
+                url: "/category/comedy/page/1",
+                class: "carousel-item"
+            },
+            {
+                name: "5",
+                url: "/category/entertainment/page/1",
+                class: "carousel-item"
+            },
+        ]
         return(
             <div className="posterSlider">
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-interval="3000">
@@ -16,25 +45,20 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                     </ol>
                     <div className="carousel-inner carouselDiv">
-                        <div className="carousel-item active">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-1.jpg" className="d-block w-100 slider_images_all" />
-                        </div>
-                        <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-2.jpg" className="d-block w-100 slider_images_all" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-3.jpg" className="d-block w-100 slider_images_all" alt="Third slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-4.jpg" className="d-block w-100 slider_images_all" alt="Fourth slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img src="https://reacttive.com/img/psl/reacttive-pakistan-super-league-5.jpg" className="d-block w-100 slider_images_all" alt="Fifth slide" />
-                        </div>
+                        {
+                            banners.map(item =>
+                                <div className={item.class} key={item.name}>
+                                    <Link to={item.url}>
+                                        <img src={`${config.bannerUrl}/${item.name}.png`} className="d-block w-100 slider_images_all" />
+                                    </Link>
+                                </div>
+                            )
+
+                        }
                     </div>
                     {/* <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>

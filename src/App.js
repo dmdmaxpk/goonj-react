@@ -20,6 +20,7 @@ import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
 import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
 import Profile from './Pages/Profile/Profile';
+import { setParams } from "./Services/flowIntegrations";
 
 
 class App extends React.Component {
@@ -27,8 +28,8 @@ class App extends React.Component {
     if(this.props.location.pathname === '/'){
       this.props.history.push('/home');
     }
-    localStorage.setItem('source', "web");
     // getPackages();
+    setParams();
     CheckLiveStatus();
     CheckCPStatus();
 ;  }
