@@ -129,7 +129,7 @@ class Box extends React.Component {
       else if(result.code === 10 || result.code === 11 || result.code === 0){
         localStorage.setItem(permission, true);
         localStorage.setItem(pkgIdKey, packageID2);
-        localStorage.setItem(msisdnKey, packageID2);
+        localStorage.setItem(msisdnKey, msisdn);
         this.props.history.push(`${url}`);
       }
       // if(res.data.code === 11 && res.data.message === "Trial period activated!"){

@@ -65,7 +65,7 @@ class ComedyPaywall extends Component {
                                 from mobile balance
                             </p>
                             <p className="cbText2">
-                                <font className="cancelText">for package conversion or cancellation, go to </font>About{">"}Account
+                                <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
                             </p>
                             </div>
                             {/* <p className="loginLinkText">Already signed up? <Link to="/live" className="loginLink">click here to login</Link> </p> */}
