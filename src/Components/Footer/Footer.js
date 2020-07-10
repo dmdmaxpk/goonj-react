@@ -3,6 +3,7 @@ import "./Footer.scss";
 import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
 import Hidden from '@material-ui/core/Hidden';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   render(){
@@ -51,27 +52,26 @@ class Footer extends Component {
             <GridItem xs={6} sm={6} md={3}>
               <p className="footerHeadings">Live Channels</p>
               <p className="footerPs">
-                PSL Live TV{'\n'}
-                Geo News{'\n'}
-                Samaa News{'\n'}
-                Dunya TV{'\n'}
-                CNN News{'\n'}
-                Express News{'\n'}
-                Bol Entertainment
+                <Link style={{color: "white"}} to='/channel/geo-news'>Geo News</Link>{'\n'}
+                <Link style={{color: "white"}} to='/channel/samaa-news'>Samaa News</Link>{'\n'}
+                <Link style={{color: "white"}} to='/channel/dunya-news'>Dunya TV</Link>{'\n'}
+                <Link style={{color: "white"}} to='/channel/cnn'>CNN News</Link>{'\n'}
+                <Link style={{color: "white"}} to='/channel/express-news'>Express News</Link>{'\n'}
+                <Link style={{color: "white"}} to='/channel/bol-entertainment'>Bol Entertainment</Link>
               </p>
             </GridItem>
             <GridItem xs={6} sm={6} md={3}>
               <p className="footerHeadings">Contact Us</p>
               <GridContainer>
                 <GridItem xs={6} sm={6} md={12}>
-                  <img className="contactUsImg" src={require('../../Assets/call.png')} />
+                  <a href="tel:202-555-0176"><img className="contactUsImg" src={require('../../Assets/call.png')} /></a>
                   <p className="footerPs contactUsPs">
                     Call us :{'\n'}
                     (+1) 202-555-0176, (+1) 2025-5501
                   </p>
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
-                  <img className="contactUsImg" src={require('../../Assets/email.png')} />
+                  <a href="mailto:support@goonj.com"><img className="contactUsImg" src={require('../../Assets/email.png')} /></a>
                   <p className="footerPs contactUsPs">
                     Email us :{'\n'}
                     info@goonj.com, support@goonj.com
@@ -79,9 +79,9 @@ class Footer extends Component {
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
                   <p className="footerPs followUsP">Follow us : </p>
-                  <img className="contactUsImg" src={require('../../Assets/fb.png')} />
-                  <img className="contactUsImg" src={require('../../Assets/linkedin.png')} />
-                  <img className="contactUsImg" src={require('../../Assets/twitter.png')} />
+                  <a href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} /></a>
+                  <a href=""><img className="contactUsImg" src={require('../../Assets/linkedin.png')} /></a>
+                  <a href="https://twitter.com/goonjtv"><img className="contactUsImg" src={require('../../Assets/twitter.png')} /></a>
                 </GridItem>
               </GridContainer>
             </GridItem>
@@ -90,7 +90,7 @@ class Footer extends Component {
           <GridContainer className="footerContainerThree">
           <Hidden mdDown> 
             <GridItem xs={12} sm={12} md={12}>
-            <p>Copyright &copy; {year} <font color="#4aa6e5">GoonjTV</font>. All Rights Reserved.</p>
+            <p>Copyright &copy; {year} <Link to="/home"><font color="#4aa6e5">GoonjTV</font></Link>. All Rights Reserved.</p>
             </GridItem>
           </Hidden>
           </GridContainer>

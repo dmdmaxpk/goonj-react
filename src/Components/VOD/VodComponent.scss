@@ -12,8 +12,16 @@
 .catSelect{
     width: 10vw;
 }
+.MuiPopover-paper{
+    position: fixed !important;
+    top: 168px !important;
+}
 @media screen and (max-width: 480px){
     .catSelect{
         width: 25vw;
+    }
+    .MuiPopover-paper{
+        position: absolute !important;
+        top: 100px !important;
     }
 }

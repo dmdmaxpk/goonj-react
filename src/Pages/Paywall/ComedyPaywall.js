@@ -3,7 +3,7 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class ComedyPaywall extends Component {
     constructor(props) {
@@ -19,6 +19,10 @@ class ComedyPaywall extends Component {
         }
     }
     componentDidMount(){
+        let CPPermission = localStorage.getItem('CPPermission');
+        if(CPPermission === true){
+            this.props.history.push('/category/comedy/page/1');
+        }
         AxiosInstance.get(`${config.apiBaseUrl}/package?source=${this.props.source}&slug=comedy`)
         .then(res =>{
         let packageData = res.data;
@@ -77,4 +81,4 @@ class ComedyPaywall extends Component {
     }
 }
  
-export default ComedyPaywall;
+export default withRouter(ComedyPaywall);

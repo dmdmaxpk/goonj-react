@@ -105,6 +105,7 @@ class UserInfo extends Component {
                                         <input className="profileInput" type="number" name="phoneNumber" value={this.state.phoneNumber} placeholder="03xxxxxxxxxxx" onChange={this.handleChange} />
                                     </GridItem>
                                     <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
+                                        <button className="profileBtnSubmit unsubBtn cancelBtn" onClick={this.showProfile}>Cancel</button>
                                         <button className="profileBtnSubmit" onClick={this.saveProfileInfo}>Submit</button>
                                     </GridItem>
                             </GridContainer>

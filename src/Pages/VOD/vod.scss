@@ -65,6 +65,10 @@
     font-size: smaller;
     float: right;
 }
+.MuiPagination-ul{
+    margin: auto !important;
+}
+
 .paginationDiv{
     position: relative;
     left: 37%;
@@ -132,7 +136,7 @@
 }
 .title_hashTag_and_heading{
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
     font-size: 20px;
     color: white;
 }
@@ -145,7 +149,9 @@
     color: white;
     text-align: end;
 }
-
+.plyr__control__items{
+    display: none !important;
+}
 
 
 @media only screen and (min-width: 1440px) {
@@ -160,6 +166,15 @@
     }
 }
 @media only screen and (max-width: 480px) {
+    .headingVOD {
+        font-size: 21px !important;
+    }
+    .catLabel{
+        font-size: 14px !important;
+    }
+    .MuiInputBase-root{
+        font-size: 10px !important;
+    }
     .recommendationGI{
         margin-top: 63px !important;
     }
@@ -211,6 +226,19 @@
     .views_text, .daysAgo{
         font-size: x-small;
     }
+
+  .plyr__volume{
+    width: 10%;
+    min-width: inherit;
+}
+
+.plyr--video .plyr__controls button[data-plyr=captions]{
+    display: none !important;
+}
+
+.plyr__volume input[type=range]{
+    display: none !important;
+}
   }
 
   @media only screen and (max-width: 375px) {
@@ -224,6 +252,15 @@
   }
 
   @media only screen and (max-width: 320px) {
+    .headingVOD {
+        font-size: 18px !important;
+    }
+    .MuiInputBase-root {
+        font-size: 8px !important;
+    }
+    .catLabel {
+        font-size: 13px !important;
+    }
     .hashtagTopic{
         font-size: 7px;
     }
@@ -232,3 +269,5 @@
     }
   
   }
+
+

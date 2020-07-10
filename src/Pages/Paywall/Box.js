@@ -33,9 +33,11 @@ class Box extends React.Component {
   }
   handleChange(e){
     console.log(e.target.name, e.target.value);
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+    if(e.target.value.length < 12){
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
   sendOtp(e){
@@ -167,7 +169,7 @@ class Box extends React.Component {
             {
             this.state.step === 0 ?
               <div>
-                <input className="msisdnInput" type="number" name="msisdn" value={this.state.msisdn} placeholder="03xxxxxxxxx" onChange={this.handleChange}/>
+                <input className="msisdnInput" type="number" name="msisdn" maxLength="11" value={this.state.msisdn} placeholder="03xxxxxxxxx" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.sendOtp}>
                     <img className="btnSubImg" src={require("../../Assets/subBtn.png")} />
@@ -181,7 +183,7 @@ class Box extends React.Component {
                 <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.verifyOtp}>
-                    <div>
+                    <div className="button_outer_div">
                       <img className="btnNext" src={require("../../Assets/Shape-2.png")} />
                       <p className="btnNextText">NEXT</p>
                     </div>

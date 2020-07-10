@@ -6,10 +6,10 @@ import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
 import './vod.scss';
 import ReactTimeAgo from 'react-time-ago';
-import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
+import CategoryDD from '../../Components/VOD/categoryDropdown';
 
 
 class ChannelVodPage extends Component {
@@ -59,7 +59,10 @@ class ChannelVodPage extends Component {
     render(){
         return(
             <div className="vodCategroyContainer">
-                <p className="heading">{this.props.match.params.source}</p>
+                <div>
+                    <p className="headingVOD floatLeft">{this.props.match.params.source}</p>
+                    <CategoryDD category={this.props.match.params.category} />
+                </div>
                 <GridContainer>
                     {this.state.data.length > 1 ?
                         this.state.data.map(item =>

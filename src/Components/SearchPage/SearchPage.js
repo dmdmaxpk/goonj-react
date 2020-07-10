@@ -20,7 +20,9 @@ class SearchPage extends Component {
             skip: 0,
             limit: 102,
             limitNum: 0,
-            page: this.props.match.params.pageNumber
+            page: this.props.match.params.pageNumber,
+            loading: true,
+            noData: false
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
@@ -28,26 +30,18 @@ class SearchPage extends Component {
     componentDidMount(){
       let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
       let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${this.state.skip}`;
-      
+      this.setState({noData: false, loading: true})
       AxiosInstance.get(apiUrl)
       .then(res =>{
-          this.setState({data: res.data});
+          this.setState({data: res.data, loading: false});
+          if(res.data.length === 0){
+              this.setState({noData: true})
+          }
+          else{
+              this.setState({noData: false})
+          }
       })
   }
-    // componentDidUpdate(){
-    //     let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
-    //     let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${this.state.skip}`;
-        
-    //     AxiosInstance.get(apiUrl)
-    //     .then(res =>{
-    //         this.setState({data: res.data});
-    //     })
-    //     .catch(err =>{
-    //       console.log(err);
-    //     });
-
-    //     // window.addEventListener('scroll', this.handleScroll);
-    // }
     componentWillReceiveProps(nextProps, nextState) {
         if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber) {
             window.location.reload();
@@ -55,10 +49,16 @@ class SearchPage extends Component {
         if(this.state.data !== nextState.data){
           let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
           let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${this.state.skip}`;
-          
+          this.setState({noData: false, loading: true});
           AxiosInstance.get(apiUrl)
           .then(res =>{
-              this.setState({data: res.data});
+              this.setState({data: res.data, loading: false});
+              if(res.data.length === 0){
+                this.setState({noData: true})
+              }
+              else{
+                  this.setState({noData: false})
+              }
           })
           .catch(err =>{
             console.log(err);
@@ -84,44 +84,34 @@ class SearchPage extends Component {
             <div className="vodCategroyContainer">
                 <p className="heading">Search result for: {searchValue}</p>
                 <GridContainer>
-                    {this.state.data.length > 1 ?
-                        this.state.data.map(item =>
-                            <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
-                                <div className="imgDiv" onClick={()=> this.handleClick(item)}>
-                                    <span className="playBtn">
-                                        <img src={require("../../Assets/playBtn.png")} />
-                                    </span>
-                                    <img src={`${config.videoLogoUrl}/${item.thumbnail}`} className="videoLogo" />
-                                </div>
-                                <div className="vodDetailsDiv">
-                                    <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                    <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
-                                </div>
+                    {
+                        this.state.loading === false && this.state.noData === false ?
+                            this.state.data.map(item =>
+                                <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
+                                    <div className="imgDiv" onClick={()=> this.handleClick(item)}>
+                                        <span className="playBtn">
+                                            <img src={require("../../Assets/playBtn.png")} />
+                                        </span>
+                                        <img src={`${config.videoLogoUrl}/${item.thumbnail}`} className="videoLogo" />
+                                    </div>
+                                    <div className="vodDetailsDiv">
+                                        <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
+                                        <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
+                                        <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    </div>
+                                </GridItem>
+                            )
+                            :
+                            this.state.loading === true && this.state.noData === false ?
+                            <Loader />
+                            :
+                            this.state.loading === false && this.state.noData === true ?
+                            <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
+                                <img src={require('../../Assets/nodata-found.png')} />
                             </GridItem>
-                        )
-                    : <Loader />
+                            :
+                            ''
                     }
-                    {/* <GridItem sm={12} md={12} xs={12} >
-                        <div className="paginationDiv">
-                            <Pagination
-                                page={parseInt(this.props.match.params.pageNumber)}
-                                className="pagination"
-                                count={10}
-                                color="primary"
-                                renderItem={(item) => (
-                                    <PaginationItem
-                                    component={Link}
-                                    to={{
-                                      pathname:`/searchresults/${item.page}`,
-                                      state: {searchValue: searchValue}
-                                    }}
-                                    {...item}
-                                    />
-                                )}
-                            />
-                        </div>
-                    </GridItem> */}
                 </GridContainer>
             </div>
         );

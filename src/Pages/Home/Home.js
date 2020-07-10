@@ -75,10 +75,14 @@ class Home extends Component {
                         <PosterSlider />
                         <div className="homeSections">
                             <PopularList title="Popular on Goonj" class="popularContainer" />
+                            <br />
                             <ChannelList />
+                            <br />
                             {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
                             {headlines.length !== 0 ? <HeadlinesSection data={headlines} category="news" title="Headlines" /> : <Loader />}
+                            <br />
                             {sports.length !== 0 ? <VodSection title="Sports" data={sports} category="sports" /> : <Loader />}
+                            <br />
                             {programs.length !== 0 ? <VodSection title="Programs" data={programs} category="programs" classname="programsContainer" /> : <Loader />}
                         </div>
                     </div>

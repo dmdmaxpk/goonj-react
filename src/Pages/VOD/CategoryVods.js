@@ -52,7 +52,7 @@ class CategoryVodPage extends Component {
             let permission = localStorage.getItem('CPPermission');
             // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
             console.log(url);
-            permission ? window.location.href = `/${url}` : window.location.href = `/paywall/comedy?postUrl=${url}`;
+            permission ? window.location.href = `/${url}` : window.location.href = `${config.hepage}?postUrl=${url}`;
         }
         else{
             history.push(`/${url}`);
@@ -97,6 +97,7 @@ class CategoryVodPage extends Component {
                                     page={parseInt(this.props.match.params.pageNumber)}
                                     className="pagination"
                                     count={10}
+                                    size="small"
                                     color="primary"
                                     renderItem={(item) => (
                                         <PaginationItem

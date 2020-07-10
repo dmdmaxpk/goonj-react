@@ -12,7 +12,7 @@ const config = {
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
-        hepage: "http://staging.hepage.goonj.pk"
+        hepage: "http://alpha.hepage.goonj.pk"
     },
     production: {
         apiBaseUrl: "http://api.goonj.pk/v2",
