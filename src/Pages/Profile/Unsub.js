@@ -105,7 +105,7 @@ class Unsub extends Component {
     render(){
         let state = this.state;
         let msisdn = localStorage.getItem('liveMsisdn');
-        let CPmsisdn = localStorage.getItem('CPmsisdn');
+        let CPmsisdn = localStorage.getItem('CPMsisdn');
         const liveSubs = [
             {
                 name: state.liveTvDaily,
