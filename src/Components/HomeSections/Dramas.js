@@ -44,7 +44,7 @@ class DramasSection extends Component {
                 <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                     <div className="sectionContainers">
-                        <Hidden smDown>
+                        <div className="vod_div">
                         <GridContainer>
                             <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
                                 <img className="childImg blockOne" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
@@ -81,7 +81,7 @@ class DramasSection extends Component {
 
                         </GridContainer>
 
-                        </Hidden>
+                        </div>
                         {/* <Grid container spacing={1}>  
                              <Grid item xs={12} lg={6}>
                              <img className="childImg blockOne" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
@@ -116,9 +116,9 @@ class DramasSection extends Component {
                                 </span>
                              </Grid>
                         </Grid> */}
-                        <Hidden smUp>
+                        <div className="responsive_vod_div">
                         <ResponsiveDramas data={data} />
-                        </Hidden>
+                        </div>
                     </div>
                    
                 : ""}
