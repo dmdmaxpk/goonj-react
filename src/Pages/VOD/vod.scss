@@ -224,6 +224,19 @@
     .views_text, .daysAgo{
         font-size: x-small;
     }
+
+  .plyr__volume{
+    width: 10%;
+    min-width: inherit;
+}
+
+.plyr--video .plyr__controls button[data-plyr=captions]{
+    display: none !important;
+}
+
+.plyr__volume input[type=range]{
+    display: none !important;
+}
   }
 
   @media only screen and (max-width: 375px) {
@@ -254,3 +267,5 @@
     }
   
   }
+
+
