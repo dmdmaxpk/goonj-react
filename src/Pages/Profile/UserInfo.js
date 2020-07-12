@@ -5,8 +5,6 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import { Collapse } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import {Link} from 'react-router-dom';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import ErrorComponent from './Error';
 
 class UserInfo extends Component {

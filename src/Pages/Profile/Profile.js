@@ -3,6 +3,8 @@ import UserInfo from './UserInfo';
 import Unsub from './Unsub';
 import './Profile.scss';
 import { Divider } from '@material-ui/core';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsConditions from './TermsConditions';
 
 class Profile extends Component {
     constructor(props) {
@@ -17,6 +19,9 @@ class Profile extends Component {
                 <Divider />
                 <Unsub />
                 <Divider />
+                <PrivacyPolicy />
+                <Divider />
+                <TermsConditions />
             </div>
         );
     }

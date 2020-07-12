@@ -6,7 +6,6 @@ import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
-import ListOverview from "./Components/ListOverview/ListOverview";
 import Home from "./Pages/Home/Home";
 import LiveChannel from "./Pages/Live/LiveChannel";
 import Footer from "./Components/Footer/Footer";
@@ -21,7 +20,9 @@ import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
 import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
 import Profile from './Pages/Profile/Profile';
 import { setParams } from "./Services/flowIntegrations";
-import PageNotFound from "./Pages/NotFound/PageNotFound";
+import PageNotFound from "./Pages/StaticPages/PageNotFound";
+import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
+import TermsConditions from "./Pages/StaticPages/TermsConditions";
 
 
 class App extends React.Component {
@@ -72,6 +73,8 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+          <Route exact path="/terms-conditions" component={TermsConditions} />
           <Route exact path="/404" component={PageNotFound} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
@@ -80,7 +83,7 @@ class App extends React.Component {
           <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
           <Route exact path="/binjee" component={Binjee} />
-          <Route exact path="/:vodID" component={VodPage} />
+          <Route path="/:vodID" component={VodPage} />
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
           <Redirect to="/404" />
