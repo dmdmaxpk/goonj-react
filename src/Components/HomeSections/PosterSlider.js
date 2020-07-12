@@ -53,7 +53,7 @@ class PosterSlider extends Component {
                             banners.map(item =>
                                 <div className={item.class} key={item.name}>
                                     <Link to={item.url}>
-                                        <img src={`${config.bannerUrl}/${item.name}.png`} className="d-block w-100 slider_images_all" />
+                                        <img src={`${config.bannerUrl}/${item.name}.jpg`} className="d-block w-100 slider_images_all" />
                                     </Link>
                                 </div>
                             )
