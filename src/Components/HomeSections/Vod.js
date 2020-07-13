@@ -5,8 +5,6 @@ import Heading from './Heading';
 import './HomeSection.scss';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
-import ResponsiveVod from "../HomeSections/ResponsiveVod"
-import Hidden from '@material-ui/core/Hidden';
 import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
