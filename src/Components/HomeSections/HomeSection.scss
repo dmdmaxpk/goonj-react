@@ -1,7 +1,7 @@
 .headingGridContainer{
     color: white;
     margin-bottom: 10px;
-    padding: 0 8% 0 8% !important;
+    padding: 0 5% 0 8% !important;
 }
 .heading_container{
     display: flex;
@@ -160,7 +160,7 @@
         height: 400px;
     }
     .heading_text{
-        font-weight: 600;
+        font-weight: 900;
         font-size: 16px;
     }
     .view_more_text{
@@ -273,6 +273,9 @@
     .slider_images_all{
         border-radius: 5px;
         height: 210px !important;
+    }
+    .heading_container{
+        padding: 0 3%;
     }
     .carouselDiv {
         height: 420px;
@@ -484,7 +487,7 @@
     bottom: 15vh !important;
 }
 .sectionContainers{
-    padding: 0 7%;
+    padding: 0 4% 0 7%;
     position: relative !important;
     // margin-top: -5%;
 }
