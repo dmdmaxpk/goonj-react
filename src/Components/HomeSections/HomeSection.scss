@@ -1,10 +1,14 @@
+.headingGridContainer{
+    color: white;
+    margin-bottom: 10px;
+    padding: 0 5% 0 8% !important;
+}
 .heading_container{
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: baseline;
 }
-
 .posterSlider{
     margin-bottom: 1%;
     margin-left: 4vw;
@@ -210,15 +214,14 @@
         top: 21% !important;
     }
     .headlinesContainer{
-        margin-left: 4%;
-        margin-right: 4%;
+        margin: 0 1%;
     }
     .programsContainer{
         margin-top: 0px !important;
     }
 
     .heading_text{
-        font-weight: 600;
+        font-weight: 900;
         font-size: 16px;
     }
     .view_more_text{
@@ -312,9 +315,7 @@
         border-radius: 5px;
         height: 210px !important;
     }
-    // .carouselDiv {
-    //     height: 420px;
-    // }
+
     .blockOneDiv{
         display: none !important;
         // height: 11vh !important;
@@ -469,6 +470,9 @@
         font-size: 11px;
   
     }
+    .headlinesContainer{
+        margin: 0 2%;
+    }
     .headlineText{
         font-size: 10px !important;
     }
@@ -522,7 +526,7 @@
   
 
 .sectionContainers{
-    padding: 0 7%;
+    padding: 0 4% 0 7%;
     position: relative !important;
     // margin-top: -5%;
 }
@@ -537,7 +541,7 @@
     height: 100%;
 }
 .dramaBlockFour{
-    width: 90%;
+    // width: 100%;
     height: 90%;
     overflow-y: hidden;
 }

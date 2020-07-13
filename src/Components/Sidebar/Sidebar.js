@@ -10,9 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import HomeIcon from '@material-ui/icons/Home';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import LanguageIcon from '@material-ui/icons/Language';
-import PersonIcon from '@material-ui/icons/Person';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
 import {Link} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
@@ -100,7 +100,7 @@ export default function MiniDrawer(props) {
       <List key="sidebar" onClick={handleDrawerClose}>
         <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
             <Tooltip title="Home" placement="right">
-              <ListItemIcon className={isActive('/home')}><HomeIcon /></ListItemIcon>
+              <ListItemIcon className={isActive('/home')}><HomeOutlinedIcon /></ListItemIcon>
             </Tooltip>
             <ListItemText className="sidebarTabsText" primary="Home" />
         </ListItem>
@@ -128,7 +128,7 @@ export default function MiniDrawer(props) {
         <Divider />
         <ListItem component={Link} to="/profile" button key="profile" style={{color:"white"}}>
           <Tooltip title="User Profile" placement="right">  
-            <ListItemIcon className={isActive('/profile')}><PersonIcon /></ListItemIcon>
+            <ListItemIcon className={isActive('/profile')}><PersonOutlineOutlinedIcon /></ListItemIcon>
           </Tooltip>
           <ListItemText className="sidebarTabsText" primary="User Profile" />
         </ListItem>

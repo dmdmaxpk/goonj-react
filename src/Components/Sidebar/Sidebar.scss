@@ -10,24 +10,15 @@
 .MuiListItem-gutters {
     padding-left: 25px !important;
 }
-.activeTabImg{
-    // border-radius: 8px;
-    // width: 40px;
-    // position: relative;
-    // right: 10px;
-}
 .sidebarTabs{
     padding: 5px;
+    min-width: 24px;
 }
 .activeTab{
-    padding: 2px;
-    background-image: url("../../Assets/searchBg.png");
+    background-image: linear-gradient(to right,#30A1E6, #15EFC4);
     border-radius: 8px;
     min-width: 24px !important;
-    margin-right: 30px;
-    // position: relative;
-    // width: 2px;
-    // right: 42px;
+    margin-right: 22px;
 }
 .sidebarTabsText{
     margin-left: 10px
@@ -36,7 +27,4 @@
     position: absolute !important;
 }
 @media screen and (max-width: 480px){
-    // .drawer{
-    //     display: none !important;
-    // }
 }
