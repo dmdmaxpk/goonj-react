@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class Heading extends Component {
     render() { 
         return (
-            <GridContainer style={{color:"white", marginBottom:"10px", padding: "0 10%"}}>
+            <GridContainer className="headingGridContainer">
                 {/* <GridItem xs={10} sm={8} md={8}>
                     <div style={{float:"left", textTransform:"uppercase"}}>
                         <h4 style={{fontWeight: "900"}}>{this.props.heading}</h4>
