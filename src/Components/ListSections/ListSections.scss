@@ -141,6 +141,17 @@ top: 0;
     margin-bottom: 0 !important;
     color: #ccc;
 }
+
+@media only screen and (max-width: 800px) {
+
+    .channelListImg {
+        height: 154px;
+    }
+}
+
+
+
+
 @media only screen and (max-width: 480px) {
     .recomPlayBtn{
         width: 20px;
@@ -153,7 +164,7 @@ top: 0;
         height: 150px;
     }
     .popularContainer{
-        margin-top: 8vh;   
+        margin-top: 0vh;   
     }
     .channelSlider .slick-prev, .channelSlider .slick-next{
         top: 32% !important;

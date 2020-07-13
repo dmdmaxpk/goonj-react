@@ -152,6 +152,9 @@
 .plyr__control__items{
     display: none !important;
 }
+.vod_page_margin{
+    margin-top: 8vh;
+}
 
 
 @media only screen and (min-width: 1440px) {
@@ -159,13 +162,14 @@
         margin-left: 0% !important;
     }
 }
-@media screen and (max-width: 600px){
-    .paginationDiv {
-        left: 0%;
-        top: 10px;
+
+
+
+
+@media only screen and (max-width: 800px) {
+    .vod_page_margin{
+        margin-top: 0px;
     }
-}
-@media only screen and (max-width: 480px) {
     .headingVOD {
         font-size: 21px !important;
     }
@@ -210,7 +214,7 @@
         width: 1% !important;
     }
     .recommendationGI{
-        max-width: 520px !important;
+        max-width: 100% !important;
     }
     .MuiGrid-item {
         margin-left: -5px !important;
@@ -240,6 +244,12 @@
     display: none !important;
 }
   }
+  @media screen and (max-width: 600px){
+    .paginationDiv {
+        left: 0%;
+        top: 10px;
+    }
+}
 
   @media only screen and (max-width: 375px) {
     .hashtagTopic{

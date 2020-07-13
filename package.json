@@ -12,6 +12,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "akamai-edge-auth-generator": "^0.1.7",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
     "firebase": "^6.4.2",
     "hls.js": "^0.13.3-canary.5641",
     "jquery": "^3.5.1",
