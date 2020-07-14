@@ -41,7 +41,8 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = "hdnts=" + generatedToken;
-                const source = `//weblive.goonj.pk/${this.state.data.hls_link}?${token}`;
+                const source = `//weblive.goonj.pk/${this.state.data.hls_link.split('.')[0]}_360p/index.m3u8?${token}`;
+                console.log(source);
                 this.setState({source});
                 const video = document.querySelector('video');
                 
