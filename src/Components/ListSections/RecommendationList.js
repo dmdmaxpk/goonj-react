@@ -9,7 +9,7 @@ class RecommendationList extends Component {
         super(props);
         this.state = {
             recommendations: [],
-            limit: 10
+            limit: 4
         }
         this.getRecommendations = this.getRecommendations.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
