@@ -48,9 +48,21 @@ class VodSection extends Component {
                                 <div className="col-lg-6 col-sm-12 col-12 padding_5px vodGI"  onClick={()=> this.handleClick(data[0])}>
                                 <div className="img-box relative_position height-100 ">
                                     <img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
-                                        <span className="play_btn_position1" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                        <span className="play_btn_position1" style={{position: "absolute", bottom: "45%", left: "45%"}}>
                                             <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                         </span>
+
+                                                     <div className="blockOneDiv">
+                                                        <div className="title_and_discription">
+                                                            <p className="floatLeft marginZero headlineText">{data[0].title}</p>
+                                                            <p className="floatLeft marginZero categoryText">{this.removeDescTags(data[0].description)}</p>
+                                                        
+                                                        </div>
+                                                        <div className="clearfix marginZero publish_date_and_channel">
+                                                            <p className="floatRight marginZero daysAgoText" ><ReactTimeAgo date={data[0].publish_dtm}/></p>
+                                                            <p className="floatRight marginZero channelNameText">{data[0].source}</p>
+                                                        </div>
+                                                        </div>
                                 </div>
                                 </div>
                                 <div className="col-lg-6 col-sm-12 col-12 bellow_div_padding" >
@@ -63,6 +75,7 @@ class VodSection extends Component {
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                          </span>
+
                                         </div>
                                         </div>
                                         <div className="col-lg-12 col-sm-6 col-6 fill padding_5px vodGI" onClick={()=> this.handleClick(data[2])}>

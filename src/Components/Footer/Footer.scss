@@ -51,8 +51,14 @@ $footerBg: url('../../Assets/footer-bg.png');
   font-weight: 600;
 }
 
+@media only screen and (min-width: 801px) {
 
-@media only screen and (max-width: 800px) {
+  .footer{
+   margin-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
 
   .footer{
     padding-bottom: 2vh;
