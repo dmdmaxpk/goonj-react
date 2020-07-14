@@ -66,6 +66,20 @@ top: 0;
     margin-top: 5px;
     text-transform: capitalize;   
 }
+.premiumTag{
+    position: relative;
+    top: 4vh;
+    left: 6vw;
+    margin-top: -22.4px;
+    width: 40%;
+    padding: 2px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-image: linear-gradient(to right,#30A1E6, #15EFC4);
+}
 .vodPageMargin{
     margin-top: 8vh;
 }
@@ -151,6 +165,13 @@ top: 0;
     .channelListImg{
         width: 92%;
         height: 150px;
+    }
+    .premiumTag{
+        margin-top: -2vh;
+        width: 60%;
+        top: 3vh;
+        left: 7vw;
+        font-size: xx-small;
     }
     .popularContainer{
         margin-top: 8vh;   

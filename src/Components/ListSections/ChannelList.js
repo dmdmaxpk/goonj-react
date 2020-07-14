@@ -94,6 +94,7 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
+                                            {/* <div className="premiumTag">Premium</div> */}
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
                                             <p className="channelListName">{item.name}</p>
                                         </a>
