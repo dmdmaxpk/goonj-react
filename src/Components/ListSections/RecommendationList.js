@@ -3,6 +3,8 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
 import { Link, withRouter } from 'react-router-dom';
+import GridContainer from '../Grid/GridContainer';
+import GridItem from '../Grid/GridItem';
 
 class RecommendationList extends Component {
     constructor(props) {
@@ -54,22 +56,25 @@ class RecommendationList extends Component {
         return(
             <div className="recomListContainer">
             <p className="recomHeading">Up Next</p>
-            {
-                recommendations.filter(element => element._id !== id).map(item =>
-                        <div className="recomDiv" key={item._id} onClick={()=> this.handleClick(item)}>
-                            <img className="recomImg" src={`${config.videoLogoUrl}/${item.thumbnail}`} />
-                            <img className="recomPlayBtn" src={require('../../Assets/playBtn.png')} />
-                            <div className="recomTextDiv">
-                                <p className="recomTitle">{item.title}</p>
-                                <div className="recomendation_details_div">
-                                <p className="grey recomSource">{item.source}</p>
-                                <p className="grey recomCount">{this.kFormatter(item.views_count)} views</p>
-                                <p className="grey"><ReactTimeAgo date={item.publish_dtm} /></p>
+            <GridContainer className="recomGridContainer">
+                {
+                    recommendations.filter(element => element._id !== id).map(item =>
+                            <GridItem xs={3} sm={3} md={12} className="recomDiv" key={item._id} onClick={()=> this.handleClick(item)}>
+                                <img className="recomImg" src={`${config.videoLogoUrl}/${item.thumbnail}`} />
+                                <img className="recomPlayBtn" src={require('../../Assets/playBtn.png')} />
+                                <div className="recomTextDiv">
+                                    <p className="recomTitle">{item.title}</p>
+                                    <br />
+                                    <div className="recomendation_details_div">
+                                    <p className="grey recomSource">{item.source}</p>
+                                    <p className="grey recomCount">{this.kFormatter(item.views_count)} views</p>
+                                    <p className="grey"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                )
-            }
+                            </GridItem>
+                    )
+                }
+            </GridContainer>
             </div>
         );
     }

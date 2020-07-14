@@ -119,7 +119,7 @@
     // display: none;
 }
 .recommendationGI{
-    height: 500px;
+    height: auto;
     max-width: 32% !important;
     overflow: hidden;
 }
@@ -175,9 +175,9 @@
         font-size: 10px !important;
     }
     .recommendationGI{
-        margin-top: 63px !important;
+        margin-top: 50px !important;
+        height: 30vh;
     }
-
     .hashtagTopic{
         font-size: 11px;
     }
@@ -247,7 +247,10 @@
     .title_hashTag_and_heading{
         font-size: 13px;
     }
-  
+    .recommendationGI{
+        margin-top: 50px !important;
+        height: 35vh;
+    }
   }
 
   @media only screen and (max-width: 320px) {
@@ -266,7 +269,9 @@
     .title_hashTag_and_heading{
         font-size: 11px;
     }
-  
+    .recommendationGI{
+        height: 42vh;
+    }
   }
 
 
