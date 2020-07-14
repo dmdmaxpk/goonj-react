@@ -45,7 +45,7 @@ class VodSection extends Component {
                 <div className="sectionContainers">
                      <div className="containerO">
                             <div className="row">
-                                <div className="col-lg-6 col-sm-12 col-12 padding_5px vodGI"  onClick={()=> this.handleClick(data[0])}>
+                                <div className="col-lg-6 col-sm-12 col-12 padding_5px vodGI vodFirstCol"  onClick={()=> this.handleClick(data[0])}>
                                 <div className="img-box relative_position height-100 ">
                                     <img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
                                         <span className="play_btn_position1" style={{position: "absolute", bottom: "45%", left: "45%"}}>
@@ -69,8 +69,8 @@ class VodSection extends Component {
                                 <div className="row height-100">
                                     <div className="col-lg-8 col-sm-6 col-6">
                                     <div className="row height-100">
-                                        <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI" onClick={()=> this.handleClick(data[1])}>
-                                        <div className="img-box relative_position square img_padding_2nd">
+                                        <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[1])}>
+                                        <div className="heightForResponsive img-box relative_position square img_padding_2nd">
                                         <img className="height-100 dramas_image drama_pic_2  content img_radius vod" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
@@ -78,8 +78,8 @@ class VodSection extends Component {
 
                                         </div>
                                         </div>
-                                        <div className="col-lg-12 col-sm-6 col-6 fill padding_5px vodGI" onClick={()=> this.handleClick(data[2])}>
-                                        <div className="img-box relative_position square img_padding_3rd">
+                                        <div className="col-lg-12 col-sm-6 col-6 fill padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[2])}>
+                                        <div className="heightForResponsive img-box relative_position square img_padding_3rd">
                                         <img className="height-100 dramas_image drama_pic_2  content img_radius" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />

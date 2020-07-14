@@ -91,6 +91,21 @@
     padding-top: 3%;
 }
 
+@media only screen and (min-width: 901px) {
+ .vodFirstCol{
+    height: 24.106vmax;
+ }
+ .vodSecondCol{
+    height: 12.053vmax;
+ }
+.heightForResponsive{
+    height: 100%;
+}
+
+
+}
+
+
 
 
   @media only screen and (min-device-width: 320px) 
@@ -575,7 +590,7 @@
     flex-direction: row;
     justify-content: space-between;
     position: absolute;
-    padding: 15px;
+    padding: 2%;
     border-radius: 0 0 4px 8px
 }
 .floatLeft{
