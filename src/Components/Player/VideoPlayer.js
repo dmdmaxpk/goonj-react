@@ -33,9 +33,11 @@ class VideoPlayer extends Component {
             this.setState({data, thumbnail: data.thumbnail}, function(){
                 console.log(this.state.data);
                 akamai_auth.setConfig({
+                    algo: "SHA256",
                     key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
                     window: 500,
                     acl: '/*', //optional
+                    start_time: 0,
                     // session_id:{id}, //optional
                     // url: {url}, //optional
                 });
