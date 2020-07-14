@@ -70,7 +70,7 @@ class PopularList extends Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                  breakpoint: 1600,
+                  breakpoint: 3000,
                   settings: {
                     slidesToShow: 6.25,
                     slidesToScroll: 3,

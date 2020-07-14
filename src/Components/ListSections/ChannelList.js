@@ -58,7 +58,7 @@ class ChannelList extends Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                  breakpoint: 1600,
+                  breakpoint: 3000,
                   settings: {
                     slidesToShow: 8.5,
                     slidesToScroll: 3,
