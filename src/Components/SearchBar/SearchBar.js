@@ -13,8 +13,9 @@ class SearchBar extends React.Component {
       currentPath: "",
       value: ""
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-  handleClick = event => {
+  handleClick(){
     const { value } = this.state;
     this.props.history.push({
       pathname: "/searchresults",
@@ -52,7 +53,7 @@ class SearchBar extends React.Component {
       <div className="container-1">
         <div className="container-2">
           <input onChange={this.handleChange} type="search" id="search" placeholder="Search..." />
-          <span className="search-icon" style={{cursor: "pointer"}}>
+          <span className="search-icon" style={{cursor: "pointer"}} onClick={this.handleClick}>
             <i className="fa fa-search"></i>
           </span>
         </div>

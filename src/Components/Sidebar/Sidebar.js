@@ -126,12 +126,14 @@ export default function MiniDrawer(props) {
           <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/profile" button key="profile" style={{color:"white"}}>
-          <Tooltip title="User Profile" placement="right">  
-            <ListItemIcon className={isActive('/profile')}><PersonOutlineOutlinedIcon /></ListItemIcon>
-          </Tooltip>
-          <ListItemText className="sidebarTabsText" primary="User Profile" />
-        </ListItem>
+        <a href={`${window.location.origin}/profile`} style={{textDecoration: "none"}}>
+          <ListItem button key="profile" style={{color:"white"}}>
+              <Tooltip title="User Profile" placement="right">  
+                <ListItemIcon className={isActive('/profile')}><PersonOutlineOutlinedIcon /></ListItemIcon>
+              </Tooltip>
+              <ListItemText className="sidebarTabsText" primary="User Profile" />
+          </ListItem>
+        </a>
         {/* <Hidden smUp>
           <Divider />
           <ListItem button key="searchbar">

@@ -121,8 +121,7 @@
 .recommendationGI{
     height: 500px;
     max-width: 32% !important;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
 }
 .recomTitle {
     height: 36px !important;

@@ -13,27 +13,27 @@ class PosterSlider extends Component {
     render(){
         let banners = [
             {
-                name: "1",
+                name: "banner01",
                 url: "/category/entertainment/page/1",
                 class: "carousel-item active"
             },
             {
-                name: "2",
+                name: "banner02",
                 url: "/live-tv",
                 class: "carousel-item"
             },
             {
-                name: "3",
+                name: "banner-02A",
                 url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
                 class: "carousel-item"
             },
             {
-                name: "4",
+                name: "banner03",
                 url: "/category/comedy/page/1",
                 class: "carousel-item"
             },
             {
-                name: "5",
+                name: "banner04",
                 url: "/category/entertainment/page/1",
                 class: "carousel-item"
             },
