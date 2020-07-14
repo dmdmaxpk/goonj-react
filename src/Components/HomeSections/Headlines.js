@@ -49,7 +49,7 @@ class HeadlinesSection extends Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                  breakpoint: 1600,
+                  breakpoint: 3000,
                   settings: {
                     slidesToShow: 5.25,
                     slidesToScroll: 3,
