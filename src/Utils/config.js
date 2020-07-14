@@ -1,21 +1,21 @@
 
 const config = {
     development: {
-        apiBaseUrl: "http://api.goonj.pk/v2",
+        apiBaseUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
         hepage: "http://localhost/hepage"
     },
     staging: {
-        apiBaseUrl: 'http://api.goonj.pk/v2',
+        apiBaseUrl: 'https://api.goonj.pk/v2',
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/web-thumb",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
         hepage: "http://hepage.goonj.pk"
     },
     production: {
-        apiBaseUrl: "http://api.goonj.pk/v2",
+        apiBaseUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
