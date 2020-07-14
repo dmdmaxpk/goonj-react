@@ -15,6 +15,7 @@ class VideoPlayer extends Component {
             data: [],
             thumbnail: '',
             urlLink: "//weblive.goonj.pk/",
+            source: ''
         }
         this.kFormatter = this.kFormatter.bind(this);
     }
@@ -41,6 +42,7 @@ class VideoPlayer extends Component {
                 let generatedToken = akamai_auth.generateToken();
                 let token = "hdnts=" + generatedToken;
                 const source = `//weblive.goonj.pk/${this.state.data.hls_link}?${token}`;
+                this.setState({source});
                 const video = document.querySelector('video');
                 
                 // For more options see: https://github.com/sampotts/plyr/#options
@@ -80,6 +82,7 @@ class VideoPlayer extends Component {
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
                     <video className="liveVP" autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail}`}>
+                        <source src={this.state.source} type="application/x-mpegURL" />
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
