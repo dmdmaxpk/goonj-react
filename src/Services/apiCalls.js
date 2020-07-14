@@ -32,7 +32,7 @@ export function CheckLiveStatus(){
         package_id: livePackageId
     }
     if(liveMsisdn && livePackageId){
-        AxiosInstance.post('/payment/status?live', statusData)
+        AxiosInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
             console.log(result);

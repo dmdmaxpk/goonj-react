@@ -87,13 +87,66 @@
 .cancelBtn{
     margin-right: 2vw;
 }
+.modalContainer{
+    width: 40vw;
+    height: 40vh;
+    padding: 2% 5%;
+    top: 30vh !important;
+    left: 30vw !important;
+    border-radius: 10px;
+    position: relative;
+    background-color: white;
+}
+.modalContainer > div{
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+.modalDiv{
+    outline: none !important;
+    color: #14182A;
+}
+.modalHeading{
+    font-size: xx-large;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.modalBody{
+    margin: 4vh 0;
+    font-size: large;
+    font-weight: 600;
+}
+.btnCloseModal{
+    margin: 0 5vw;
+    background-color: #14182A;
+}
+.loaderDiv{
+    position: relative;
+    top: 12vh;
+    right: 2vw;
+    outline: none;
+}
 @media screen and (max-width: 480px){
-
     .profilePageHead{
         margin-bottom: 12vh;
     }
     .pkgSubBtn{
         width: 28vw;
+    }
+    .modalContainer{
+        width: 90vw;
+        height: 30vh;
+        top: 25vh !important;
+        left: 5vw !important;
+    }
+    .modalBody{
+        margin: 2vh 0;
+        font-size: small;
+    }
+    .btnCloseModal{
+        margin: 0 8vw;
+    }
+    .loaderDiv{
+        top: 11vh;
+        right: 5vw;
     }
 }
 @media screen and (max-width: 480px){

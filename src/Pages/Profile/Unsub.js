@@ -3,12 +3,13 @@ import {withRouter} from 'react-router-dom';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import AxiosInstance from '../../Utils/AxiosInstance';
-import { Collapse, Divider } from '@material-ui/core';
+import { Collapse, Divider, Modal, Fade } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import {Link} from 'react-router-dom';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import ErrorComponent from './Error';
+import Loader from '../../Components/Loader/Loader'
 
 
 class Unsub extends Component {
@@ -24,19 +25,25 @@ class Unsub extends Component {
             liveTvWeeklyPkg: '',
             comedyDailyPkg: '',
             comedyWeeklyPkg: '',
-            showUnsub: false
+            showUnsub: false,
+            modal: false,
+            displayMsisdn: '',
+            displayPackageId: '',
+            loading: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.getPackages = this.getPackages.bind(this);
         this.unsubscribe = this.unsubscribe.bind(this);
         this.subscribe = this.subscribe.bind(this);
         this.showUnsub = this.showUnsub.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.getPackageName = this.getPackageName.bind(this);
     }
     componentDidMount(){
         this.getPackages();
     }
     handleChange(e){
-        console.log(typeof e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -56,16 +63,17 @@ class Unsub extends Component {
                 liveTvWeeklyPkg: result[0].packages[1]._id,
                 comedyDailyPkg: result[1].packages[0]._id,
                 comedyWeeklyPkg: result[1].packages[1]._id,
-
             })
         })
     }
-    unsubscribe(msisdn, packageId, setPkgId){
+    unsubscribe(){
+        this.setState({loading: true});
         let source = localStorage.getItem('source');
+        let {displayMsisdn, displayPackageId, setPkgId} = this.state;
         let unsubData = {
-            msisdn,
+            msisdn: displayMsisdn,
             source,
-            package_id: packageId
+            package_id: displayPackageId
         }
         AxiosInstance.post('/payment/unsubscribe', unsubData)
         .then(res =>{
@@ -76,23 +84,27 @@ class Unsub extends Component {
         })
         .catch(err =>{
             console.log(err);
+            this.setState({loading: false})
         })
     }
-    subscribe(msisdn, packageId, setPkgId){
+    subscribe(){
+        this.setState({loading: true});
         let source = localStorage.getItem('source');
+        let {displayMsisdn, displayPackageId, setPkgId} = this.state;
         let subData = {
-            msisdn,
+            msisdn: displayMsisdn,
             source,
-            package_id: packageId
+            package_id: displayPackageId
         }
         AxiosInstance.post('/payment/subscribe', subData)
         .then(res =>{
             let result = res.data;
             if(result.code === -1){
                 alert(result.message);
+                this.setState({loading: false});
             }
             else{
-                localStorage.setItem(setPkgId, packageId);
+                localStorage.setItem(setPkgId, displayPackageId);
                 window.location.reload();
             }
         })
@@ -101,6 +113,48 @@ class Unsub extends Component {
         this.setState({
             showUnsub: !this.state.showUnsub
         })
+    }
+    openModal(msisdn, packageId, setPkgId, btnClick){
+        let displayBillingDate = setPkgId === 'livePackageId' ? localStorage.getItem('liveSubExpiry') : localStorage.getItem('CPSubExpiry');
+
+        this.setState({
+            modal: true,
+            displayMsisdn: msisdn,
+            displayPackageId: packageId,
+            setPkgId,
+            showBtn: btnClick
+        });
+        if(btnClick === "unsub"){
+            this.setState({
+                displayHeading: "Unsubscribe",
+                displayText: `Your subscription is valid till ${new Date(displayBillingDate).toLocaleDateString()}. Are you sure you want to unsubscribe ${this.getPackageName(packageId)} Plan?`
+            })
+        }
+        else{
+            this.setState({
+                displayHeading: "Subscribe",
+                displayText: `Your subscription is valid till ${new Date(displayBillingDate).toLocaleDateString()}. Are you sure you want to subscribe to ${this.getPackageName(packageId)} Plan?`
+            })
+        }
+    }
+    closeModal(){
+        this.setState({
+            modal: false
+        })
+    }
+    getPackageName(packageId){
+        if(packageId === this.state.liveTvDailyPkg){
+            return this.state.liveTvDaily
+        }
+        else if(packageId === this.state.liveTvWeeklyPkg){
+            return this.state.liveTvWeekly
+        }
+        else if(packageId === this.state.comedyDailyPkg){
+            return this.state.comedyDaily
+        }
+        else if(packageId === this.state.comedyWeeklyPkg){
+            return this.state.comedyWeekly
+        }
     }
     render(){
         let state = this.state;
@@ -160,9 +214,9 @@ class Unsub extends Component {
                                         <div className="subPkgDiv">
                                             <p className="floatLeft pkgName">{item.name}</p>
                                             {currentLivePkg === item.packageID && liveSubStatus === "active" && msisdn ?
-                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
+                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.openModal(item.msisdn, item.packageID, item.setPkgId, "unsub")}>Unsubscribe</button>
                                                 :
-                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
+                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.openModal(item.msisdn, item.packageID, item.setPkgId, "sub")}>Subscribe</button>
                                             }
                                             <div className="clearfix" />
                                         </div>
@@ -180,9 +234,9 @@ class Unsub extends Component {
                                         <div className="subPkgDiv">
                                             <p className="floatLeft pkgName">{item.name}</p>
                                             {currentCPPkg === item.packageID && CPSubStatus === "active" && CPmsisdn ?
-                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.unsubscribe(item.msisdn, item.packageID, item.setPkgId)}>Unsubscribe</button>
+                                                <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.openModal(item.msisdn, item.packageID, item.setPkgId, "unsub")}>Unsubscribe</button>
                                                 :
-                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.subscribe(item.msisdn, item.packageID, item.setPkgId)}>Subscribe</button>
+                                                <button className="floatRight pkgSubBtn subBtn" onClick={()=> this.openModal(item.msisdn, item.packageID, item.setPkgId, "sub")}>Subscribe</button>
                                             }
                                             <div className="clearfix" />
                                         </div>
@@ -196,6 +250,32 @@ class Unsub extends Component {
                         <ErrorComponent />
                     }
                 </Collapse>
+                <Modal
+                    className="modalContainer"
+                    open={this.state.modal}
+                    onClose={this.closeModal}
+                    disableBackdropClick={true}
+                    closeAfterTransition
+                >
+                    <Fade in={this.state.modal}>
+                        {this.state.loading === false ?
+                            <div className="modalDiv">
+                                <p className="modalHeading">{this.state.displayHeading}</p>
+                                <p className="modalBody">{this.state.displayText}</p>
+                                <button className="pkgSubBtn btnCloseModal" onClick={this.closeModal}>Cancel</button>
+                                {this.state.showBtn === "unsub" ?
+                                    <button className="pkgSubBtn unsubBtn" onClick={this.unsubscribe}>Confirm</button>
+                                    :
+                                    <button className="pkgSubBtn subBtn" onClick={this.subscribe}>Confirm</button>
+                                }
+                            </div>
+                        :
+                            <div className="loaderDiv">
+                                <Loader />
+                            </div>
+                        }
+                    </Fade>
+                </Modal>
             </div>
         );
     }

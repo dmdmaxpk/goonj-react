@@ -30,22 +30,7 @@ class App extends React.Component {
     if(this.props.location.pathname === '/'){
       this.props.history.push('/home');
     }
-    setParams();
-
-    let pathname = this.props.location.pathname.split('/')[1];
-    if(pathname === "channel"){
-    }
-    else{
-      CheckLiveStatus();
-    }
-
-    if(pathname.split('_')[0].length === 4 && pathname.includes('_')){
-    }
-    else{
-      CheckCPStatus();
-    }
-    
-;  }
+  }
   render() {
     return (
       <div>
@@ -75,7 +60,6 @@ class App extends React.Component {
           />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/terms-conditions" component={TermsConditions} />
-          <Route exact path="/404" component={PageNotFound} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel}/>
@@ -83,9 +67,10 @@ class App extends React.Component {
           <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
           <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
           <Route exact path="/binjee" component={Binjee} />
-          <Route path="/:vodID" component={VodPage} />
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
+          <Route exact path="/404" component={PageNotFound} />
+          <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
         {this.props.location.pathname !== "/binjee" ?
