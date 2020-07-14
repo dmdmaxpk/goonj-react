@@ -121,7 +121,7 @@ top: 0;
 }
 .recomDiv{
     height: 105px;
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
     cursor: pointer;
 }
 .recomImg{
@@ -143,10 +143,11 @@ top: 0;
     overflow: hidden;
 }
 .recomTitle{
-    width: 87% !important;
+    width: 90% !important;
     font-size: small;
     font-weight: 600;
     color: white;
+    height: 10px !important;
     // margin-bottom: 0.5rem;
 }
 .grey{
@@ -186,14 +187,52 @@ top: 0;
         margin-top: 0;
         margin-left: -3%;
     }
+    .recomGridContainer{
+        padding-left: 1vh;
+    }
+    .recomHeading{
+        display: none;
+    }
+    .recomDiv{
+        // width: 25vw !important;
+        margin-bottom: 12px !important;
+        cursor: pointer;
+    }
+    .recomImg{
+        height: 100%;
+        width: 125%;
+        margin-right: 2px;
+        border-radius: 8px;
+        float: left;
+    }
+    .recomPlayBtn {
+        width: 20px;
+        position: relative;
+        right: 0px;
+        left: 8vw;
+        top: -7vh;
+    }
     .recomTitle{
-        font-size: x-small !important;
+        width: 100% !important;
+        font-size: xx-small !important;
+        height: 5vh !important;
+        margin: 0 !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* after 3 line show ... */
+        -webkit-box-orient: vertical;
+        // overflow: hidden;
     }
     .grey{
         font-size: xx-small !important;
     }
     .recomTextDiv{
         bottom: 22px;
+        height: auto;
+    }
+    .recomendation_details_div{
+        // margin-top: 1vh;
     }
   }
 
@@ -205,6 +244,9 @@ top: 0;
         width: 92%;
         height: 140px;
     }
+    .recomTitle{
+        height: 6vh !important;
+    }
   }
   @media only screen and (max-width: 320px) {
     .channelListName {
@@ -214,10 +256,16 @@ top: 0;
         width: 92%;
         height: 130px;
     }
+    .recomImg{
+        width: 140% !important;
+    }
     .recomTitle{
         font-size: 11px !important;
         height: 45px !important;
-
+    }
+    .recomPlayBtn {
+        left: 7vw;
+        top: -9vh;
     }
     .grey{
         font-size: 9px !important;
