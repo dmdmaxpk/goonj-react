@@ -23,11 +23,11 @@ const config = {
     }
 }
 
-let environment = 'staging';
+let environment = 'production';
 if (process.env.REACT_APP_ENV) {
   environment = process.env.REACT_APP_ENV ;
 } else {
-    environment = 'staging'
+    environment = 'production'
 }
 
 const getConfig = (environment) => {

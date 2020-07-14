@@ -14,7 +14,7 @@ class VideoPlayer extends Component {
         this.state = {
             data: [],
             thumbnail: '',
-            urlLink: "//teststream.goonj.pk",
+            urlLink: "//weblive.goonj.pk/",
         }
         this.kFormatter = this.kFormatter.bind(this);
     }
@@ -40,7 +40,7 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = "hdnts=" + generatedToken;
-                const source = `//teststream.goonj.pk/${this.state.data.hls_link}?${token}`;
+                const source = `//weblive.goonj.pk/${this.state.data.hls_link}?${token}`;
                 const video = document.querySelector('video');
                 
                 // For more options see: https://github.com/sampotts/plyr/#options
