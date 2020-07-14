@@ -16,9 +16,26 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavMenu from "./NavMenu";
 import { Hidden } from "@material-ui/core";
+import { setParams } from "../../Services/flowIntegrations";
+import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
-  console.log("currentRoute", currentRoute);
+  console.log("Header rendered");
+
+  setParams();
+
+  let pathname = history.location.pathname.split('/')[1];
+  if(pathname === "channel"){
+  }
+  else{
+    CheckLiveStatus();
+  }
+
+  if(pathname.split('_')[0].length === 4 && pathname.includes('_')){
+  }
+  else{
+    CheckCPStatus();
+  }
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/home")}>
