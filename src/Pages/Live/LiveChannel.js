@@ -44,14 +44,14 @@ class LiveChannel extends Component {
             //     localStorage.removeItem('livePermission');
             //     this.props.history.push('/paywall/live');
             // }
-            if(result.is_allowed_to_stream){
+            if(result.is_allowed_to_stream === true){
                 this.setState({
                     loading: false,
                     status: true
                 })
             }
             else{
-                // this.props.history.push(`/paywall/live`);
+                this.props.history.push(`/paywall/live`);
             }
         })
     }
