@@ -27,17 +27,17 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
-    //     var config = {
-    //         algorithm : 'SHA256',
-    //         acl : '/*',
-    //         window : 5000,
-    //         key : "72fb58000a0d1561f60da877b5a009fb",
-    //         encoding: false
-    //    };
+        var config = {
+            algorithm : 'SHA256',
+            acl : '/*',
+            window : 5000,
+            key : "72fb58000a0d1561f60da877b5a009fb",
+            encoding: false
+       };
     
-    //     var akamai = new Akamai(config),
-    //     token = akamai.generateToken();
-    //     console.log("token", token);
+        var akamai = new Akamai(config),
+        token = akamai.generateToken();
+        console.log("token", token);
 
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
@@ -45,17 +45,17 @@ class VideoPlayer extends Component {
             let data = res.data[0];
             this.setState({data, thumbnail: data.thumbnail}, function(){
                 console.log(this.state.data);
-                akamai_auth.setConfig({
-                    algo: "SHA256",
-                    key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
-                    window: 500,
-                    acl: '/*', //optional
-                    start_time: 0,
-                    // session_id:{id}, //optional
-                    // url: {url}, //optional
-                });
-                let generatedToken = akamai_auth.generateToken();
-                let token = generatedToken;
+                // akamai_auth.setConfig({
+                //     algo: "SHA256",
+                //     key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
+                //     window: 500,
+                //     acl: '/*', //optional
+                //     start_time: 0,
+                //     // session_id:{id}, //optional
+                //     // url: {url}, //optional
+                // });
+                // let generatedToken = akamai_auth.generateToken();
+                // let token = generatedToken;
                 const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
                 console.log("url", source);
                 this.setState({source});
