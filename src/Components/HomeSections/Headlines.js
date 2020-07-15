@@ -83,8 +83,10 @@ class HeadlinesSection extends Component {
                         {data.map(item =>
                                 <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
                                     <Link style={{textDecoration: "none", color:"white"}}>
+                                        <div style={{position:"relative", marginBottom:"4%"}}>
                                         <img className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail}`} />
-                                        <img className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
+                                        <img style={{position:"absolute", left:"40%", bottom:"35%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
+                                        </div>
                                         <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
                                         <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>
                                     </Link>

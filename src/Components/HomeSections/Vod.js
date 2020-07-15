@@ -5,9 +5,8 @@ import Heading from './Heading';
 import './HomeSection.scss';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
-import ResponsiveVod from "../HomeSections/ResponsiveVod"
-import Hidden from '@material-ui/core/Hidden';
 import { withRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class VodSection extends Component {
     constructor(props) {
@@ -44,63 +43,79 @@ class VodSection extends Component {
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                 <div className="sectionContainers">
-                    <div className="vod_div">
-                    <GridContainer>
-                        <GridItem xs={12} sm={12} md={6} className="vodGI" onClick={()=> this.handleClick(data[0])}>
-                                <img className="childImg vod_first_image" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
-                                <span className="blockOneSpan">
-                                    <img src={require('../../Assets/playBtn.png')} className="blockOneImg"/>
-                                    <div className="blockOneDiv">
-                                        <div className="title_and_discription">
-                                            <p className="floatLeft marginZero headlineText">{data[0].title}</p>
-                                            <p className="floatLeft marginZero categoryText">{this.removeDescTags(data[0].description)}</p>
-                                           
+                     <div className="containerO">
+                            <div className="row">
+                                <div className="col-lg-6 col-sm-12 col-12 padding_5px vodGI vodFirstCol"  onClick={()=> this.handleClick(data[0])}>
+                                <div className="img-box relative_position height-100 ">
+                                    <img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail}`} />
+                                        <span className="play_btn_position1" style={{position: "absolute", bottom: "45%", left: "45%"}}>
+                                            <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
+                                        </span>
+
+                                                     <div className="blockOneDiv">
+                                                        <div className="title_and_discription">
+                                                            <p className="floatLeft marginZero headlineText">{data[0].title}</p>
+                                                            <p className="floatLeft marginZero categoryText">{this.removeDescTags(data[0].description)}</p>
+                                                        
+                                                        </div>
+                                                        <div className="clearfix marginZero publish_date_and_channel">
+                                                            <p className="floatRight marginZero daysAgoText" ><ReactTimeAgo date={data[0].publish_dtm}/></p>
+                                                            <p className="floatRight marginZero channelNameText">{data[0].source}</p>
+                                                        </div>
+                                                        </div>
+                                </div>
+                                </div>
+                                <div className="col-lg-6 col-sm-12 col-12 bellow_div_padding" >
+                                <div className="row height-100">
+                                    <div className="col-lg-8 col-sm-6 col-6">
+                                    <div className="row height-100">
+                                        <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[1])}>
+                                        <div className="heightForResponsive img-box relative_position square img_padding_2nd">
+                                        <img className="height-100 dramas_image drama_pic_2  content img_radius vod" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
+                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                              <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
+                                         </span>
+
                                         </div>
-                                        <div className="clearfix marginZero publish_date_and_channel">
-                                            <p className="floatRight marginZero daysAgoText" ><ReactTimeAgo date={data[0].publish_dtm}/></p>
-                                            <p className="floatRight marginZero channelNameText">{data[0].source}</p>
+                                        </div>
+                                        <div className="col-lg-12 col-sm-6 col-6 fill padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[2])}>
+                                        <div className="heightForResponsive img-box relative_position square img_padding_3rd">
+                                        <img className="height-100 dramas_image drama_pic_2  content img_radius" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
+                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                              <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
+                                         </span>
+                                        </div>
                                         </div>
                                     </div>
-                                </span>                         
-                        </GridItem>
-                        <GridItem xs={12} sm={12} md={4}>
-                            <GridContainer>
-                                <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[1])}>
-                                    <img className="childImg blockTwo" src={`${config.videoLogoUrl}/${data[1].thumbnail}`} />
-                                    <span className="blockTwoSpan">
-                                        <img src={require('../../Assets/playBtn.png')} />
-                                    </span>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[2])}>
-                                    <img className="childImg vodBlockThree" src={`${config.videoLogoUrl}/${data[2].thumbnail}`} />
-                                    <span className="blockTwoSpan">
-                                        <img src={require('../../Assets/playBtn.png')} />
-                                    </span>
-                                </GridItem>
-                            </GridContainer>
-                        </GridItem>
-                        <GridItem xs={12} sm={12} md={2}>
-                            <GridContainer>
-                                <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[3])}>
-                                    <img className=" vodBlockFour childImg" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
-                                    <span className="blockThreeSpan">
-                                        <img src={require('../../Assets/playBtn.png')} />
-                                    </span>
-                                </GridItem>
-                                <GridItem xs={12} sm={12} md={12} className="vodGI" onClick={()=> this.handleClick(data[4])}>
-                                    <img className=" vodBlockFive childImg" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
-                                    <span className="blockFourSpan">
-                                        <img src={require('../../Assets/playBtn.png')} />
-                                    </span>
-                                </GridItem>
-                            </GridContainer>
-                        </GridItem>
+                                    </div>
 
-                    </GridContainer>
-                    </div>
-                    <div className="responsive_vod_div">
-                        <ResponsiveVod data={data} />
-                    </div>
+
+                                    <div className="col-lg-4 col-sm-6 col-6 ">
+                                    <div className="row height-100">
+                                    <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI vod_4th_img" onClick={()=> this.handleClick(data[3])}>
+                                        <div className="img-box relative_position square height-100 img_padding_4th">
+                                        <img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[3].thumbnail}`} />
+                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                              <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
+                                         </span>
+                                        </div>
+                                        </div>
+                                    <div className="col-lg-12 col-sm-6 col-6  vodGI padding_5px vod_5th_img" onClick={()=> this.handleClick(data[4])}>
+                                    <div className="img-box relative_position square height-100 img_padding_5th">
+                                        <img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[4].thumbnail}`} />
+                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                              <img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
+                                         </span>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
                 </div>
                 :
                 ''

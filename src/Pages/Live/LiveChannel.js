@@ -10,8 +10,8 @@ class LiveChannel extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            status: false,
-            loading: true
+            status: true,
+            loading: false
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
@@ -51,7 +51,7 @@ class LiveChannel extends Component {
                 })
             }
             else{
-                this.props.history.push(`/paywall/live`);
+                // this.props.history.push(`/paywall/live`);
             }
         })
     }

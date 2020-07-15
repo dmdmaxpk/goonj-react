@@ -79,7 +79,7 @@ class Home extends Component {
                             <ChannelList />
                             <br />
                             {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
-                            {headlines.length !== 0 ? <HeadlinesSection data={headlines} category="news" title="Headlines" /> : <Loader />}
+                            {headlines.length !== 0 ? <HeadlinesSection style={{top:"2%"}} data={headlines} category="news" title="Headlines" /> : <Loader />}
                             <br />
                             {sports.length !== 0 ? <VodSection title="Sports" data={sports} category="sports" /> : <Loader />}
                             <br />
