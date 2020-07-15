@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-// import Plyr from 'plyr';
 import config from '../../Utils/config';
-import Hls from 'hls.js';
 import './LiveVP.scss';
 import akamai_auth from 'akamai-edge-auth-generator';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
-import Akamai from 'akamai-auth-token';
 import videojs from 'video.js';
-import "video.js/dist/video-js.css";
+import './videojs.css';
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -29,18 +26,6 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
-        var config = {
-            algorithm : 'SHA256',
-            acl : '/*',
-            window : 5000,
-            key : "72fb58000a0d1561f60da877b5a009fb",
-            encoding: false
-       };
-    
-        var akamai = new Akamai(config),
-        token = akamai.generateToken();
-        console.log("token", token);
-
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
             console.log("channel", res.data);
@@ -71,35 +56,6 @@ class VideoPlayer extends Component {
                     type: "application/x-mpegURL",
                     withCredentials: true
                   });
-                
-
-                // const video = document.querySelector('video');
-                
-                // For more options see: https://github.com/sampotts/plyr/#options
-                // captions.update is required for captions to work with hls.js
-                // const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-                
-                // if (!Hls.isSupported()) {
-                //     video.src({
-                //         src: source,
-                //         type: "application/x-mpegURL",
-                //         withCredentials: true
-                //       });
-                // } else {
-                //     // For more Hls.js options, see https://github.com/dailymotion/hls.js
-                //     const hls = new Hls();
-                //     hls.loadSource(source);
-                //     hls.attachMedia(video);
-                //     window.hls = hls;
-                    
-                //     // Handle changing captions
-                //     player.on('languagechange', () => {
-                //         // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-                //         setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-                //     });
-                // }
-                // Expose player so it can be used from the console
-                // window.player = player;
         })
     })
     .catch(err =>{
@@ -114,14 +70,13 @@ class VideoPlayer extends Component {
         let {data} = this.state;
         return(
             this.state.data.length !== 0 ? 
-                <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}} data-vjs-player>
-                    <video ref={ node => this.videoNode = node } id='channel-player' className="liveVP" controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup='{"fluid": true, "autoplay": false, "preload": none}' webkit-playsinline>
-                        {/* <source src={this.state.source} type="application/x-mpegURL"  /> */}
-                        {/* <!-- Caption files --> */}
-                        <track kind="captions" label="Urdu" srcLang="ur" src="" default />
-                        {/* <!-- Fallback for browsers that don't support the <video> element --> */}
-                        <a href="" download>Download</a>
-                    </video>
+                <div className="videoPlayerContainer">
+                    <div>
+                        <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
+                            <source src={this.state.source} />
+                            <a href="" download>Download</a>
+                        </video>
+                    </div>
                                 <div className="title_div">
                                     <div className="title_hashTag_and_heading channelTitle"> 
                                         <div>{data.name}</div>
