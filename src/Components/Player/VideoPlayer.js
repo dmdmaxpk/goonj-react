@@ -56,7 +56,7 @@ class VideoPlayer extends Component {
                 // });
                 // let generatedToken = akamai_auth.generateToken();
                 // let token = generatedToken;
-                const source = `${this.state.urlLink}/${this.state.data.hls_link.split('.')[0]}_360/index.m3u8?hdnts=${token}`;
+                const source = `${this.state.urlLink}/${this.state.data.hls_link.split('.')[0]}_360p/index.m3u8?hdnts=${token}`;
                 console.log("url", source);
                 this.setState({source});
                 const video = document.querySelector('video');
