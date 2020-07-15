@@ -61,7 +61,7 @@ class LiveChannel extends Component {
         return(
             this.state.loading === false & this.state.status === true ?
             <div style={{marginTop: "3%"}}>
-                <VideoPlayer slug={slug} /> <br /><br />
+                <VideoPlayer slug={slug} />
                 <ChannelList />
                 <PopularList title="Popular on Goonj" />
             </div>

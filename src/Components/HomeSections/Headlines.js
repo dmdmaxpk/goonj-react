@@ -29,7 +29,7 @@ class HeadlinesSection extends Component {
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
         let str = specialCharStr.replace(/\s+/g, '-').toLowerCase();
         let url = id + "_" + str;
-        console.log(url);
+        // console.log(url);
         return url;
     }
     getDate(date){
@@ -39,7 +39,7 @@ class HeadlinesSection extends Component {
     }
     render(){
         let data = this.props.data;
-        console.log(data);
+        // console.log(data);
         var settings = {
             dots: false,
             arrows: true,

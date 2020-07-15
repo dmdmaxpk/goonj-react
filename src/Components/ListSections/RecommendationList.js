@@ -31,7 +31,7 @@ class RecommendationList extends Component {
             });
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         })
     }
     kFormatter(num) {

@@ -53,7 +53,7 @@ class Unsub extends Component {
         AxiosInstance.get(`/paywall?source=${source}`)
         .then(res =>{
             let result = res.data.data;
-            console.log("packages", result)
+            // console.log("packages", result)
             this.setState({
                 liveTvDaily: result[0].packages[0].package_name,
                 liveTvWeekly: result[0].packages[1].package_name,
@@ -78,12 +78,12 @@ class Unsub extends Component {
         AxiosInstance.post('/payment/unsubscribe', unsubData)
         .then(res =>{
             let result = res.data;
-            console.log(result);
+            // console.log(result);
             localStorage.removeItem(setPkgId);
             window.location.reload();
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
             this.setState({loading: false})
         })
     }

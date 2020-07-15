@@ -14,7 +14,7 @@ class VideoPlayer extends Component {
         this.state = {
             data: [],
             thumbnail: '',
-            urlLink: "//kaios.streamax.io",
+            urlLink: config.liveStreamUrl,
             source: ''
         }
         this.kFormatter = this.kFormatter.bind(this);
@@ -28,10 +28,10 @@ class VideoPlayer extends Component {
     componentDidMount(){
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
-            console.log("channel", res.data);
+            // console.log("channel", res.data);
             let data = res.data[0];
             this.setState({data, thumbnail: data.thumbnail}, function(){
-                console.log(this.state.data);
+                // console.log(this.state.data);
                 akamai_auth.setConfig({
                     algo: "SHA256",
                     key: "72fb58000a0d1561f60da877b5a009fb",
@@ -43,12 +43,12 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = generatedToken;
-                const source = `${this.state.urlLink}/${this.state.data.hls_link.split('.')[0]}_360p/index.m3u8?hdnts=${token}`;
-                console.log("url", source);
+                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
+                // console.log("url", source);
                 this.setState({source});
 
                 this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-                    console.log('onPlayerReady', this)
+                    // console.log('onPlayerReady', this)
                 });
 
                 this.player.src({
@@ -59,7 +59,7 @@ class VideoPlayer extends Component {
         })
     })
     .catch(err =>{
-        console.log(err);
+        // console.log(err);
     })
     }
     kFormatter(num) {
@@ -77,19 +77,18 @@ class VideoPlayer extends Component {
                             <a href="" download>Download</a>
                         </video>
                     </div>
-                                <div className="title_div">
-                                    <div className="title_hashTag_and_heading channelTitle"> 
-                                        <div>{data.name}</div>
-                                    </div>
+                    <div className="title_div">
+                        <div className="title_hashTag_and_heading channelTitle"> 
+                            <div>{data.name}</div>
+                        </div>
 
-                                    <div>
-                                        <div className="views_text"> 
-                                            {this.kFormatter(data.views_count)} views
-                                        </div >  
-                                        <SocialShare />
-                                    </div> 
-
-                                </div>
+                        <div>
+                            <div className="views_text"> 
+                                {this.kFormatter(data.views_count)} views
+                            </div >  
+                            <SocialShare />
+                        </div> 
+                    </div>
                 </div>
             :
             <Loader />

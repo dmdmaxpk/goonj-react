@@ -10,7 +10,7 @@ class Box extends React.Component {
 
   constructor(props){
     super(props);
-    console.log("box", props);
+    // console.log("box", props);
     this.state = {
       data: [],
       step: 0, // 0 => Landed permission, 1 => verify otp, 2 => graced permission 
@@ -29,10 +29,10 @@ class Box extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   componentDidMount(){
-    console.log(this.props);
+    // console.log(this.props);
   }
   handleChange(e){
-    console.log(e.target.name, e.target.value);
+    // console.log(e.target.name, e.target.value);
     if(e.target.value.length < 12){
       this.setState({
         [e.target.name]: e.target.value
@@ -57,11 +57,11 @@ class Box extends React.Component {
         }
         else if(result.code === -1){
           alert(result.message);
-          console.log(result);
+          // console.log(result);
         }
       })
       .catch(err =>{
-        console.log(err)
+        // console.log(err)
         alert(err)
       })
     }

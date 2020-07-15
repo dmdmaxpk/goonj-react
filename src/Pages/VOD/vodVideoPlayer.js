@@ -39,7 +39,7 @@ class VodVideoPlayer extends Component {
     }
     initializeVideoPlayer(){
         let item = this.props.data;
-        console.log(item);
+        // console.log(item);
         const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
         const video = document.querySelector('video');
         

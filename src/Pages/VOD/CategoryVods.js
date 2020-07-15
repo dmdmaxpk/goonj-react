@@ -50,7 +50,7 @@ class CategoryVodPage extends Component {
         let url = this.getVodUrl(item.title, item._id);
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
-            console.log(url);
+            // console.log(url);
             permission ? window.location.href = `/${url}` : window.location.href = `${config.hepage}?postUrl=${url}`;
         }
         else{

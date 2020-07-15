@@ -27,7 +27,7 @@ class Home extends Component {
             this.setState({dramas: res.data});
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         });
 
         // Sports API call
@@ -36,7 +36,7 @@ class Home extends Component {
             this.setState({sports: res.data});
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         });
 
         // Programs API call
@@ -45,7 +45,7 @@ class Home extends Component {
             this.setState({programs: res.data});
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         });
 
         // Headlines Call
@@ -54,7 +54,7 @@ class Home extends Component {
             this.setState({headlines: res.data})
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         })
     }
     componentWillMount(){

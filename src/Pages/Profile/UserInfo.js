@@ -27,7 +27,7 @@ class UserInfo extends Component {
         this.getProfileInfo();
     }
     handleChange(e){
-        console.log(typeof e.target.value)
+        // console.log(typeof e.target.value)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -62,7 +62,7 @@ class UserInfo extends Component {
             alert("Profile Updated!");
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         })
     }
     showProfile(){
