@@ -13,7 +13,7 @@ var ea = new EdgeAuth({
 })
 var token = ea.generateURLToken("/*");
 console.log("token token", token);
-localStorage.setItem('streamingToken', token);
+localStorage.setItem('streamingToken', token)
 var options = {
     hostname: EA_HOSTNAME,
     path: "//kaios.streamax.io",
