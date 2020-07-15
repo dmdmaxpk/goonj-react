@@ -8,6 +8,7 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import Akamai from 'akamai-auth-token';
+import {makeRequest} from '../../Utils/token'
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -27,17 +28,19 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
-        var config = {
-            algorithm : 'SHA256',
-            acl : '/*',
-            window : 5000,
-            key : "72fb58000a0d1561f60da877b5a009fb",
-            encoding: false
-       };
+        makeRequest();
+        let token = localStorage.getItem('streamingToken');
+    //     var config = {
+    //         algorithm : 'SHA256',
+    //         acl : '/*',
+    //         window : 5000,
+    //         key : "72fb58000a0d1561f60da877b5a009fb",
+    //         encoding: false
+    //    };
     
-        var akamai = new Akamai(config),
-        token = akamai.generateToken();
-        console.log("token", token);
+    //     var akamai = new Akamai(config),
+    //     token = akamai.generateToken();
+    //     console.log("token", token);
 
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
