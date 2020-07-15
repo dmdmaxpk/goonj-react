@@ -72,6 +72,7 @@ class VideoPlayer extends Component {
                     const hls = new Hls();
                     hls.loadSource(source);
                     hls.attachMedia(video);
+                    hls.withCredentials = true;
                     window.hls = hls;
                     
                     // Handle changing captions
@@ -97,7 +98,7 @@ class VideoPlayer extends Component {
         return(
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
-                    <video className="liveVP" withCredentials={true} autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`}>
+                    <video className="liveVP" autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`}>
                         <source src={this.state.source} type="application/x-mpegURL" />
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
