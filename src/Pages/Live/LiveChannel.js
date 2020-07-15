@@ -37,23 +37,29 @@ class LiveChannel extends Component {
             source,
             package_id
         }
-        AxiosInstance.post('/payment/status', statusData)
-        .then(res =>{
+        if(msisdn){
+
+            AxiosInstance.post('/payment/status', statusData)
+            .then(res =>{
             const result = res.data.data;
             // if(result.code === -1){
-            //     localStorage.removeItem('livePermission');
+                //     localStorage.removeItem('livePermission');
             //     this.props.history.push('/paywall/live');
             // }
-            if(result.is_allowed_to_stream){
+            if(result.is_allowed_to_stream === true){
                 this.setState({
                     loading: false,
                     status: true
                 })
             }
             else{
-                // this.props.history.push(`/paywall/live`);
+                this.props.history.push(`/paywall/live`);
             }
-        })
+            })
+        }
+        else{
+            this.props.history.push(`/paywall/live`);
+        }
     }
 
     render(){
