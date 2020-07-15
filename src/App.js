@@ -23,13 +23,19 @@ import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
-
+import ReactGA from 'react-ga';
 
 class App extends React.Component {
   componentDidMount(){
     if(this.props.location.pathname === '/'){
       this.props.history.push('/home');
     }
+    const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
+    ReactGA.initialize(trackingId);
+    this.props.history.listen(location => {
+      ReactGA.set({ page: location.pathname }); // Update the user's current page
+      ReactGA.pageview(location.pathname); // Record a pageview for the given page
+    });
   }
   render() {
     return (
@@ -37,7 +43,7 @@ class App extends React.Component {
         {this.props.location.pathname !== "/binjee" ?
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
-             <Sidebar position={"left"} /> 
+             <Sidebar /> 
           </div>
           :
           ''
