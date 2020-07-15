@@ -2,8 +2,7 @@
 //     display: none !important;
 // }
 .videoPlayerContainer{
-    width: 1200px !important;
-    height: 500;
+    width: 70vw !important;
     padding: 0 10% !important;
 }
 .channelTitle{
@@ -26,12 +25,8 @@
 (orientation : landscape){
     .videoPlayerContainer{
         width: 70vw !important;
-        // height: 500px;
-        padding-left: 7% !important;
-        padding-right: 4% !important;
-
-}
-
+        padding: 0 4% 0 7% !important;
+    }
 }
 
 @media only screen and (max-width: 480px) {
