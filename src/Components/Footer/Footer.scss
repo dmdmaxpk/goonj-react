@@ -3,7 +3,6 @@ $footerBg: url('../../Assets/footer-bg.png');
 .footer{
   background-image: $footerBg;
   width: 100vw;
-  height: 55vh;
   padding: 0 10%;
 }
 .footer{
@@ -49,6 +48,21 @@ $footerBg: url('../../Assets/footer-bg.png');
   float: left;
   font-size: large;
   font-weight: 600;
+}
+
+@media only screen and (min-width: 801px) {
+
+  .footer{
+   margin-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+
+  .footer{
+    padding-bottom: 2vh;
+    height: 100%;
+  }
 }
 
 @media only screen and (max-width: 640px) {

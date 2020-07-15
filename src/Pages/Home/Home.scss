@@ -5,4 +5,19 @@
     margin-bottom: -20vh;
 }
 
+@media only screen and (min-width: 801px) {
+    .homeSections{
+        margin-right: -2%;
+        margin-left: 2%;
+    }
 
+
+}
+@media only screen and (max-width: 900px) {
+    .homeSections{
+    bottom: 0vh !important;
+    margin-top: 0px !important;
+    margin-bottom: 0vh !important;
+    }
+
+}

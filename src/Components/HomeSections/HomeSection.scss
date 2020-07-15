@@ -4,6 +4,7 @@
     padding: 0 5% 0 8% !important;
 }
 .heading_container{
+    margin-right: 4%;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -29,18 +30,14 @@
     height: 700px;
 }
 .headlinesContainer{
-    // margin-left: 4%;
-    // margin-right: 4%;
+    margin-top: 4%;
 }
 .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
     top:31% !important;
 }
 .headlinesPlayBtn{
     width: 30px;
-    position: relative;
-    bottom: 12vh;
-    margin-bottom: -12px;
-    left: 41%;
+
 }
 .headlineTitle{
     font-size: small;
@@ -54,39 +51,72 @@
     display: none;
 }
 
+.absolute_position{
+    position: absolute;
+}
 
+.relative_position{
+    position: relative;
+}
 
-@media only screen and (max-width: 1540px) {
-    .vod_first_image {
-        height: 84% !important;
-    }
-    .responsive_vod_div{
-        display: none;
-    }
+.carousel-indicators{
+    bottom: 15vh !important;
+}
 
+.box1 {
+    width: 100%;
+    background-color: grey;
+    height: 400px;
+  }
+  .dramas_image {
+    width: 100%;
+  }
+  .height-100 {
+    height: 100%;
   }
 
-@media only screen and (max-width: 1440px) {
-    .vod_first_image {
-        height: 83% !important;
-    }
-    .responsive_vod_div{
-        display: none;
-    }
+  .img_padding_2nd{
+    padding-bottom: 2%;
 
-  }
+}
+  .img_padding_3rd{
+    padding-top: 2%;
+}
+
+.img_padding_4th{
+    padding-bottom: 3%;
+
+}
+  .img_padding_5th{
+    padding-top: 3%;
+}
+
+@media only screen and (min-width: 901px) {
+ .vodFirstCol{
+    height: 24.106vw;
+ }
+ .vodSecondCol{
+    height: 12.053vw;
+ }
+.heightForResponsive{
+    height: 100%;
+}
+
+
+}
+
+
+
+
   @media only screen and (min-device-width: 320px) 
   and (max-device-width: 900px) 
   and (orientation: landscape) {
-   .responsive_vod_div{
-       display: block;
-   }
-   .vod_div{
-       display: none;
-   }
-   .blockOneDiv{
-       display: none !important;
-   }
+      .bellow_div_padding{
+          margin-top: 2%;
+          padding-bottom: 0% !important;
+      }
+
+
    .program_lower_4 {
     margin-top: -6% !important;
 }
@@ -96,19 +126,65 @@
 .play_btn_image{
     width: 25px !important;
 }
-.headlinesPlayBtn {
-    bottom: 18vh !important;
-    left: 36% !important;
-}
+
 .programsContainer{
     margin-top: 2% !important;
 }
 .carouselDiv {
-    height: 430px;
+    height: 100%;
+}
+.carousel-indicators{
+    bottom: 15vh !important;
 }
   
   }
-  @media only screen and (max-width: 768px) {
+
+
+
+
+
+  @media only screen and (max-width: 900px) {
+    .sectionContainers{
+        padding: 0 8% 0 7% !important;
+
+    }
+    .vod_4th_img, .vod_5th_img{
+        height: 100% !important;
+
+    }
+    .square {
+        position: relative;
+        width: 100%;
+      }
+      
+      .square:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      
+      .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .play_btn_image2{
+          width: 24px !important;
+      }
+    .padding_5px{
+        padding: 5px !important;
+      }
+    .carouselDiv {
+        height: 100%;
+    }
+    .carousel-indicators{
+        bottom: 4vh !important;
+    }
+
+    .posterSlider{
+        margin: 6vh 19px 0 13px;
+    }
     .vod_first_image {
         height: 83% !important;
     }
@@ -118,11 +194,7 @@
     .vod_div{
         display: none;
     }
-    .headlinesPlayBtn {
-        bottom: 8vh;
-        margin-bottom: -12px;
-        left: 41%;
-    }
+
     .program_lower_4 {
         margin-top: -12% !important;
     }
@@ -138,8 +210,13 @@
 
   }
 
+ 
+
+
+
 
 @media only screen and (max-width: 640px) {
+  
     .vod_div{
         display: none;
     }
@@ -151,13 +228,12 @@
     }
     .headlinesContainer{
         margin: 0 1%;
+        margin-top: 8%;
     }
     .programsContainer{
         margin-top: 0px !important;
     }
-    .carouselDiv {
-        height: 400px;
-    }
+
     .heading_text{
         font-weight: 900;
         font-size: 16px;
@@ -185,27 +261,7 @@
       width: 28px !important;
   
   }
-  .play_btn_position1{
-     bottom: 62% !important;
-      
-  }
-  .play_btn_position2{
-    bottom: 50% !important;
-      
-}
-.play_btn_position3{
-    bottom: 50% !important;
-    left: 35% !important;
-      
-}
-.play_btn_position4{
-    left: 35% !important;
-    bottom: 50% !important;
-}
-.play_btn_position5{
-    bottom: 50% !important;
-      left: 35% !important;
-}
+
 .blockOneImg{
     width: 35px !important;
     position: relative;
@@ -213,16 +269,14 @@
     left: 45%;
 }
 .blockOneDiv{
-    height: 11vh !important;
-    // top: 5.1vh !important;
-    margin-top: -22%;
+   position: absolute;
 }
 .headlineText{
-    font-size: 12px !important;
+    font-size: 10px !important;
   
 }
 .marginZero{
-    font-size: 12px !important;
+    // font-size: 11px !important;
     margin: -4px !important;
 }
 .blockTwo{
@@ -245,9 +299,10 @@
 .categoryText{
     margin-top: 3px !important;
     overflow: hidden;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
 }
 .publish_date_and_channel{
-    margin-top: 20px !important;
     margin-left: 20px !important;
     margin-right: -5px !important;
     display: flex;
@@ -266,6 +321,17 @@
 }
   }
   @media only screen and (max-width: 480px) {
+      .play_btn_position2{
+          left: 35% !important;
+      }
+    .blockOneDiv{
+        height: 25% !important;
+        padding: 10px !important;
+
+    }
+    .categoryText{
+        font-size: 9px !important;
+    }
     .program_lower_4{
         margin-top: -9% !important;
     }
@@ -273,21 +339,12 @@
         border-radius: 5px;
         height: 210px !important;
     }
-    .heading_container{
-        padding: 0 3%;
-    }
-    .carouselDiv {
-        height: 420px;
-    }
-    .blockOneDiv{
-        display: none !important;
-        // height: 11vh !important;
-        // top: 4.25vh !important;
-        // margin-top: -22%;
-    }
+
     .recomListContainer{
         margin-top: 5vh;
     }
+
+   
   }
  
   @media only screen and (max-width: 425px) {
@@ -298,45 +355,54 @@
     .slider_images_all{
         height: 200px !important;
     }
-    .carouselDiv {
-        height: 334px;
-    }
-    .blockOneDiv{
-        height: 11vh !important;
-        // top: 5.1vh !important;
-        margin-top: -25%;
-    }
-    .headlinesPlayBtn {
-        bottom: 9vh;
-        left: 39%;
-    }
+
+
   
 
   }
   @media only screen and (max-width: 414px) {
+    .headlineText{
+        font-size: 9px !important;
+    }
     .program_lower_4{
         margin-top: -9% !important;
     }
     .slider_images_all{
         height: 198px !important;
     }
-    .carouselDiv {
-        height: 322px;
+    .daysAgoText{
+        margin-top: 4px !important;
+        font-size: 8px !important;
+        margin-bottom: -20px !important;
+        color: #4aa6e5;
+    }
+    .channelNameText {
+        font-size: 8px !important;
+        margin-top: 0px !important;
     }
 
 
   }
 
   @media only screen and (max-width: 413px) and (min-width: 411px)  {
+    .daysAgoText{
+        margin-top: 4px !important;
+        font-size: 8px !important;
+        margin-bottom: -20px !important;
+        color: #4aa6e5;
+    }
+    .channelNameText {
+        font-size: 8px !important;
+        margin-top: 0px !important;
+    }
+
     .program_lower_4{
         margin-top: -9% !important;
     }
     .slider_images_all{
         height: 198px !important;
     }
-    .carouselDiv {
-        height: 304px;
-    }
+
 
 
   }
@@ -352,19 +418,12 @@
     .slider_images_all{
         height: 195px !important;
     }
-    .blockOneDiv{
-        height: 11vh !important;
-        // top: 5.1vh !important;
-        margin-top: -30%;
-    }
-    .carouselDiv {
-        height: 312px;
-    }
+
     .headlineText{
-        font-size: 11px !important;
+        font-size: 8px !important;
     }
     .marginZero{
-        font-size: 11px !important;
+        // font-size: 9px !important;
         margin: -4px !important;
     }
     .blockOneSpan{
@@ -376,32 +435,36 @@
         margin-top: 3px !important;
     }
     .publish_date_and_channel{
-        margin-top: 20px !important;
-        display: flex;
-        justify-content: space-between;
-    }
-    .publish_date_and_channel{
-        margin-top: 20px !important;
-        margin-left: 20px !important;
         margin-right: -20px !important;
         display: flex;
         justify-content: space-between;
     }
-    .headlinesPlayBtn {
-        bottom: 10vh;
-        left: 39%;
+    .daysAgoText{
+        margin-top: 4px !important;
+        font-size: 8px !important;
+        margin-bottom: -20px !important;
+        color: #4aa6e5;
     }
+    .channelNameText {
+        font-size: 8px !important;
+        margin-top: 0px !important;
+    }
+
   }
   @media only screen and (max-width: 360px) {
+
+    .daysAgoText{
+        margin-top: 4px !important;
+        font-size: 8px !important;
+        margin-bottom: -20px !important;
+        color: #4aa6e5;
+    }
+    .channelNameText {
+        font-size: 8px !important;
+        margin-top: 0px !important;
+    }
     .slider_images_all{
         height: 195px !important;
-    }
-    .carouselDiv {
-        height: 307px;
-    }
-    .headlinesPlayBtn {
-        bottom: 10vh;
-        left: 39%;
     }
     .program_lower_4{
         margin-top: -9% !important;
@@ -415,14 +478,7 @@
     .slider_images_all{
         height: 165px !important;
     }
-    .blockOneDiv{
-        height: 11vh !important;
-        // top: 5.1vh !important;
-        margin-top: -35%;
-    }
-    .carouselDiv {
-        height: 270px;
-    }
+
     .heading_text{
         font-weight: 600;
         font-size: 13px;
@@ -434,11 +490,9 @@
     .headlinesContainer{
         margin: 0 2%;
     }
-    .headlineText{
-        font-size: 10px !important;
-    }
+  
     .marginZero{
-        font-size: 10px !important;
+        // font-size: 10px !important;
         margin: -4px !important;
     }
     .blockOneSpan{
@@ -446,25 +500,30 @@
         position: relative;
         bottom: 7.5vh !important;
     }
+    .headlineText{
+        font-size: 7px !important;
+    }
+    .categoryText{
+        font-size: 7px !important;
+        margin-top: 3px !important;
+    }
     .daysAgoText{
-        font-size: small;
+        margin-top: 2px !important;
+        font-size: 8px !important;
         margin-bottom: -10px !important;
         color: #4aa6e5;
     }
-    .categoryText{
-        margin-top: 3px !important;
+    .channelNameText {
+        font-size: 8px !important;
+        margin-top: 0px !important;
     }
+
     .publish_date_and_channel{
-        margin-top: 20px !important;
-        margin-left: 20px !important;
-        margin-right: -20px !important;
+        margin-right: -30px !important;
         display: flex;
         justify-content: space-between;
     }
-    .headlinesPlayBtn {
-        bottom: 10vh;
-        left: 39%;
-    }
+
   }
  
   .drama_lower_4{
@@ -485,21 +544,17 @@
 
 
   
-.carousel-indicators{
-    bottom: 15vh !important;
-}
+
 .sectionContainers{
-    padding: 0 4% 0 7%;
+    padding: 0 6% 0 7%;
     position: relative !important;
     // margin-top: -5%;
 }
 .programsContainer{
-    margin-top: -60px;
+    margin-top: 1.5%;
 }
 
-.childImg{
-    width: 100%;
-    height: 50%;
+.img_radius{
     border-radius: 5px;
 }
 .dramaBlockThree{
@@ -526,16 +581,17 @@
     left: 45%;
 }
 .blockOneDiv{
-    height: 10vh;
+    width: 100%;
+    height: 22%;
     color: white;
     background: #00000075;
     display: flex;
-    top: 3.5vh;
+    bottom: 0;
     flex-direction: row;
     justify-content: space-between;
-    position: relative;
-    padding: 15px;
-    border-radius: 0 0 8px 8px
+    position: absolute;
+    padding: 2%;
+    border-radius: 0 0 4px 8px
 }
 .floatLeft{
     float: left;
@@ -637,4 +693,5 @@
     padding: 15px;
     border-radius: 0 0 8px 8px;
 }
+
 

@@ -14,6 +14,7 @@
     "akamai-edge-auth-generator": "^0.1.7",
     "akamai-edgeauth": "^0.2.0",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
     "firebase": "^6.4.2",
     "hls.js": "^0.13.3-canary.5641",
     "jquery": "^3.5.1",
