@@ -30,7 +30,7 @@ class VideoPlayer extends Component {
         var config = {
             algorithm : 'SHA256',
             acl : '/*',
-            window : 500,
+            window : 5000,
             key : "72fb58000a0d1561f60da877b5a009fb",
             encoding: false
        };
