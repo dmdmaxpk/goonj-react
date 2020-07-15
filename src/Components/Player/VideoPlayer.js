@@ -8,12 +8,6 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import Akamai from 'akamai-auth-token';
-import {makeRequest} from '../../Utils/token'
-
-const EdgeAuth = require('akamai-edgeauth');
-const http = require('http') // Module for the test
-
-
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -33,27 +27,17 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
-        var EA_HOSTNAME = 'alpha.goonj.pk'
-        var EA_ENCRYPTION_KEY = '72fb58000a0d1561f60da877b5a009fb' 
-        var DURATION = 500 // seconds
-
-        var ea = new EdgeAuth({
-            key: EA_ENCRYPTION_KEY,
-            windowSeconds: DURATION,
-            escapeEarly: false
-        })
-        var token = ea.generateURLToken("/*");
-    //     var config = {
-    //         algorithm : 'SHA256',
-    //         acl : '/*',
-    //         window : 5000,
-    //         key : "72fb58000a0d1561f60da877b5a009fb",
-    //         encoding: false
-    //    };
+        var config = {
+            algorithm : 'SHA256',
+            acl : '/*',
+            window : 5000,
+            key : "72fb58000a0d1561f60da877b5a009fb",
+            encoding: false
+       };
     
-    //     var akamai = new Akamai(config),
-    //     token = akamai.generateToken();
-    //     console.log("token", token);
+        var akamai = new Akamai(config),
+        token = akamai.generateToken();
+        console.log("token", token);
 
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
@@ -72,25 +56,6 @@ class VideoPlayer extends Component {
                 // });
                 // let generatedToken = akamai_auth.generateToken();
                 // let token = generatedToken;
-
-                        // Function just for the simple test
-                function makeRequest() {
-                    var request = http.request({
-                        hostname: EA_HOSTNAME,
-                        path: `${this.state.data.hls_link}?hdnts=${token}`,
-                        encoding: false,
-                        headers: {[ea.options.tokenName]: token}
-                    }, function(res){
-                        // callback(res);
-                        console.log(res)
-                    })
-                    request.on('error', (err) => {
-                        // callback(err);
-                        console.log(err);
-                    })
-                    request.end()
-                }
-
                 const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
                 console.log("url", source);
                 this.setState({source});
