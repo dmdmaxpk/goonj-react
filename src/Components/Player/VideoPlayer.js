@@ -34,7 +34,7 @@ class VideoPlayer extends Component {
                 // console.log(this.state.data);
                 akamai_auth.setConfig({
                     algo: "SHA256",
-                    key: "72fb58000a0d1561f60da877b5a009fb",
+                    key: config.streamKey,
                     window: 500,
                     acl: '/*', //optional
                     start_time: 0,
