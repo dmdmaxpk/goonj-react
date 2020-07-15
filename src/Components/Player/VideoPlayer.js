@@ -98,7 +98,7 @@ class VideoPlayer extends Component {
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
                     <video className="liveVP" autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`}>
-                        {/* <source src={this.state.source} type="application/x-mpegURL" /> */}
+                        <source src={this.state.source} type="application/x-mpegURL" />
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
