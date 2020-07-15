@@ -7,6 +7,7 @@ import akamai_auth from 'akamai-edge-auth-generator';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
+import Akamai from 'akamai-auth-token';
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -14,7 +15,7 @@ class VideoPlayer extends Component {
         this.state = {
             data: [],
             thumbnail: '',
-            urlLink: "//weblive.goonj.pk/",
+            urlLink: "//kaios.streamax.io",
             source: ''
         }
         this.kFormatter = this.kFormatter.bind(this);
@@ -26,25 +27,37 @@ class VideoPlayer extends Component {
         });
     }
     componentDidMount(){
+        var config = {
+            algorithm : 'SHA256',
+            acl : '/*',
+            window : 500,
+            key : "72fb58000a0d1561f60da877b5a009fb",
+            encoding: false
+       };
+    
+        var akamai = new Akamai(config),
+        token = akamai.generateToken();
+        console.log("token", token);
+
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
             console.log("channel", res.data);
             let data = res.data[0];
             this.setState({data, thumbnail: data.thumbnail}, function(){
                 console.log(this.state.data);
-                akamai_auth.setConfig({
-                    algo: "SHA256",
-                    key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
-                    window: 500,
-                    acl: '/*', //optional
-                    start_time: 0,
-                    // session_id:{id}, //optional
-                    // url: {url}, //optional
-                });
-                let generatedToken = akamai_auth.generateToken();
-                let token = "hdnts=" + generatedToken;
-                const source = `//weblive.goonj.pk/${this.state.data.hls_link.split('.')[0]}_360p/index.m3u8?${token}`;
-                console.log(source);
+                // akamai_auth.setConfig({
+                //     algo: "SHA256",
+                //     key: "4db8dd0a0cf9271e4f7fe2fe8ded6fe3",
+                //     window: 500,
+                //     acl: '/*', //optional
+                //     start_time: 0,
+                //     // session_id:{id}, //optional
+                //     // url: {url}, //optional
+                // });
+                // let generatedToken = akamai_auth.generateToken();
+                // let token = "hdnts=" + generatedToken;
+                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
+                console.log("url", source);
                 this.setState({source});
                 const video = document.querySelector('video');
                 
@@ -84,8 +97,8 @@ class VideoPlayer extends Component {
         return(
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer" style={{width: "1200px", height: "500px", padding: "0 10%"}}>
-                    <video className="liveVP" autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail}`}>
-                        <source src={this.state.source} type="application/x-mpegURL" />
+                    <video className="liveVP" autoPlay controls crossOrigin playsInline poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`}>
+                        {/* <source src={this.state.source} type="application/x-mpegURL" /> */}
                         {/* <!-- Caption files --> */}
                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
