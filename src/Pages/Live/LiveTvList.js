@@ -23,7 +23,7 @@ class LiveTv extends Component {
             })
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
         })
     }
     handleRedirect(item){

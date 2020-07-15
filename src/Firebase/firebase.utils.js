@@ -31,7 +31,7 @@ export const CreateUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData
       });
     } catch (error) {
-      console.log(`${error} User Can't be registered`);
+      // console.log(`${error} User Can't be registered`);
     }
   }
   return userRef;

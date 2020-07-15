@@ -20,7 +20,7 @@ import { setParams } from "../../Services/flowIntegrations";
 import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
-  console.log("Header rendered");
+  // console.log("Header rendered");
 
   setParams();
 

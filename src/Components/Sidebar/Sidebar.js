@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer(props) {
-  console.log(props);
+  // console.log(props);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -145,7 +145,7 @@ export default function MiniDrawer(props) {
     </List>       
     )
   }
-  console.log("currentRouteSidebar",window.location.pathname);
+  // console.log("currentRouteSidebar",window.location.pathname);
   return (
     <div>
     <div className={classes.root}>

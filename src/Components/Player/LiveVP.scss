@@ -11,9 +11,8 @@
 }
 @media only screen and (max-width: 480px) {
     .videoPlayerContainer{
-            height: 210px !important;
-            padding-left: 4% !important;
-            padding-right: 4% !important;
+            width: 100vw !important;
+            padding: 4vw !important;
     }
     .channelTitle{
         margin-left: 2vw;
