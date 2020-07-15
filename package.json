@@ -10,6 +10,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "akamai-auth-token": "^1.0.7",
     "akamai-edge-auth-generator": "^0.1.7",
     "axios": "^0.19.2",
     "firebase": "^6.4.2",
