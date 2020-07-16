@@ -21,27 +21,34 @@ class CategoryVodPage extends Component {
             skip: 60,
             limit: 60,
             page: this.props.match.params.pageNumber,
-            isPremium: true
+            isPremium: true,
+            loading: true
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
+        this.getVideos = this.getVideos.bind(this);
     }
     componentDidMount(){
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
-
+        this.getVideos();
+    }
+    getVideos(){
+        this.setState({loading: true});
         let apiUrl = `/video?category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
-            this.setState({data: res.data});
+            this.setState({data: res.data, loading: false});
         })
     }
     componentWillReceiveProps(nextProps) {
         if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber || this.props.match.params.category !== nextProps.match.params.category) {
-            window.location.reload();
+            this.setState({page: this.props.match.params.pageNumber}, function(){
+                this.componentDidMount();
+            });
         }
     }
     handleClick(item){
@@ -71,7 +78,7 @@ class CategoryVodPage extends Component {
                     <CategoryDD category={this.props.match.params.category} />
                 </div>
                 <GridContainer>
-                    {this.state.data.length > 1 ?
+                    {this.state.loading === false ?
                         this.state.data.map(item =>
                             <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
