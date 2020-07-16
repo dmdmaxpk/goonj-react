@@ -13,10 +13,13 @@
   right: 0;
   z-index: 40;
 
+
   @media screen and (max-width: 800px) {
     flex-direction: column;
     height: 120px;
   }
+
+ 
 
   &__logo-box {
     @media screen and (max-width: 800px) {
@@ -171,5 +174,16 @@ and (orientation: landscape) {
   .header__logo-box{
   // padding-top: 20px !important;
   }
+
+}
+
+@media only screen 
+and (min-device-width : 400px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+    
+.header{
+  height: inherit !important;
+}
 
 }
