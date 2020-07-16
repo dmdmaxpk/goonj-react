@@ -1,5 +1,5 @@
 .landing_page_background {
-    background-image: url("../../Assets/Background.png");
+    background-image: url("../../Assets/Background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -48,7 +48,7 @@
     /* background-image: url("../../Assets/boxbg.png"); */
 }
 .boxBgImg{
-    background-image: url("../../Assets/boxbg.png");
+    // background-image: url("../../Assets/boxbg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -330,7 +330,7 @@
 @media screen and (max-width: 490px) {
     .bbTextDiv{
         background-size: cover;
-        background-image: url("../../Assets/m-bg.png");
+        // background-image: url("../../Assets/m-bg.png");
         margin-top: 60%;
         width: 90%;
         background-repeat: no-repeat;
