@@ -1,7 +1,7 @@
 
 const config = {
     development: {
-        apiBaseUrl: "http://3.126.102.117:5000",
+        apiBaseUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
@@ -12,7 +12,7 @@ const config = {
         // streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
     },
     staging: {
-        apiBaseUrl: 'http://3.126.102.117:5000',
+        apiBaseUrl: 'https://api.goonj.pk/v2',
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/web-thumb",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
@@ -23,7 +23,7 @@ const config = {
         // streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
     },
     production: {
-        apiBaseUrl: "http://3.126.102.117:5000",
+        apiBaseUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
