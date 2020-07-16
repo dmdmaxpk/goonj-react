@@ -59,7 +59,8 @@
 }
 .pkgSubBtn{
     width: 8vw;
-    height: 6vh;
+    padding-top: 1%;
+    padding-bottom: 1%;
     border: none;
     border-radius: 4px;
     outline: none;
@@ -137,7 +138,7 @@ and (orientation : landscape) {
 
 
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1024px){
     .pkgSubBtn{
         width: 28%;
     }
