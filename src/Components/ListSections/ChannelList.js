@@ -44,23 +44,24 @@ class ChannelList extends Component {
                   settings: {
                     slidesToShow: 8.5,
                     slidesToScroll: 3,
-                    infinite: true,
+                    infinite: false,
                     arrow: true
                   }
                 },
                 {
                   breakpoint: 600,
                   settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                    
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    // infinite: false,
                   }
                 },
                 {
                   breakpoint: 480,
                   settings: {
                     slidesToShow: 4,
-                    slidesToScroll: 2,
+                    slidesToScroll: 4,
+                    infinite: false,
                     arrows: true
                   }
                 }
