@@ -6,7 +6,7 @@ export default function PageNotFound(){
     return(
         <GridContainer>
             <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
-                <img src={require('../../Assets/page-not-found.png')} />
+                <img className="notFoundImg" src={require('../../Assets/page-not-found.png')} />
             </GridItem>
         </GridContainer>
     )
