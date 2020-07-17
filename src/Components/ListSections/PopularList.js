@@ -25,6 +25,11 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png'
             },
             {
+                name: "Goonj Comedy",
+                url: `/category/comedy/page/1`,
+                thumbnail: 'comedy.png'
+            },
+            {
                 name: "Geo Aur Jeenay Do",
                 url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png'
@@ -43,6 +48,11 @@ class PopularList extends Component {
                 name: "Binjee",
                 url: `/binjee`,
                 thumbnail: 'channel03.png'
+            },
+            {
+                name: "Goonj Comedy",
+                url: `/category/comedy/page/1`,
+                thumbnail: 'comedy.png'
             },
             {
                 name: "Geo Aur Jeenay Do",
