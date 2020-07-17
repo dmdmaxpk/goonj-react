@@ -10,3 +10,8 @@
 strong, b{
     font-weight: 900 !important;
 }
+@media only screen and (max-width: 480px){
+    .notFoundImg{
+        width: 100vw !important;
+    }
+}
