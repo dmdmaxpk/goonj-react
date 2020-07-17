@@ -58,14 +58,18 @@ class VodPage extends Component {
                 AxiosInstance.post('/payment/status', statusData)
                 .then(res =>{
                     const result = res.data.data;
-                if(result.is_allowed_to_stream === true){
+                if(res.data.code === -1){
+                    localStorage.clear();
+                    this.props.history.push(`/paywall/comedy?postUrl=${this.props.match.params.vodID}`);
+                }
+                else if(result.is_allowed_to_stream === true){
                     this.setState({
                         loading: false,
                         status: true
                     })
                 }
                 else{
-                    window.location.href = `/paywall/comedy?postUrl=${window.location.pathname}`;
+                    this.props.history.push(`/paywall/comedy?postUrl=${this.props.match.params.vodID}`);
                 }
             })
             .catch(err =>{
@@ -73,7 +77,7 @@ class VodPage extends Component {
             });
         }
         else{
-            window.location.href = `/paywall/comedy?postUrl=${window.location.pathname}`;
+            this.props.history.push(`/paywall/comedy?postUrl=${this.props.match.params.vodID}`);
         }
     }
         else{
