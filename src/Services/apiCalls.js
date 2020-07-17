@@ -35,8 +35,11 @@ export function CheckLiveStatus(){
         AxiosInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
-            // console.log(result);
-            if(result.subscription_status == "expired" || (result.queued === false && result.subscription_status == "not_billed")){
+            console.log(result);
+            if(res.data.code === -1){
+                localStorage.clear();
+            }
+            else if(result.subscription_status == "expired" || (result.queued === false && result.subscription_status == "not_billed")){
                 localStorage.removeItem('livePermission');
                 localStorage.removeItem('liveMsisdn');
                 localStorage.removeItem('livePackageId');
@@ -77,8 +80,11 @@ export function CheckCPStatus(){
         AxiosInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
+            if(res.code === -1){
+                localStorage.clear();
+            }
             // console.log(result);
-            if(result.subscription_status == "expired" || (result.queued === false && result.subscription_status == "not_billed")){
+            else if(result.subscription_status == "expired" || (result.queued === false && result.subscription_status == "not_billed")){
                 localStorage.removeItem('CPPermission');
                 localStorage.removeItem('CPMsisdn');
                 localStorage.removeItem('CPPackageId');
