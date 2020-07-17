@@ -5,13 +5,14 @@ import PopularList from '../../Components/ListSections/PopularList';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
+import { CheckLiveStatus } from '../../Services/apiCalls';
 
 class LiveChannel extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            status: true,
-            loading: false
+            status: false,
+            loading: true
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
@@ -26,6 +27,7 @@ class LiveChannel extends Component {
     checkStatus(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
+        let slug = urlParams.get("slug");
         let urlMsisdn = urlParams.get("msisdn");
         let urlPkgId = urlParams.get("package_id");
         let urlSource = urlParams.get("source");
@@ -42,23 +44,25 @@ class LiveChannel extends Component {
             AxiosInstance.post('/payment/status', statusData)
             .then(res =>{
             const result = res.data.data;
-            // if(result.code === -1){
-                //     localStorage.removeItem('livePermission');
-            //     this.props.history.push('/paywall/live');
-            // }
-            if(result.is_allowed_to_stream === true){
+            if(res.data.code === -1){
+                localStorage.clear();
+                console.log("here here")
+                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}`);
+            }
+            else if(result.is_allowed_to_stream === true){
                 this.setState({
                     loading: false,
                     status: true
                 })
             }
             else{
-                this.props.history.push(`/paywall/live`);
+                console.log("in here");
+                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}`);
             }
             })
         }
         else{
-            this.props.history.push(`/paywall/live`);
+                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}`);
         }
     }
 

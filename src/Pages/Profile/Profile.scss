@@ -59,7 +59,8 @@
 }
 .pkgSubBtn{
     width: 8vw;
-    height: 6vh;
+    padding-top: 1%;
+    padding-bottom: 1%;
     border: none;
     border-radius: 4px;
     outline: none;
@@ -124,6 +125,27 @@
     right: 2vw;
     outline: none;
 }
+
+@media only screen 
+and (min-device-width : 400px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+    .pkgSubBtn{
+        width: 30% !important;
+        height: 10% !important;
+        padding: 1%;
+    }
+
+
+}
+@media screen and (max-width: 1024px){
+    .pkgSubBtn{
+        width: 28%;
+    }
+}
+
+
+
 @media screen and (max-width: 480px){
     .profilePageHead{
         margin-bottom: 12vh;
@@ -173,4 +195,11 @@ font-size: 12px ;
         width: 31%;
 
     }
+}
+
+@media screen and (max-width: 350px){
+    .pkgSubBtn{
+        width: 33vw;
+    }
+
 }

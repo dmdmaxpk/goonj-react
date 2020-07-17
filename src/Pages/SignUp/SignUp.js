@@ -1,6 +1,6 @@
 import React from "react";
 import "./SignUp.scss";
-import Background from "../../Assets/Background.png";
+import Background from "../../Assets/Background.jpg";
 import FormInput from "../../Components/FormInput/FormInput";
 import CustomButton from "../../Components/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
