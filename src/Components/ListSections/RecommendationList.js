@@ -60,7 +60,7 @@ class RecommendationList extends Component {
                 {
                     recommendations.filter(element => element._id !== id).map(item =>
                             <GridItem xs={3} sm={3} md={12} className="recomDiv" key={item._id} onClick={()=> this.handleClick(item)}>
-                                <img className="recomImg" src={`${config.videoLogoUrl}/${item.thumbnail}`} />
+                                <img className="recomImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
                                 <img className="recomPlayBtn" src={require('../../Assets/playBtn.png')} />
                                 <div className="recomTextDiv">
                                     <p className="recomTitle">{item.title}</p>

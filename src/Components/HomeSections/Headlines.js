@@ -84,7 +84,7 @@ class HeadlinesSection extends Component {
                                 <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
                                     <Link style={{textDecoration: "none", color:"white"}}>
                                         <div style={{position:"relative", marginBottom:"4%"}}>
-                                        <img className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail}`} />
+                                        <img className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
                                         <img style={{position:"absolute", left:"40%", bottom:"35%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
                                         </div>
                                         <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
