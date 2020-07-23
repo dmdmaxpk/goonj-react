@@ -114,7 +114,7 @@ export default function MiniDrawer(props) {
         <Divider />
         <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
           <Tooltip title="Binjee" placement="right">  
-            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
           </Tooltip>
           <ListItemText className="sidebarTabsText" primary="Binjee" />
         </ListItem>
