@@ -85,7 +85,7 @@ class VodVideoPlayer extends Component {
                         {item ?
                             <GridContainer xs={12} sm={12} md={12} className="videoPlayerDiv">
                                 <GridItem className="videoPlayerGI" xs={12} sm={12} md={7}>
-                                    <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail}`} onError={this.showError} >
+                                    <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
                                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
                                         {/* <!-- Fallback for browsers that don't support the <video> element --> */}
                                         <a href="" download>Download</a>

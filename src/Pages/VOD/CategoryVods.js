@@ -85,7 +85,7 @@ class CategoryVodPage extends Component {
                                     <span className="playBtn">
                                         <img src={require("../../Assets/playBtn.png")} />
                                     </span>
-                                    <img src={`${config.videoLogoUrl}/${item.thumbnail}`} className="videoLogo" />
+                                    <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
