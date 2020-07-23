@@ -47,7 +47,7 @@ class DramasSection extends Component {
                             <div className="row">
                                 <div className="col-lg-6 padding_5px vodGI"  onClick={()=> this.handleClick(data[0])}>
                                 <div className="img-box relative_position height-100 ">
-                                    <img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail.split(".")[0]}.jpg`} />
+                                    <img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail}.jpg`} />
                                         <span className="play_btn_position1" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                             <img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                         </span>
