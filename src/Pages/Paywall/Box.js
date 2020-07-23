@@ -168,7 +168,7 @@ class Box extends React.Component {
             {
             this.state.step === 0 ?
               <div>
-                <input className="msisdnInput" type="number" name="msisdn" maxLength="11" value={this.state.msisdn} placeholder="03xxxxxxxxx" onChange={this.handleChange}/>
+                <input className="msisdnInput" type="number" name="msisdn" maxLength="11" value={this.state.msisdn} placeholder="03xxxxxxxxx" pattern="\d*" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.sendOtp}>
                     <img className="btnSubImg" src={require("../../Assets/subBtn.png")} />
@@ -179,7 +179,7 @@ class Box extends React.Component {
               <div>
                 <label className="otpLabel"> Enter OTP </label>
                 <br />
-                <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" onChange={this.handleChange}/>
+                <input className="msisdnInput" type="number" name="otp" value={this.state.otp} placeholder="xxxxx" pattern="\d*" onChange={this.handleChange}/>
                 <br />
                 <button className="btnSub" onClick={this.verifyOtp}>
                     <div className="button_outer_div">
