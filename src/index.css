@@ -16,4 +16,28 @@ body::-webkit-scrollbar {
 button{
   outline: none !important;
 }
-
+.floatingLogo{
+  font-size: 35px !important;
+}
+.whatsappLogo{
+  font-size: 40px !important;
+}
+.customerCareIcon{
+  position: fixed;
+  right: 2vw;
+  bottom: 9vh;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: white;
+  /* color: green; */
+}
+.whatsappIcon{
+  position: fixed;
+  right: 2vw;
+  bottom: 2vh;
+  color: green;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  /* font-size: 35px; */
+}

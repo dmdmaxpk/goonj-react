@@ -97,7 +97,7 @@ export default function MiniDrawer(props) {
     )
   const ListComponent = () => {
     return(
-      <List key="sidebar" onClick={handleDrawerClose}>
+      <List className="sidebarList" key="sidebar" onClick={handleDrawerClose}>
         <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
             <Tooltip title="Home" placement="right">
               <ListItemIcon className={isActive('/home')}><HomeOutlinedIcon /></ListItemIcon>
