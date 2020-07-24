@@ -4,6 +4,7 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
+import { Link } from 'react-router-dom';
 
 class LivePaywall extends Component {
     constructor(props) {
@@ -71,7 +72,8 @@ class LivePaywall extends Component {
                                 from mobile balance
                             </p>
                             <p className="cbText2">
-                                <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
+                                <font className="cancelText">for package conversion or cancellation, go to </font>
+                                <Link to={"/profile"}>Profile{">"}Subscriptions</Link>
                             </p>
                             </div>
                             {/* <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p> */}

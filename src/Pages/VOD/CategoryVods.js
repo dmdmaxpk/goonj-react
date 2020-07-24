@@ -11,9 +11,13 @@ import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import {CaretLeftOutlined, CaretRightOutlined }from '@ant-design/icons';
 
-
+let count,strURL;
 class CategoryVodPage extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -23,17 +27,32 @@ class CategoryVodPage extends Component {
             page: this.props.match.params.pageNumber,
             isPremium: true,
             loading: true
+           
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
         this.getVideos = this.getVideos.bind(this);
     }
     componentDidMount(){
+        strURL = window.location.href.split("/");
+        count = parseInt(strURL[strURL.length-1]);
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
         this.getVideos();
+    }
+    countCheck(value){
+        let {history} = this.props;
+       if(value==0){
+            count--;
+            history.push(`/category/${this.props.match.params.category}/page/${count}`);
+        } if(value==1){
+            count++;
+            history.push(`/category/${this.props.match.params.category}/page/${count}`);
+        }if(value==2){
+            history.push(`/category/${this.props.match.params.category}/page/${1}`);
+        }
     }
     getVideos(){
         this.setState({loading: true});
@@ -70,8 +89,12 @@ class CategoryVodPage extends Component {
         let url = id + "_" + str;
         return url;
     }
+
+
     render(){
+      
         return(
+           
             <div className="vodCategroyContainer">
                 <div>
                     <p className="headingVOD floatLeft">{this.props.match.params.category}</p>
@@ -81,6 +104,8 @@ class CategoryVodPage extends Component {
                     {this.state.loading === false ?
                         this.state.data.map(item =>
                             <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
+                                {this.state.data.length!=0?
+                                <div>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                     <span className="playBtn">
                                         <img src={require("../../Assets/playBtn.png")} />
@@ -91,14 +116,20 @@ class CategoryVodPage extends Component {
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
                                     <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
                                     <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                </div></div>
+                                :
+                                <div>
+                                <p>HELLO</p>
                                 </div>
+                                    }
                             </GridItem>
                         )
                     : <Loader />
                     }
                     <GridItem sm={12} md={12} xs={12} >
                         <div className="paginationDiv">
-                            {this.state.data.length >= this.state.limit ?
+                            {/* {this.state.data.length == this.state.limit ?
+                            
                                 <Pagination
                                     page={parseInt(this.props.match.params.pageNumber)}
                                     className="pagination"
@@ -112,10 +143,32 @@ class CategoryVodPage extends Component {
                                         {...item}
                                         />
                                         )}
-                                />
+                                /> */}
+                               
+                                <div className="navBtnDiv">
+                                {count == 1? 
+                                <CaretLeftOutlined className="disabledColor prevBTN"/>
+                                :  
+                                <Link   onClick={()=> this.countCheck(0)}>
+                                <CaretLeftOutlined className="whiteColor prevBTN"/>
+                                </Link>  
+                                }
+
+                                {this.state.data.length<this.state.limit?
+                                    <Link    onClick={()=> this.countCheck(2)} >  
+                                    <CaretRightOutlined className="whiteColor nextBTN"/>
+                                    </Link> 
                                 :
+                                    <Link    onClick={()=> this.countCheck(1)} >  
+                                    <CaretRightOutlined className="whiteColor nextBTN"/>
+                                    </Link> 
+                                }
+                                </div>
+{/*                                
+                                :
+
                                 ""
-                            }
+                            } */}
                         </div>
                     </GridItem>
                 </GridContainer>

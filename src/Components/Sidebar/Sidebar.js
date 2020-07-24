@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -100,14 +101,14 @@ export default function MiniDrawer(props) {
       <List key="sidebar" onClick={handleDrawerClose}>
         <ListItem component={Link} to="/home" button key="home" style={{color:"white"}}>
             <Tooltip title="Home" placement="right">
-              <ListItemIcon className={isActive('/home')}><HomeOutlinedIcon /></ListItemIcon>
+              <ListItemIcon className={isActive('/home')}><HomeOutlinedIcon  /></ListItemIcon>
             </Tooltip>
             <ListItemText className="sidebarTabsText" primary="Home" />
         </ListItem>
         <Divider />
         <ListItem component={Link} to="/live-tv" button key="Live TV" style={{color:"white"}}>
             <Tooltip title="Live TV" placement="right">
-              <ListItemIcon className={isActive('/live-tv')}><LanguageIcon /></ListItemIcon>
+              <ListItemIcon className={isActive('/live-tv')}><LiveTvIcon style={{fontSize:'23px'}} /></ListItemIcon>
             </Tooltip>
             <ListItemText className="sidebarTabsText" primary="Live TV" />
         </ListItem>

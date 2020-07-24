@@ -1,9 +1,10 @@
 .headingGridContainer{
     color: white;
     margin-bottom: 10px;
-    padding: 0 5% 0 8% !important;
+    padding: 0 3.5% 0 8% !important;
 }
 .heading_container{
+    margin-bottom: 1.5%;
     margin-right: 4%;
     display: flex;
     justify-content: space-between;
@@ -24,7 +25,7 @@
     font-weight: 900;
 }
 .view_more_text{
-    font-size: small;
+    font-size: 15px;
 }
 .carouselDiv{
     height: 700px;
@@ -145,6 +146,11 @@
 
 
   @media only screen and (max-width: 900px) {
+    .headingGridContainer{
+        color: white;
+        margin-bottom: 10px;
+        padding: 0 5.5% 0 8.5% !important;
+    }
     .sectionContainers{
         padding: 0 8% 0 7% !important;
 
@@ -322,6 +328,9 @@
 }
   }
   @media only screen and (max-width: 480px) {
+    .headingGridContainer{
+        padding: 0 6.2% 0 8.5% !important;
+    }
       .play_btn_position2{
           left: 35% !important;
       }
@@ -617,7 +626,7 @@
     font-size: smaller;
     font-weight: 100;
     text-transform: capitalize;
-    width: 80%;
+    width: 100%;
 }
 .channelNameText{
     font-size: small;
@@ -662,7 +671,12 @@
 .title_and_discription, .publish_date_and_channel{
     display: flex;
     flex-direction: column;
+
     
+}
+
+.title_and_discription{
+    width: 75%;
 }
 .vod_first_image{
     width: 100%;

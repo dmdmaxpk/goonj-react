@@ -13,57 +13,16 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            loading: true,
-            dramas: [],
-            sports: [],
-            programs: [],
-            headlines: []
+            loading: true
         }
     }
-    componentDidMount(){
-        // Dramas API call
-        AxiosInstance.get(`/video?category=entertainment&limit=5`)
-        .then(res => {
-            this.setState({dramas: res.data});
-        })
-        .catch(err =>{
-            // console.log(err);
-        });
-
-        // Sports API call
-        AxiosInstance.get(`/video?category=sports&limit=5`)
-        .then(res => {
-            this.setState({sports: res.data});
-        })
-        .catch(err =>{
-            // console.log(err);
-        });
-
-        // Programs API call
-        AxiosInstance.get(`/video?category=programs&limit=5`)
-        .then(res => {
-            this.setState({programs: res.data});
-        })
-        .catch(err =>{
-            // console.log(err);
-        });
-
-        // Headlines Call
-        AxiosInstance.get(`/video?category=news&limit=10`)
-        .then(res =>{
-            this.setState({headlines: res.data})
-        })
-        .catch(err =>{
-            // console.log(err);
-        })
-    }
+  
     componentWillMount(){
         this.setState({
             loading: false
         })
     }
     render(){
-        const {dramas, sports, programs, headlines} = this.state;
         return(
             <div>
                 {this.state.loading === true ?
@@ -78,12 +37,12 @@ class Home extends Component {
                             <br />
                             <ChannelList />
                             <br />
-                            {dramas.length !== 0 ? <DramasSection data={dramas} category="entertainment" /> : <Loader />}
-                            {headlines.length !== 0 ? <HeadlinesSection style={{top:"2%"}} data={headlines} category="news" title="Headlines" /> : <Loader />}
+                            <DramasSection category="entertainment" /> 
+                            <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
                             <br />
-                            {sports.length !== 0 ? <VodSection title="Sports" data={sports} category="sports" /> : <Loader />}
+                            <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" />
                             <br />
-                            {programs.length !== 0 ? <VodSection title="Programs" data={programs} category="programs" classname="programsContainer" /> : <Loader />}
+                            <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />
                         </div>
                     </div>
                 }
