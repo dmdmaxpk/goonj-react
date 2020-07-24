@@ -228,12 +228,12 @@ top: 0;
         position: relative;
         right: 0px;
         left: 8vw;
-        top: -7vh;
+        top: -8vh;
     }
     .recomTitle{
         width: 100% !important;
         font-size: xx-small !important;
-        height: 5vh !important;
+        height: 100% !important;
         margin: 0 !important;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -263,7 +263,7 @@ top: 0;
         height: 140px;
     }
     .recomTitle{
-        height: 6vh !important;
+        height: 100% !important;
     }
   }
   @media only screen and (max-width: 320px) {
@@ -279,7 +279,7 @@ top: 0;
     }
     .recomTitle{
         font-size: 11px !important;
-        height: 45px !important;
+        height: 100% !important;
     }
     .recomPlayBtn {
         left: 7vw;
