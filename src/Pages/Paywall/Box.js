@@ -1,5 +1,5 @@
 import React from 'react';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import  config  from '../../Utils/config';
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -55,7 +55,7 @@ class Box extends React.Component {
         };
 
         if(msisdn.length === 11){
-            AxiosInstance.post('/payment/otp/send', msisdnData)
+            PaywallInstance.post('/payment/otp/send', msisdnData)
                 .then(res =>{
                     const result = res.data;
                     if(result.code === 0){
@@ -86,7 +86,7 @@ class Box extends React.Component {
             otp,
             package_id: packageID2
         }
-        AxiosInstance.post('/payment/otp/verify', otpData)
+        PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
                 if(result.is_allowed_to_stream === true){
@@ -140,7 +140,7 @@ class Box extends React.Component {
                 source,
             };
 
-        AxiosInstance.post(`/payment/subscribe`, permissionData)
+        PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
                 if(result.code === -1){
