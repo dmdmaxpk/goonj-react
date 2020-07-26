@@ -46,7 +46,7 @@ class App extends React.Component {
         {this.props.location.pathname !== "/binjee" ?
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
-             <Sidebar /> 
+            <Sidebar /> 
           </div>
           :
           ''
@@ -82,12 +82,14 @@ class App extends React.Component {
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
-          <Tooltip title="Contact us at 727200" placement="left">
-            <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
-          </Tooltip>
-          <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a>
         {this.props.location.pathname !== "/binjee" ?
-          <Footer/>
+          <div>
+            <Tooltip title="Contact us at 727200" placement="left">
+              <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
+            </Tooltip>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a>
+            <Footer/>
+          </div>
         :
           ''
         }
