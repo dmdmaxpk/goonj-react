@@ -192,8 +192,8 @@
     color: #319fe7;
 }
 .msisdnInput{
-    width: 15vw;
-    height: 5vh;
+    width: 17vw;
+    height: 6vh;
     text-align: center;
     font-size: large;
     outline: none;
@@ -506,17 +506,19 @@ and (min-device-width : 641px)
 and (max-device-width : 1024px) 
 and (orientation : landscape) { 
     
-.landing_page_background{
-    height: auto !important;
-    padding-bottom: 20% !important;
+    .landing_page_background{
+        height: auto !important;
+        padding-bottom: 20% !important;
+    }
+
+    .msisdnInput{
+        width: 26vw;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
 }
 
-.msisdnInput{
-    width: 26vw;
-    padding-top: 2%;
-    padding-bottom: 2%;
-}
-
-
+.select-payment-type-span{
+    font-size: 10px;
 }
 

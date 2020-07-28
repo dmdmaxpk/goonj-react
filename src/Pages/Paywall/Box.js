@@ -46,13 +46,16 @@ class Box extends React.Component {
         //e.preventDefault();
         console.log('sendOtp: ', e);
         const {msisdn} = this.state;
-        const {source} = this.props;
+        const {source, packageID2} = this.props;
         const payment_source = e;
         const msisdnData = {
             msisdn,
             source,
             payment_source,
+            package_id: packageID2
         };
+
+        console.log('sendOtp - msisdnData: ', msisdnData);
 
         if(msisdn.length === 11){
             PaywallInstance.post('/payment/otp/send', msisdnData)
@@ -140,6 +143,7 @@ class Box extends React.Component {
                 source,
             };
 
+        console.log('permissionData: ', permissionData);
         PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
@@ -176,13 +180,21 @@ class Box extends React.Component {
                         <div>
                             <input className="msisdnInput" type="number" name="msisdn" maxLength="11" value={this.state.msisdn} placeholder="03xxxxxxxxx" pattern="\d*" onChange={this.handleChange}/>
                             <br />
-                            <h4>Subscribe Now</h4>
-                            <Button variant="outlined" color="primary" onClick={() => this.sendOtp('telenor')}>
-                                Telenor
-                            </Button>
-                            <Button variant="outlined" color="secondary" onClick={() => this.sendOtp('easypaisa')}>
-                                Easypaisa
-                            </Button>
+                            <button className="btnSub" onClick={() => this.sendOtp('telenor')}>
+                                <img className="btnSubImg" src={require("../../Assets/subBtn.png")} />
+                            </button>
+                            <br />
+                            <span className="select-payment-type-span">- OR -</span>
+                            <br />
+                            <button className="btnSub" onClick={() => this.sendOtp('easypaisa')}>
+                                <img className="btnSubImg" src={require("../../Assets/subBtnEP.png")} />
+                            </button>
+                            {/*<Button variant="outlined" color="primary" onClick={() => this.sendOtp('telenor')}>*/}
+                                {/*Telenor*/}
+                            {/*</Button>*/}
+                            {/*<Button variant="outlined" color="secondary" onClick={() => this.sendOtp('easypaisa')}>*/}
+                                {/*Easypaisa*/}
+                            {/*</Button>*/}
                         </div>
                         :
                         this.state.step === 1 ?
