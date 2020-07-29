@@ -180,21 +180,13 @@ class Box extends React.Component {
                         <div>
                             <input className="msisdnInput" type="number" name="msisdn" maxLength="11" value={this.state.msisdn} placeholder="03xxxxxxxxx" pattern="\d*" onChange={this.handleChange}/>
                             <br />
+                            <p>Subscribe Now</p>
                             <button className="btnSub" onClick={() => this.sendOtp('telenor')}>
-                                <img className="btnSubImg" src={require("../../Assets/subBtn.png")} />
+                                <img className="btnSubImg" src={require("../../Assets/telenorBtn.png")} />
                             </button>
-                            <br />
-                            <span className="select-payment-type-span">- OR -</span>
-                            <br />
                             <button className="btnSub" onClick={() => this.sendOtp('easypaisa')}>
-                                <img className="btnSubImg" src={require("../../Assets/subBtnEP.png")} />
+                                <img className="btnSubImg" src={require("../../Assets/easypaisaBtn.png")} />
                             </button>
-                            {/*<Button variant="outlined" color="primary" onClick={() => this.sendOtp('telenor')}>*/}
-                                {/*Telenor*/}
-                            {/*</Button>*/}
-                            {/*<Button variant="outlined" color="secondary" onClick={() => this.sendOtp('easypaisa')}>*/}
-                                {/*Easypaisa*/}
-                            {/*</Button>*/}
                         </div>
                         :
                         this.state.step === 1 ?

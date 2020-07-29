@@ -33,6 +33,7 @@
 .box{
     text-align: center;
     margin: 2% 0;
+    padding: 0 130px 0 125px;
 }
 .goonjLogo{
     margin-top: 2%;
@@ -82,12 +83,18 @@
     border: none;
     background: none;
     cursor: pointer;
-    width: 20vw;
-    height: 5vh;
+    width: 14vw;
+    height: 6vh;
 }
 .btnSubImg{
-    width: 70%;
+    width: 100%;
+    height: 100%;
 }
+
+.select-payment-type-span{
+    font-size: 11px;
+}
+
 .loginLinkText{
     font-weight: 100;
 }
@@ -267,6 +274,19 @@
         left: 30%;
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .msisdnInput{
+        width: 28vw;
+    }
+    .btnSub {
+        width: 51%;
+    }
+    .chargesBox{
+        width: 56%;
+        left: 22%;
+    }
+}
 @media screen and (max-width: 960px) {
     .boxBgImg{
         width: 50%;
@@ -308,6 +328,14 @@
     }
     .selectPkgDivCP{
         left: 25%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .msisdnInput {
+        width: 28vw;
+    }
+    .btnSub {
+        width: 60%;
     }
 }
 @media screen and (max-width: 705px) {
@@ -371,6 +399,7 @@
     }
     .box{
         margin-bottom: 10%;
+        padding: 0 130px 0 125px;
     }
     .btnSub{
         width: 80%;
@@ -410,6 +439,12 @@
     }
     .msisdnInput{
         width: 45vw;
+    }
+    .box{
+        padding: 0;
+    }
+    .btnSub {
+        width: 78%;
     }
 }
 @media screen and (max-width: 420px) {
@@ -519,7 +554,4 @@ and (orientation : landscape) {
     }
 }
 
-.select-payment-type-span{
-    font-size: 10px;
-}
 
