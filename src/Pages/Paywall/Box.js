@@ -65,12 +65,15 @@ class Box extends React.Component {
                         this.setState({step: 1, paymentType: payment_source});
                     }
                     else if(result.code === -1){
+                        console.log('result.message: ', result.message);
+                        console.log('result: ', result);
                         alert(result.message);
                         // console.log(result);
                     }
                 })
                 .catch(err =>{
                     // console.log(err)
+                    console.log('err: ', err);
                     alert(err)
                 })
         }
@@ -123,7 +126,7 @@ class Box extends React.Component {
 
     subscribe(){
         this.setState({loading: true});
-        const {msisdn} = this.state;
+        const {msisdn, paymentType} = this.state;
         const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
         let mid = localStorage.getItem('mid');
         let tid = localStorage.getItem('tid');
@@ -132,6 +135,7 @@ class Box extends React.Component {
                 msisdn,
                 package_id: packageID2,
                 source,
+                payment_source: paymentType,
                 marketing_source: mid,
                 affiliate_unique_transaction_id: tid,
                 affiliate_mid: mid
@@ -141,6 +145,7 @@ class Box extends React.Component {
                 msisdn,
                 package_id: packageID2,
                 source,
+                payment_source: paymentType
             };
 
         console.log('permissionData: ', permissionData);
@@ -151,7 +156,7 @@ class Box extends React.Component {
                     this.setState({loading: false});
                     alert(res.data.message);
                 }
-                else if(result.code === 10 || result.code === 11 || result.code === 0){
+                else if(result.code === 9 || result.code === 10 || result.code === 11 || result.code === 0){
                     localStorage.setItem(permission, true);
                     localStorage.setItem(pkgIdKey, packageID2);
                     localStorage.setItem(msisdnKey, msisdn);
