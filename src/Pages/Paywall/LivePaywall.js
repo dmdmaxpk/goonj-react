@@ -67,7 +67,7 @@ class LivePaywall extends Component {
                             />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
-                            <font color="#319fe7">{this.state.packagePrice2}</font> Weekly charges after free trial 
+                            <font color="#319fe7">{this.state.packagePrice2}</font> charges will be deducted
                                 from mobile balance
                             </p>
                             <p className="cbText2">
