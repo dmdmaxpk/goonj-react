@@ -47,7 +47,7 @@ class ComedyPaywall extends Component {
                         <div className="liveContainer">
                             <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} />
                             <br />
-                            <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
+                            <h1 className = "aText1 aText1b">WATCH COMEDY VIDEOS ANYTIME, ANYWHERE!</h1>
                             <Box
                                 url={id ? `/${id}` : '/category/comedy/page/1'}
                                 id={id}
