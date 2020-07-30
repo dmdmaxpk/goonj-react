@@ -126,7 +126,7 @@ class Box extends React.Component {
 
     subscribe(){
         this.setState({loading: true});
-        const {msisdn, paymentType} = this.state;
+        const {msisdn, paymentType, otp} = this.state;
         const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
         let mid = localStorage.getItem('mid');
         let tid = localStorage.getItem('tid');
@@ -135,6 +135,7 @@ class Box extends React.Component {
                 msisdn,
                 package_id: packageID2,
                 source,
+                otp,
                 payment_source: paymentType,
                 marketing_source: mid,
                 affiliate_unique_transaction_id: tid,
@@ -145,6 +146,7 @@ class Box extends React.Component {
                 msisdn,
                 package_id: packageID2,
                 source,
+                otp,
                 payment_source: paymentType
             };
 
