@@ -78,7 +78,9 @@ class Box extends React.Component {
                 })
         }
         else{
-            alert("Please Enter a valid Telenor Number");
+            let paymentSource = payment_source.charAt(0).toUpperCase() + payment_source.slice(1);
+            let message = 'Please Enter a Valid '+(payment_source == 'telenor' ? paymentSource+' Number' : paymentSource+' Acount Number');
+            alert(message);
         }
     }
 
