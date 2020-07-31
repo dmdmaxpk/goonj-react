@@ -3,6 +3,7 @@ import ChannelList from '../../Components/ListSections/ChannelList';
 import PopularList from '../../Components/ListSections/PopularList';
 import VodVideoPlayer from './vodVideoPlayer';
 import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 
@@ -55,7 +56,7 @@ class VodPage extends Component {
                 package_id
             }
             if(msisdn){
-                AxiosInstance.post('/payment/status', statusData)
+                PaywallInstance.post('/payment/status', statusData)
                 .then(res =>{
                     const result = res.data.data;
                 if(res.data.code === -1){

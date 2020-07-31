@@ -65,7 +65,7 @@ class ComedyPaywall extends Component {
                                 />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">
-                            <font color="#319fe7">{this.state.packagePrice2}</font> charges will be deducted
+                            <font color="#319fe7">{this.state.packagePrice2}</font> charges will be deducted 
                                 from mobile balance
                             </p>
                             <p className="cbText2">

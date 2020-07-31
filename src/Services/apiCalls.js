@@ -1,5 +1,5 @@
 import config from '../Utils/config';
-import AxiosInstance from '../Utils/AxiosInstance';
+import PaywallInstance from '../Utils/PaywallInstance';
 
 
 
@@ -15,7 +15,7 @@ let livePackageId = (urlPkgId == "QDfC" || urlPkgId == "QDfG") ? urlPkgId : loca
 let CPPackageId = (urlPkgId === "QDfH" || urlPkgId === "QDfI") ? urlPkgId : localStorage.getItem('CPPackageId');
 
 export function getPackages(){
-    AxiosInstance.get(`/paywall?source=${source}`)
+    PaywallInstance.get(`/paywall?source=${source}`)
     .then(res =>{
         // console.log(res.data);
     })
@@ -32,7 +32,7 @@ export function CheckLiveStatus(){
         package_id: livePackageId
     }
     if(liveMsisdn && livePackageId){
-        AxiosInstance.post('/payment/status', statusData)
+        PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
             console.log(result);
@@ -77,7 +77,7 @@ export function CheckCPStatus(){
     }
     // console.log("status Data",statusData);
     if(CPmsisdn && CPPackageId){
-        AxiosInstance.post('/payment/status', statusData)
+        PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
             if(res.code === -1){
