@@ -1,10 +1,9 @@
 import React from "react";
 import "./SignUp.scss";
 import Background from "../../Assets/Background.jpg";
-import FormInput from "../../Components/FormInput/FormInput";
-import CustomButton from "../../Components/CustomButton/CustomButton";
+// import FormInput from "../../Components/FormInput/FormInput";
+// import CustomButton from "../../Components/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
-import { auth, CreateUserProfileDocument } from "../../Firebase/firebase.utils";
 
 class SignUp extends React.Component {
   constructor() {
@@ -27,12 +26,12 @@ class SignUp extends React.Component {
       return;
     }
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      // const { user } = await auth.createUserWithEmailAndPassword(
+      //   email,
+      //   password
+      // );
 
-      await CreateUserProfileDocument(user, { displayName });
+      // await CreateUserProfileDocument(user, { displayName });
 
       this.setState({
         displayName: "",
@@ -64,7 +63,7 @@ class SignUp extends React.Component {
             <h1 className="signup__title">Sign Up</h1>
 
             <form action="POST" onSubmit={this.handleSubmit}>
-              <FormInput
+              {/* <FormInput
                 name="displayName"
                 type="name"
                 value={displayName}
@@ -98,11 +97,11 @@ class SignUp extends React.Component {
                 handleChange={this.handleChange}
                 label="Confirm Password"
                 required
-              />
+              /> */}
 
               <div className="signup__btn-container">
                 <div className="signup__btn">
-                  <CustomButton type="submit"> Sign Up </CustomButton>
+                  {/* <CustomButton type="submit"> Sign Up </CustomButton> */}
                 </div>
               </div>
             </form>

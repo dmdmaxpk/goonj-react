@@ -4,7 +4,6 @@ import Logo from "../../Assets/logo.png";
 import "./Header.scss";
 import { withRouter } from "react-router";
 import SearchBar from "../SearchBar/SearchBar";
-import { auth } from "../../Firebase/firebase.utils";
 import {
   selectCurrentUser,
   selectToggleHidden
@@ -71,7 +70,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
               </Link> */}
               <div
                 className="header__option header__option--signout"
-                onClick={() => auth.signOut()}
+                // onClick={() => auth.signOut()}
               >
                 Sign Out
               </div>

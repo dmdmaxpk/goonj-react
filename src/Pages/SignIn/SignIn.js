@@ -1,13 +1,11 @@
 import React from "react";
 import "./SignIn.scss";
 import Background from "../../Assets/Background.jpg";
-import FormInput from "../../Components/FormInput/FormInput";
-import CustomButton from "../../Components/CustomButton/CustomButton";
+// import FormInput from "../../Components/FormInput/FormInput";
+// import CustomButton from "../../Components/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signInWithGoogle } from "../../Firebase/firebase.utils";
-import { auth } from "../../Firebase/firebase.utils";
 
 class SignIn extends React.Component {
   constructor() {
@@ -23,7 +21,7 @@ class SignIn extends React.Component {
     const { email, password } = this.state;
 
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      // await auth.signInWithEmailAndPassword(email, password);
       this.setState({ email: "", password: "" });
     } catch (error) {
       console.error(error);
@@ -52,7 +50,7 @@ class SignIn extends React.Component {
               autoComplete="new-password"
               onSubmit={this.handleSubmit}
             >
-              <FormInput
+              {/* <FormInput
                 name="email"
                 type="email"
                 value={this.state.email}
@@ -68,18 +66,18 @@ class SignIn extends React.Component {
                 handleChange={this.handleChange}
                 label="Password"
                 required
-              />
+              /> */}
 
               <div className="signin__btn-container">
                 <div className="signin__btn">
-                  <CustomButton type="submit" signin>
+                  {/* <CustomButton type="submit" signin>
                     {" "}
                     Sign In{" "}
                   </CustomButton>
                   <CustomButton onClick={signInWithGoogle}>
                     <FontAwesomeIcon icon={faGoogle} className="signin__google-icon" />
                     Sign In With Google
-                  </CustomButton>
+                  </CustomButton> */}
                 </div>
               </div>
             </form>
