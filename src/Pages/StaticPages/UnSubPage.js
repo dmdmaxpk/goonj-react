@@ -27,13 +27,14 @@ export default class UnSubPage extends Component {
       .then((res) => {
         let result = res.data;
         if (result.code == -1 && result.message) {
-          this.setState({ messageText: "User does not exist." });
+          this.setState({ messageText: "User does not exist" });
         } else if (result.data.auto_renewal == true) {
           AxiosInstance.post("payment/unsubscribe", unsubData).then((res) => {
+            let result = res.data;
             this.setState({ messageText: "You have been Unsubscribed" });
           });
         } else if (result.data.auto_renewal == false) {
-          this.setState({ messageText: "You are already Unsubscribed'" });
+          this.setState({ messageText: "You are already Unsubscribed" });
         } else if (result.code == -1 && !result.data.auto_renewal) {
           this.setState({ messageText: "You do not have this package" });
         }
@@ -55,7 +56,7 @@ export default class UnSubPage extends Component {
         <GridContainer className="containerUnSub">
           <GridItem xs={12} sm={12} md={12}>
             {this.state.loading === false ? (
-              <p className="d-flex justify-content-center">
+              <p className="d-flex justify-content-center font_size">
                 {this.state.messageText}
               </p>
             ) : (
