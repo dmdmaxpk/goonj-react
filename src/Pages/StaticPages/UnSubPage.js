@@ -31,8 +31,8 @@ export default class UnSubPage extends Component {
         } else if (result.data.auto_renewal == true) {
           AxiosInstance.post("payment/unsubscribe", unsubData).then((res) => {
             let result = res.data;
-            this.setState({ messageText: "You have been Unsubscribed" });
           });
+          this.setState({ messageText: "You have been Unsubscribed" });
         } else if (result.data.auto_renewal == false) {
           this.setState({ messageText: "You are already Unsubscribed" });
         } else if (result.code == -1 && !result.data.auto_renewal) {
