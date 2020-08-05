@@ -14,6 +14,25 @@
     // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     // transition: 0.3s;
 }
+.whiteColor{
+    color: white;
+}
+.disabledColor{
+    color: #777777;
+}
+
+.prevBTN{
+
+    width: 4rem;
+    font-size: 20px;
+}
+.nextBTN{
+
+    width: 4rem;
+    font-size: 20px;
+}
+
+
 .vodGridItem:hover{
     -moz-box-shadow: 0 0 10px #4aa6e5;
     -webkit-box-shadow: 0 0 10px #4aa6e5;
@@ -71,7 +90,9 @@
 
 .paginationDiv{
     position: relative;
-    // left: 37%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
     top: 30px;
 }
 .pagination > ul > li > a, .pagination > ul > li > div{
@@ -215,6 +236,7 @@
     .recomendation_details_div{
     margin-top: -14px;
     }
+
     .recomTitle {
         height: 39px !important;
         width: 1% !important;

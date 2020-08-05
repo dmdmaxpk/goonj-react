@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AxiosInstance from "../../Utils/AxiosInstance";
+import PaywallInstance from "../../Utils/PaywallInstance";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
 import './ListSections.scss';
 import Slider from "react-slick";
+import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { data } from 'jquery';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -19,11 +21,12 @@ class ChannelList extends Component {
         this.handleRedirect = this.handleRedirect.bind(this);
     }
     componentDidMount(){
-        AxiosInstance.get('/live')
+        PaywallInstance.get('/live')
         .then(res =>{
             this.setState({data: res.data})
         })
     }
+
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
         // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
@@ -36,7 +39,6 @@ class ChannelList extends Component {
             arrows: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 1,
             slidesToScroll: 1,
             responsive: [
                 {
@@ -44,7 +46,7 @@ class ChannelList extends Component {
                   settings: {
                     slidesToShow: 8.5,
                     slidesToScroll: 3,
-                    infinite: false,
+                    initialSlide: 0,
                     arrow: true
                   }
                 },
@@ -53,7 +55,7 @@ class ChannelList extends Component {
                   settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
-                    // infinite: false,
+                    initialSlide: 0
                   }
                 },
                 {
@@ -61,7 +63,7 @@ class ChannelList extends Component {
                   settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
-                    infinite: false,
+                    initialSlide: 0,
                     arrows: true
                   }
                 }
@@ -72,8 +74,9 @@ class ChannelList extends Component {
             <div className={this.props.class}>
                 <Heading heading="Live Channels" url="/live-tv" />
                 <div className="channelListContainer channelContainerMargin">
+                    {this.state.data.length > 0 ?
                         <Slider className="channelSlider" {...settings}>
-                            {this.state.data.length > 1 ?
+                             {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
@@ -83,9 +86,12 @@ class ChannelList extends Component {
                                         </a>
                                     </div>
                                 )
-                                : ""
+                               
                             }
+                         
                          </Slider>
+                    : <Loader />
+                    }
                 </div>
             </div>
         );
