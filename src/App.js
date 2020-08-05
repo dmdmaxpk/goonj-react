@@ -17,8 +17,12 @@ import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
-import { CheckLiveStatus, CheckCPStatus, getPackages } from "./Services/apiCalls";
-import Profile from './Pages/Profile/Profile';
+import {
+  CheckLiveStatus,
+  CheckCPStatus,
+  getPackages,
+} from "./Services/apiCalls";
+import Profile from "./Pages/Profile/Profile";
 import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
@@ -29,13 +33,13 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 
 class App extends React.Component {
-  componentDidMount(){
-    if(this.props.location.pathname === '/'){
-      this.props.history.push('/home');
+  componentDidMount() {
+    if (this.props.location.pathname === "/") {
+      this.props.history.push("/home");
     }
     const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
     ReactGA.initialize(trackingId);
-    this.props.history.listen(location => {
+    this.props.history.listen((location) => {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
@@ -43,14 +47,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.location.pathname !== "/binjee" ?
+        {this.props.location.pathname !== "/binjee" ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
             <Sidebar /> 
           </div>
-          :
-          ''
-        }
+        ) : (
+          ""
+        )}
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route
@@ -71,13 +75,22 @@ class App extends React.Component {
           <Route exact path="/terms-conditions" component={TermsConditions} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
-          <Route exact path="/channel/:slug" component={LiveChannel}/>
+          <Route exact path="/channel/:slug" component={LiveChannel} />
           <Route exact path="/searchresults" component={SearchPage} />
-          <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage} />
-          <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage} />
+          <Route
+            exact
+            path="/category/:category/page/:pageNumber"
+            component={CategoryVodPage}
+          />
+          <Route
+            exact
+            path="/source/:source/page/:pageNumber"
+            component={ChannelVodPage}
+          />
           <Route exact path="/binjee" component={Binjee} />
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
+          <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
@@ -98,4 +111,4 @@ class App extends React.Component {
   }
 }
 
-export default (withRouter)(App);
+export default withRouter(App);
