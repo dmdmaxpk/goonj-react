@@ -90,11 +90,10 @@ class ChannelVodPage extends Component {
                     }
                     <GridItem sm={12} md={12} xs={12}>
                         <div className="paginationDiv">
-                        {this.state.data.length >= this.state.limit ?
                             <Pagination
                                 page={parseInt(this.props.match.params.pageNumber)}
                                 className="pagination"
-                                count={10}
+                                count={this.state.data.length >= this.state.limit ? parseInt(this.props.match.params.pageNumber) + 1 : parseInt(this.props.match.params.pageNumber)}
                                 color="primary"
                                 renderItem={(item) => (
                                     <PaginationItem
@@ -104,9 +103,6 @@ class ChannelVodPage extends Component {
                                     />
                                 )}
                             />
-                            :
-                            ''
-                        }
                         </div>
                     </GridItem>
                 </GridContainer>

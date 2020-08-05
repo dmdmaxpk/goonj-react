@@ -4,16 +4,12 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
-import './vod.scss';
 import ReactTimeAgo from 'react-time-ago';
-import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import {CaretLeftOutlined, CaretRightOutlined }from '@ant-design/icons';
+import './vod.scss';
 
 let count,strURL;
 class CategoryVodPage extends Component {
@@ -61,6 +57,9 @@ class CategoryVodPage extends Component {
         AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
             this.setState({data: res.data, loading: false});
+            if(res.data.length < 1){
+                this.props.history.push(`/category/${this.props.match.params.category}/page/${1}`);
+            }
         })
     }
     componentWillReceiveProps(nextProps) {
@@ -128,12 +127,11 @@ class CategoryVodPage extends Component {
                     }
                     <GridItem sm={12} md={12} xs={12} >
                         <div className="paginationDiv">
-                            {/* {this.state.data.length == this.state.limit ?
-                            
+                            {/* {this.state.data.length == this.state.limit ? */}
                                 <Pagination
                                     page={parseInt(this.props.match.params.pageNumber)}
                                     className="pagination"
-                                    count={10}
+                                    count={this.state.data.length >= this.state.limit ? parseInt(this.props.match.params.pageNumber) + 1 : parseInt(this.props.match.params.pageNumber)}
                                     size="small"
                                     color="primary"
                                     renderItem={(item) => (
@@ -143,30 +141,8 @@ class CategoryVodPage extends Component {
                                         {...item}
                                         />
                                         )}
-                                /> */}
-                               
-                                <div className="navBtnDiv">
-                                {count == 1? 
-                                <CaretLeftOutlined className="disabledColor prevBTN"/>
-                                :  
-                                <Link   onClick={()=> this.countCheck(0)}>
-                                <CaretLeftOutlined className="whiteColor prevBTN"/>
-                                </Link>  
-                                }
-
-                                {this.state.data.length<this.state.limit?
-                                    <Link    onClick={()=> this.countCheck(2)} >  
-                                    <CaretRightOutlined className="whiteColor nextBTN"/>
-                                    </Link> 
-                                :
-                                    <Link    onClick={()=> this.countCheck(1)} >  
-                                    <CaretRightOutlined className="whiteColor nextBTN"/>
-                                    </Link> 
-                                }
-                                </div>
-{/*                                
-                                :
-
+                                />
+                                {/* :
                                 ""
                             } */}
                         </div>

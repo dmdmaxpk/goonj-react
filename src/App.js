@@ -31,6 +31,8 @@ import ReactGA from 'react-ga';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
+import Unsubscribe from "./Pages/StaticPages/UnSubPage";
+
 
 class App extends React.Component {
   componentDidMount() {
