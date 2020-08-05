@@ -71,7 +71,8 @@ class ChannelList extends Component {
           };
 
         return (
-            <div className={this.props.class}>
+            <div className={this.props.classname}>
+               { console.log(this.props.classname+"hello")}
                 <Heading heading="Live Channels" url="/live-tv" />
                 <div className="channelListContainer channelContainerMargin">
                     {this.state.data.length > 0 ?

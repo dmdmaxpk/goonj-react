@@ -48,7 +48,7 @@ class DramasSection extends Component {
     render() {
         let data = this.state.data;
         return (
-            <div>
+            <div className="dramaMainDivMargin">
                 <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                     <div className="sectionContainers">

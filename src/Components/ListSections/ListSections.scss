@@ -12,6 +12,10 @@
     position: absolute;
     outline: none;
 }
+.channelList{
+    margin-top: 2% !important;
+}
+
 .channelListCarousel .react-multiple-carousel__arrow{
     top: 30%;
 }
@@ -24,6 +28,7 @@
     // margin-top: -5%;
     // margin-left: 140px;
 }
+
 .slick-prev{
     left: 5% !important;
     z-index: 100 !important;
@@ -179,6 +184,11 @@ top: 0;
 
 
 @media only screen and (max-width: 480px) {
+
+    .channelList{
+        margin-top: -2% !important;
+    }
+    
     .recomPlayBtn{
         width: 20px;
         position: relative;

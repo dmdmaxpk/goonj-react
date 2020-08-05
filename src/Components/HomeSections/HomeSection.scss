@@ -1,7 +1,7 @@
 .headingGridContainer{
     color: white;
     margin-bottom: 10px;
-    padding: 0 3.5% 0 8% !important;
+    padding: 0 3.8% 0 4.3% !important;
 }
 .heading_container{
     margin-bottom: 1.5%;
@@ -26,12 +26,21 @@
 }
 .view_more_text{
     font-size: 12px;
+    font-weight: bold;
+    color: white;
 }
 .carouselDiv{
     height: 700px;
 }
 .headlinesContainer{
-    margin-top: 4%;
+    margin-top: 3%;
+}
+
+.sportsContainer{
+    margin-top: 1%;
+}
+.programsContainer{
+    margin-top: 3%;
 }
 .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
     top:31% !important;
@@ -63,6 +72,9 @@
 
 .carousel-indicators{
     bottom: 15vh !important;
+}
+.dramaMainDivMargin{
+    margin-top: 2%;
 }
 
 .box1 {
@@ -130,7 +142,7 @@
 }
 
 .programsContainer{
-    margin-top: 2% !important;
+    margin-top: 6% !important;
 }
 .carouselDiv {
     height: 100%;
@@ -230,15 +242,18 @@
     .responsive_vod_div{
         display: block;
     }
+    .headlinesSlider{
+        padding-left: 3%;
+    }
     .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
         top: 21% !important;
     }
     .headlinesContainer{
         margin: 0 1%;
-        margin-top: 8%;
+        margin-top: 7%;
     }
     .programsContainer{
-        margin-top: 0px !important;
+        margin-top: 6% !important;
     }
 
     .heading_text{
@@ -328,6 +343,15 @@
 }
   }
   @media only screen and (max-width: 480px) {
+      .dramaMainDivMargin{
+          margin-top: -3%;
+      }
+      .headlinesContainer {
+        margin-top: 5%;
+    }
+    .sportsContainer{
+        margin-top: 3% !important;
+    }
     .headingGridContainer{
         padding: 0 6.2% 0 8.5% !important;
     }
@@ -335,8 +359,7 @@
           left: 35% !important;
       }
     .blockOneDiv{
-        height: 25% !important;
-        padding: 10px !important;
+        display: none !important;
 
     }
     .categoryText{
@@ -395,6 +418,15 @@
   }
 
   @media only screen and (max-width: 413px) and (min-width: 411px)  {
+    .headlinesContainer {
+        margin-top: 5% !important;
+    }
+    .sportsContainer{
+        margin-top: -2% !important;
+    }
+    .programsContainer{
+        margin-top: 4% !important;
+    }
     .daysAgoText{
         margin-top: 4px !important;
         font-size: 8px !important;
@@ -422,6 +454,15 @@
 
 
   @media only screen and (max-width: 375px) {
+    .headlinesContainer {
+        margin-top: 5% !important;
+    }
+    .sportsContainer{
+        margin-top: -2% !important;
+    }
+    .programsContainer{
+        margin-top: 4% !important;
+    }
     .program_lower_4{
         margin-top: -9% !important;
     }
@@ -482,6 +523,15 @@
 
   }
   @media only screen and (max-width: 320px) {
+    .headlinesContainer {
+        margin-top: 5% !important;
+    }
+    .sportsContainer{
+        margin-top: -4% !important;
+    }
+    .programsContainer{
+        margin-top: 4% !important;
+    }
     .program_lower_4{
         margin-top: -9% !important;
     }
@@ -556,13 +606,11 @@
   
 
 .sectionContainers{
-    padding: 0 6% 0 7%;
+    padding: 0 6% 0 3%;
     position: relative !important;
     // margin-top: -5%;
 }
-.programsContainer{
-    margin-top: 1.5%;
-}
+
 
 .img_radius{
     border-radius: 5px;
@@ -627,6 +675,9 @@
     font-weight: 100;
     text-transform: capitalize;
     width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
 }
 .channelNameText{
     font-size: small;
@@ -676,7 +727,7 @@
 }
 
 .title_and_discription{
-    width: 75%;
+    width: 70%;
 }
 .vod_first_image{
     width: 100%;

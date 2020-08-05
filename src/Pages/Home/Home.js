@@ -34,14 +34,14 @@ class Home extends Component {
                         <PosterSlider />
                         <div className="homeSections">
                             <PopularList title="Popular on Goonj" class="popularContainer" />
-                            <br />
-                            <ChannelList />
-                            <br />
+                         
+                            <ChannelList classname="channelList"/>
+                           
                             <DramasSection category="entertainment" /> 
                             <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
-                            <br />
-                            <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" />
-                            <br />
+                         
+                            <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
+                        
                             <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />
                         </div>
                     </div>

@@ -4,11 +4,20 @@
     margin-top: 40px;
     margin-bottom: -20vh;
 }
-
+.channelTag{
+    margin-top: 20% !important;
+}
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 900px) 
+and (orientation: landscape){
+    .homeSections{
+        margin-left: 0px !important;
+    }
+}
 @media only screen and (min-width: 801px) {
     .homeSections{
         margin-right: -2%;
-        margin-left: 2%;
+        margin-left: 73px;
     }
 
 

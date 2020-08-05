@@ -54,7 +54,7 @@ class CategoryDD extends Component {
         return(
             <div className="categoryDDContainer">
                 <InputLabel className="catLabel" htmlFor="select">Category</InputLabel>
-                <Select id="select" className="catSelect" name="category" value={this.state.category} onChange={this.handleChange}>
+                <Select id="select" className="catSelect" name="category" value={this.props.category} onChange={this.handleChange}>
                     {
                         categories.map(item =>
                             <MenuItem className="catMenuItem" value={item.category}>{item.name}</MenuItem>
