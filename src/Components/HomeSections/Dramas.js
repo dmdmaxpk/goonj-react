@@ -3,8 +3,9 @@ import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import config from '../../Utils/config';
-import {Grid} from "@material-ui/core"
+import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,7 +14,8 @@ class DramasSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true
+            loading: true,
+            data: []
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
@@ -22,6 +24,13 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
+        PaywallInstance.get(`/video?category=entertainment&limit=5h`)
+        .then(res => {
+            this.setState({data: res.data});
+        })
+        .catch(err =>{
+            // console.log(err);
+        });
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
@@ -37,7 +46,7 @@ class DramasSection extends Component {
         return url;
     }
     render() {
-        let data = this.props.data;
+        let data = this.state.data;
         return (
             <div>
                 <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
@@ -97,7 +106,9 @@ class DramasSection extends Component {
                             </div>
                     </div>
                    
-                : ""}
+                : <Loader />
+                }
+
             </div>
         );
     }

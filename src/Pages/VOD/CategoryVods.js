@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
-import './vod.scss';
 import ReactTimeAgo from 'react-time-ago';
-import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
+import './vod.scss';
 
-
+let count,strURL;
 class CategoryVodPage extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -23,25 +23,43 @@ class CategoryVodPage extends Component {
             page: this.props.match.params.pageNumber,
             isPremium: true,
             loading: true
+           
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
         this.getVideos = this.getVideos.bind(this);
     }
     componentDidMount(){
+        strURL = window.location.href.split("/");
+        count = parseInt(strURL[strURL.length-1]);
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
         this.getVideos();
     }
+    countCheck(value){
+        let {history} = this.props;
+       if(value==0){
+            count--;
+            history.push(`/category/${this.props.match.params.category}/page/${count}`);
+        } if(value==1){
+            count++;
+            history.push(`/category/${this.props.match.params.category}/page/${count}`);
+        }if(value==2){
+            history.push(`/category/${this.props.match.params.category}/page/${1}`);
+        }
+    }
     getVideos(){
         this.setState({loading: true});
         let apiUrl = `/video?category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
-        AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
+        PaywallInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
             this.setState({data: res.data, loading: false});
+            if(res.data.length < 1){
+                this.props.history.push(`/category/${this.props.match.params.category}/page/${1}`);
+            }
         })
     }
     componentWillReceiveProps(nextProps) {
@@ -70,8 +88,12 @@ class CategoryVodPage extends Component {
         let url = id + "_" + str;
         return url;
     }
+
+
     render(){
+      
         return(
+           
             <div className="vodCategroyContainer">
                 <div>
                     <p className="headingVOD floatLeft">{this.props.match.params.category}</p>
@@ -81,6 +103,8 @@ class CategoryVodPage extends Component {
                     {this.state.loading === false ?
                         this.state.data.map(item =>
                             <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
+                                {this.state.data.length!=0?
+                                <div>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                     <span className="playBtn">
                                         <img src={require("../../Assets/playBtn.png")} />
@@ -91,18 +115,23 @@ class CategoryVodPage extends Component {
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
                                     <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
                                     <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                </div></div>
+                                :
+                                <div>
+                                <p>HELLO</p>
                                 </div>
+                                    }
                             </GridItem>
                         )
                     : <Loader />
                     }
                     <GridItem sm={12} md={12} xs={12} >
                         <div className="paginationDiv">
-                            {this.state.data.length >= this.state.limit ?
+                            {/* {this.state.data.length == this.state.limit ? */}
                                 <Pagination
                                     page={parseInt(this.props.match.params.pageNumber)}
                                     className="pagination"
-                                    count={10}
+                                    count={this.state.data.length >= this.state.limit ? parseInt(this.props.match.params.pageNumber) + 1 : parseInt(this.props.match.params.pageNumber)}
                                     size="small"
                                     color="primary"
                                     renderItem={(item) => (
@@ -113,9 +142,9 @@ class CategoryVodPage extends Component {
                                         />
                                         )}
                                 />
-                                :
+                                {/* :
                                 ""
-                            }
+                            } */}
                         </div>
                     </GridItem>
                 </GridContainer>

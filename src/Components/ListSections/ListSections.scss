@@ -34,6 +34,10 @@
     right: 20px !important;
     top: 32% !important;
 }
+.slick-prev:before, .slick-next:before {
+    opacity: 1 !important;
+
+}
 
 .gradient {
     position: relative;
