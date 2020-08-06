@@ -20,7 +20,8 @@ class VodSection extends Component {
     }
     removeDescTags(desc){
         let x = desc.split('<');
-        let y = x[1].split('>');
+        x = String(x[1]);
+        let y = x.split('>');
         return y[1];
     }
     componentDidMount(){
