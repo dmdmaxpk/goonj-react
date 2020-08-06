@@ -173,6 +173,22 @@ top: 0;
     color: #ccc;
 }
 
+
+
+@media only screen and (min-width: 1540px) {
+
+    .channelListImg {
+        height: 300px;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+
+    .channelListImg {
+        height: 350px;
+    }
+}
+
 @media only screen and (max-width: 900px) {
 
     .channelListImg {
