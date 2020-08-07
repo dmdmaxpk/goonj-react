@@ -32,6 +32,7 @@ import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
+import Feedback from "./Components/Feedback/Feedback";
 
 
 class App extends React.Component {
@@ -52,7 +53,8 @@ class App extends React.Component {
         {this.props.location.pathname !== "/binjee" ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
-            <Sidebar /> 
+            <Sidebar />
+            <Feedback />
           </div>
         ) : (
           ""
