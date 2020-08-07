@@ -47,7 +47,7 @@ class VideoPlayer extends Component {
                 // console.log("url", source);
                 this.setState({source});
 
-                this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
+                this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
                     // console.log('onPlayerReady', this)
                 });
 

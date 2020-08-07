@@ -24,6 +24,9 @@ import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
 import ReactGA from 'react-ga';
+import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import { Tooltip } from "@material-ui/core";
 
 class App extends React.Component {
   componentDidMount(){
@@ -79,6 +82,10 @@ class App extends React.Component {
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
+          <Tooltip title="Contact us at 727200" placement="left">
+            <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
+          </Tooltip>
+          <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a>
         {this.props.location.pathname !== "/binjee" ?
           <Footer/>
         :

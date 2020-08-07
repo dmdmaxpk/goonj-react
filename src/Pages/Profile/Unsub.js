@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import { Collapse, Divider, Modal, Fade } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -50,7 +50,7 @@ class Unsub extends Component {
     }
     getPackages(){
         let source = localStorage.getItem('source');
-        AxiosInstance.get(`/paywall?source=${source}`)
+        PaywallInstance.get(`/paywall?source=${source}`)
         .then(res =>{
             let result = res.data.data;
             // console.log("packages", result)
@@ -75,7 +75,7 @@ class Unsub extends Component {
             source,
             package_id: displayPackageId
         }
-        AxiosInstance.post('/payment/unsubscribe', unsubData)
+        PaywallInstance.post('/payment/unsubscribe', unsubData)
         .then(res =>{
             let result = res.data;
             // console.log(result);
@@ -96,7 +96,8 @@ class Unsub extends Component {
             source,
             package_id: displayPackageId
         }
-        AxiosInstance.post('/payment/subscribe', subData)
+        console.log(subData);
+        PaywallInstance.post('/payment/subscribe', subData)
         .then(res =>{
             let result = res.data;
             if(result.code === -1){
