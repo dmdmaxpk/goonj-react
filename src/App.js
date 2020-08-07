@@ -92,6 +92,9 @@ class App extends React.Component {
           <Route exact path="/binjee" component={Binjee} />
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
+          <Route exact path="/goonjplus/subscribe">
+            <Redirect to="/paywall/live"/>
+          </Route>
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />

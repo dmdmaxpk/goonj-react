@@ -5,7 +5,6 @@ import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
 import Loader from '../../Components/Loader/Loader';
-import AxiosInstance from '../../Utils/AxiosInstance';
 import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
 

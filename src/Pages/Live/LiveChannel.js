@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import VideoPlayer from '../../Components/Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
 import PopularList from '../../Components/ListSections/PopularList';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
 import { CheckLiveStatus } from '../../Services/apiCalls';
@@ -41,7 +41,7 @@ class LiveChannel extends Component {
         }
         if(msisdn){
 
-            AxiosInstance.post('/payment/status', statusData)
+            PaywallInstance.post('/payment/status', statusData)
             .then(res =>{
             const result = res.data.data;
             if(res.data.code === -1){

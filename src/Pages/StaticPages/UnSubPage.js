@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GridContainer from "../../Components/Grid/GridContainer";
 import GridItem from "../../Components/Grid/GridItem";
-import AxiosInstance from "../../Utils/AxiosInstance";
+import PaywallInstance from "../../Utils/PaywallInstance";
 import Loader from "../../Components/Loader/Loader";
 
 export default class UnSubPage extends Component {
@@ -23,13 +23,13 @@ export default class UnSubPage extends Component {
       package_id: this.state.package_ID,
     };
     if(this.state.user_ID!=null){
-    AxiosInstance.post("payment/status", unsubData)
+    PaywallInstance.post("payment/status", unsubData)
       .then((res) => {
         let result = res.data;
         if (result.code == -1 && result.message) {
           this.setState({ messageText: "User does not exist" });
         } else if (result.data.auto_renewal == true) {
-          AxiosInstance.post("payment/unsubscribe", unsubData).then((res) => {
+          PaywallInstance.post("payment/unsubscribe", unsubData).then((res) => {
             let result = res.data;
           });
           this.setState({ messageText: "You have been Unsubscribed" });

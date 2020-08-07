@@ -3,7 +3,7 @@ import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import config from '../../Utils/config';
 import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
@@ -24,7 +24,7 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
-        AxiosInstance.get(`/video?category=entertainment&limit=5h`)
+        PaywallInstance.get(`/video?category=entertainment&limit=5h`)
         .then(res => {
             this.setState({data: res.data});
         })

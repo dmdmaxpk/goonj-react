@@ -21,7 +21,10 @@ import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   // console.log("Header rendered");
-
+  function signout(){
+    localStorage.clear();
+    window.location.reload();
+  };
   setParams();
 
   let pathname = history.location.pathname.split('/')[1];
@@ -83,7 +86,13 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
                   Sign In
                 </Link>
               :
-              ''
+                <Link
+                  onClick={()=> signout()}
+                  className="header__option header__option--signin"
+                  to="/paywall/live"
+                  >
+                  Sign Out
+                </Link>
               }
             </div>
           )}

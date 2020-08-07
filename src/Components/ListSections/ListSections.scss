@@ -1,3 +1,41 @@
+fadeleft {
+    position: absolute;
+ 
+ 
+
+    display: block;
+  
+    width: 100px;
+    height: 100%;
+
+    z-index: 2;
+  
+    background-image: linear-gradient(to right, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
+faderight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    display: block;
+  
+    width: 150px;
+    height: 100%;
+
+    z-index: 1;
+  
+    background-image: linear-gradient(to left, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
+.slick-next {
+    z-index: 2 !important;
+}
+
 .react-multi-carousel-item {
     width: 150px !important;
     margin: 20px 10px;
@@ -23,7 +61,7 @@
     top: 25%;
 }
 .channelListContainer{
-    margin: 0px 12px 0px 12px;
+    margin: 0px 2% 0px 12px;
     margin-bottom: 0;
     // margin-top: -5%;
     // margin-left: 140px;
@@ -197,6 +235,16 @@ top: 0;
 
     .channelListImg {
         height: 154px;
+    }
+    fadeleft {
+        width: 40px;
+        height: 95%;
+        left: -5px;
+    }
+    faderight {
+        width: 40px;
+        right: -5px;
+
     }
 }
 

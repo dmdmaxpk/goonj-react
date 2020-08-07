@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
@@ -37,7 +37,7 @@ class ChannelVodPage extends Component {
     getVideos(){
         this.setState({loading: true});
         let apiUrl = `/video?source=${this.props.match.params.source}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
-        AxiosInstance.get(apiUrl)
+        PaywallInstance.get(apiUrl)
         .then(res =>{
             this.setState({data: res.data, loading: false});
         })

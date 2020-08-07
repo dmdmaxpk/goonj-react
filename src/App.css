@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+
+.customerCareIcon, .whatsappIcon{
+  z-index: 3;
+}

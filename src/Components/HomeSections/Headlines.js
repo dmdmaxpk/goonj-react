@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Heading from './Heading';
 import './HomeSection.scss';
 import Loader from '../Loader/Loader';
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
 
 class HeadlinesSection extends Component {
@@ -28,7 +28,7 @@ class HeadlinesSection extends Component {
           });
     }
     componentDidMount(){
-        AxiosInstance.get(`/video?category=news&limit=10`)
+        PaywallInstance.get(`/video?category=news&limit=10`)
         .then(res => {
             this.setState({data: res.data});
         })

@@ -73,7 +73,8 @@ class ChannelList extends Component {
         return (
             <div className={this.props.class}>
                 <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname} />
-                <div className="channelListContainer channelContainerMargin">
+                <div className="channelListContainer channelContainerMargin position-relative">
+                <fadeleft/>
                     {this.state.data.length > 0 ?
                         <Slider className="channelSlider" {...settings}>
                              {
@@ -91,6 +92,7 @@ class ChannelList extends Component {
                          </Slider>
                     : <Loader />
                     }
+                <faderight/>
                 </div>
             </div>
         );
