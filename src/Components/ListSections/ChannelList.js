@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AxiosInstance from "../../Utils/AxiosInstance";
+import PaywallInstance from "../../Utils/PaywallInstance";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
@@ -21,7 +21,7 @@ class ChannelList extends Component {
         this.handleRedirect = this.handleRedirect.bind(this);
     }
     componentDidMount(){
-        AxiosInstance.get('/live')
+        PaywallInstance.get('/live')
         .then(res =>{
             this.setState({data: res.data})
         })
@@ -71,8 +71,7 @@ class ChannelList extends Component {
           };
 
         return (
-            <div className={this.props.classname}>
-               { console.log(this.props.classname+"hello")}
+            <div className={this.props.class}>
                 <Heading heading="Live Channels" url="/live-tv" />
                 <div className="channelListContainer channelContainerMargin">
                     {this.state.data.length > 0 ?
@@ -81,7 +80,6 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
-                                            {/* <div className="premiumTag">Premium</div> */}
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
                                             <p className="channelListName">{item.name}</p>
                                         </a>
