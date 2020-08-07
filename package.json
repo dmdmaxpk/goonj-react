@@ -72,12 +72,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darwin619/Netflix-Clone.git"
+    "url": "http://alpha.goonj.pk/"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darwin619/Netflix-Clone/issues"
+    "url": "http://alpha.goonj.pk/"
   },
-  "homepage": "https://github.com/darwin619/Netflix-Clone#readme"
+  "homepage": "http://alpha.goonj.pk/"
 }
