@@ -14,7 +14,7 @@ class Home extends Component {
         super(props);
         this.state ={
             loading: true,
-            items: Array.from({ length: 3 }),
+            items: Array.from({ length: 2 }),
             hasMore: true
         }
     }
