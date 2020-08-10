@@ -36,12 +36,11 @@ class VodPage extends Component {
             }
         })
         .catch(err =>{
-            // console.log(err);
+
         })
     }
     checkStatus(cat){
         if(cat === "comedy"){
-            // console.log("comedy page");
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             let urlMsisdn = urlParams.get("msisdn");
@@ -74,7 +73,7 @@ class VodPage extends Component {
                 }
             })
             .catch(err =>{
-                // console.log(err);
+              
             });
         }
         else{

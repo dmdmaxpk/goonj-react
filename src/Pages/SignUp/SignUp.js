@@ -1,8 +1,6 @@
 import React from "react";
 import "./SignUp.scss";
 import Background from "../../Assets/Background.jpg";
-// import FormInput from "../../Components/FormInput/FormInput";
-// import CustomButton from "../../Components/CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 
 class SignUp extends React.Component {
@@ -26,13 +24,6 @@ class SignUp extends React.Component {
       return;
     }
     try {
-      // const { user } = await auth.createUserWithEmailAndPassword(
-      //   email,
-      //   password
-      // );
-
-      // await CreateUserProfileDocument(user, { displayName });
-
       this.setState({
         displayName: "",
         email: "",

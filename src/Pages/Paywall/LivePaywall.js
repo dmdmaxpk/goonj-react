@@ -74,7 +74,6 @@ class LivePaywall extends Component {
                                 <font className="cancelText">for package conversion or cancellation, go to </font>Profile{">"}Subscriptions
                             </p>
                             </div>
-                            {/* <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p> */}
                         </div>
                     </div>
             </div>

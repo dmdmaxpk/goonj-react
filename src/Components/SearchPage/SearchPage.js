@@ -6,9 +6,6 @@ import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
 import '../../Pages/VOD/vod.scss';
 import ReactTimeAgo from 'react-time-ago';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
-import PaginationItem from '@material-ui/lab/PaginationItem';
 import Loader from '../../Components/Loader/Loader';
 
 
@@ -61,7 +58,6 @@ class SearchPage extends Component {
               }
           })
           .catch(err =>{
-            // console.log(err);
           });
         }
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
 
@@ -31,7 +31,6 @@ class RecommendationList extends Component {
             });
         })
         .catch(err =>{
-            // console.log(err);
         })
     }
     kFormatter(num) {

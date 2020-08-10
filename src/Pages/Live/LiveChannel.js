@@ -5,7 +5,6 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
-import { CheckLiveStatus } from '../../Services/apiCalls';
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -27,7 +26,6 @@ class LiveChannel extends Component {
     checkStatus(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        let slug = urlParams.get("slug");
         let urlMsisdn = urlParams.get("msisdn");
         let urlPkgId = urlParams.get("package_id");
         let urlSource = urlParams.get("source");

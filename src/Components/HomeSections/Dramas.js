@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import GridContainer from '../Grid/GridContainer';
-import GridItem from '../Grid/GridItem';
 import Heading from './Heading';
 import './HomeSection.scss';
 import config from '../../Utils/config';
-import {Grid} from "@material-ui/core"
 import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

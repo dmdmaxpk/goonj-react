@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import AxiosInstance from "../../Utils/AxiosInstance";
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
-import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
 import './ListSections.scss';
 import Slider from "react-slick";
@@ -26,7 +24,6 @@ class ChannelList extends Component {
     }
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
-        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
@@ -53,7 +50,6 @@ class ChannelList extends Component {
                   settings: {
                     slidesToShow: 4,
                     slidesToScroll: 4,
-                    // infinite: false,
                   }
                 },
                 {
@@ -77,7 +73,6 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
-                                            {/* <div className="premiumTag">Premium</div> */}
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
                                             <p className="channelListName">{item.name}</p>
                                         </a>

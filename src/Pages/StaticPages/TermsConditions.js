@@ -82,10 +82,6 @@ export default function TermsConditions(){
                         Goonj’s logo is a registered trademark of Goonj. The brand names and specific services featured on Goonj are registered trademarks of their respective owners.
                     </p>
 
-                    {/* <strong>Communication</strong>
-                    <p>
-                        We can be reached via our official email addresses or via our <a href="https://goonj.pk/contact-us/">Contact Us</a> page on our website.
-                    </p> */}
 
                     <strong>Force Majeure</strong>
                     <p>

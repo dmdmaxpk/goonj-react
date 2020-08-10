@@ -11,15 +11,11 @@ import {
 import { ToggleMenuHidden } from "../../Redux/User/user-actions";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import NavMenu from "./NavMenu";
 import { Hidden } from "@material-ui/core";
 import { setParams } from "../../Services/flowIntegrations";
 import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
-  // console.log("Header rendered");
   function signout(){
     localStorage.clear();
     window.location.reload();
@@ -65,12 +61,8 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
           {currentUser ? (
             <div className="header__option">
-              {/* <Link className="header__option" to="">
-                Hi, {currentUser.displayName}
-              </Link> */}
               <div
                 className="header__option header__option--signout"
-                // onClick={() => auth.signOut()}
               >
                 Sign Out
               </div>
