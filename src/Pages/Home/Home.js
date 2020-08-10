@@ -69,12 +69,6 @@ class Home extends Component {
                             dataLength={this.state.items.length}
                             next={this.fetchMoreData}
                             hasMore={this.state.hasMore}
-                            loader={<h4>Loading...</h4>}
-                            endMessage={
-                            <p style={{ textAlign: "center" }}>
-                                <b>Yay! You have seen it all</b>
-                            </p>
-                            }
                             >
                             {this.state.items.map((i, index) => (
                                 <div>{this.renderComponent(index)}
