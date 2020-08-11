@@ -7,18 +7,7 @@ import { Link } from 'react-router-dom';
 class Heading extends Component {
     render() { 
         return (
-            <GridContainer className="headingGridContainer">
-                {/* <GridItem xs={10} sm={8} md={8}>
-                    <div style={{float:"left", textTransform:"uppercase"}}>
-                        <h4 style={{fontWeight: "900"}}>{this.props.heading}</h4>
-                    </div>
-                 
-                </GridItem>
-                <GridItem xs={2}>
-                <div className="viewMore" style={{float:"right", fontSize:"small", marginRight:"15px", marginTop:"15px"}}>
-                        <Link to={this.props.url}>View More</Link>
-                    </div>
-                    </GridItem> */}
+            <div className="headingGridContainer">
                     <div className="heading_container">
                         <div className={ "heading_container " + ( this.props.classname ? this.props.classname : "") }>
                             <div style={{textTransform:"uppercase"}}>
@@ -29,7 +18,7 @@ class Heading extends Component {
                             </div>
                          </div>
                     </div>
-            </GridContainer>
+            </div>
         );
     }
 }

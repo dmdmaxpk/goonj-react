@@ -1,16 +1,20 @@
 .headingGridContainer{
     color: white;
     margin-bottom: 10px;
-    padding: 0 3.8% 0 4.3% !important;
+    padding: 0 2.6% 0 3.1% !important;
 }
 .heading_container{
-    margin-bottom: 1.5%;
     margin-right: 4%;
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: baseline;
 }
+.zIndexClass{
+    z-index: 10 !important;
+}
+
+
 .posterSlider{
     margin-bottom: 1%;
     margin-left: 4vw;
@@ -50,9 +54,18 @@
     width: 30px;
 
 }
+.vod_page_margin_heading{
+    margin-left: 4% !important;
+    margin-top: 4vh;
+}
 .headlineTitle{
     font-size: small;
     margin: 0 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .headnlineSource{
     color: grey;
@@ -116,7 +129,6 @@
     height: 100%;
 }
 
-
 }
 
 
@@ -158,10 +170,14 @@
 
 
   @media only screen and (max-width: 900px) {
+    .vod_page_margin_heading{
+        margin-left: -1% !important;
+        margin-right: 4%;
+        margin-top: 0vh ;
+    }
     .headingGridContainer{
         color: white;
-        margin-bottom: 10px;
-        padding: 0 5.5% 0 8.5% !important;
+        margin-bottom: 0px;
     }
     .sectionContainers{
         padding: 0 8% 0 7% !important;
@@ -353,7 +369,7 @@
         margin-top: 3% !important;
     }
     .headingGridContainer{
-        padding: 0 6.2% 0 8.5% !important;
+        padding: 0 2% 0 4.8% !important;
     }
       .play_btn_position2{
           left: 35% !important;
@@ -536,7 +552,7 @@
     }
 
     .heading_text{
-        font-weight: 600;
+        font-weight: 900;
         font-size: 13px;
     }
     .view_more_text{

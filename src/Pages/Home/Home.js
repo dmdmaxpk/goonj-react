@@ -14,7 +14,7 @@ class Home extends Component {
         super(props);
         this.state ={
             loading: true,
-            items: Array.from({ length: 2 }),
+            items: Array.from({ length: 3 }),
             hasMore: true
         }
     }
@@ -24,11 +24,9 @@ class Home extends Component {
           this.setState({ hasMore: false });
           return;
         }
-        setTimeout(() => {
-          this.setState({
+        this.setState({
             items: this.state.items.concat(Array.from({ length: 1 }))
           });
-        }, 500);
       };
 
   
@@ -43,7 +41,7 @@ class Home extends Component {
         if(e==0){
             return  <PopularList title="Popular on Goonj" class="popularContainer" />
         }else if(e==1){
-            return     <ChannelList classname="channelList"/>
+            return  <ChannelList classname="channelList"/>
         }else if(e==2){
             return <DramasSection category="entertainment" /> 
         }else if(e==3){
@@ -71,16 +69,11 @@ class Home extends Component {
                             hasMore={this.state.hasMore}
                             >
                             {this.state.items.map((i, index) => (
-                                <div>{this.renderComponent(index)}
-                            <br/></div> 
+                                <div>
+                                    {this.renderComponent(index)}
+                                </div> 
                             ))}
                         </InfiniteScroll>
-                            {/* <PopularList title="Popular on Goonj" class="popularContainer" />
-                            <ChannelList classname="channelList"/>
-                            <DramasSection category="entertainment" /> 
-                            <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
-                            <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
-                            <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" /> */}
                         </div>
                     </div>
                 }
