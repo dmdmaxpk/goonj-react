@@ -69,7 +69,7 @@
 }
 .headnlineSource{
     color: grey;
-    font-size: small;
+    font-size: 10px;
 }
 .hidden{
     display: none;
@@ -564,7 +564,6 @@
     }
   
     .marginZero{
-        // font-size: 10px !important;
         margin: -4px !important;
     }
     .blockOneSpan{
@@ -594,6 +593,10 @@
         margin-right: -30px !important;
         display: flex;
         justify-content: space-between;
+    }
+    .headnlineSource{
+        color: grey;
+        font-size: 8px;
     }
 
   }
