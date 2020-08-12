@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import GridContainer from '../Grid/GridContainer';
-import GridItem from '../Grid/GridItem';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import Heading from './Heading';
 import './HomeSection.scss';
+import Loader from '../Loader/Loader';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
 import { withRouter } from 'react-router-dom';
@@ -12,7 +12,7 @@ class VodSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data
+            data: []
         }
         this.removeDescTags = this.removeDescTags.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -20,8 +20,18 @@ class VodSection extends Component {
     }
     removeDescTags(desc){
         let x = desc.split('<');
-        let y = x[1].split('>');
+        x = String(x[1]);
+        let y = x.split('>');
         return y[1];
+    }
+    componentDidMount(){
+        PaywallInstance.get(this.props.apiLink)
+        .then(res => {
+            this.setState({data: res.data});
+        })
+        .catch(err =>{
+            // console.log(err);
+        });
     }
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
@@ -37,7 +47,7 @@ class VodSection extends Component {
         return url;
     }
     render() {
-        const data = this.props.data.length > 0 ? this.props.data : '';
+        const data = this.state.data;
         return (
             <div className={this.props.classname}>
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
@@ -118,7 +128,7 @@ class VodSection extends Component {
 
                 </div>
                 :
-                ''
+                <Loader/>
                 }
             </div>
         );

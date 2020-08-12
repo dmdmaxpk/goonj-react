@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Heading from './Heading';
 import './HomeSection.scss';
+import Loader from '../Loader/Loader';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
 
 class HeadlinesSection extends Component {
@@ -25,6 +27,15 @@ class HeadlinesSection extends Component {
             state: {data: item}
           });
     }
+    componentDidMount(){
+        PaywallInstance.get(`/video?category=news&limit=10`)
+        .then(res => {
+            this.setState({data: res.data});
+        })
+        .catch(err =>{
+            // console.log(err);
+        });
+    }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
         let str = specialCharStr.replace(/\s+/g, '-').toLowerCase();
@@ -38,7 +49,7 @@ class HeadlinesSection extends Component {
         return uploadDate
     }
     render(){
-        let data = this.props.data;
+        let data = this.state.data;
         // console.log(data);
         var settings = {
             dots: false,
@@ -79,6 +90,7 @@ class HeadlinesSection extends Component {
             <div className="headlinesContainer">
                 <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 <div>
+                    {this.state.data.length > 0 ?
                     <Slider className="headlinesSlider" {...settings}>
                         {data.map(item =>
                                 <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
@@ -92,8 +104,11 @@ class HeadlinesSection extends Component {
                                     </Link>
                                 </div>
                             )
+                          
                         }
                     </Slider>
+                      : <Loader/>
+                    }
                 </div>
             </div>
         );
