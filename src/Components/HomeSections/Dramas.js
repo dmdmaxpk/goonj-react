@@ -4,6 +4,7 @@ import Heading from './Heading';
 import './HomeSection.scss';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import config from '../../Utils/config';
+import LoaderImage from '../../Components/Loader/ImageLoader'
 import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,7 +56,7 @@ class DramasSection extends Component {
                             <div className="row">
                                 <div className="col-lg-6 padding_5px vodGI"  onClick={()=> this.handleClick(data[0])}>
                                 <div className="img-box relative_position height-100 ">
-                                    <Img className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail.split(".")[0]}.jpg`} />
+                                    <Img loader={<LoaderImage classnames="dramas_image height-100 img_radius"/>} className="dramas_image height-100 img_radius" src={`${config.videoLogoUrl}/${data[0].thumbnail.split(".")[0]}.jpg`} />
                                         <span className="play_btn_position1" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                             <Img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} />
                                         </span>
@@ -67,7 +68,7 @@ class DramasSection extends Component {
                                     <div className="row height-100">
                                         <div className="col-lg-12 col-sm-4 col-4 padding_5px vodGI" onClick={()=> this.handleClick(data[1])}>
                                         <div className="img-box relative_position square ">
-                                        <Img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[1].thumbnail.split(".")[0]}.jpg`} />
+                                        <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[1].thumbnail.split(".")[0]}.jpg`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                          </span>
@@ -75,7 +76,7 @@ class DramasSection extends Component {
                                         </div>
                                         <div className="col-lg-6 col-sm-4 col-4 fill padding_5px vodGI" onClick={()=> this.handleClick(data[2])}>
                                         <div className="img-box relative_position square height-100">
-                                        <Img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[2].thumbnail.split(".")[0]}.jpg`} />
+                                        <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[2].thumbnail.split(".")[0]}.jpg`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                          </span>
@@ -83,7 +84,7 @@ class DramasSection extends Component {
                                         </div>
                                         <div className="col-lg-6 col-sm-4 col-4 padding_5px vodGI" onClick={()=> this.handleClick(data[3])}>
                                         <div className="img-box relative_position square height-100">
-                                        <Img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[3].thumbnail.split(".")[0]}.jpg`} />
+                                        <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[3].thumbnail.split(".")[0]}.jpg`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                          </span>
@@ -93,7 +94,7 @@ class DramasSection extends Component {
                                     </div>
                                     <div className="col-lg-4 col-sm-3 col-3 padding_5px vodGI" onClick={()=> this.handleClick(data[4])}>
                                     <div className="img-box relative_position square height-100">
-                                        <Img className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[4].thumbnail.split(".")[0]}.jpg`} />
+                                        <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.videoLogoUrl}/${data[4].thumbnail.split(".")[0]}.jpg`} />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} />
                                          </span>
