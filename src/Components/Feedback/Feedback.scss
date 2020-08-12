@@ -1,0 +1,136 @@
+.feedbackModal{
+    position: absolute;
+    top: 40vh !important;
+    left: 40vw !important;
+    background-color: #1b2039;
+    width: 25vw;
+    height: 30vh;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.feedbackContainer{
+    outline: none;
+}
+.reactions{
+    width: 3vw;
+    margin-right: 1em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.reactions:hover, .reactions:focus{
+    transform: scale(1.3);
+    transform-origin: bottom;
+}
+.selectedReaction{
+    transform: scale(1.3);
+    transform-origin: bottom;
+}
+.reactionDiv{
+    padding-left: 2vw;
+}
+.questionText{
+    color: white;
+    font-size: large;
+    font-weight: 600;
+}
+.questionText2{
+    margin-top: 1vh;
+}
+.commentsInput{
+    border: none;
+    border-bottom: 1px solid rgb(4, 8, 37);
+    background: transparent;
+    width: 90%;
+    color: gray;
+    outline: none;
+}
+.commentsInput::placeholder{
+    // color: #ccc;
+}
+.feedbackBtnsDiv{
+    float: right;
+    margin-right: 2em;
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width: 1900px){
+    .feedbackModal{
+        top: 30vh !important;
+        left: 35vw !important;
+        width: 30vw;
+        height: 40vh;
+    }
+}
+@media only screen and (max-width: 1350px){
+    .feedbackModal{
+        width: 30vw;
+        height: 38vh;
+    }
+    .questionText, .commentsInput{
+        font-size: small;
+    }
+}
+@media only screen and (max-width: 1120px){
+    .feedbackModal{
+        width: 30vw;
+        height: 35vh;
+    }
+    .reactions{
+        width: 2.5vw;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .feedbackModal{
+        top: 25vh !important;
+        left: 5vw !important;
+        width: 90vw;
+        height: 35vh;
+        padding-left: 12vw;
+    }
+    .reactions{
+        width: 8vw;
+    }
+    .questionText, .commentsInput{
+        font-size: large;
+    }
+}
+@media only screen and (max-width: 480px){
+    .feedbackModal{
+        top: 25vh !important;
+        left: 5vw !important;
+        width: 90vw;
+        height: 35vh;
+        padding-left: 12vw;
+    }
+    .reactions{
+        width: 8vw;
+    }
+    .questionText{
+        font-size: smaller;
+    }
+}
+@media only screen and (max-width: 380px){
+    .feedbackModal{
+        top: 35vh !important;
+        height: 35vh;
+    }
+}
+@media only screen and (max-width: 330px){
+    .feedbackModal{
+        top: 30vh !important;
+        height: 40vh;
+    }
+    .questionText, .commentsInput{
+        font-size: x-small;
+    }
+}
+@media only screen and (max-width: 290px){
+    .feedbackModal{
+        top: 30vh !important;
+        height: 35vh;
+    }
+    .reactions{
+        width: 7vw;
+    }
+}

@@ -46,6 +46,17 @@ class App extends React.Component {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
+
+    let userID = localStorage.getItem('userID');
+    let localUserId = localStorage.hasOwnProperty(userID);
+    console.log("checking for item", localUserId)
+    if(localUserId === true){
+      let count = localStorage.getItem(userID) ? localStorage.getItem(userID) : 1;
+      console.log("count", count)
+      count = parseFloat(count);
+      count = count + 1;
+      localStorage.setItem(userID, count);
+    }
   }
   render() {
     return (

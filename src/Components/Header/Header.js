@@ -86,13 +86,14 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
                   Sign In
                 </Link>
               :
-                <Link
-                  onClick={()=> signout()}
-                  className="header__option header__option--signin"
-                  to="/paywall/live"
-                  >
-                  Sign Out
-                </Link>
+                ""
+                // <Link
+                //   onClick={()=> signout()}
+                //   className="header__option header__option--signin"
+                //   to="/paywall/live"
+                //   >
+                //   Sign Out
+                // </Link>
               }
             </div>
           )}
