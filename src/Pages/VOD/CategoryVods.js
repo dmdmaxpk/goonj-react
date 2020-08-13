@@ -79,8 +79,8 @@ class CategoryVodPage extends Component {
             const urlParams = new URLSearchParams(queryString);
             let Urlmsisdn = urlParams.get("msisdn");
             localStorage.setItem('urlMsisdn', Urlmsisdn);
-            let localSource = urlParams.get('source');
-            permission ? window.location.href = `/${url}` : localSource == "mta" ? window.location.href = `/paywall/comedy??postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}` : window.location.href = `${config.hepage}?postUrl=${url}`;
+            let localSource = localStorage.getItem('source');
+            permission ? this.props.history.push(`/${url}`) : (localSource == "mta" ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
             
             // console.log(url);
             // permission ? window.location.href = `/${url}` : window.location.href = `${config.hepage}?postUrl=${url}`;

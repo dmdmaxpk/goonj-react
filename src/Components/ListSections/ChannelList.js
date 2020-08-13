@@ -33,7 +33,7 @@ class ChannelList extends Component {
         const urlParams = new URLSearchParams(queryString);
         let Urlmsisdn = urlParams.get("msisdn");
         localStorage.setItem('urlMsisdn', Urlmsisdn);
-        let localSource = urlParams.get('source');
+        let localSource = localStorage.getItem('source');
         let url = permission ? `/channel/${item.slug}` : localSource == "mta" ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
