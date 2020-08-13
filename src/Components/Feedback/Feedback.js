@@ -121,7 +121,7 @@ class Feedback extends Component {
                                         <p className="questionText questionText2">
                                             What is the reason for your rating?
                                         </p>
-                                        <input className="commentsInput" type="text" placeholder="Leave your comments here." name="comments" value={this.state.comments} onChange={this.handleChange} />
+                                        <input className="commentsInput" type="text" placeholder="Leave your comments here (optional)" name="comments" value={this.state.comments} onChange={this.handleChange} />
                                         <div className="feedbackBtnsDiv">
                                             <Button color="secondary" onClick={this.closeModal}>Cancel</Button>
                                             {this.state.selected !== '' ?
@@ -142,6 +142,7 @@ class Feedback extends Component {
                     onClose={this.handleSnackbar}
                     message={this.state.message}
                     key={vertical + horizontal}
+                    autoHideDuration={3000}
                 />
             </div>
         );

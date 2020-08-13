@@ -42,6 +42,7 @@
 }
 .questionText2{
     margin-top: 1vh;
+    font-size: x-large;
 }
 .commentsInput{
     border: none;
@@ -91,6 +92,9 @@
     .questionText, .commentsInput{
         font-size: x-large;
     }
+    .questionText2{
+        font-size: large;
+    }
 }
 @media only screen and (max-width: 1499px){
     .feedbackModal{
@@ -113,6 +117,9 @@
     }
     .questionText, .commentsInput{
         font-size: large;
+    }
+    .questionText2{
+        font-size: smaller;
     }
 }
 @media only screen and (max-width: 1040px){
@@ -147,6 +154,9 @@
     .questionText{
         font-size: smaller;
     }
+    .questionText2{
+        font-size: small;
+    }
     .feedbackBtnsDiv{
         margin-right: 1em;
     }
@@ -167,9 +177,7 @@
     }
     .commentsInput{
         width: 100%;
-    }
-    .questionText{
-        font-size: smaller;
+        font-size: small;
     }
     .feedbackBtnsDiv{
         margin-right: 0;
@@ -183,6 +191,9 @@
     }
     .questionText, .commentsInput{
         font-size: small;
+    }
+    .questionText2{
+        font-size: x-small;
     }
 }
 @media only screen and (max-width: 330px){
