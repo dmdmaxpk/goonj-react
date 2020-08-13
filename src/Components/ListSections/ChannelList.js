@@ -29,8 +29,12 @@ class ChannelList extends Component {
 
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
-        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let Urlmsisdn = urlParams.get("msisdn");
+        localStorage.setItem('urlMsisdn', Urlmsisdn);
+        let localSource = urlParams.get('source');
+        let url = permission ? `/channel/${item.slug}` : localSource == "mta" ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render() {
