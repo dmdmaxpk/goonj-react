@@ -14,6 +14,8 @@
     z-index: 10 !important;
 }
 
+  
+
 
 .posterSlider{
     margin-bottom: 1%;
@@ -55,7 +57,7 @@
 
 }
 .vod_page_margin_heading{
-    margin-left: 4% !important;
+    margin-left: 2.6% !important;
     margin-top: 4vh;
 }
 .headlineTitle{
@@ -120,7 +122,7 @@
 
 @media only screen and (min-width: 1000px) {
     .vod_page_margin_heading{
-        margin-left: 3.8% !important;
+        margin-left: 2.8% !important;
         margin-top: 4vh;
     }
    
@@ -128,7 +130,7 @@
 
    @media only screen and (min-width: 1440px) {
     .vod_page_margin_heading{
-        margin-left: 3.4% !important;
+        margin-left: 2.4% !important;
         margin-top: 4vh;
     }
    
@@ -178,12 +180,8 @@
 .carousel-indicators{
     bottom: 15vh !important;
 }
-  
+
   }
-
-
-
-
 
   @media only screen and (max-width: 900px) {
     .vod_page_margin_heading{
@@ -403,10 +401,6 @@
     .slider_images_all{
         border-radius: 5px;
         height: 210px !important;
-    }
-
-    .recomListContainer{
-        margin-top: 5vh;
     }
 
    

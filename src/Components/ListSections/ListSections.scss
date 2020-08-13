@@ -61,7 +61,7 @@ faderight {
     top: 25%;
 }
 .channelListContainer{
-    margin: 0px 2% 0px 12px;
+    margin: 0px 0px 0px 12px;
     margin-bottom: 0;
     // margin-top: -5%;
     // margin-left: 140px;
@@ -101,6 +101,7 @@ top: 0;
 .viewMore > a{
     color: #4aa6e5 !important;
 }
+
 .channelListImg{
     width: 92%;
     height: 230px;
@@ -201,11 +202,14 @@ top: 0;
     font-size: small;
     font-weight: 600;
     color: white;
-    height: 10px !important;
-    // margin-bottom: 0.5rem;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; 
+   -webkit-box-orient: vertical;
 }
 .grey{
-    font-size: small;
+    font-size: x-small;
     font-weight: 600;
     margin-bottom: 0 !important;
     color: #ccc;
@@ -215,7 +219,27 @@ top: 0;
 }
 
 
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 900px) 
+and (orientation: landscape){
+    .recomDiv{
+        position: relative;
+    }
 
+    .recomPlayBtn {
+        position: absolute;
+        left: 50% !important;
+        bottom: 50% !important;
+    }
+    .recomTextDiv {
+        position: static; 
+        bottom: 0px; 
+        height: 0px; 
+        overflow: visible;;
+    }
+    
+    
+}
 
 @media only screen and (min-width: 1540px) {
 
@@ -230,6 +254,17 @@ top: 0;
         height: 350px;
     }
 }
+
+@media only screen and (min-width: 900px) {
+
+    .recomendation_details_div{
+
+        position: absolute;
+        bottom: 0;
+    }
+    
+}
+
 
 @media only screen and (max-width: 900px) {
 
@@ -250,7 +285,11 @@ top: 0;
 
 
 
+
 @media only screen and (max-width: 480px) {
+    .recomendation_details_div{
+        margin-top: 4px;
+    }
 
     .channelList{
         margin-top: -2% !important;
@@ -324,15 +363,13 @@ top: 0;
         // overflow: hidden;
     }
     .grey{
-        font-size: xx-small !important;
+        font-size: 6px !important;
     }
     .recomTextDiv{
         bottom: 22px;
         height: auto;
     }
-    .recomendation_details_div{
-        // margin-top: 1vh;
-    }
+
   }
 
 @media only screen and (max-width: 375px) {
