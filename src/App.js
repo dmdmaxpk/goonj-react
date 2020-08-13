@@ -32,6 +32,7 @@ import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
+import Feedback from "./Components/Feedback/Feedback";
 
 
 class App extends React.Component {
@@ -45,6 +46,17 @@ class App extends React.Component {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
+
+    let userID = localStorage.getItem('userID');
+    let localUserId = localStorage.hasOwnProperty(userID);
+    console.log("checking for item", localUserId)
+    if(localUserId === true){
+      let count = localStorage.getItem(userID) ? localStorage.getItem(userID) : 1;
+      console.log("count", count)
+      count = parseFloat(count);
+      count = count + 1;
+      localStorage.setItem(userID, count);
+    }
   }
   render() {
     return (
@@ -52,7 +64,8 @@ class App extends React.Component {
         {this.props.location.pathname !== "/binjee" ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
-            <Sidebar /> 
+            <Sidebar />
+            <Feedback />
           </div>
         ) : (
           ""

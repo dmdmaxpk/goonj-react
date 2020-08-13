@@ -51,6 +51,14 @@ export function CheckLiveStatus(){
                     localStorage.setItem('liveMsisdn', liveMsisdn);
                     localStorage.setItem('livePackageId', livePackageId);
                     localStorage.setItem('liveSubExpiry', result.next_billing_timestamp);
+                    localStorage.setItem('userID', result.user_id);
+                    let userID = result.user_id;
+                    let localUserId = localStorage.hasOwnProperty(userID);
+                    if(localUserId === false){
+                        console.log("check user", userID)
+                        localStorage.setItem(userID, 1);
+                        localStorage.setItem('feedback', false);
+                    }
                     // if(refresh){
                     //     window.location.href = window.location.pathname;
                     // }
@@ -96,6 +104,14 @@ export function CheckCPStatus(){
                     localStorage.setItem('CPMsisdn', CPmsisdn);
                     localStorage.setItem('CPPackageId', CPPackageId);
                     localStorage.setItem('CPSubExpiry', result.next_billing_timestamp);
+                    localStorage.setItem('userID', result.user_id);
+                    let userID = result.user_id;
+                    let localUserId = localStorage.hasOwnProperty(userID);
+                    if(localUserId === false){
+                        console.log("check user", userID)
+                        localStorage.setItem(userID, 1);
+                        localStorage.setItem('feedback', false);
+                    }
                     // if(refresh){
                     //     window.location.href = window.location.pathname;
                     // }
