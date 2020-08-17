@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import config from '../../Utils/config';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import LoaderImage from '../../Components/Loader/ImageLoader'
 import Heading from './Heading';
+import {Img} from 'react-image'
 import './HomeSection.scss';
 import Loader from '../Loader/Loader';
 import PaywallInstance from '../../Utils/PaywallInstance';
@@ -96,8 +96,8 @@ class HeadlinesSection extends Component {
                                 <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
                                     <Link style={{textDecoration: "none", color:"white"}}>
                                         <div style={{position:"relative", marginBottom:"4%"}}>
-                                        <img className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
-                                        <img style={{position:"absolute", left:"40%", bottom:"35%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
+                                        <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
+                                        <Img style={{position:"absolute", left:"40%", bottom:"35%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
                                         </div>
                                         <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
                                         <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>

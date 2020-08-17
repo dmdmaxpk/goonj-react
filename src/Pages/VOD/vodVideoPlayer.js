@@ -114,16 +114,6 @@ class VodVideoPlayer extends Component {
 
                                 </div>
                                 </GridItem>
-
-                                {/* <GridItem className="viewCountGI" xs={3} sm={3} md={3}>
-                                    {this.kFormatter(item.views_count)} views
-                                </GridItem>
-                                <GridItem className="titleGI" xs={12} sm={12} md={5}>
-                                    {item.title}
-                                </GridItem>
-                                <GridItem className="shareGI" xs={12} sm={12} md={3}>
-                                    <SocialShare />
-                                </GridItem> */}
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={5} className="recommendationGI">
                                     <RecommendationList topics={topics} id={item._id} />
