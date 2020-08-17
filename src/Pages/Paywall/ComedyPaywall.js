@@ -10,9 +10,9 @@ class ComedyPaywall extends Component {
     super(props);
     this.state = {
         data: [],
-        packageID: 'QDfG',
-        packageID1: 'QDfC',
-        packageID2: 'QDfG',
+        packageID: 'QDfI',
+        packageID1: 'QDfH',
+        packageID2: 'QDfI',
         doubleConsent: false,
         packagePrice1: '',
         packagePrice2: ''
@@ -23,7 +23,8 @@ class ComedyPaywall extends Component {
         if(CPPermission === true){
             this.props.history.push('/category/comedy/page/1');
         }
-        AxiosInstance.get(`${config.apiBaseUrl}/package?source=${this.props.source}&slug=comedy`)
+        let source = localStorage.getItem('source');
+        AxiosInstance.get(`${config.apiBaseUrl}/package?source=${source}&slug=comedy`)
         .then(res =>{
         let packageData = res.data;
         this.setState({

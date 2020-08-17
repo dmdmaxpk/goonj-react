@@ -75,15 +75,9 @@ class CategoryVodPage extends Component {
         let url = this.getVodUrl(item.title, item._id);
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            let Urlmsisdn = urlParams.get("msisdn");
+            let Urlmsisdn = localStorage.getItem("urlMsisdn");
             localStorage.setItem('urlMsisdn', Urlmsisdn);
-            let localSource = localStorage.getItem('source');
-            permission ? this.props.history.push(`/${url}`) : (localSource == "mta" ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
-            
-            // console.log(url);
-            // permission ? window.location.href = `/${url}` : window.location.href = `${config.hepage}?postUrl=${url}`;
+            permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
         else{
             history.push(`/${url}`);

@@ -45,6 +45,13 @@ class App extends React.Component {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let Urlmsisdn = urlParams.get("msisdn");
+    if(Urlmsisdn){
+        localStorage.setItem('urlMsisdn', Urlmsisdn);
+    }
   }
   render() {
     return (
