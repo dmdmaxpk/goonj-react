@@ -28,8 +28,8 @@ class LiveTv extends Component {
     }
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
-        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render(){

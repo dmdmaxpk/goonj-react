@@ -57,6 +57,12 @@ class App extends React.Component {
       count = count + 1;
       localStorage.setItem(userID, count);
     }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let Urlmsisdn = urlParams.get("msisdn");
+    if(Urlmsisdn){
+        localStorage.setItem('urlMsisdn', Urlmsisdn);
+    }
   }
   render() {
     return (
