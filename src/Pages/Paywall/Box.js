@@ -34,7 +34,9 @@ class Box extends React.Component {
     componentDidMount(){
         console.log(this.props);
         let {packageID1, packageID2, permission, pkgIdKey, msisdnKey, msisdn, url} = this.props;
-        let urlMsisdn = localStorage.getItem('urlMsisdn');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let urlMsisdn = localStorage.getItem('urlMsisdn') ? localStorage.getItem('urlMsisdn') : urlParams.get("msisdn");
         let statusData = {
             source: localStorage.getItem('source'),
             msisdn: urlMsisdn,
