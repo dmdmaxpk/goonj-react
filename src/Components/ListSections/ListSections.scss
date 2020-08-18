@@ -61,10 +61,9 @@ faderight {
     top: 25%;
 }
 .channelListContainer{
-    margin: 0px 0px 0px 12px;
+    margin: 0px 0px 0px 15px;
+    margin-right: 4%;
     margin-bottom: 0;
-    // margin-top: -5%;
-    // margin-left: 140px;
 }
 
 .slick-prev{
@@ -145,7 +144,7 @@ top: 0;
 }
 .popularListDiv{
     float: left;
-    padding-right: 12px !important;
+    padding-right: 5px !important;
     width: 100px;
     outline: none !important;
 }
@@ -154,9 +153,8 @@ top: 0;
     text-decoration: none !important;
 }
 .popularListImg{
-    width: 100%;
+    width: 98%;
     height: 120%;
-    margin-right: 10px;
     border-radius: 10px;
 }
 .popularListName{
@@ -261,6 +259,10 @@ and (orientation: landscape){
 
         position: absolute;
         bottom: 0;
+    }
+    .channelListContainer{
+        margin: 0px 0px 0px 0px;
+        margin-right: 3%;
     }
     
 }

@@ -37,7 +37,6 @@ class Home extends Component {
     }
 
     renderComponent(e){
-        console.log(e+' This is the value')
         if(e==0){
             return  <PopularList title="Popular on Goonj" class="popularContainer" />
         }else if(e==1){
