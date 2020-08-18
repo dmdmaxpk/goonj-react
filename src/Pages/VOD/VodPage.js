@@ -97,7 +97,7 @@ class VodPage extends Component {
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
                     <br/>
                     <ChannelList class="vod_page_margin_heading"/>
-                    <PopularList class="vod_page_margin_heading" title="Popular on Goonj"/>
+                    <PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" title="Popular on Goonj"/>
                 </div>
             :
             <Loader />

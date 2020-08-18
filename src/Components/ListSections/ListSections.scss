@@ -62,8 +62,10 @@ faderight {
 }
 .channelListContainer{
     margin: 0px 0px 0px 15px;
-    margin-right: 4%;
     margin-bottom: 0;
+}
+.homePageMargin{
+    margin-right: 4%;
 }
 
 .slick-prev{
@@ -262,12 +264,29 @@ and (orientation: landscape){
         position: absolute;
         bottom: 0;
     }
+    .homePageMargin{
+        margin-right: 3% !important;
+    }
     .channelListContainer{
         margin: 0px 0px 0px 0px;
-        margin-right: 3%;
     }
     .popularLeftFade{
-        width: 200px;
+        width: 12vw;
+    }
+    .popularRightFade{
+        width: 10vw;
+    }
+    .channelLeftFade{
+        width: 8vw;
+    }
+    .channelRightFade{
+        width: 8vw;
+    }
+    .vodPageMargin{
+        margin: 0px 0px 0px 15px !important;
+    }
+    .vodMarginTop{
+        margin-top: 0vh !important;
     }
     
 }

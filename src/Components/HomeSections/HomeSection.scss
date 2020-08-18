@@ -120,18 +120,27 @@
     padding-top: 3%;
 }
 
+
 @media only screen and (min-width: 1000px) {
     .vod_page_margin_heading{
         margin-left: 2.8% !important;
         margin-top: 4vh;
     }
+  
    
    }
+
+   
 
    @media only screen and (min-width: 1440px) {
     .vod_page_margin_heading{
         margin-left: 2.4% !important;
         margin-top: 4vh;
+    }
+
+    .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
+        top:36% !important;
+        right: 5vw !important;
     }
    
    }
@@ -147,9 +156,9 @@
  .vodSecondCol{
     height: 12.053vw;
  }
-// .heightForResponsive{
-//     height: 100%;
-// }
+ .headlinesMargin{
+    padding: 0% 5.1% 0% 3%;
+}
 
 }
 
@@ -187,7 +196,9 @@
 
   }
 
+
   @media only screen and (max-width: 900px) {
+     
     .vod_page_margin_heading{
         margin-left: -1% !important;
         margin-right: 4%;

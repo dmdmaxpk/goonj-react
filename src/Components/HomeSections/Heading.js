@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class Heading extends Component {
     render() { 
         return (
-            <div className="headingGridContainer">
+            <div className="headingGridContainer ">
                     <div className="heading_container">
                         <div className={ "heading_container " + ( this.props.classname ? this.props.classname : "") }>
                             <div style={{textTransform:"uppercase"}}>
