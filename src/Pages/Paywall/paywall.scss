@@ -237,6 +237,15 @@
     font-size: small;
     font-weight: 100;
 }
+.btnConfirm{
+    background: linear-gradient(to right, #30A1E6, #15EFC4);
+    color: white;
+    font-weight: 900;
+    border: none;
+    border-radius: 25px;
+    width: 6vw;
+    padding: 1em;
+}
 @media screen and (max-width: 1690px) {
     .liveText1{
         margin: 2% 0 2% 0;
@@ -467,6 +476,10 @@
     }
     .btnSub {
         width: 78%;
+    }
+    .btnConfirm{
+        width: 30vw;
+        padding: 1em;
     }
 }
 @media screen and (max-width: 420px) {

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import "./paywall.scss";
+import { CircularProgress } from '@material-ui/core';
 
 class Box extends React.Component {
 
@@ -21,7 +22,7 @@ class Box extends React.Component {
             packageId: '',
             doubleConsent: false,
             radio: this.props.packageID1,
-            loading: false
+            loading: true
         }
         this.handleChange = this.handleChange.bind(this);
         this.selectPayment = this.selectPayment.bind(this);
@@ -31,6 +32,47 @@ class Box extends React.Component {
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
+        console.log(this.props);
+        let {packageID1, packageID2, permission, pkgIdKey, msisdnKey, msisdn, url} = this.props;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let urlMsisdn = localStorage.getItem('urlMsisdn') ? localStorage.getItem('urlMsisdn') : urlParams.get("msisdn");
+        let statusData = {
+            source: localStorage.getItem('source'),
+            msisdn: urlMsisdn,
+            package_id: packageID1
+        }
+        PaywallInstance.post('/payment/status', statusData)
+        .then(res =>{
+            console.log("status1", res.data);
+            if(res.data.code === -1){
+                statusData.package_id = packageID2;
+                PaywallInstance.post('/payment/status', statusData)
+                .then(response =>{
+                    console.log("status2", response.data);
+                    if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
+                        localStorage.setItem(permission, true);
+                        localStorage.setItem(pkgIdKey, packageID2);
+                        localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+                        localStorage.setItem('userID', response.data.data.user_id);
+                        this.props.history.push(`${url}`);
+                    }
+                })
+            }
+            else if(res.data.code === 0 && res.data.data.is_allowed_to_stream === true){
+                localStorage.setItem(permission, true);
+                localStorage.setItem(pkgIdKey, packageID2);
+                localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+                localStorage.setItem('userID', res.data.data.user_id);
+                this.props.history.push(`${url}`);
+            }
+            this.setState({
+                loading: false
+            })
+        })
+        .catch(err =>{
+            alert(err.message);
+        })
     }
     handleChange(e){
         if(e.target.value.length < 12){
@@ -41,10 +83,18 @@ class Box extends React.Component {
     }
     selectPayment(paymentType){
         console.log("payment", paymentType)
-        this.setState({
-            paymentType,
-            step: 1
-        })
+        if(localStorage.getItem('urlMsisdn') && paymentType == 'telenor'){
+            this.setState({
+                paymentType,
+                step: 'mta'
+            }) 
+        }
+        else{
+            this.setState({
+                paymentType,
+                step: 1
+            })
+        }
     }
     sendOtp(){
         const {msisdn, paymentType} = this.state;
@@ -134,7 +184,7 @@ class Box extends React.Component {
         let tid = localStorage.getItem('tid');
         const permissionData = (source === "affiliate_web") ?
             {
-                msisdn,
+                msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
                 package_id: packageID2,
                 source,
                 otp,
@@ -145,7 +195,7 @@ class Box extends React.Component {
             }
             :
             {
-                msisdn,
+                msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
                 package_id: packageID2,
                 source,
                 otp,
@@ -163,7 +213,13 @@ class Box extends React.Component {
                 else if(result.code === 9 || result.code === 10 || result.code === 11 || result.code === 0){
                     localStorage.setItem(permission, true);
                     localStorage.setItem(pkgIdKey, packageID2);
-                    localStorage.setItem(msisdnKey, msisdn);
+                    let urlMsisdn = localStorage.getItem('urlMsisdn'); 
+                    if(urlMsisdn){
+                        localStorage.setItem(msisdnKey, urlMsisdn)
+                    }
+                    else{
+                        localStorage.setItem(msisdnKey, msisdn);
+                    }
                     this.props.history.push(`${url}`);
                 }
             })
@@ -180,6 +236,11 @@ class Box extends React.Component {
         return (
             <div className="box">
                 {
+                    this.state.loading === true ?
+                        <div>
+                            <CircularProgress />
+                        </div>
+                    :
                     this.state.step === 0 ?
                         <div>
                             <p>Subscribe Now</p>
@@ -219,6 +280,14 @@ class Box extends React.Component {
                             </button>
                         </div>
                         :
+                    this.state.step == 'mta' ?
+                        <div>
+                            <p>Are you sure you sure you want to subscribe?</p>
+                            <button className="btnConfirm" onClick={this.subscribe}>
+                                Confirm
+                            </button>
+                        </div>
+                    :
                         <div className="">
                             <p className="text1">Are you sure<br />you want to subscribe?</p>
                             <button className="btnSubConfirm" onClick={this.subscribe}>
