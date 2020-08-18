@@ -74,7 +74,7 @@ class ChannelList extends Component {
             <div className={this.props.class}>
                 <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname+" "+this.props.class ? this.props.class:" "} />
                 <div className="channelListContainer channelContainerMargin position-relative">
-                <fadeleft/>
+                <fadeleft className="channelLeftFade"/>
                     {this.state.data.length > 0 ?
                         <Slider className="channelSlider" {...settings}>
                              {
