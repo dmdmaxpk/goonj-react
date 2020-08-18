@@ -239,6 +239,8 @@ and (orientation: landscape){
     
 }
 
+
+
 @media only screen and (min-width: 1540px) {
 
     .channelListImg {
@@ -285,6 +287,14 @@ and (orientation: landscape){
         width: 40px;
         right: -5px;
 
+    }
+
+    .popularLeftFade{
+        width: 70px;
+    }
+
+    .channelLeftFade{
+        width: 50px;
     }
 }
 
