@@ -111,7 +111,7 @@ class PopularList extends Component {
             <div className={this.props.class}>
                 <Heading heading={this.props.title} viewMoreClass="hidden" classname={this.props.classname+" "+this.props.class ? this.props.class:" "}/>
                 <div className="channelListContainer position-relative">
-                    <fadeleft/>
+                    <fadeleft className="popularLeftFade"/>
                         <Slider className="propularSlider" {...settings}>
                             {popularList.length > 0 ?
                                 popularList.map(item =>
