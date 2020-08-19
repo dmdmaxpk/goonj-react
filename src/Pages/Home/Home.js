@@ -38,9 +38,9 @@ class Home extends Component {
 
     renderComponent(e){
         if(e==0){
-            return  <PopularList title="Popular on Goonj" class="popularContainer" />
+            return  <PopularList pageMargin="homePageMargin" title="Popular on Goonj" class="popularContainer" />
         }else if(e==1){
-            return  <ChannelList classname="channelList"/>
+            return  <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
         }else if(e==2){
             return <DramasSection category="entertainment" /> 
         }else if(e==3){

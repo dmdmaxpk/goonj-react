@@ -18,6 +18,12 @@ and (orientation: landscape){
         margin-left: 0px !important;
     }
 }
+@media only screen and (min-width: 900px) {
+    .channelM-T{
+        margin-top: 2%;
+    }
+
+}
 @media only screen and (min-width: 801px) {
     .homeSections{
         margin-right: -2%;
@@ -32,3 +38,4 @@ and (orientation: landscape){
     }
 
 }
+

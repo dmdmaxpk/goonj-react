@@ -116,9 +116,9 @@ class PopularList extends Component {
           };
 
         return (
-            <div className={this.props.class}>
+            <div className={this.props.class+" "+this.props.marginTop}>
                 <Heading heading={this.props.title} viewMoreClass="hidden" classname={this.props.classname+" "+this.props.class ? this.props.class:" "}/>
-                <div className="channelListContainer position-relative">
+                <div className={"channelListContainer position-relative "+this.props.pageMargin}>
                     <fadeleft className="popularLeftFade"/>
                         <Slider className="propularSlider" {...settings}>
                             {popularList.length > 0 ?
@@ -133,7 +133,7 @@ class PopularList extends Component {
                                 : <Loader />
                             }
                          </Slider>
-                    <faderight/>
+                    <faderight className="popularRightFade"/>
                 </div>
             </div>
         );
