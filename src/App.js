@@ -71,7 +71,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.location.pathname !== "/binjee" ? (
+        {this.props.location.pathname.toLowerCase() !== "/binjee"  ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
             <Sidebar />
