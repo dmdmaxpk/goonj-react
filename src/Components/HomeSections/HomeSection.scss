@@ -1,3 +1,37 @@
+fadeleftheadline {
+    position: absolute;
+ 
+ 
+
+    display: block;
+  
+    width: 150px;
+    height: 100%;
+
+    z-index: 2;
+  
+    background-image: linear-gradient(to right, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
+faderightheadline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    display: block;
+  
+    width: 150px;
+    height: 100%;
+
+    z-index: 1;
+  
+    background-image: linear-gradient(to left, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
 .headingGridContainer{
     color: white;
     margin-bottom: 10px;
@@ -13,9 +47,6 @@
 .zIndexClass{
     z-index: 10 !important;
 }
-
-  
-
 
 .posterSlider{
     margin-bottom: 1%;
@@ -40,6 +71,7 @@
 }
 .headlinesContainer{
     margin-top: 3%;
+    margin-right: 2%;
 }
 
 .sportsContainer{
@@ -198,6 +230,12 @@
 
 
   @media only screen and (max-width: 900px) {
+    .headlineLeftFade{
+        width: 12vw;
+    }
+    .headlineRightFade{
+        width: 10vw;
+    }
      
     .vod_page_margin_heading{
         margin-left: -1% !important;
@@ -289,9 +327,6 @@
     }
     .headlinesSlider{
         padding-left: 3%;
-    }
-    .headlinesSlider .slick-prev, .headlinesSlider .slick-next{
-        top: 21% !important;
     }
     .headlinesContainer{
         margin: 0 1%;

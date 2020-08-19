@@ -6,6 +6,7 @@ import LoaderImage from '../../Components/Loader/ImageLoader'
 import Heading from './Heading';
 import {Img} from 'react-image'
 import './HomeSection.scss';
+import '../ListSections/ListSections.scss'
 import Loader from '../Loader/Loader';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
@@ -87,7 +88,8 @@ class HeadlinesSection extends Component {
         return(
             <div className="headlinesContainer">
                 <Heading headlineMargin="headlineMargin" heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
-                            {/* <fadeleft className="popularLeftFade"/> */}
+                        <div className="position-relative">
+                            <fadeleftheadline className="headlineLeftFade"/>
                             <Slider className="headlinesSlider" {...settings}>
                             {this.state.data.length > 0 ?  
                                 (data.map(item =>
@@ -106,8 +108,8 @@ class HeadlinesSection extends Component {
                                   : <Loader/>
                                 }
                             </Slider>
-                            {/* <faderight className="popularRightFade"/> */}
-                    
+                            <faderightheadline className="headlineRightFade"/>
+                            </div>
                
             </div>
         );
