@@ -34,7 +34,7 @@ class HeadlinesSection extends Component {
             this.setState({data: res.data});
         })
         .catch(err =>{
-            // console.log(err);
+    
         });
     }
     getVodUrl(title, id){
