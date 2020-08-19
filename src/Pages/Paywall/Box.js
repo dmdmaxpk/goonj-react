@@ -82,8 +82,10 @@ class Box extends React.Component {
         }
     }
     selectPayment(paymentType){
-        console.log("payment", paymentType)
-        if(localStorage.getItem('urlMsisdn') && paymentType == 'telenor'){
+        console.log("payment", paymentType);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor'){
             this.setState({
                 paymentType,
                 step: 'mta'
