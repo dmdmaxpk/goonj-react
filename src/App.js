@@ -37,16 +37,13 @@ import Feedback from "./Components/Feedback/Feedback";
 
 class App extends React.Component {
   componentDidMount() {
-    if (this.props.location.pathname === "/") {
-      this.props.history.push("/home");
-    }
     const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
     ReactGA.initialize(trackingId);
     this.props.history.listen((location) => {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
-
+    
     let userID = localStorage.getItem('userID');
     let localUserId = localStorage.hasOwnProperty(userID);
     console.log("checking for item", localUserId)
@@ -60,9 +57,16 @@ class App extends React.Component {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let Urlmsisdn = urlParams.get("msisdn");
+    let UrlSource = urlParams.get("source");
     if(Urlmsisdn){
-        localStorage.setItem('urlMsisdn', Urlmsisdn);
+      localStorage.setItem('urlMsisdn', Urlmsisdn);
     }
+    if(UrlSource){
+      localStorage.setItem('source', UrlSource);
+    }
+    // if (this.props.location.pathname === "/") {
+    //   this.props.history.push("/home");
+    // }
   }
   render() {
     return (
@@ -77,6 +81,7 @@ class App extends React.Component {
           ""
         )}
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route
             exact
