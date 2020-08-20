@@ -19,7 +19,7 @@ class VideoPlayer extends Component {
         }
         this.kFormatter = this.kFormatter.bind(this);
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         window.scrollTo({
             top: 0,
             behavior: "smooth"

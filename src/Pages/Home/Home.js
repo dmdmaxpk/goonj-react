@@ -30,7 +30,7 @@ class Home extends Component {
       };
 
   
-    componentWillMount(){
+      UNSAFE_componentWillMount(){
         this.setState({
             loading: false
         })
