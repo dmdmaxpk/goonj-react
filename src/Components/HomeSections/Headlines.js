@@ -29,7 +29,7 @@ class HeadlinesSection extends Component {
           });
     }
     componentDidMount(){
-        PaywallInstance.get(`/video?category=news&limit=10`)
+        PaywallInstance.get(`/video?category=news&limit=21`)
         .then(res => {
             this.setState({data: res.data});
         })
