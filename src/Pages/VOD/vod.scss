@@ -66,23 +66,22 @@
     font-weight: 100;
 }
 .title{
-    height: 55px;
+    height: 35px;
     overflow: hidden;
     font-size: small;
 }
 .source{
-    color: #ccc;
+    // color: #ccc;
     font-size: smaller;
     float: left;
     text-transform: capitalize;
 }
 .source > a{
-    color: #ccc;
+    color: #2691d5;
 }
 .daysAgo{
-    color: #4aa6e5;
-    font-size: smaller;
-    float: right;
+    color: #2691d5;
+    text-transform: lowercase;
 }
 .MuiPagination-ul{
     margin: auto !important;
@@ -253,7 +252,7 @@
     }
     .source{
         font-size: x-small;
-        width: 5rem;
+        // width: 5rem;
     }
     .views_text, .daysAgo{
         font-size: x-small;
