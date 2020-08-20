@@ -24,7 +24,7 @@ class VodVideoPlayer extends Component {
         this.initializeVideoPlayer = this.initializeVideoPlayer.bind(this);
         this.showError = this.showError.bind(this)
     }
-    componentWillMount(){
+    UNSAFE_componentWillMount(){
         window.scrollTo({
             top: 0,
             behavior: "smooth"

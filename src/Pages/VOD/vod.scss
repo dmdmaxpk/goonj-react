@@ -173,26 +173,6 @@
     display: none !important;
 }
 
-@media only screen and (min-device-width: 320px) 
-and (max-device-width: 900px) 
-and (orientation: landscape) {
-    .GridItem-grid-10 {
-        padding: 0 4% !important;
-    }
-    .recommendationGI{
-        height: 255px !important;
-        max-width: 100% !important;
-        margin-top: 13% !important;
-    }
-    .vod_main_div{
-        margin-left: 0% !important;
-    }
-    .videoPlayerDiv {
-        margin-left: 0% !important;
-    }
-
-}
-
 @media only screen and (min-width: 1440px) {
     .vod_main_div{
         margin-left: 0% !important;
@@ -204,12 +184,16 @@ and (orientation: landscape) {
     .catSelect{
         width: 100% !important;
     }
+    .vod_channel_margin_bottom{
+        margin-top: 4%;
+    }
 }
 
 
-
-
 @media only screen and (max-width: 800px) {
+    .vod_channel_margin_bottom{
+        margin-top: 2vh;
+    }
     .catSelect{
         width: 100% !important;
     }
@@ -229,7 +213,7 @@ and (orientation: landscape) {
         font-size: 10px !important;
     }
     .recommendationGI{
-        margin-top: 50px !important;
+        margin-top: 65px !important;
         height: 180px;
     }
     .hashtagTopic{
@@ -252,9 +236,6 @@ and (orientation: landscape) {
         height: 80% !important;
 
     }
-  
-
-
     .recommendationGI{
         max-width: 100% !important;
     }
@@ -304,7 +285,6 @@ and (orientation: landscape) {
         margin-top: 50px !important;
     }
   }
-
   @media only screen and (max-width: 320px) {
     .headingVOD {
         font-size: 18px !important;
@@ -325,3 +305,31 @@ and (orientation: landscape) {
   }
 
 
+
+  @media only screen and (min-device-width: 320px) 
+  and (max-device-width: 900px) 
+  and (orientation: landscape) {
+      .MuiGrid-item {
+          margin-left: 3px !important;
+      }
+      .videoPlayerGI {
+          margin-right: 3% !important;
+      }
+      .GridItem-grid-10 {
+          padding: 0 4% !important;
+      }
+      .recommendationGI{
+          height: 255px !important;
+          max-width: 100% !important;
+          margin-top: 13% !important;
+      }
+      .vod_main_div{
+          margin-left: 0% !important;
+          // margin-right: 3% !important;
+      }
+      .videoPlayerDiv {
+          margin-left: 0% !important;
+      }
+  
+  }
+  

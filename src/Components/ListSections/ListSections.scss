@@ -1,8 +1,5 @@
 fadeleft {
     position: absolute;
- 
- 
-
     display: block;
   
     width: 100px;
@@ -189,7 +186,8 @@ top: 0;
     width: 20px;
     position: relative;
     right: 115px;
-    top: 45px;
+    top: 40px;
+
 }
 .recomTextDiv{
     position: relative;
@@ -222,6 +220,26 @@ top: 0;
 @media only screen and (min-device-width: 320px) 
 and (max-device-width: 900px) 
 and (orientation: landscape){
+    .MuiGrid-grid-sm-3 {
+        max-width: 23% !important;
+    }
+    .liveChannelMarginLeft {
+         margin-right: 0px;
+    }
+    .channelSlider .slick-prev, .channelSlider .slick-next{
+        top: 37% !important;
+        right: 5vw !important;
+    }
+    .propularSlider .slick-prev, .propularSlider .slick-next{
+        top: 31% !important;
+        right: 5vw !important;
+    }
+    .homePageMargin{
+        margin-right: 1% !important;
+    }
+    .channelListContainer {
+        margin: 0px;
+    }
     .recomDiv{
         position: relative;
     }
@@ -317,9 +335,6 @@ and (orientation: landscape){
     }
 }
 
-
-
-
 @media only screen and (max-width: 480px) {
     .recomendation_details_div{
         margin-top: 4px;
@@ -382,11 +397,11 @@ and (orientation: landscape){
         position: relative;
         right: 0px;
         left: 8vw;
-        top: -7vh;
+        top: -8vh;
     }
     .recomTitle{
         width: 100% !important;
-        font-size: 10px !important;
+        font-size: 7px !important;
         height: 100% !important;
         margin: 0 !important;
         overflow: hidden;
@@ -438,6 +453,21 @@ and (orientation: landscape){
         top: -9vh;
     }
     .grey{
-        font-size: 7px !important;
+        font-size: 6px !important;
     }
   }
+
+  @media only screen 
+and (min-device-width : 320px)
+and (max-device-width : 568px) 
+and (orientation : landscape) {
+    .MuiGrid-grid-sm-3 {
+        max-width: 21% !important;
+    }
+    .recomImg {
+        height: 62% !important;
+    }
+    .recomPlayBtn {
+        top: 25px;
+    }
+}

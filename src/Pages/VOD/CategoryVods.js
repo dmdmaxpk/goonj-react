@@ -102,7 +102,7 @@ class CategoryVodPage extends Component {
                 <GridContainer>
                     {this.state.loading === false ?
                         this.state.data.map(item =>
-                            <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
+                            <GridItem className="vodGridItem" xs={6} md={6} lg={3}>
                                 {this.state.data.length!=0?
                                 <div>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
