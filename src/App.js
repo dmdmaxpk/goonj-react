@@ -37,22 +37,18 @@ import Feedback from "./Components/Feedback/Feedback";
 
 class App extends React.Component {
   componentDidMount() {
-    if (this.props.location.pathname === "/") {
-      this.props.history.push("/home");
-    }
     const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
     ReactGA.initialize(trackingId);
     this.props.history.listen((location) => {
       ReactGA.set({ page: location.pathname }); // Update the user's current page
       ReactGA.pageview(location.pathname); // Record a pageview for the given page
     });
-
     let userID = localStorage.getItem('userID');
     let localUserId = localStorage.hasOwnProperty(userID);
-    console.log("checking for item", localUserId)
+    // console.log("checking for item", localUserId)
     if(localUserId === true){
       let count = localStorage.getItem(userID) ? localStorage.getItem(userID) : 1;
-      console.log("count", count)
+      // console.log("count", count)
       count = parseFloat(count);
       count = count + 1;
       localStorage.setItem(userID, count);
@@ -60,14 +56,21 @@ class App extends React.Component {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let Urlmsisdn = urlParams.get("msisdn");
+    let UrlSource = urlParams.get("source");
     if(Urlmsisdn){
-        localStorage.setItem('urlMsisdn', Urlmsisdn);
+      localStorage.setItem('urlMsisdn', Urlmsisdn);
     }
+    if(UrlSource){
+      localStorage.setItem('source', UrlSource);
+    }
+    // if (this.props.location.pathname === "/") {
+    //   this.props.history.push("/home");
+    // }
   }
   render() {
     return (
       <div>
-        {this.props.location.pathname !== "/binjee" ? (
+        {this.props.location.pathname.toLowerCase() !== "/binjee"  ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
             <Sidebar />
@@ -77,6 +80,7 @@ class App extends React.Component {
           ""
         )}
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route
             exact
@@ -119,7 +123,7 @@ class App extends React.Component {
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
-        {this.props.location.pathname !== "/binjee" ?
+        {this.props.location.pathname.toLowerCase() !== "/binjee" ?
           <div>
             <Tooltip title="Contact us at 727200" placement="left">
               <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>

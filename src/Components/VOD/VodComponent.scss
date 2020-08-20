@@ -9,13 +9,14 @@
 .catLabel{
     font-size: large !important;
     font-weight: bold !important;
+    cursor: pointer;
 }
 .catSelect{
     width: 10vw;
 }
 .MuiPopover-paper{
     position: fixed !important;
-    top: 168px !important;
+    top: 180px !important;
 }
 @media screen and (max-width: 480px){
     .categoryDDContainer {

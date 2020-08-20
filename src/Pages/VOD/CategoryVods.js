@@ -113,8 +113,8 @@ class CategoryVodPage extends Component {
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                    <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link></p>
+                                    {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
                                 </div></div>
                                 :
                                 <div>

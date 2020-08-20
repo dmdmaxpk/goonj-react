@@ -26,11 +26,16 @@ class Feedback extends Component {
     }
     componentWillMount(){
         let currentDate = new Date;
-        let todaysDate = currentDate.setDate(currentDate.getDate());
+        // console.log("currentDate", currentDate)
+        let todaysDate = currentDate.setTime(currentDate.getTime());
+        // console.log("todays date", todaysDate)
         let feedbackDate = localStorage.getItem('feedback_dtm');
         feedbackDate = new Date(feedbackDate);
-        let nextFeedbackDate = currentDate.setDate(feedbackDate.getDate() + 15);
+        // console.log("feed", feedbackDate)
+        let nextFeedbackDate = feedbackDate.setTime(feedbackDate.getTime() + 15 * 86400000);
         
+        // console.log("next date", nextFeedbackDate, "last date", todaysDate)
+
         if(todaysDate >= nextFeedbackDate){
             localStorage.setItem('feedback', false);
         }

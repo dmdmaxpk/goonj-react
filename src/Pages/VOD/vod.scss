@@ -69,6 +69,8 @@
     font-weight: 100;
 }
 .title{
+    height: 35px;
+    overflow: hidden;
     font-size: small;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -77,20 +79,18 @@
     -webkit-box-orient: vertical;
 }
 .source{
-    color: #ccc;
+    // color: #ccc;
     font-size: smaller;
     width: 60%;
     float: left;
     text-transform: capitalize;
 }
 .source > a{
-    color: #ccc;
+    color: #2691d5;
 }
 .daysAgo{
-    color: #4aa6e5;
-    font-size: smaller;
-    width: 35%;
-    float: right;
+    color: #2691d5;
+    text-transform: lowercase;
 }
 .MuiPagination-ul{
     margin: auto !important;
@@ -267,7 +267,7 @@ and (orientation: landscape) {
     }
     .source{
         font-size: x-small;
-        width: 5rem;
+        // width: 5rem;
     }
     .views_text, .daysAgo{
         font-size: x-small;
