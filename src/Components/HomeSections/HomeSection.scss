@@ -71,7 +71,6 @@ faderightheadline {
 }
 .headlinesContainer{
     margin-top: 3%;
-    margin-right: 2%;
 }
 
 .sportsContainer{
@@ -153,6 +152,7 @@ faderightheadline {
 }
 
 
+
 @media only screen and (min-width: 1000px) {
     .vod_page_margin_heading{
         margin-left: 2.8% !important;
@@ -177,6 +177,7 @@ faderightheadline {
    
    }
 
+
 @media only screen and (min-width: 901px) {
     .padding_bottom{
         padding-bottom: 7px;
@@ -200,34 +201,47 @@ faderightheadline {
   @media only screen and (min-device-width: 320px) 
   and (max-device-width: 900px) 
   and (orientation: landscape) {
+    .headlinesContainer {
+         margin-right: 0%; 
+    }
+    .heading_container {
+        margin-right: 2.4% !important;
+    }
+    .GridContainer-grid-9 {
+        margin: 0 -5px !important;
+    }
+    .vod_page_margin_heading {
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+    }
+    .headingGridContainer{
+        padding: 0 2.6% 0 4.1% !important;
+    }
       .bellow_div_padding{
           margin-top: 2%;
           padding-bottom: 0% !important;
       }
+    .program_lower_4 {
+        margin-top: -6% !important;
+    }
+    .blockOneSpan {
+        bottom: 52vh !important;
+    }
+    .play_btn_image{
+        width: 25px !important;
+    }
 
+    .programsContainer{
+        margin-top: 6% !important;
+    }
+    .carouselDiv {
+        height: 100%;
+    }
+    .carousel-indicators{
+        bottom: 15vh !important;
+    }
 
-   .program_lower_4 {
-    margin-top: -6% !important;
 }
-.blockOneSpan {
-    bottom: 52vh !important;
-}
-.play_btn_image{
-    width: 25px !important;
-}
-
-.programsContainer{
-    margin-top: 6% !important;
-}
-.carouselDiv {
-    height: 100%;
-}
-.carousel-indicators{
-    bottom: 15vh !important;
-}
-
-  }
-
 
   @media only screen and (max-width: 900px) {
     .headlineLeftFade{
@@ -678,12 +692,18 @@ faderightheadline {
 }
 
 
-  
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 900px) 
+and (orientation: landscape) {
+    .sectionContainers {
+        padding: 0 6% 0 5% !important;
+    }
+}
 
 .sectionContainers{
     padding: 0 6% 0 3%;
     position: relative !important;
-    // margin-top: -5%;
+  
 }
 
 
