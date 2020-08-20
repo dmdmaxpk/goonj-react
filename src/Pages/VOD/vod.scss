@@ -84,9 +84,11 @@
     width: 60%;
     float: left;
     text-transform: capitalize;
+    text-decoration: none;
 }
 .source > a{
     color: #2691d5;
+    text-decoration: none !important;
 }
 .daysAgo{
     color: #2691d5;

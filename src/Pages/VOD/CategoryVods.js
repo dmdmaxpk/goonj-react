@@ -102,7 +102,7 @@ class CategoryVodPage extends Component {
                 <GridContainer>
                     {this.state.loading === false ?
                         this.state.data.map(item =>
-                            <GridItem className="vodGridItem" xs={6} md={6} lg={3}>
+                            <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                 {this.state.data.length!=0?
                                 <div>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
@@ -117,10 +117,8 @@ class CategoryVodPage extends Component {
                                     {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
                                 </div></div>
                                 :
-                                <div>
-                                <p>HELLO</p>
-                                </div>
-                                    }
+                                null
+                                }
                             </GridItem>
                         )
                     : <Loader />
