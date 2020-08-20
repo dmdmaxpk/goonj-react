@@ -96,7 +96,7 @@ class Unsub extends Component {
             source,
             package_id: displayPackageId
         }
-        console.log(subData);
+        // console.log(subData);
         PaywallInstance.post('/payment/subscribe', subData)
         .then(res =>{
             let result = res.data;

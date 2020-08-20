@@ -46,10 +46,10 @@ class App extends React.Component {
     
     let userID = localStorage.getItem('userID');
     let localUserId = localStorage.hasOwnProperty(userID);
-    console.log("checking for item", localUserId)
+    // console.log("checking for item", localUserId)
     if(localUserId === true){
       let count = localStorage.getItem(userID) ? localStorage.getItem(userID) : 1;
-      console.log("count", count)
+      // console.log("count", count)
       count = parseFloat(count);
       count = count + 1;
       localStorage.setItem(userID, count);

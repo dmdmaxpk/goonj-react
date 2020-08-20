@@ -32,7 +32,7 @@ class Box extends React.Component {
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
-        console.log(this.props);
+        // console.log(this.props);
         let {packageID1, packageID2, permission, pkgIdKey, msisdnKey, msisdn, url} = this.props;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -44,12 +44,12 @@ class Box extends React.Component {
         }
         PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
-            console.log("status1", res.data);
+            // console.log("status1", res.data);
             if(res.data.code === -1){
                 statusData.package_id = packageID2;
                 PaywallInstance.post('/payment/status', statusData)
                 .then(response =>{
-                    console.log("status2", response.data);
+                    // console.log("status2", response.data);
                     if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
                         localStorage.setItem(permission, true);
                         localStorage.setItem(pkgIdKey, packageID2);
@@ -82,7 +82,7 @@ class Box extends React.Component {
         }
     }
     selectPayment(paymentType){
-        console.log("payment", paymentType);
+        // console.log("payment", paymentType);
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor'){
@@ -109,7 +109,7 @@ class Box extends React.Component {
             package_id: packageID2
         };
 
-        console.log('sendOtp - msisdnData: ', msisdnData);
+        // console.log('sendOtp - msisdnData: ', msisdnData);
 
         if(msisdn.length === 11){
             PaywallInstance.post('/payment/otp/send', msisdnData)
@@ -119,13 +119,13 @@ class Box extends React.Component {
                         this.setState({step: 2});
                     }
                     else if(result.code === -1){
-                        console.log('result.message: ', result.message);
-                        console.log('result: ', result);
+                        // console.log('result.message: ', result.message);
+                        // console.log('result: ', result);
                         alert(result.message);
                     }
                 })
                 .catch(err =>{
-                    console.log('err: ', err);
+                    // console.log('err: ', err);
                     alert(err)
                 })
         }
@@ -204,7 +204,7 @@ class Box extends React.Component {
                 payment_source: paymentType
             };
 
-        console.log('permissionData: ', permissionData);
+        // console.log('permissionData: ', permissionData);
         PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
