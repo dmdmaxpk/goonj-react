@@ -61,7 +61,7 @@ class HeadlinesSection extends Component {
                 {
                   breakpoint: 3000,
                   settings: {
-                    slidesToShow: 5.5,
+                    slidesToShow: 6.4,
                     slidesToScroll: 3,
                     infinite: true,
                     arrow: true

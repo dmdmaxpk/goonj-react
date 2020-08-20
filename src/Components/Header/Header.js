@@ -21,7 +21,6 @@ import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
-  // console.log("Header rendered");
   function signout(){
     localStorage.clear();
     window.location.reload();
@@ -67,9 +66,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
           {currentUser ? (
             <div className="header__option">
-              {/* <Link className="header__option" to="">
-                Hi, {currentUser.displayName}
-              </Link> */}
+
               <div
                 className="header__option header__option--signout"
                 onClick={() => auth.signOut()}
