@@ -111,40 +111,14 @@ class SearchPage extends Component {
                                             </div>
                                             <div className="vodDetailsDiv">
                                                 <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                                <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                                <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                                <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo date={item.publish_dtm} /></Link></p>
                                             </div>
                                     </GridItem>
                                     )}
                                 </GridContainer>
                             </InfiniteScroll>
-                        
-                       
-                            // this.state.data.map(item =>
-                            //     <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
-                            //         <div className="imgDiv" onClick={()=> this.handleClick(item)}>
-                            //             <span className="playBtn">
-                            //                 <img src={require("../../Assets/playBtn.png")} />
-                            //             </span>
-                            //             <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
-                            //         </div>
-                            //         <div className="vodDetailsDiv">
-                            //             <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                            //             <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                            //             <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
-                            //         </div>
-                            //     </GridItem>
-                            // )
-                            :
-                            this.state.loading === true && this.state.noData === false ?
-                            <Loader />
-                            :
-                            this.state.loading === false && this.state.noData === true ?
-                            <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
-                                <img src={require('../../Assets/nodata-found.png')} />
-                            </GridItem>
-                            :
-                            ''
+                    :
+                    ''
                     }
                 </GridContainer>
                 
