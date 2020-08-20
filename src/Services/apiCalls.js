@@ -35,7 +35,7 @@ export function CheckLiveStatus(){
         PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
             const result = res.data.data;
-            console.log(result);
+            // console.log(result);
             if(res.data.code === -1){
                 localStorage.clear();
             }
@@ -55,7 +55,7 @@ export function CheckLiveStatus(){
                     let userID = result.user_id;
                     let localUserId = localStorage.hasOwnProperty(userID);
                     if(localUserId === false){
-                        console.log("check user", userID)
+                        // console.log("check user", userID)
                         localStorage.setItem(userID, 1);
                         localStorage.setItem('feedback', false);
                     }
@@ -108,7 +108,7 @@ export function CheckCPStatus(){
                     let userID = result.user_id;
                     let localUserId = localStorage.hasOwnProperty(userID);
                     if(localUserId === false){
-                        console.log("check user", userID)
+                        // console.log("check user", userID)
                         localStorage.setItem(userID, 1);
                         localStorage.setItem('feedback', false);
                     }

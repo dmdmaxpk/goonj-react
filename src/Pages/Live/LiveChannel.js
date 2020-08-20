@@ -46,7 +46,7 @@ class LiveChannel extends Component {
             const result = res.data.data;
             if(res.data.code === -1){
                 localStorage.clear();
-                console.log("here here")
+                // console.log("here here")
                 this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
             }
             else if(result.is_allowed_to_stream === true){
@@ -56,7 +56,7 @@ class LiveChannel extends Component {
                 })
             }
             else{
-                console.log("in here");
+                // console.log("in here");
                 this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
             }
             })
