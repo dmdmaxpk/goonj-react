@@ -213,7 +213,7 @@
         font-size: 10px !important;
     }
     .recommendationGI{
-        margin-top: 50px !important;
+        margin-top: 65px !important;
         height: 180px;
     }
     .hashtagTopic{
@@ -285,17 +285,6 @@
         margin-top: 50px !important;
     }
   }
-
-  @media only screen 
-and (min-device-width : 320px)
-and (max-device-width : 568px) 
-and (orientation : landscape) {
-    .recomImg {
-        height: 70% !important;
-    }
-  
-
-}
   @media only screen and (max-width: 320px) {
     .headingVOD {
         font-size: 18px !important;
