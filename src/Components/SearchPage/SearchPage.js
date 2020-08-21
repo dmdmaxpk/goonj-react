@@ -8,6 +8,7 @@ import '../../Pages/VOD/vod.scss';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ReactTimeAgo from 'react-time-ago';
 import Loader from '../../Components/Loader/Loader';
+import './SearchPage.scss'
 
 
 class SearchPage extends Component {
@@ -91,15 +92,16 @@ class SearchPage extends Component {
         let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
         return(
             <div className="vodCategroyContainer">
-                <p className="heading">Search result for: {searchValue}</p>
-                <GridContainer>
+                <p className="searchHeading">Search result for: {searchValue}</p>
+                <GridContainer >
                     {this.state.loading === false && this.state.noData === false ?
                             <InfiniteScroll
                                 dataLength={this.state.data.length}
                                 next={this.fetchingData}
                                 hasMore={this.state.hasMoree}
+                                className="infiniteScrollPadding"
                                 >   
-                                <GridContainer>
+                                <GridContainer >
                                     {this.state.data.map(item =>
                                     <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                     
@@ -118,23 +120,6 @@ class SearchPage extends Component {
                                     )}
                                 </GridContainer>
                             </InfiniteScroll>
-                        
-                       
-                            // this.state.data.map(item =>
-                            //     <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
-                            //         <div className="imgDiv" onClick={()=> this.handleClick(item)}>
-                            //             <span className="playBtn">
-                            //                 <img src={require("../../Assets/playBtn.png")} />
-                            //             </span>
-                            //             <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
-                            //         </div>
-                            //         <div className="vodDetailsDiv">
-                            //             <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                            //             <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                            //             <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
-                            //         </div>
-                            //     </GridItem>
-                            // )
                             :
                             this.state.loading === true && this.state.noData === false ?
                             <Loader />
