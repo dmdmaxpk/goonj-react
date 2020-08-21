@@ -37,12 +37,6 @@ import Feedback from "./Components/Feedback/Feedback";
 
 class App extends React.Component {
   componentDidMount() {
-    const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
-    ReactGA.initialize(trackingId);
-    this.props.history.listen((location) => {
-      ReactGA.set({ page: location.pathname }); // Update the user's current page
-      ReactGA.pageview(location.pathname); // Record a pageview for the given page
-    });
     
     let userID = localStorage.getItem('userID');
     let localUserId = localStorage.hasOwnProperty(userID);
