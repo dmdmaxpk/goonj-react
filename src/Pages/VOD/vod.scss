@@ -42,6 +42,9 @@
     width: 100%;
     height: 150px;
 }
+.GridContainer-grid-9 {
+    width: 100%;
+}
 .videoLogo{
     width: 100%;
     height: 100%;
@@ -69,10 +72,16 @@
     height: 35px;
     overflow: hidden;
     font-size: small;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .source{
     // color: #ccc;
     font-size: smaller;
+    width: 60%;
     float: left;
     text-transform: capitalize;
 }
@@ -110,7 +119,7 @@
     text-transform: uppercase;
 }
 .videoPlayerDiv{
-    margin-left: 9% !important;
+    margin-left: 7% !important;
 }
 .videoPlayerGI{
     width: 900px;
@@ -143,10 +152,7 @@
     max-width: 32% !important;
     overflow: hidden;
 }
-.recomTitle {
-    height: 36px !important;
-   
-}
+
 .title_div{
     display: flex;
     justify-content: space-between;
@@ -166,10 +172,6 @@
 .plyr__control__items{
     display: none !important;
 }
-.vod_page_margin{
-    margin-top: 8vh;
-}
-
 
 @media only screen and (min-width: 1440px) {
     .vod_main_div{
@@ -177,16 +179,21 @@
     }
 }
 
+
 @media only screen and (min-width: 801px) {
     .catSelect{
         width: 100% !important;
     }
+    .vod_channel_margin_bottom{
+        margin-top: 4%;
+    }
 }
 
 
-
-
 @media only screen and (max-width: 800px) {
+    .vod_channel_margin_bottom{
+        margin-top: 2vh;
+    }
     .catSelect{
         width: 100% !important;
     }
@@ -206,8 +213,8 @@
         font-size: 10px !important;
     }
     .recommendationGI{
-        margin-top: 50px !important;
-        height: 30vh;
+        margin-top: 65px !important;
+        height: 180px;
     }
     .hashtagTopic{
         font-size: 11px;
@@ -228,17 +235,6 @@
     .recomImg {
         height: 80% !important;
 
-    }
-    .grey {
-        font-size: 11px !important;
-    }
-    .recomendation_details_div{
-    margin-top: -14px;
-    }
-
-    .recomTitle {
-        height: 39px !important;
-        width: 1% !important;
     }
     .recommendationGI{
         max-width: 100% !important;
@@ -287,10 +283,8 @@
     }
     .recommendationGI{
         margin-top: 50px !important;
-        height: 35vh;
     }
   }
-
   @media only screen and (max-width: 320px) {
     .headingVOD {
         font-size: 18px !important;
@@ -307,9 +301,35 @@
     .title_hashTag_and_heading{
         font-size: 11px;
     }
-    .recommendationGI{
-        height: 42vh;
-    }
+ 
   }
 
 
+
+  @media only screen and (min-device-width: 320px) 
+  and (max-device-width: 900px) 
+  and (orientation: landscape) {
+      .MuiGrid-item {
+          margin-left: 3px !important;
+      }
+      .videoPlayerGI {
+          margin-right: 3% !important;
+      }
+      .GridItem-grid-10 {
+          padding: 0 4% !important;
+      }
+      .recommendationGI{
+          height: 255px !important;
+          max-width: 100% !important;
+          margin-top: 13% !important;
+      }
+      .vod_main_div{
+          margin-left: 0% !important;
+          // margin-right: 3% !important;
+      }
+      .videoPlayerDiv {
+          margin-left: 0% !important;
+      }
+  
+  }
+  

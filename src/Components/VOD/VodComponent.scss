@@ -1,6 +1,7 @@
 .categoryDDContainer{
     float: right;
     color: white !important;
+    width: 12%;
 }
 .catLabel, .catSelect, .catMenuItem{
     color: white !important;
@@ -18,6 +19,9 @@
     top: 180px !important;
 }
 @media screen and (max-width: 480px){
+    .categoryDDContainer {
+        width: 28%;
+    }
     .catSelect{
         width: 25vw;
     }

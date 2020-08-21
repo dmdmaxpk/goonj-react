@@ -28,3 +28,18 @@
     margin: 0 auto;
   }
 }
+.infiniteScrollPadding{
+  padding: 2% !important;
+}
+.searchHeading{
+  color: white;
+  font-weight: 900;
+  font-size: x-large;
+  text-transform: uppercase;
+  margin-left: 1% !important;
+}
+@media screen and (max-width: 800px){
+  .searchHeading{
+    margin-left: 0% !important;
+  }
+}
