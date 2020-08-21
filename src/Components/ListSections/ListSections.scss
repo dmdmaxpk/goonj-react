@@ -1,3 +1,38 @@
+fadeleft {
+    position: absolute;
+    display: block;
+  
+    width: 100px;
+    height: 100%;
+
+    z-index: 2;
+  
+    background-image: linear-gradient(to right, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
+faderight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    display: block;
+  
+    width: 150px;
+    height: 100%;
+
+    z-index: 1;
+  
+    background-image: linear-gradient(to left, 
+        rgba(20, 24, 42, 1), 
+        rgba(20, 24, 42, 0)
+    100%);
+}
+.slick-next {
+    z-index: 2 !important;
+}
+
 .react-multi-carousel-item {
     width: 150px !important;
     margin: 20px 10px;
@@ -12,6 +47,10 @@
     position: absolute;
     outline: none;
 }
+.channelList{
+    margin-top: 2% !important;
+}
+
 .channelListCarousel .react-multiple-carousel__arrow{
     top: 30%;
 }
@@ -19,11 +58,13 @@
     top: 25%;
 }
 .channelListContainer{
-    margin: 0px 12px 0px 12px;
+    margin: 0px 0px 0px 15px;
     margin-bottom: 0;
-    // margin-top: -5%;
-    // margin-left: 140px;
 }
+.homePageMargin{
+    margin-right: 4%;
+}
+
 .slick-prev{
     left: 5% !important;
     z-index: 100 !important;
@@ -58,6 +99,7 @@ top: 0;
 .viewMore > a{
     color: #4aa6e5 !important;
 }
+
 .channelListImg{
     width: 92%;
     height: 230px;
@@ -101,7 +143,7 @@ top: 0;
 }
 .popularListDiv{
     float: left;
-    padding-right: 12px !important;
+    padding-right: 5px !important;
     width: 100px;
     outline: none !important;
 }
@@ -110,9 +152,8 @@ top: 0;
     text-decoration: none !important;
 }
 .popularListImg{
-    width: 100%;
+    width: 98%;
     height: 120%;
-    margin-right: 10px;
     border-radius: 10px;
 }
 .popularListName{
@@ -145,7 +186,8 @@ top: 0;
     width: 20px;
     position: relative;
     right: 115px;
-    top: 45px;
+    top: 40px;
+
 }
 .recomTextDiv{
     position: relative;
@@ -158,27 +200,150 @@ top: 0;
     font-size: small;
     font-weight: 600;
     color: white;
-    height: 10px !important;
-    // margin-bottom: 0.5rem;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; 
+   -webkit-box-orient: vertical;
 }
 .grey{
-    font-size: small;
+    font-size: x-small;
     font-weight: 600;
     margin-bottom: 0 !important;
     color: #ccc;
 }
+.liveChannel{
+    margin-left: 4% !important;
+}
+
+
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 900px) 
+and (orientation: landscape){
+    .MuiGrid-grid-sm-3 {
+        max-width: 23% !important;
+    }
+    .liveChannelMarginLeft {
+         margin-right: 0px;
+    }
+    .channelSlider .slick-prev, .channelSlider .slick-next{
+        top: 37% !important;
+        right: 5vw !important;
+    }
+    .propularSlider .slick-prev, .propularSlider .slick-next{
+        top: 31% !important;
+        right: 5vw !important;
+    }
+    .homePageMargin{
+        margin-right: 1% !important;
+    }
+    .channelListContainer {
+        margin: 0px;
+    }
+    .recomDiv{
+        position: relative;
+    }
+
+    .recomPlayBtn {
+        position: absolute;
+        left: 50% !important;
+        bottom: 50% !important;
+    }
+    .recomTextDiv {
+        position: static; 
+        bottom: 0px; 
+        height: 0px; 
+        overflow: visible;;
+    }
+    
+    
+}
+
+
+
+@media only screen and (min-width: 1540px) {
+
+    .channelListImg {
+        height: 300px;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+
+    .channelListImg {
+        height: 350px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+
+    .recomendation_details_div{
+
+        position: absolute;
+        bottom: 0;
+    }
+    .homePageMargin{
+        margin-right: 3% !important;
+    }
+    .channelListContainer{
+        margin: 0px 0px 0px 0px;
+    }
+    .popularLeftFade{
+        width: 12vw;
+    }
+    .popularRightFade{
+        width: 10vw;
+    }
+    .channelLeftFade{
+        width: 8vw;
+    }
+    .channelRightFade{
+        width: 8vw;
+    }
+    .vodPageMargin{
+        margin: 0px 0px 0px 15px !important;
+    }
+    .vodMarginTop{
+        margin-top: 0vh !important;
+    }
+    
+}
+
 
 @media only screen and (max-width: 900px) {
 
     .channelListImg {
         height: 154px;
     }
+    fadeleft {
+        width: 40px;
+        height: 95%;
+        left: -5px;
+    }
+    faderight {
+        width: 40px;
+        right: -5px;
+
+    }
+
+    .popularLeftFade{
+        width: 70px;
+    }
+
+    .channelLeftFade{
+        width: 50px;
+    }
 }
 
-
-
-
 @media only screen and (max-width: 480px) {
+    .recomendation_details_div{
+        margin-top: 4px;
+    }
+
+    .channelList{
+        margin-top: -2% !important;
+    }
+    
     .recomPlayBtn{
         width: 20px;
         position: relative;
@@ -232,11 +397,11 @@ top: 0;
         position: relative;
         right: 0px;
         left: 8vw;
-        top: -7vh;
+        top: -8vh;
     }
     .recomTitle{
         width: 100% !important;
-        font-size: xx-small !important;
+        font-size: 7px !important;
         height: 100% !important;
         margin: 0 !important;
         overflow: hidden;
@@ -247,15 +412,13 @@ top: 0;
         // overflow: hidden;
     }
     .grey{
-        font-size: xx-small !important;
+        font-size: 6px !important;
     }
     .recomTextDiv{
         bottom: 22px;
         height: auto;
     }
-    .recomendation_details_div{
-        // margin-top: 1vh;
-    }
+
   }
 
 @media only screen and (max-width: 375px) {
@@ -282,7 +445,7 @@ top: 0;
         width: 140% !important;
     }
     .recomTitle{
-        font-size: 11px !important;
+        font-size: 7px !important;
         height: 100% !important;
     }
     .recomPlayBtn {
@@ -290,6 +453,21 @@ top: 0;
         top: -9vh;
     }
     .grey{
-        font-size: 9px !important;
+        font-size: 6px !important;
     }
   }
+
+  @media only screen 
+and (min-device-width : 320px)
+and (max-device-width : 568px) 
+and (orientation : landscape) {
+    .MuiGrid-grid-sm-3 {
+        max-width: 21% !important;
+    }
+    .recomImg {
+        height: 62% !important;
+    }
+    .recomPlayBtn {
+        top: 25px;
+    }
+}

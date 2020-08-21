@@ -79,9 +79,8 @@ class Footer extends Component {
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
                   <p className="footerPs followUsP">Follow us : </p>
-                  <a href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} /></a>
-                  <a href=""><img className="contactUsImg" src={require('../../Assets/linkedin.png')} /></a>
-                  <a href="https://twitter.com/goonjtv"><img className="contactUsImg" src={require('../../Assets/twitter.png')} /></a>
+                  <a target="_blank" href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} /></a>
+                  <a target="_blank" href="https://twitter.com/goonjtv"><img className="contactUsImg" src={require('../../Assets/twitter.png')} /></a>
                 </GridItem>
               </GridContainer>
             </GridItem>

@@ -8,6 +8,7 @@ import './vod.scss';
 import ReactTimeAgo from 'react-time-ago';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
+import PaginationComponent from '../../Components/Pagination/PaginationComponent'
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
 
@@ -81,8 +82,7 @@ class ChannelVodPage extends Component {
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/category/${item.category}/page/1`}>{item.category}</Link></p>
-                                    <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.category} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link></p>
                                 </div>
                             </GridItem>
                         )
@@ -90,7 +90,7 @@ class ChannelVodPage extends Component {
                     }
                     <GridItem sm={12} md={12} xs={12}>
                         <div className="paginationDiv">
-                            <Pagination
+                            {/* <Pagination
                                 page={parseInt(this.props.match.params.pageNumber)}
                                 className="pagination"
                                 count={this.state.data.length >= this.state.limit ? parseInt(this.props.match.params.pageNumber) + 1 : parseInt(this.props.match.params.pageNumber)}
@@ -102,7 +102,8 @@ class ChannelVodPage extends Component {
                                     {...item}
                                     />
                                 )}
-                            />
+                            /> */}
+                             <PaginationComponent params={this.props.match.params} data={this.state.data} />
                         </div>
                     </GridItem>
                 </GridContainer>

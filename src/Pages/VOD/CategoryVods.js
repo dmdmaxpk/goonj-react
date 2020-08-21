@@ -5,8 +5,7 @@ import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
 import ReactTimeAgo from 'react-time-ago';
-import Pagination from '@material-ui/lab/Pagination';
-import PaginationItem from '@material-ui/lab/PaginationItem';
+import PaginationComponent from '../../Components/Pagination/PaginationComponent'
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
 import './vod.scss';
@@ -114,8 +113,8 @@ class CategoryVodPage extends Component {
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                    <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link></p>
+                                    {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
                                 </div></div>
                                 :
                                 <div>
@@ -128,24 +127,7 @@ class CategoryVodPage extends Component {
                     }
                     <GridItem sm={12} md={12} xs={12} >
                         <div className="paginationDiv">
-                            {/* {this.state.data.length == this.state.limit ? */}
-                                <Pagination
-                                    page={parseInt(this.props.match.params.pageNumber)}
-                                    className="pagination"
-                                    count={this.state.data.length >= this.state.limit ? parseInt(this.props.match.params.pageNumber) + 1 : parseInt(this.props.match.params.pageNumber)}
-                                    size="small"
-                                    color="primary"
-                                    renderItem={(item) => (
-                                        <PaginationItem
-                                        component={Link}
-                                        to={`/category/${this.props.match.params.category}/page/${item.page}`}
-                                        {...item}
-                                        />
-                                        )}
-                                />
-                                {/* :
-                                ""
-                            } */}
+                            <PaginationComponent params={this.props.match.params} data={this.state.data} />
                         </div>
                     </GridItem>
                 </GridContainer>

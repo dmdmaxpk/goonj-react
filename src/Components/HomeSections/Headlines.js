@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import config from '../../Utils/config';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import LoaderImage from '../../Components/Loader/ImageLoader'
 import Heading from './Heading';
+import {Img} from 'react-image'
 import './HomeSection.scss';
+import '../ListSections/ListSections.scss'
 import Loader from '../Loader/Loader';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
@@ -33,14 +34,13 @@ class HeadlinesSection extends Component {
             this.setState({data: res.data});
         })
         .catch(err =>{
-            // console.log(err);
+    
         });
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
         let str = specialCharStr.replace(/\s+/g, '-').toLowerCase();
         let url = id + "_" + str;
-        // console.log(url);
         return url;
     }
     getDate(date){
@@ -50,7 +50,6 @@ class HeadlinesSection extends Component {
     }
     render(){
         let data = this.state.data;
-        // console.log(data);
         var settings = {
             dots: false,
             arrows: true,
@@ -62,7 +61,7 @@ class HeadlinesSection extends Component {
                 {
                   breakpoint: 3000,
                   settings: {
-                    slidesToShow: 5.25,
+                    slidesToShow: 6.4,
                     slidesToScroll: 3,
                     infinite: true,
                     arrow: true
@@ -88,28 +87,30 @@ class HeadlinesSection extends Component {
         };
         return(
             <div className="headlinesContainer">
-                <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
-                <div>
-                    {this.state.data.length > 0 ?
-                    <Slider className="headlinesSlider" {...settings}>
-                        {data.map(item =>
-                                <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
-                                    <Link style={{textDecoration: "none", color:"white"}}>
-                                        <div style={{position:"relative", marginBottom:"4%"}}>
-                                        <img className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
-                                        <img style={{position:"absolute", left:"40%", bottom:"35%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
+                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
+                        <div className="position-relative">
+                            <fadeleftheadline className="headlineLeftFade"/>
+                            <Slider className="headlinesSlider" {...settings}>
+                            {this.state.data.length > 0 ?  
+                                (data.map(item =>
+                                        <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
+                                            <Link style={{textDecoration: "none", color:"white"}}>
+                                                <div style={{position:"relative", marginBottom:"4%"}}>
+                                                <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
+                                                <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} />
+                                                </div>
+                                                <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
+                                                <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>
+                                            </Link>
                                         </div>
-                                        <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
-                                        <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>
-                                    </Link>
-                                </div>
-                            )
-                          
-                        }
-                    </Slider>
-                      : <Loader/>
-                    }
-                </div>
+                                    )
+                                )
+                                  : <Loader/>
+                                }
+                            </Slider>
+                            <faderightheadline className="headlineRightFade"/>
+                            </div>
+               
             </div>
         );
     }
