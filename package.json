@@ -31,7 +31,6 @@
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "video.js": "^7.8.4"
   },

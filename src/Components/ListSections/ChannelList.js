@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AxiosInstance from "../../Utils/AxiosInstance";
-import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import Heading from '../HomeSections/Heading';
 import './ListSections.scss';

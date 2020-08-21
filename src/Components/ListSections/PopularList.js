@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'react-multi-carousel/lib/styles.css';
 import Heading from '../HomeSections/Heading';
 import Loader from '../Loader/Loader';
 import './ListSections.scss';
