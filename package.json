@@ -61,16 +61,16 @@
     ]
   },
   "devDependencies": {},
-  "description": "- **Netflix Clone made with React, Redux and Firebase**",
+  "description": "Goonj",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darwin619/Netflix-Clone.git"
+    "url": "https://goonj.pk"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darwin619/Netflix-Clone/issues"
+    "url": "https://goonj.pk"
   },
-  "homepage": "https://github.com/darwin619/Netflix-Clone#readme"
+  "homepage": "https://goonj.pk"
 }

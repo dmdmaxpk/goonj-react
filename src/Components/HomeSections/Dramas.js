@@ -24,7 +24,7 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
-        PaywallInstance.get(`/video?category=entertainment&limit=5h`)
+        PaywallInstance.get(`/video?category=entertainment&limit=5`)
         .then(res => {
             this.setState({data: res.data});
         })
