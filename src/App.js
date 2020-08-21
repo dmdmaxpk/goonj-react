@@ -27,7 +27,6 @@ import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
-import ReactGA from 'react-ga';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
