@@ -1,0 +1,26 @@
+{
+    "short_name": "Goonj",
+    "name": "Goonj Tv-Breaking News, Live TV-Drama",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "favicon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "favicon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/home?source=pwa",
+    "display": "standalone",
+    "theme_color": "#1B2039",
+    "background_color": "#1B2039"
+}
+  

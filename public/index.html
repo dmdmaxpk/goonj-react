@@ -34,6 +34,13 @@
     -->
     <title>Goonj Tv-Breaking News, Live TV-Drama</title>
 
+    <style type="text/css">
+      .page-info {
+        margin-top: 70%;
+        text-align: center !important;
+      }
+    </style>
+
     <!-- Include Bootstrap library -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
@@ -69,7 +76,32 @@
     </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <!-- <div class="navbar">
+        <h3>Goonj</h3>
+        <a href="/">Home</a>
+        <a href="/home">Home</a>
+      </div> -->
+      <p class="page-info">
+        <img src="./images/goonjLoader.gif" />
+      </p>
+    </div>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('worker.js').then(function(registration) {
+            console.log('Worker registration successful', registration.scope);
+          }, function(err) {
+            console.log('Worker registration failed', err);
+          }).catch(function(err) {
+            console.log(err);
+          });
+        });
+      } else {
+        console.log('Service Worker is not supported by browser.');
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
