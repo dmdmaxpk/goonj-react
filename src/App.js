@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
-import SignIn from "./Pages/SignIn/SignIn";
-import SignUp from "./Pages/SignUp/SignUp";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
@@ -17,17 +15,10 @@ import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
-import {
-  CheckLiveStatus,
-  CheckCPStatus,
-  getPackages,
-} from "./Services/apiCalls";
 import Profile from "./Pages/Profile/Profile";
-import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
-import ReactGA from 'react-ga';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
@@ -39,12 +30,12 @@ class App extends React.Component {
     if (this.props.location.pathname === "/") {
       this.props.history.push("/home");
     }
-    const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
-    ReactGA.initialize(trackingId);
-    this.props.history.listen((location) => {
-      ReactGA.set({ page: location.pathname }); // Update the user's current page
-      ReactGA.pageview(location.pathname); // Record a pageview for the given page
-    });
+    // const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
+    // ReactGA.initialize(trackingId);
+    // this.props.history.listen((location) => {
+    //   ReactGA.set({ page: location.pathname }); // Update the user's current page
+    //   ReactGA.pageview(location.pathname); // Record a pageview for the given page
+    // });
   }
   render() {
     return (
@@ -58,7 +49,7 @@ class App extends React.Component {
           ""
         )}
         <Switch>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/home" component={Home}/>
           <Route
             exact
             path="/paywall/live"
