@@ -7,7 +7,6 @@
     color: white !important;
 }
 .catLabel{
-    font-size: large !important;
     font-weight: bold !important;
     cursor: pointer;
 }
@@ -24,6 +23,9 @@
     // }
     .catSelect{
         width: 25vw;
+    }
+    .catLabel{
+        font-size: 12px !important;
     }
     .MuiPopover-paper{
         position: absolute !important;

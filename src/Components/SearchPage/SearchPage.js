@@ -8,6 +8,7 @@ import '../../Pages/VOD/vod.scss';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ReactTimeAgo from 'react-time-ago';
 import Loader from '../../Components/Loader/Loader';
+import './SearchPage.scss'
 
 
 class SearchPage extends Component {
@@ -98,8 +99,9 @@ class SearchPage extends Component {
                                 dataLength={this.state.data.length}
                                 next={this.fetchingData}
                                 hasMore={this.state.hasMoree}
+                                className="infiniteScrollPadding"
                                 >   
-                                <GridContainer>
+                                <GridContainer >
                                     {this.state.data.map(item =>
                                     <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                     
