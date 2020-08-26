@@ -27,7 +27,6 @@ import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
-import ReactGA from 'react-ga';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
@@ -37,12 +36,6 @@ import Feedback from "./Components/Feedback/Feedback";
 
 class App extends React.Component {
   componentDidMount() {
-    const trackingId = "UA-69091505-15"; // Replace with your Google Analytics tracking ID
-    ReactGA.initialize(trackingId);
-    this.props.history.listen((location) => {
-      ReactGA.set({ page: location.pathname }); // Update the user's current page
-      ReactGA.pageview(location.pathname); // Record a pageview for the given page
-    });
     let userID = localStorage.getItem('userID');
     let localUserId = localStorage.hasOwnProperty(userID);
     // console.log("checking for item", localUserId)
