@@ -79,6 +79,7 @@ class App extends React.Component {
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
     // }
+    this.installApp();
   }
 
   installApp=async ()=>{
@@ -102,7 +103,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.installApp}>Install as App</button>
         {this.props.location.pathname.toLowerCase() !== "/binjee"  ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
