@@ -102,6 +102,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <button onClick={this.installApp}>Install as App</button>
         {this.props.location.pathname.toLowerCase() !== "/binjee"  ? (
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
