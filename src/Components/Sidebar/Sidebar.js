@@ -115,14 +115,14 @@ export default function MiniDrawer(props) {
         <Divider />
         <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
           <Tooltip title="Binjee" placement="right">  
-            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} /></ListItemIcon>
+            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} alt="Binjee" /></ListItemIcon>
           </Tooltip>
           <ListItemText className="sidebarTabsText" primary="Binjee" />
         </ListItem>
         <Divider />
         <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
           <Tooltip title="Comedy Portal" placement="right">
-            <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} /></ListItemIcon>
+            <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
           </Tooltip>
           <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
         </ListItem>
@@ -177,10 +177,10 @@ export default function MiniDrawer(props) {
                   [classes.hide]: open,
                 })}
               >
-                <img src={require("../../Assets/menu.png")} />
+                <img src={require("../../Assets/menu.png")} alt="menu icon" />
               </IconButton>
               <IconButton onClick={handleDrawerClose}>
-                <img src={require("../../Assets/menu.png")} />
+                <img src={require("../../Assets/menu.png")} alt="menu icon" />
               </IconButton>
             </div>
             <ListComponent />
@@ -217,10 +217,10 @@ export default function MiniDrawer(props) {
                   [classes.hide]: open,
                 })}
               >
-                <img src={require("../../Assets/menu.png")} />
+                <img src={require("../../Assets/menu.png")} alt="menu icon" />
               </IconButton>
               <IconButton onClick={handleDrawerClose}>
-                <img src={require("../../Assets/menu.png")} />
+                <img src={require("../../Assets/menu.png")} alt="menu icon" />
               </IconButton>
             </div>
             <ListComponent />

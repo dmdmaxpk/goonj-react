@@ -13,7 +13,7 @@ class Footer extends Component {
       <div className="footer">
           <GridContainer className="footerContainerOne">
           <Hidden mdDown> <GridItem xs={12} sm={12} md={12}>
-                <img src={require('../../Assets/logo.png')} />
+                <img src={require('../../Assets/logo.png')} alt="Goonj" />
             </GridItem></Hidden>
           </GridContainer>
           <GridContainer className="footerContainerTwo">
@@ -45,7 +45,7 @@ class Footer extends Component {
                 </a>
               </p>
               <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en">
-                <img className="footerPlaystoreImg" src={require('../../Assets/playstore-footer.png')} />
+                <img className="footerPlaystoreImg" src={require('../../Assets/playstore-footer.png')} alt="playstoreLink" />
               </a>
             </GridItem>
             <Hidden mdDown>
@@ -64,14 +64,14 @@ class Footer extends Component {
               <p className="footerHeadings">Contact Us</p>
               <GridContainer>
                 <GridItem xs={6} sm={6} md={12}>
-                  <a href="tel:202-555-0176"><img className="contactUsImg" src={require('../../Assets/call.png')} /></a>
+                  <a href="tel:202-555-0176"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="call us" /></a>
                   <p className="footerPs contactUsPs">
                     Call us :{'\n'}
                     (+1) 202-555-0176, (+1) 2025-5501
                   </p>
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
-                  <a href="mailto:support@goonj.com"><img className="contactUsImg" src={require('../../Assets/email.png')} /></a>
+                  <a href="mailto:support@goonj.com"><img className="contactUsImg" src={require('../../Assets/email.png')} alt="email us" /></a>
                   <p className="footerPs contactUsPs">
                     Email us :{'\n'}
                     info@goonj.com, support@goonj.com
@@ -79,8 +79,8 @@ class Footer extends Component {
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
                   <p className="footerPs followUsP">Follow us : </p>
-                  <a target="_blank" href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} /></a>
-                  <a target="_blank" href="https://twitter.com/goonjtv"><img className="contactUsImg" src={require('../../Assets/twitter.png')} /></a>
+                  <a target="_blank" href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} alt="Facebook" /></a>
+                  <a target="_blank" href="https://twitter.com/goonjtv"><img className="contactUsImg" src={require('../../Assets/twitter.png')} alt="Twitter" /></a>
                 </GridItem>
               </GridContainer>
             </GridItem>

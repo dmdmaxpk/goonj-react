@@ -15,7 +15,7 @@ export default class ImageLoader extends Component {
     render() {
         return (
             <div style={{height: "100%"}}>
-            <img className={this.props.classnames+" "+"z_index_img"}  src={require('../../Assets/loading_gif.jpg')} />
+            <img className={this.props.classnames+" "+"z_index_img"}  src={require('../../Assets/loading_gif.jpg')} alt="image loader" />
             <Loader
               loaded={this.state.loaded}
               lines={10}
