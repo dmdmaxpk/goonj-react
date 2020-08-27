@@ -32,7 +32,6 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import Feedback from "./Components/Feedback/Feedback";
-import InstallPWA from "./Pages/PWA/InstallPwa"
 
 
 class App extends React.Component {
