@@ -1,0 +1,22 @@
+{
+    "short_name": "Goonj",
+    "name": "Goonj Tv-Breaking News, Live TV-Drama",
+    "description": "Watch Headline news and political talk shows with top anchor persons exclusively on Geo news , Dunya News, Samaa , GNN, Express News and 30+ Live Tv channels. Stream highly rated dramas on top channels like Urdu1, Bol Entertainment, Geo, Aplus and unlimited entertainment with filmax and filmworld. Comedy portal and curated news stories are the best features of goonj tv.",
+    "icons": [
+      {
+        "src": "/images/icons-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icons-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/home",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#3367D6"
+  }

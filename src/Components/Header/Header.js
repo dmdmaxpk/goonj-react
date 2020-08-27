@@ -42,7 +42,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/home")}>
-        <img src={Logo} alt="logo" className="header__logo" />
+        <img src={Logo} alt="logo" className="header__logo" alt="Header logo" />
       </div>
 
       <Hidden mdDown >
@@ -60,7 +60,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
           <div className="header__playstoreBtn">
             <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en">
-              <img src={require('../../Assets/playstore-header.png')} />
+              <img src={require('../../Assets/playstore-header.png')} alt="Playstore" />
             </a>
           </div>
 

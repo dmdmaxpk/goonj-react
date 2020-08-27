@@ -118,11 +118,11 @@ class Feedback extends Component {
                                 {/* <GridItem xs={12} sm={12} md={12} className="feedbackGI"> */}
                                     <div className="reactionDiv">
                                         <p className="questionText">{this.state.question}</p>
-                                        <img src={require('../../Assets/feedback/1.png')} alt="" className={this.state.selected !== 1 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(1)} />
-                                        <img src={require('../../Assets/feedback/2.png')} alt="" className={this.state.selected !== 2 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(2)} />
-                                        <img src={require('../../Assets/feedback/3.png')} alt="" className={this.state.selected !== 3 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(3)} />
-                                        <img src={require('../../Assets/feedback/4.png')} alt="" className={this.state.selected !== 4 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(4)} />
-                                        <img src={require('../../Assets/feedback/5.png')} alt="" className={this.state.selected !== 5 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(5)} />
+                                        <img src={require('../../Assets/feedback/1.png')} alt="" className={this.state.selected !== 1 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(1)} alt="worst" />
+                                        <img src={require('../../Assets/feedback/2.png')} alt="" className={this.state.selected !== 2 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(2)} alt="worse" />
+                                        <img src={require('../../Assets/feedback/3.png')} alt="" className={this.state.selected !== 3 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(3)} alt="average" />
+                                        <img src={require('../../Assets/feedback/4.png')} alt="" className={this.state.selected !== 4 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(4)} alt="better" />
+                                        <img src={require('../../Assets/feedback/5.png')} alt="" className={this.state.selected !== 5 ? "reactions" : "reactions selectedReaction"} onClick={()=> this.selectReaction(5)} alt="best" />
                                         <p className="questionText questionText2">
                                             What is the reason for your rating?
                                         </p>

@@ -125,7 +125,7 @@ class PopularList extends Component {
                                 popularList.map(item =>
                                     <div className="popularListDiv" key={item.slug}>
                                         <a style={{textDecoration: "none"}} href={`${item.url}`} >
-                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} />
+                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
                                             <p className="channelListName popularListName">{item.name}</p>
                                         </a>
                                     </div>
