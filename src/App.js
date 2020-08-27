@@ -33,7 +33,6 @@ import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import Feedback from "./Components/Feedback/Feedback";
 
-
 class App extends React.Component {
   installPrompt = null;
   componentDidMount() {
