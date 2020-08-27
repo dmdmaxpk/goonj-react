@@ -35,7 +35,7 @@ class CategoryDD extends Component {
         const categories = [
             {
                 name: "Comedy",
-                icon: <img src={require('../../Assets/cp.png')} />,
+                icon: <img src={require('../../Assets/cp.png')} alt="Comedy Portal" />,
                 category: "comedy"
             },
             {

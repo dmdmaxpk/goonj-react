@@ -247,11 +247,11 @@ class Box extends React.Component {
                         <div>
                             <p>Subscribe Now</p>
                             <button className="btnSub" onClick={()=> this.selectPayment('telenor')}>
-                                <img className="btnSubImg" src={require("../../Assets/telenorBtn.png")} />
+                                <img className="btnSubImg" src={require("../../Assets/telenorBtn.png")} alt="Telenor Subscribe Button" />
                             </button>
                             <p className="orText">- OR -</p>
                             <button className="btnSub" onClick={()=> this.selectPayment('easypaisa')}>
-                                <img className="btnSubImg" src={require("../../Assets/easypaisaBtn.png")} />
+                                <img className="btnSubImg" src={require("../../Assets/easypaisaBtn.png")} alt="Easypaisa Subscribe Button" />
                             </button>
                         </div>
                     :
@@ -293,7 +293,7 @@ class Box extends React.Component {
                         <div className="">
                             <p className="text1">Are you sure<br />you want to subscribe?</p>
                             <button className="btnSubConfirm" onClick={this.subscribe}>
-                                <img className="confirmBtnImg" src={require("../../Assets/Shape-2.png")} />
+                                <img className="confirmBtnImg" src={require("../../Assets/Shape-2.png")} alt="Confirm" />
                                 <p className="btnConfirmText">Confirm</p>
                             </button>
                         </div>

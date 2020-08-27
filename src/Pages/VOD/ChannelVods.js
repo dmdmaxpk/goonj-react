@@ -76,9 +76,9 @@ class ChannelVodPage extends Component {
                             <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                     <span className="playBtn">
-                                        <img src={require("../../Assets/playBtn.png")} />
+                                        <img src={require("../../Assets/playBtn.png")} alt="Play" />
                                     </span>
-                                    <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
+                                    <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>

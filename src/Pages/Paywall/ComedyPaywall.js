@@ -46,7 +46,7 @@ class ComedyPaywall extends Component {
                 <div className="goonjLivePage">
                     <div className="landing_page_background">
                         <div className="liveContainer">
-                            <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} />
+                            <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} alt="Logo" />
                             <br />
                             <h1 className = "aText1 aText1b">WATCH COMEDY VIDEOS ANYTIME, ANYWHERE!</h1>
                             <Box
