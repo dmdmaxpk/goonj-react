@@ -38,11 +38,11 @@ class App extends React.Component {
   installPrompt = null;
   componentDidMount() {
 
-    console.log("Listening for Install prompt");
+    // console.log("Listening for Install prompt");
     window.addEventListener('beforeinstallprompt',e=>{
       // For older browsers
       e.preventDefault();
-      console.log("Install Prompt fired");
+      // console.log("Install Prompt fired");
       this.installPrompt = e;
       // See if the app is already installed, in that case, do nothing
       if((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true){
@@ -86,10 +86,10 @@ class App extends React.Component {
     this.installPrompt.prompt();
     let outcome = await this.installPrompt.userChoice;
     if(outcome.outcome=='accepted'){
-      console.log("App Installed")
+      // console.log("App Installed")
     }
     else{
-      console.log("App not installed");
+      // console.log("App not installed");
     }
     // Remove the event reference
     this.installPrompt=null;
