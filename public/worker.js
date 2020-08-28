@@ -1,14 +1,14 @@
 var CACHE_NAME = 'Goonj';
-// var urlsToCache = [
+var urlsToCache = [
   '/'
 //   '/home',
 //   '/live-tv'
-// ];
+];
 
 // Install a service worker
 self.addEventListener('install', event => {
   // activate a worker without waiting
-  self.skipWaiting();
+  // self.skipWaiting();
 
   // Turn off cache
   // event.waitUntil(
