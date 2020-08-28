@@ -1,8 +1,8 @@
 var CACHE_NAME = 'Goonj';
 var urlsToCache = [
-  '/',
-  '/home',
-  '/live-tv'
+  // '/',
+  // '/home',
+  // '/live-tv'
 ];
 
 // Install a service worker
