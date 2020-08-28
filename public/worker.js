@@ -1,14 +1,21 @@
 var CACHE_NAME = 'Goonj';
 var urlsToCache = [
-  '/'
-//   '/home',
-//   '/live-tv'
+  '/index.html'
 ];
 
 // Install a service worker
 self.addEventListener('install', event => {
   // activate a worker without waiting
-  // self.skipWaiting();
+  self.skipWaiting();
+
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        // console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 
   // Turn off cache
   // event.waitUntil(
@@ -25,14 +32,6 @@ self.addEventListener('install', event => {
   //     );
   //   })
   // );
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        // console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
 });
 
 // Cache and return requests
