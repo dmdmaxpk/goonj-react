@@ -13,27 +13,27 @@ class PosterSlider extends Component {
     render(){
         let banners = [
             {
-                name: "banner01",
+                name: "01",
                 url: "/category/entertainment/page/1",
                 class: "carousel-item active"
             },
             {
-                name: "banner02",
+                name: "02",
                 url: "/live-tv",
                 class: "carousel-item"
             },
             {
-                name: "banner-02A",
+                name: "03",
                 url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
                 class: "carousel-item"
             },
             {
-                name: "banner03",
+                name: "04",
                 url: "/category/comedy/page/1",
                 class: "carousel-item"
             },
             {
-                name: "banner04",
+                name: "05",
                 url: "/category/entertainment/page/1",
                 class: "carousel-item"
             },
@@ -53,7 +53,7 @@ class PosterSlider extends Component {
                             banners.map(item =>
                                 <div className={item.class} key={item.name}>
                                     <Link to={item.url}>
-                                        <img src={`${config.bannerUrl}/${item.name}.jpg`} className="d-block w-100 slider_images_all" alt={item.name} />
+                                        <img src={`${config.bannerUrl}/${item.name}.png`} className="d-block w-100 slider_images_all" alt={item.name} />
                                     </Link>
                                 </div>
                             )
