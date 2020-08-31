@@ -8,7 +8,7 @@ import {Img} from 'react-image'
 import './HomeSection.scss';
 import '../ListSections/ListSections.scss'
 import Loader from '../Loader/Loader';
-import PaywallInstance from '../../Utils/PaywallInstance';
+import AxiosInstance from '../../Utils/AxiosInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
 
 class HeadlinesSection extends Component {
@@ -29,7 +29,7 @@ class HeadlinesSection extends Component {
           });
     }
     componentDidMount(){
-        PaywallInstance.get(`/video?category=news&limit=21`)
+        AxiosInstance.get(`/video?category=news&limit=21`)
         .then(res => {
             this.setState({data: res.data});
         })

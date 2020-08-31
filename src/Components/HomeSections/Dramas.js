@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Img} from 'react-image'
 import Heading from './Heading';
 import './HomeSection.scss';
-import PaywallInstance from '../../Utils/PaywallInstance';
+import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
 import LoaderImage from '../../Components/Loader/ImageLoader'
 import Loader from '../../Components/Loader/Loader';
@@ -24,7 +24,7 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
-        PaywallInstance.get(`/video?category=entertainment&limit=5`)
+        AxiosInstance.get(`/video?category=entertainment&limit=5`)
         .then(res => {
             this.setState({data: res.data});
         })

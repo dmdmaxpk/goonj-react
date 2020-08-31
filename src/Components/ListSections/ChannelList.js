@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PaywallInstance from "../../Utils/PaywallInstance";
+import AxiosInstance from "../../Utils/AxiosInstance";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
@@ -21,7 +21,7 @@ class ChannelList extends Component {
         this.handleRedirect = this.handleRedirect.bind(this);
     }
     componentDidMount(){
-        PaywallInstance.get('/live')
+        AxiosInstance.get('/live')
         .then(res =>{
             this.setState({data: res.data})
         })
