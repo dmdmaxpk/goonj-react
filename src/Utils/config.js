@@ -2,8 +2,8 @@
 const config = {
     development: {
         apiBaseUrl: "https://api.goonj.pk/v2",
-        // paywallUrl: "http://3.126.102.117:5000",
-        paywallUrl: "https://api.goonj.pk/v2",
+        paywallUrl: "http://3.126.102.117:5000",
+        // paywallUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
@@ -15,8 +15,8 @@ const config = {
     },
     staging: {
         apiBaseUrl: 'https://api.goonj.pk/v2',
-        // paywallUrl: "http://3.126.102.117:5000",
-        paywallUrl: "https://api.goonj.pk/v2",
+        paywallUrl: "http://3.126.102.117:5000",
+        // paywallUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/web-thumb",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
@@ -28,8 +28,8 @@ const config = {
     },
     production: {
         apiBaseUrl: "https://api.goonj.pk/v2",
-        // paywallUrl: "http://3.126.102.117:5000",
-        paywallUrl: "https://api.goonj.pk/v2",
+        paywallUrl: "http://3.126.102.117:5000",
+        // paywallUrl: "https://api.goonj.pk/v2",
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
