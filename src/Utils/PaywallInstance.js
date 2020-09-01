@@ -6,6 +6,7 @@ const fetchPaywallClient = () => {
     baseURL: config.paywallUrl,
     headers: {
       'Content-Type': 'application/json',
+      'Content-Security-Policy': 'upgrade-insecure-requests'
     },
   };
 
