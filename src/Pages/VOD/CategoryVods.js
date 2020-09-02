@@ -74,7 +74,9 @@ class CategoryVodPage extends Component {
         let url = this.getVodUrl(item.title, item._id);
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
-            permission ? window.location.href = `/${url}` : window.location.href = `${config.hepage}?postUrl=${url}`;
+            let Urlmsisdn = localStorage.getItem("urlMsisdn");
+            localStorage.setItem('urlMsisdn', Urlmsisdn);
+            permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
         else{
             history.push(`/${url}`);
@@ -100,19 +102,19 @@ class CategoryVodPage extends Component {
                 <GridContainer>
                     {this.state.loading === false ?
                         this.state.data.map(item =>
-                            <GridItem className="vodGridItem" xs={6} md={6} lg={3}>
+                            <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                 {this.state.data.length!=0?
                                 <div>
                                 <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                     <span className="playBtn">
-                                        <img src={require("../../Assets/playBtn.png")} />
+                                        <img src={require("../../Assets/playBtn.png")} alt="Play" />
                                     </span>
-                                    <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
+                                    <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                    <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link></p>
+                                    {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
                                 </div></div>
                                 :
                                 <div>

@@ -16,8 +16,16 @@ class PopularList extends Component {
         this.state = {
 
         }
+        this.handleRedirect = this.handleRedirect.bind(this);
+    }
+    handleRedirect(item){
+        this.props.history.push(item)
     }
     render() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        
+        const Urlmsisdn = localStorage.getItem('urlMsisdn') ? localStorage.getItem('urlMsisdn') : urlParams.get("msisdn");
         const popularList = [
             {
                 name: "Binjee",
@@ -31,17 +39,17 @@ class PopularList extends Component {
             },
             {
                 name: "Geo Aur Jeenay Do",
-                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : `${config.hepage}?slug=geo-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png'
             },
             {
                 name: "Samaa News",
-                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : `${config.hepage}?slug=samaa-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
                 thumbnail: 'channel02.png'
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
-                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : `${config.hepage}?slug=dunya-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunya-news`,
                 thumbnail: 'channel04.png'
             },
             {
@@ -56,17 +64,17 @@ class PopularList extends Component {
             },
             {
                 name: "Geo Aur Jeenay Do",
-                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : `${config.hepage}?slug=geo-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png'
             },
             {
                 name: "Samaa News",
-                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : `${config.hepage}?slug=samaa-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
                 thumbnail: 'channel02.png'
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
-                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : `${config.hepage}?slug=dunya-news`,
+                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunyaa-news`,
                 thumbnail: 'channel04.png'
             }
         ];
@@ -116,8 +124,8 @@ class PopularList extends Component {
                             {popularList.length > 0 ?
                                 popularList.map(item =>
                                     <div className="popularListDiv" key={item.slug}>
-                                        <a style={{textDecoration: "none"}} href={`${item.url}`}>
-                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} />
+                                        <a style={{textDecoration: "none"}} href={`${item.url}`} >
+                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
                                             <p className="channelListName popularListName">{item.name}</p>
                                         </a>
                                     </div>

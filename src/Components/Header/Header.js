@@ -18,6 +18,7 @@ import NavMenu from "./NavMenu";
 import { Hidden } from "@material-ui/core";
 import { setParams } from "../../Services/flowIntegrations";
 import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   function signout(){
@@ -41,7 +42,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/home")}>
-        <img src={Logo} alt="logo" className="header__logo" />
+        <img src={Logo} alt="logo" className="header__logo" alt="Header logo" />
       </div>
 
       <Hidden mdDown >
@@ -52,14 +53,14 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
           
           <div className="header__option header__LiveTvBtn">
             <button className="headerLiveBtn" onClick={() => history.push('/live-tv')}>
-              <img src={require('../../Assets/btnBg.png')} />
-              <p>Live TV</p>
+              <LiveTvIcon className="liveTvIcon" fontSize="small" />
+              <p className="ml-2">Live TV</p>
             </button>
           </div>
 
           <div className="header__playstoreBtn">
             <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en">
-              <img src={require('../../Assets/playstore-header.png')} />
+              <img src={require('../../Assets/playstore-header.png')} alt="Playstore" />
             </a>
           </div>
 
@@ -83,13 +84,14 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
                   Sign In
                 </Link>
               :
-                <Link
-                  onClick={()=> signout()}
-                  className="header__option header__option--signin"
-                  to="/paywall/live"
-                  >
-                  Sign Out
-                </Link>
+                ""
+                // <Link
+                //   onClick={()=> signout()}
+                //   className="header__option header__option--signin"
+                //   to="/paywall/live"
+                //   >
+                //   Sign Out
+                // </Link>
               }
             </div>
           )}

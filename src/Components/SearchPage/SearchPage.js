@@ -107,14 +107,13 @@ class SearchPage extends Component {
                                     
                                             <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                                 <span className="playBtn">
-                                                    <img src={require("../../Assets/playBtn.png")} />
+                                                    <img src={require("../../Assets/playBtn.png")} alt="Play" />
                                                 </span>
-                                                <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" />
+                                                <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
                                             </div>
                                             <div className="vodDetailsDiv">
                                                 <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                                <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source}</Link></p>
-                                                <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                                <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo date={item.publish_dtm} /></Link></p>
                                             </div>
                                     </GridItem>
                                     )}
@@ -126,7 +125,7 @@ class SearchPage extends Component {
                             :
                             this.state.loading === false && this.state.noData === true ?
                             <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
-                                <img src={require('../../Assets/nodata-found.png')} />
+                                <img src={require('../../Assets/nodata-found.png')} alt="Not Found" />
                             </GridItem>
                             :
                             ''

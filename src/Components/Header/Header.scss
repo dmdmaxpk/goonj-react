@@ -138,20 +138,27 @@
 }
 
 .headerLiveBtn{
-  background: none;
+  background-image: linear-gradient(to right, #30A1E6, #15EFC4);
   border: none;
-  margin-top: 5px;
+  border-radius: 50px;
+  margin: 5px 0;
+  // width: 140px;
+  padding: 1.5vh;
+  color: white;
+  font-weight: 900;
 }
-.headerLiveBtn > img{
-  width: 120px;
+.liveTvIcon{
+  float: left;
 }
 .headerLiveBtn > p{
-  position: relative;
-  margin-top: -28%;
+  float: left;
   color: white;
-  font-size: small;
-  font-weight: 900;
+  font-size: large;
   text-transform: uppercase;
+  margin-bottom: 0 !important;
+}
+.header__playstoreBtn > a > img{
+  height: 50px;
 }
 
 @media screen and (max-width: 600px){

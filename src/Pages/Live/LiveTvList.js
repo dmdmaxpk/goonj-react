@@ -28,8 +28,8 @@ class LiveTv extends Component {
     }
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
-        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render(){
@@ -45,7 +45,7 @@ class LiveTv extends Component {
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
                             <a href={this.handleRedirect(item)}>
-                                <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`}  />
+                                <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 <p className="channelName">{item.name}</p>
                             </a>
                         </GridItem>

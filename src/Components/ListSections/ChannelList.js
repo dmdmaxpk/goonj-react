@@ -29,8 +29,8 @@ class ChannelList extends Component {
 
     handleRedirect(item){
         let permission = localStorage.getItem('livePermission');
-        // let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        let url = permission ? `/channel/${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render() {
@@ -81,7 +81,7 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
-                                            <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} />
+                                            <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                             <p className="channelListName">{item.name}</p>
                                         </a>
                                     </div>

@@ -20,7 +20,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-ga": "^3.1.2",
     "react-image": "^4.0.3",
     "react-infinite-scroll-component": "^5.0.5",
     "react-loader": "^2.4.7",
@@ -60,16 +59,16 @@
     ]
   },
   "devDependencies": {},
-  "description": "- **Netflix Clone made with React, Redux and Firebase**",
+  "description": "Goonj",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darwin619/Netflix-Clone.git"
+    "url": "https://goonj.pk"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/darwin619/Netflix-Clone/issues"
+    "url": "https://goonj.pk"
   },
-  "homepage": "https://github.com/darwin619/Netflix-Clone#readme"
+  "homepage": "https://goonj.pk"
 }
