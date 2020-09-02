@@ -75,7 +75,7 @@ class CategoryVodPage extends Component {
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
             let Urlmsisdn = localStorage.getItem("urlMsisdn");
-            localStorage.setItem('urlMsisdn', Urlmsisdn);
+            // localStorage.setItem('urlMsisdn', Urlmsisdn);
             permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
         else{
