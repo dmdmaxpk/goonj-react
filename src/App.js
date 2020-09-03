@@ -160,7 +160,8 @@ class App extends React.Component {
             <Tooltip title="Contact us at 727200" placement="left">
               <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a>
+            {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"> Unsub via WhatsApp </a>
             <Footer/>
           </div>
         :
