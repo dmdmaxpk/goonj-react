@@ -45,7 +45,7 @@ class Home extends Component {
         }else if(e==2){
             return <DramasSection category="entertainment" /> 
         }else if(e==3){
-            return <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" /></div>
         }else if(e==4){
             return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
         }else if(e==5){
