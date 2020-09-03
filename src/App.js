@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
-import SignIn from "./Pages/SignIn/SignIn";
-import SignUp from "./Pages/SignUp/SignUp";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
@@ -17,13 +15,7 @@ import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
-import {
-  CheckLiveStatus,
-  CheckCPStatus,
-  getPackages,
-} from "./Services/apiCalls";
 import Profile from "./Pages/Profile/Profile";
-import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
