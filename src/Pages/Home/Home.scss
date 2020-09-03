@@ -23,7 +23,10 @@ and (orientation: landscape){
         margin-top: 2%;
     }
     .Homeheadlines{
-        margin-right: 22px;
+        margin-right: 25px;
+    }
+    .Homeheadlines .homeHeadlineViewMore{
+        margin-right: -25px;
     }
 
 
