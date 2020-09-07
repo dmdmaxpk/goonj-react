@@ -14,27 +14,28 @@ class PosterSlider extends Component {
         let banners = [
             {
                 name: "01",
-                url: "/category/entertainment/page/1",
+                url: "#",
                 class: "carousel-item active"
             },
             {
                 name: "02",
-                url: "/live-tv",
+                url: "#",
                 class: "carousel-item"
             },
             {
                 name: "03",
-                url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
+                url: "#" ,
+                // url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
                 class: "carousel-item"
             },
             {
                 name: "04",
-                url: "/category/comedy/page/1",
+                url: "#",
                 class: "carousel-item"
             },
             {
                 name: "05",
-                url: "/category/entertainment/page/1",
+                url: "#",
                 class: "carousel-item"
             },
         ]
@@ -46,14 +47,14 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
                         {
                             banners.map(item =>
                                 <div className={item.class} key={item.name}>
                                     <Link to={item.url}>
-                                        <img src={`${config.bannerUrl}/${item.name}.png`} className="d-block w-100 slider_images_all" alt={item.name} />
+                                        <img src={`${config.bannerUrl}/${item.name}.jpg`} className="d-block w-100 slider_images_all" alt={item.name} />
                                     </Link>
                                 </div>
                             )
