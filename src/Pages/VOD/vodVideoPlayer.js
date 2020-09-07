@@ -39,30 +39,23 @@ class VodVideoPlayer extends Component {
     }
     initializeVideoPlayer(){
         let item = this.props.data;
-        // console.log(item);
         const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
         const video = document.querySelector('video');
         
-        // For more options see: https://github.com/sampotts/plyr/#options
-        // captions.update is required for captions to work with hls.js
         const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
         if (!Hls.isSupported()) {
             video.src = source;
         } else {
-            // For more Hls.js options, see https://github.com/dailymotion/hls.js
             const hls = new Hls();
             hls.loadSource(source);
             hls.attachMedia(video);
             window.hls = hls;
             
-            // Handle changing captions
             player.on('languagechange', () => {
-                // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
                 setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
             });
         }
         
-        // Expose player so it can be used from the console
         window.player = player;
     }
     removeExtension(filename){
@@ -87,7 +80,6 @@ class VodVideoPlayer extends Component {
                                 <GridItem className="videoPlayerGI" xs={12} sm={12} md={7}>
                                     <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
                                         <track kind="captions" label="Urdu" srcLang="ur" src="" default />
-                                        {/* <!-- Fallback for browsers that don't support the <video> element --> */}
                                         <a href="" download>Download</a>
                                     </video>
 

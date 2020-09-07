@@ -1,6 +1,5 @@
 import React from 'react';
 import PaywallInstance from '../../Utils/PaywallInstance';
-import  config  from '../../Utils/config';
 import { withRouter } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
@@ -11,11 +10,10 @@ class Box extends React.Component {
 
     constructor(props){
         super(props);
-        // console.log("box", props);
         this.state = {
             data: [],
             paymentType: '',
-            step: 0, // 0 => Landed permission, 1 => verify otp, 2 => graced permission
+            step: 0, 
             msisdn: '',
             source: localStorage.getItem('source'),
             otp: '',

@@ -14,10 +14,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import LanguageIcon from '@material-ui/icons/Language';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-
 import {Link} from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
-
 import './Sidebar.scss';
 import { ClickAwayListener, Tooltip } from '@material-ui/core';
 
@@ -80,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer(props) {
-  // console.log(props);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -135,18 +131,9 @@ export default function MiniDrawer(props) {
               <ListItemText className="sidebarTabsText" primary="User Profile" />
           </ListItem>
         </a>
-        {/* <Hidden smUp>
-          <Divider />
-          <ListItem button key="searchbar">
-              <ListItemText>
-                <SearchBar currentRoute={window.location.pathname} />
-              </ListItemText>
-          </ListItem>
-        </Hidden> */}
     </List>       
     )
   }
-  // console.log("currentRouteSidebar",window.location.pathname);
   return (
     <div>
     <div className={classes.root}>
