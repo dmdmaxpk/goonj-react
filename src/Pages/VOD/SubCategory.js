@@ -9,12 +9,10 @@ import PaginationComponent from '../../Components/Pagination/PaginationComponent
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
 import './vod.scss';
-import MainCategory from './MainCategory';
 
 let count,strURL;
-let subCats = ['drama', 'education', 'programs'];
 
-class CategoryVodPage extends Component {
+class SubCategoryPage extends Component {
     
     constructor(props) {
         super(props);
@@ -53,25 +51,19 @@ class CategoryVodPage extends Component {
         }
     }
     getVideos(){
-        if(subCats.includes(this.props.match.params.category)){
-            this.setState({
-                limit: 0,
-                skip: 0
-            })
-        }
         this.setState({loading: true});
-        let apiUrl = `/video?category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
+        let apiUrl = `/video?sub_category=${this.props.match.params.subCategory}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         PaywallInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
             this.setState({data: res.data, loading: false});
             if(res.data.length < 1){
-                this.props.history.push(`/category/${this.props.match.params.category}/page/${1}`);
+                this.props.history.push(`/category/${this.props.match.params.category}/${this.props.match.params.subCategory}/page/${1}`);
             }
         })
     }
     componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber || this.props.match.params.category !== nextProps.match.params.category) {
+        if(this.props.match.params.pageNumber !== nextProps.match.params.pageNumber || this.props.match.params.subCategory !== nextProps.match.params.subCategory) {
             this.setState({page: this.props.match.params.pageNumber}, function(){
                 this.componentDidMount();
             });
@@ -103,12 +95,9 @@ class CategoryVodPage extends Component {
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <p className="headingVOD floatLeft">{this.props.match.params.category}</p>
+                    <p className="headingVOD floatLeft">{this.props.match.params.subCategory}</p>
                     <CategoryDD category={this.props.match.params.category} />
                 </div>
-                {this.state.data.length > 0 && subCats.includes(this.props.match.params.category) ?
-                    <MainCategory category={this.props.match.params.category} />
-                    :
                     <GridContainer>
                         {this.state.loading === false ?
                             this.state.data.map(item =>
@@ -139,10 +128,9 @@ class CategoryVodPage extends Component {
                             </div>
                         </GridItem>
                     </GridContainer>
-                }
             </div>
         );
     }
 }
  
-export default CategoryVodPage;
+export default SubCategoryPage;

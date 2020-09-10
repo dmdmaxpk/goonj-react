@@ -24,6 +24,8 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import Feedback from "./Components/Feedback/Feedback";
+import MainCategory from "./Pages/VOD/MainCategory";
+import SubCategoryPage from "./Pages/VOD/SubCategory";
 
 
 class App extends React.Component {
@@ -142,6 +144,7 @@ class App extends React.Component {
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
           </Route>
+          <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />

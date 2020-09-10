@@ -1,4 +1,4 @@
-.vodCategroyContainer{
+.vodCategoryContainer{
     padding: 5% 5% 5% 8%;
 }
 .headingVOD{
@@ -171,7 +171,9 @@
 .plyr__control__items{
     display: none !important;
 }
-
+.mainCatTitle{
+    color: white;
+}
 @media only screen and (min-width: 1440px) {
     .vod_main_div{
         margin-left: 0% !important;
@@ -196,7 +198,7 @@
     .catSelect{
         width: 100% !important;
     }
-    .vodCategroyContainer{
+    .vodCategoryContainer{
         padding: 10% 5% 5% 8%;
     }
     .vod_page_margin{
