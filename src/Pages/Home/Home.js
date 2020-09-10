@@ -8,6 +8,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
 import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
+import MainCategory from '../VOD/MainCategory';
+
 
 class Home extends Component {
     constructor(props) {
@@ -20,7 +22,7 @@ class Home extends Component {
     }
 
     fetchMoreData = () => {
-        if (this.state.items.length >= 6) {
+        if (this.state.items.length >= 7) {
           this.setState({ hasMore: false });
           return;
         }
@@ -42,12 +44,14 @@ class Home extends Component {
         }else if(e==1){
             return  <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
         }else if(e==2){
-            return <DramasSection category="entertainment" /> 
+            return <DramasSection title="Pakistani Dramas" category="entertainment" /> 
         }else if(e==3){
-            return <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" subCategory="" url={`/category/news/page/1`} /></div>
         }else if(e==4){
-            return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="drama" title="Drama" subCategory="" url={`/category/drama/page/1`} /></div>
         }else if(e==5){
+            return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />
+        }else if(e==6){
             return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />
         }
     }
@@ -73,6 +77,14 @@ class Home extends Component {
                                 </div> 
                             ))}
                         </InfiniteScroll>
+
+
+                        {/* <PopularList pageMargin="homePageMargin" title="Popular on Goonj" class="popularContainer" />
+                        <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
+                        <DramasSection category="entertainment" /> 
+                        <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
+                        <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
+                        <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" /> */}
                         </div>
                     </div>
                 }

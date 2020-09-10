@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
-import SignIn from "./Pages/SignIn/SignIn";
-import SignUp from "./Pages/SignUp/SignUp";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
@@ -17,13 +15,7 @@ import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
-import {
-  CheckLiveStatus,
-  CheckCPStatus,
-  getPackages,
-} from "./Services/apiCalls";
 import Profile from "./Pages/Profile/Profile";
-import { setParams } from "./Services/flowIntegrations";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
@@ -32,6 +24,8 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import Feedback from "./Components/Feedback/Feedback";
+import MainCategory from "./Pages/VOD/MainCategory";
+import SubCategoryPage from "./Pages/VOD/SubCategory";
 
 class App extends React.Component {
   installPrompt = null;
@@ -150,6 +144,7 @@ class App extends React.Component {
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
           </Route>
+          <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />
@@ -160,8 +155,8 @@ class App extends React.Component {
             <Tooltip title="Contact us at 727200" placement="left">
               <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a>
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
-            <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"> Unsub via WhatsApp </a>
             <Footer/>
           </div>
         :

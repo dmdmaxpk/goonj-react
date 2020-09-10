@@ -24,7 +24,7 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
-        AxiosInstance.get(`/video?category=entertainment&limit=5`)
+        AxiosInstance.get(`/video?category=${this.props.category}&limit=5`)
         .then(res => {
             this.setState({data: res.data});
         })
@@ -49,7 +49,7 @@ class DramasSection extends Component {
         let data = this.state.data;
         return (
             <div className="dramaMainDivMargin">
-                <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
+                <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                     <div className="sectionContainers">
                         <div className="containerO">

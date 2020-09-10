@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import AxiosInstance from "../../Utils/AxiosInstance";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';

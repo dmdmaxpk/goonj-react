@@ -24,8 +24,8 @@ class PosterSlider extends Component {
             },
             {
                 name: "03",
-                url: "#" ,
                 // url: localStorage.getItem('livePermission') === true ? "/live-tv" : "/paywall/live" ,
+                url: "#",
                 class: "carousel-item"
             },
             {
@@ -33,11 +33,11 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "05",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "05",
+            //     url: "/category/entertainment/page/1",
+            //     class: "carousel-item"
+            // },
         ]
         return(
             <div className="posterSlider">

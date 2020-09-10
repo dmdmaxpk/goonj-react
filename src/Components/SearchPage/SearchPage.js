@@ -91,9 +91,9 @@ class SearchPage extends Component {
     render(){
         let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
         return(
-            <div className="vodCategroyContainer">
-                <p className="heading">Search result for: {searchValue}</p>
-                <GridContainer>
+            <div className="vodCategoryContainer">
+                <p className="searchHeading">Search result for: {searchValue}</p>
+                <GridContainer >
                     {this.state.loading === false && this.state.noData === false ?
                             <InfiniteScroll
                                 dataLength={this.state.data.length}

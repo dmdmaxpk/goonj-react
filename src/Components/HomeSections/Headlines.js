@@ -29,7 +29,7 @@ class HeadlinesSection extends Component {
           });
     }
     componentDidMount(){
-        AxiosInstance.get(`/video?category=news&limit=21`)
+        AxiosInstance.get(`/video?category=${this.props.category}&sub_category=${this.props.subCategory}&limit=21`)
         .then(res => {
             this.setState({data: res.data});
         })
@@ -87,7 +87,7 @@ class HeadlinesSection extends Component {
         };
         return(
             <div className="headlinesContainer">
-                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
+                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes}/>
                         <div className="position-relative">
                             <fadeleftheadline className="headlineLeftFade"/>
                             <Slider className="headlinesSlider" {...settings}>
