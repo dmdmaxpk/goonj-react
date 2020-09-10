@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PaywallInstance from '../../Utils/PaywallInstance';
+import AxiosInstance from '../../Utils/AxiosInstance';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import config from '../../Utils/config';
@@ -54,7 +54,7 @@ class SubCategoryPage extends Component {
         this.setState({loading: true});
         let apiUrl = `/video?sub_category=${this.props.match.params.subCategory}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
-        PaywallInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
+        AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{
             this.setState({data: res.data, loading: false});
             if(res.data.length < 1){
