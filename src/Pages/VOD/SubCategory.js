@@ -95,7 +95,7 @@ class SubCategoryPage extends Component {
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <p className="headingVOD floatLeft">{this.props.match.params.subCategory}</p>
+                    <h4 className="headingVOD floatLeft"><Link style={{color: "#2691D5"}} to={`/category/${this.props.match.params.category}/page/1`}>{this.props.match.params.category}</Link> {">"} {this.props.match.params.subCategory}</h4>
                     <CategoryDD category={this.props.match.params.category} />
                 </div>
                     <GridContainer>
