@@ -12,7 +12,7 @@ import './vod.scss';
 import MainCategory from './MainCategory';
 
 let count,strURL;
-let subCats = ['drama', 'education', 'programs'];
+let subCats = ['drama', 'education'];
 
 class CategoryVodPage extends Component {
     
@@ -39,18 +39,6 @@ class CategoryVodPage extends Component {
             behavior: "smooth"
         });
         this.getVideos();
-    }
-    countCheck(value){
-        let {history} = this.props;
-       if(value==0){
-            count--;
-            history.push(`/category/${this.props.match.params.category}/page/${count}`);
-        } if(value==1){
-            count++;
-            history.push(`/category/${this.props.match.params.category}/page/${count}`);
-        }if(value==2){
-            history.push(`/category/${this.props.match.params.category}/page/${1}`);
-        }
     }
     getVideos(){
         if(subCats.includes(this.props.match.params.category)){

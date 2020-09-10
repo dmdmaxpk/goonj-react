@@ -38,18 +38,6 @@ class SubCategoryPage extends Component {
         });
         this.getVideos();
     }
-    countCheck(value){
-        let {history} = this.props;
-       if(value==0){
-            count--;
-            history.push(`/category/${this.props.match.params.category}/page/${count}`);
-        } if(value==1){
-            count++;
-            history.push(`/category/${this.props.match.params.category}/page/${count}`);
-        }if(value==2){
-            history.push(`/category/${this.props.match.params.category}/page/${1}`);
-        }
-    }
     getVideos(){
         this.setState({loading: true});
         let apiUrl = `/video?sub_category=${this.props.match.params.subCategory}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
