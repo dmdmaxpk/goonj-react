@@ -44,7 +44,7 @@ class Home extends Component {
         }else if(e==1){
             return  <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
         }else if(e==2){
-            return <DramasSection category="drama" /> 
+            return <DramasSection title="Pakistani Dramas" category="drama" /> 
         }else if(e==3){
             return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" subCategory="" url={`/category/news/page/1`} /></div>
         }else if(e==4){
