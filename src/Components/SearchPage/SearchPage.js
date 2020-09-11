@@ -69,7 +69,6 @@ class SearchPage extends Component {
               }
           })
           .catch(err =>{
-            // console.log(err);
           });
             this.setState({skip: 30, isDeleted: true})
             

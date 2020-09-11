@@ -7,7 +7,7 @@ import star from "../../Assets/star.png";
 import { FixString } from "../../Utils/FixString";
 import AddToList from "../AddToList/AddToList";
 
-const SearchItem = ({ item, history, ListItems }) => {
+const SearchItem = ({ item, history }) => {
   const { id, title, poster_path, vote_average, name } = item;
   var titlePath = title ? FixString(title) : null;
   var namePath = name ? FixString(name) : null;

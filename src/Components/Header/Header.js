@@ -4,7 +4,6 @@ import Logo from "../../Assets/logo.png";
 import "./Header.scss";
 import { withRouter } from "react-router";
 import SearchBar from "../SearchBar/SearchBar";
-import { auth } from "../../Firebase/firebase.utils";
 import {
   selectCurrentUser,
   selectToggleHidden
@@ -12,9 +11,6 @@ import {
 import { ToggleMenuHidden } from "../../Redux/User/user-actions";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import NavMenu from "./NavMenu";
 import { Hidden } from "@material-ui/core";
 import { setParams } from "../../Services/flowIntegrations";
 import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
@@ -66,10 +62,8 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
 
           {currentUser ? (
             <div className="header__option">
-
               <div
                 className="header__option header__option--signout"
-                onClick={() => auth.signOut()}
               >
                 Sign Out
               </div>

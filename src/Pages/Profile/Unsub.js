@@ -6,8 +6,6 @@ import PaywallInstance from '../../Utils/PaywallInstance';
 import { Collapse, Divider, Modal, Fade } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import {Link} from 'react-router-dom';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import ErrorComponent from './Error';
 import Loader from '../../Components/Loader/Loader'
 
@@ -53,7 +51,6 @@ class Unsub extends Component {
         PaywallInstance.get(`/paywall?source=${source}`)
         .then(res =>{
             let result = res.data.data;
-            // console.log("packages", result)
             this.setState({
                 liveTvDaily: result[0].packages[0].package_name,
                 liveTvWeekly: result[0].packages[1].package_name,
@@ -78,12 +75,10 @@ class Unsub extends Component {
         PaywallInstance.post('/payment/unsubscribe', unsubData)
         .then(res =>{
             let result = res.data;
-            // console.log(result);
             localStorage.removeItem(setPkgId);
             window.location.reload();
         })
         .catch(err =>{
-            // console.log(err);
             this.setState({loading: false})
         })
     }

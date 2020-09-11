@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AxiosInstance from "../../Utils/AxiosInstance";
 import config from '../../Utils/config';
-import { Link } from 'react-router-dom';
 import Heading from '../HomeSections/Heading';
 import './ListSections.scss';
 import Slider from "react-slick";

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GridContainer from '../Grid/GridContainer';
-import GridItem from '../Grid/GridItem';
 import './HomeSection.scss';
 import { Link } from 'react-router-dom';
 
