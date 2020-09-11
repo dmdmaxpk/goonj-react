@@ -65,8 +65,10 @@ class VodVideoPlayer extends Component {
     showError(){
         this.initializeVideoPlayer();
     }
-    
-
+    componentWillUnmount(){
+        const video = document.querySelector('video');
+        video.src = '';
+    }
     render(){
         let {topics, data} = this.props;
         let item = data;
