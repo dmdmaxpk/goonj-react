@@ -24,7 +24,7 @@ class DramasSection extends Component {
         this.setState({
             loading: false
         })
-        AxiosInstance.get(`/subcategory`)
+        AxiosInstance.get(`/subcategory?category_name=${this.props.category}`)
         .then(res => {
             this.setState({data: res.data});
         })
@@ -32,12 +32,16 @@ class DramasSection extends Component {
             // console.log(err);
         });
     }
+    // handleClick(item){
+    //     let url = this.getVodUrl(item.title, item._id);
+    //     this.props.history.push({
+    //         pathname: `/${url}`,
+    //         state: {data: item}
+    //       });
+    // }
     handleClick(item){
-        let url = this.getVodUrl(item.title, item._id);
-        this.props.history.push({
-            pathname: `/${url}`,
-            state: {data: item}
-          });
+        console.log("item", item);
+        this.props.history.push(`/category/${item.category_name}/${item.name}/page/1`)
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
