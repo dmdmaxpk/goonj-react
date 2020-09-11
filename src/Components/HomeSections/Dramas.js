@@ -53,7 +53,7 @@ class DramasSection extends Component {
         let data = this.state.data;
         return (
             <div className="dramaMainDivMargin">
-                <Heading heading="Pakistani Dramas" url={`/category/${this.props.category}/page/1`} />
+                <Heading heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
                 {data.length > 1 ?
                     <div className="sectionContainers">
                         <div className="containerO">
