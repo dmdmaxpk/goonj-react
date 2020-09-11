@@ -81,7 +81,7 @@ class CategoryDD extends Component {
                 category: "entertainment"
             },
             {
-                name: "Dramas",
+                name: "Drama",
                 icon: <LiveTvOutlined />,
                 category: "drama"
             }
