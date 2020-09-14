@@ -91,7 +91,6 @@ class SubCategoryPage extends Component {
     }
 
     render(){
-        console.log("data", this.state.data)
         return(
             <div className="vodCategoryContainer">
                 <div>

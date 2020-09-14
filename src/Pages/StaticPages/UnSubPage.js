@@ -41,7 +41,6 @@ export default class UnSubPage extends Component {
         this.setState({ loading: false });
       })
       .catch((err) => {
-        console.log(err);
       });
     }else{
       this.setState({ messageText: "Sorry! Nothing to display" });
