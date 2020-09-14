@@ -20,12 +20,13 @@ class MainCategory extends Component {
         }
     }
     getSubCategories(){
-        AxiosInstance.get(`/video?category=${this.props.category}`)
+        AxiosInstance.get(`/video?category=${this.props.category}&limit=10000`)
         .then(res=>{
             console.log(res.data);
             let data = res.data;
             let subCats = [];
             data.filter(item=>{
+                console.log("item", item.sub_category)
                 if(!(subCats.includes(item.sub_category)))
                 {
                     subCats.push(item.sub_category)
@@ -37,7 +38,7 @@ class MainCategory extends Component {
                 subCats.map(item =>{
                     AxiosInstance.get(`/video?sub_category=${item}`)
                     .then(res =>{
-                        console.log(res.data);
+                        // console.log(res.data);
                         this.setState({
                             [item] : {subCategory: item, data: res.data}
                         })
@@ -55,7 +56,7 @@ class MainCategory extends Component {
                     this.state.subCats.map(item =>
                         this.state[item] ?
                             <div>
-                                <Headlines category="" subCategory={item} title={item} url={`/category/${this.props.category}/${item}/page/1`} classes="zeroPadding" />
+                                <Headlines category="" subCategory={item} title={item} limit={12} infinite={false} url={`/category/${this.props.category}/${item}/page/1`} classes="zeroPadding" />
                             </div>
                         :
                             ''
