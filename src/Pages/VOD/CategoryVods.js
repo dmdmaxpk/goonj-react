@@ -42,7 +42,7 @@ class CategoryVodPage extends Component {
     }
     getVideos(){
         this.setState({loading: true});
-        let apiUrl = `/video?category=${this.props.match.params.category}&limit=${subCats.includes(this.props.match.params.category) ? 0 : this.state.limit}&skip=${subCats.includes(this.props.match.params.category) ? 0 : this.state.skip * (this.props.match.params.pageNumber - 1)}`;
+        let apiUrl = `/video?category=${this.props.match.params.category}&limit=${subCats.includes(this.props.match.params.category) ? 1000 : this.state.limit}&skip=${subCats.includes(this.props.match.params.category) ? 0 : this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         let comedyApiUrl = `/video?is_premium=${this.state.isPremium}&category=${this.props.match.params.category}&limit=${this.state.limit}&skip=${this.state.skip * (this.props.match.params.pageNumber - 1)}`;
         AxiosInstance.get(this.props.match.params.category === "comedy" ? comedyApiUrl : apiUrl)
         .then(res =>{

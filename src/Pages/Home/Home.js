@@ -46,9 +46,9 @@ class Home extends Component {
         }else if(e==2){
             return <DramasSection title="Pakistani Dramas" category="drama" /> 
         }else if(e==3){
-            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" subCategory="" url={`/category/news/page/1`} /></div>
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" limit={21} infinite={true} subCategory="" url={`/category/news/page/1`} /></div>
         }else if(e==4){
-            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" subCategory="" url={`/category/entertainment/page/1`} /></div>
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" url={`/category/entertainment/page/1`} /></div>
         }else if(e==5){
             return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />
         }else if(e==6){
