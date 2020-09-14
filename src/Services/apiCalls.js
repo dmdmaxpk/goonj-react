@@ -17,15 +17,14 @@ let CPPackageId = (urlPkgId === "QDfH" || urlPkgId === "QDfI") ? urlPkgId : loca
 export function getPackages(){
     PaywallInstance.get(`/paywall?source=${source}`)
     .then(res =>{
-        // console.log(res.data);
+      
     })
     .catch(err =>{
-        // console.log(err);
+      
     })
 };
 
 export function CheckLiveStatus(){
-    // console.log("live Status", liveMsisdn, livePackageId);
     let statusData = {
         source,
         msisdn: liveMsisdn,
@@ -72,7 +71,7 @@ export function CheckLiveStatus(){
             }
         })
         .catch(err =>{
-                // console.log(err);
+
             })
     }
 }
@@ -83,7 +82,6 @@ export function CheckCPStatus(){
         msisdn: CPmsisdn,
         package_id: CPPackageId
     }
-    // console.log("status Data",statusData);
     if(CPmsisdn && CPPackageId){
         PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
@@ -91,7 +89,7 @@ export function CheckCPStatus(){
             if(res.code === -1){
                 localStorage.clear();
             }
-            // console.log(result);
+
             else if(result.subscription_status == "expired" || (result.queued === false && result.subscription_status == "not_billed")){
                 localStorage.removeItem('CPPermission');
                 localStorage.removeItem('CPMsisdn');
@@ -125,7 +123,7 @@ export function CheckCPStatus(){
             }
         })
         .catch(err =>{
-                // console.log(err);
+           
             })
     }
 }

@@ -2,7 +2,6 @@ import React from "react";
 import "./SearchBar.scss";
 import { withRouter } from "react-router";
 import { selectSearchItems } from "../../Redux/Search/search-selectors";
-import { getSearchData } from "../../Redux/Search/search-actions";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -37,7 +36,6 @@ class SearchBar extends React.Component {
       );
     }
     else if (Number(value.length) === 0) {
-      // this.props.history.push(`${this.state.currentPath}`);
     }
     else if (Number(value.length) > 0) {
       this.props.history.push({
@@ -45,7 +43,6 @@ class SearchBar extends React.Component {
         state: {searchValue: value}
       });
     }
-    // return value ? this.props.dispatch(getSearchData(value)) : null;
   };
 
   render() {

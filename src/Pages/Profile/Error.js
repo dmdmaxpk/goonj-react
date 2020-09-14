@@ -2,7 +2,6 @@ import React from 'react';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import {Link} from 'react-router-dom';
-// import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 export default function ErrorComponent(props){

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import GridContainer from '../Grid/GridContainer';
-import GridItem from '../Grid/GridItem';
 import './HomeSection.scss';
 import { Link } from 'react-router-dom';
 
 class Heading extends Component {
     render() { 
         return (
-            <div className="headingGridContainer ">
+            <div className={`headingGridContainer ${this.props.classes}`}>
                     <div className="heading_container">
                         <div className={ "heading_container " + ( this.props.classname ? this.props.classname : "") }>
                             <div style={{textTransform:"uppercase"}}>

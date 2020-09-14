@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavMenu.scss";
 import { withRouter } from "react-router";
-import SearchBar from "../SearchBar/SearchBar";
-import { auth } from "../../Firebase/firebase.utils";
 import { selectCurrentUser } from "../../Redux/User/user-selectors";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -46,7 +44,7 @@ const NavMenu = ({ history, currentUser, ToggleMenuHidden }) => {
         {currentUser ? (
           <div
             className="overlay__option overlay__signout"
-            onClick={() => auth.signOut()}
+            // onClick={() => auth.signOut()}
           >
             Sign Out
           </div>
