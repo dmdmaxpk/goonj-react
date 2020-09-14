@@ -56,7 +56,7 @@ class MainCategory extends Component {
                     this.state.subCats.map(item =>
                         this.state[item] ?
                             <div>
-                                <Headlines category="" subCategory={item} title={item} limit={12} infinite={false} url={`/category/${this.props.category}/${item}/page/1`} classes="zeroPadding" />
+                                <Headlines category="" subCategory={item} title={item} limit={12} infinite={false} url={`/category/${this.props.category}/${item}/page/1`} classes="zeroPadding" viewMoreClass={this.state[item].data.length < 12 ? "hideVM" : ''} />
                             </div>
                         :
                             ''
