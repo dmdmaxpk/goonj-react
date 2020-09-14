@@ -3,6 +3,7 @@ import GridContainer from "../../Components/Grid/GridContainer";
 import GridItem from "../../Components/Grid/GridItem";
 import PaywallInstance from "../../Utils/PaywallInstance";
 import Loader from "../../Components/Loader/Loader";
+import UnsubscribeIcon from '@material-ui/icons/Unsubscribe';
 
 export default class UnSubPage extends Component {
   constructor(props) {
@@ -48,16 +49,18 @@ export default class UnSubPage extends Component {
     }
   }
 
-
   render() {
     return (
       <div>
         <GridContainer className="containerUnSub">
           <GridItem xs={12} sm={12} md={12}>
             {this.state.loading === false ? (
-              <p className="d-flex justify-content-center font_size">
-                {this.state.messageText}
-              </p>
+              <div className="d-flex flex-column unsubDiv">
+                <UnsubscribeIcon style={{height:"100px", width:"100px"}}  className="d-flex m-auto" />
+                <p className="d-flex justify-content-center font_size">
+                  {this.state.messageText}
+                </p>
+              </div>
             ) : (
               <Loader />
             )}
