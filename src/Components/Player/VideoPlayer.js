@@ -28,27 +28,21 @@ class VideoPlayer extends Component {
     componentDidMount(){
         AxiosInstance.get(`/live?slug=${this.props.slug}`)
         .then(res =>{
-            // console.log("channel", res.data);
             let data = res.data[0];
             this.setState({data, thumbnail: data.thumbnail}, function(){
-                // console.log(this.state.data);
                 akamai_auth.setConfig({
                     algo: "SHA256",
                     key: config.streamKey,
                     window: 500,
-                    acl: '/*', //optional
+                    acl: '/*',
                     start_time: 0,
-                    // session_id:{id}, //optional
-                    // url: {url}, //optional
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = generatedToken;
                 const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
-                // console.log("url", source);
                 this.setState({source});
 
                 this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
-                    // console.log('onPlayerReady', this)
                 });
 
                 this.player.src({
@@ -59,7 +53,6 @@ class VideoPlayer extends Component {
         })
     })
     .catch(err =>{
-        // console.log(err);
     })
     }
     kFormatter(num) {

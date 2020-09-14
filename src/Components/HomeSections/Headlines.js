@@ -29,7 +29,7 @@ class HeadlinesSection extends Component {
           });
     }
     componentDidMount(){
-        PaywallInstance.get(`/video?category=news&limit=21`)
+        PaywallInstance.get(`/video?category=${this.props.category}&sub_category=${this.props.subCategory}&limit=${this.props.limit}`)
         .then(res => {
             this.setState({data: res.data});
         })
@@ -53,7 +53,7 @@ class HeadlinesSection extends Component {
         var settings = {
             dots: false,
             arrows: true,
-            infinite: true,
+            infinite: this.props.infinite,
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,
@@ -63,7 +63,7 @@ class HeadlinesSection extends Component {
                   settings: {
                     slidesToShow: 6.4,
                     slidesToScroll: 3,
-                    infinite: true,
+                    infinite: this.props.infinite,
                     arrow: true
                   }
                 },
@@ -87,7 +87,7 @@ class HeadlinesSection extends Component {
         };
         return(
             <div className="headlinesContainer">
-                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={`/category/${this.props.category}/page/1`} />
+                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes}/>
                         <div className="position-relative">
                             <fadeleftheadline className="headlineLeftFade"/>
                             <Slider className="headlinesSlider" {...settings}>

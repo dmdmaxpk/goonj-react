@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export default class PaginationComponent extends Component {
+class PaginationComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.data,
       limit: 60,
     };
+    this.getUrl = this.getUrl.bind(this);
+  }
+  componentDidMount(){
+    this.getUrl();
+  }
+  getUrl(){
+    console.log(this.props.history.location.pathname);
+    let path = this.props.history.location.pathname;
+    let str = path.split('/');
+    let url = str.slice(0, -1).join('/');
+    return url;
   }
   render() {
     return (
@@ -27,7 +38,7 @@ export default class PaginationComponent extends Component {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`/category/${this.props.params.category}/page/${item.page}`}
+              to={`${this.getUrl()}/${item.page}`}
               {...item}
             />
           )}
@@ -36,3 +47,5 @@ export default class PaginationComponent extends Component {
     );
   }
 }
+
+export default withRouter(PaginationComponent);

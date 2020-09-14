@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {InputLabel, Select, MenuItem} from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
-import {VolumeUpOutlined,
-        SportsCricketOutlined,
-        FeaturedPlayListOutlined,
-        RadioOutlined,
-        ErrorOutlineOutlined,
-        TvOutlined,
-        MovieOutlined,
-        FilterListOutlined } from '@material-ui/icons';
+import {
+    VolumeUpOutlined,
+    SportsCricketOutlined,
+    FeaturedPlayListOutlined,
+    RadioOutlined,
+    ErrorOutlineOutlined,
+    TvOutlined,
+    MovieOutlined,
+    FilterListOutlined,
+    LiveTvOutlined
+    } from '@material-ui/icons';
 import './VodComponent.scss';
 
 class CategoryDD extends Component {
@@ -24,6 +27,10 @@ class CategoryDD extends Component {
     }
     handleChange(e){
         let cat = e.target.value;
+        this.setState({
+            name: cat,
+            category: cat
+        })
         this.props.history.push(`/category/${cat}/page/1`);
     }
     openDropdown(){
@@ -72,6 +79,11 @@ class CategoryDD extends Component {
                 name: "Entertainment",
                 icon: <MovieOutlined />,
                 category: "entertainment"
+            },
+            {
+                name: "Drama",
+                icon: <LiveTvOutlined />,
+                category: "drama"
             }
         ];
         return(

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class ComedyPaywall extends Component {
     constructor(props) {
@@ -74,7 +75,6 @@ class ComedyPaywall extends Component {
                                 <Link to={"/profile"}><font color="white">Profile{">"}Subscriptions</font></Link>
                             </p>
                             </div>
-                            {/* <p className="loginLinkText">Already signed up? <Link to="/live" className="loginLink">click here to login</Link> </p> */}
                         </div>
                     </div>
             </div>

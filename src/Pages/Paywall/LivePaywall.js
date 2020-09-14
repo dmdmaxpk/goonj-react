@@ -76,7 +76,6 @@ class LivePaywall extends Component {
                                 <Link style={{color: "white !important"}} to={"/profile"}><font color="white">Profile{">"}Subscriptions</font></Link>
                             </p>
                             </div>
-                            {/* <p className="loginLinkText">Already signed up? <font className="loginLink">click here to login</font> </p> */}
                         </div>
                     </div>
             </div>

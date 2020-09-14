@@ -7,6 +7,7 @@ const config = {
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
+        dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://localhost/hepage",
         liveStreamUrl: "//weblive.goonj.pk",
         streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
@@ -18,6 +19,7 @@ const config = {
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/web-thumb",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
+        dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://hepage.goonj.pk",
         // liveStreamUrl: "//kaios.streamax.io",
         // streamKey: '72fb58000a0d1561f60da877b5a009fb'
@@ -31,6 +33,7 @@ const config = {
         bannerUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/banners",
         channelLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/logo",
         videoLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/video/thumb",
+        dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://hepage.goonj.pk",
         liveStreamUrl: "//weblive.goonj.pk",
         streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'

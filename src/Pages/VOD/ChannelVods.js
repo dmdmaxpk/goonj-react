@@ -65,7 +65,7 @@ class ChannelVodPage extends Component {
     }
     render(){
         return(
-            <div className="vodCategroyContainer">
+            <div className="vodCategoryContainer">
                 <div>
                     <p className="headingVOD floatLeft">{this.props.match.params.source}</p>
                     <CategoryDD category={this.props.match.params.category} />

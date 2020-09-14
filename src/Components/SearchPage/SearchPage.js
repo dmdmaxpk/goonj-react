@@ -60,7 +60,7 @@ class SearchPage extends Component {
           AxiosInstance.get(apiUrl)
           .then(res =>{
               this.setState({data: res.data, loading: false});
-              console.log("HEllo  "+res.data)
+            //   console.log("HEllo  "+res.data)
               if(res.data.length === 0){
                 this.setState({noData: true})
               }
@@ -69,7 +69,6 @@ class SearchPage extends Component {
               }
           })
           .catch(err =>{
-            // console.log(err);
           });
             this.setState({skip: 30, isDeleted: true})
             
@@ -91,7 +90,7 @@ class SearchPage extends Component {
     render(){
         let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
         return(
-            <div className="vodCategroyContainer">
+            <div className="vodCategoryContainer">
                 <p className="searchHeading">Search result for: {searchValue}</p>
                 <GridContainer >
                     {this.state.loading === false && this.state.noData === false ?

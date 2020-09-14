@@ -3,7 +3,6 @@ import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
-import { Link } from 'react-router-dom';
 import './Live.scss';
 import Loader from '../../Components/Loader/Loader';
 
@@ -23,7 +22,7 @@ class LiveTv extends Component {
             })
         })
         .catch(err =>{
-            // console.log(err);
+         
         })
     }
     handleRedirect(item){
