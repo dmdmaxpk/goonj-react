@@ -60,7 +60,7 @@ class SearchPage extends Component {
           AxiosInstance.get(apiUrl)
           .then(res =>{
               this.setState({data: res.data, loading: false});
-              console.log("HEllo  "+res.data)
+            //   console.log("HEllo  "+res.data)
               if(res.data.length === 0){
                 this.setState({noData: true})
               }

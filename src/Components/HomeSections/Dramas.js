@@ -40,7 +40,6 @@ class DramasSection extends Component {
     //       });
     // }
     handleClick(item){
-        console.log("item", item);
         this.props.history.push(`/category/${item.category_name}/${item.name}/page/1`)
     }
     getVodUrl(title, id){

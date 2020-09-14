@@ -152,8 +152,8 @@ class App extends React.Component {
         </Switch>
         {this.props.location.pathname.toLowerCase() !== "/binjee" ?
           <div>
-            <Tooltip title="Contact us at 727200" placement="left">
-              <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
+            <Tooltip title="Contact us at 03401832782" placement="left">
+              <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
             <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a>
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
