@@ -153,7 +153,12 @@ faderightheadline {
   .img_padding_5th{
     padding-top: 3%;
 }
-
+.slick-list > .slick-track {    
+    margin-left:0 !important;
+}
+.hideVM{
+    display: none;
+}
 
 
 @media only screen and (min-width: 1000px) {

@@ -12,7 +12,7 @@ import './vod.scss';
 import MainCategory from './MainCategory';
 
 let count,strURL;
-let subCats = ['drama', 'education', 'programs'];
+let subCats = ['drama', 'education'];
 
 class CategoryVodPage extends Component {
     
@@ -93,7 +93,6 @@ class CategoryVodPage extends Component {
     }
 
     render(){
-        console.log("data", this.state.data)
         return(
             <div className="vodCategoryContainer">
                 <div>
