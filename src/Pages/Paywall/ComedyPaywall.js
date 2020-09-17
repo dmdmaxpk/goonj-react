@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import AxiosInstance from '../../Utils/AxiosInstance';
+import PaywallInstance from '../../Utils/PaywallInstance';
 import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
@@ -25,7 +25,7 @@ class ComedyPaywall extends Component {
             this.props.history.push('/category/comedy/page/1');
         }
         let source = localStorage.getItem('source');
-        AxiosInstance.get(`${config.apiBaseUrl}/package?source=${source}&slug=comedy`)
+        PaywallInstance.get(`${config.apiBaseUrl}/package?source=${source}&slug=comedy`)
         .then(res =>{
         let packageData = res.data;
         this.setState({
