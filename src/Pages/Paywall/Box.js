@@ -69,7 +69,10 @@ class Box extends React.Component {
             })
         })
         .catch(err =>{
-            alert(err.message);
+            // alert(err.message);
+            this.setState({
+                loading: false
+            })
         })
     }
     handleChange(e){
@@ -147,7 +150,12 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
+                console.log(result);
                 if(result.is_allowed_to_stream === true){
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
                     if(result.subscription_status === "billed" || result.subscription_status === "trial"){
                         localStorage.setItem(permission, true);
                         localStorage.setItem(pkgIdKey, packageID2);
@@ -161,8 +169,11 @@ class Box extends React.Component {
                         step: 3
                     })
                 }
-                else if(result.code == 7){
-                    var token = result.access_token;
+                else if(result.code === 7){
+                    // var accessToken = result.access_token;
+                    // var refreshToken = result.refresh_token;
+                    // localStorage.setItem('accessToken', accessToken);
+                    // localStorage.setItem('refreshToken', refreshToken);
                     if(result.subscription_status == undefined){
                     }
                     this.subscribe();

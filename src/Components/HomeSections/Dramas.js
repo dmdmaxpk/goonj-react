@@ -26,7 +26,8 @@ class DramasSection extends Component {
         })
         AxiosInstance.get(`/subcategory?category_name=${this.props.category}`)
         .then(res => {
-            this.setState({data: res.data});
+            let reversedData = res.data.reverse();
+            this.setState({data: reversedData});
         })
         .catch(err =>{
             // console.log(err);

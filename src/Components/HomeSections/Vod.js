@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PaywallInstance from '../../Utils/PaywallInstance';
+import AxiosInstance from '../../Utils/AxiosInstance';
 import Heading from './Heading';
 import './HomeSection.scss';
 import Loader from '../Loader/Loader';
@@ -27,7 +27,7 @@ class VodSection extends Component {
         return y[1];
     }
     componentDidMount(){
-        PaywallInstance.get(this.props.apiLink)
+        AxiosInstance.get(this.props.apiLink)
         .then(res => {
             this.setState({data: res.data});
         })
