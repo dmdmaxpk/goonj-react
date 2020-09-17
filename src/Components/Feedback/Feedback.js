@@ -47,7 +47,6 @@ class Feedback extends Component {
         }
         AxiosInstance.get('/questions')
         .then(res =>{
-            console.log(res.data[0]);
             let questionData = res.data[0];
             this.setState({
                 questionData,
@@ -84,7 +83,6 @@ class Feedback extends Component {
         }
         AxiosInstance.post('/answer', answer)
         .then(res =>{
-            console.log(res);
             if(res.data.code === 0){
                 this.setState({snackbar: true});
                 localStorage.setItem('feedback_dtm', new Date());

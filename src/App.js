@@ -63,11 +63,19 @@ class App extends React.Component {
     const urlParams = new URLSearchParams(queryString);
     let Urlmsisdn = urlParams.get("msisdn");
     let UrlSource = urlParams.get("source");
+    let UrlAccessToken = urlParams.get("access_token");
+    let UrlRefreshToken = urlParams.get("refresh_token");
     if(Urlmsisdn){
       localStorage.setItem('urlMsisdn', Urlmsisdn);
     }
     if(UrlSource){
       localStorage.setItem('source', UrlSource);
+    }
+    if(UrlAccessToken){
+      localStorage.setItem('accessToken', UrlAccessToken);
+    }
+    if(UrlRefreshToken){
+      localStorage.setItem('refreshToken', UrlRefreshToken);
     }
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
@@ -152,8 +160,8 @@ class App extends React.Component {
         </Switch>
         {this.props.location.pathname.toLowerCase() !== "/binjee" ?
           <div>
-            <Tooltip title="Contact us at 727200" placement="left">
-              <a target="_blank" href="tel:727200" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
+            <Tooltip title="Contact us at 03401832782" placement="left">
+              <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
             <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a>
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}

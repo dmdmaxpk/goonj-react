@@ -16,7 +16,6 @@ class PaginationComponent extends Component {
     this.getUrl();
   }
   getUrl(){
-    console.log(this.props.history.location.pathname);
     let path = this.props.history.location.pathname;
     let str = path.split('/');
     let url = str.slice(0, -1).join('/');

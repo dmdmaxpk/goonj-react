@@ -87,7 +87,7 @@ class HeadlinesSection extends Component {
         };
         return(
             <div className="headlinesContainer">
-                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes}/>
+                <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes} viewMoreClass={this.props.viewMoreClass}/>
                         <div className="position-relative">
                             <fadeleftheadline className="headlineLeftFade"/>
                             <Slider className="headlinesSlider" {...settings}>

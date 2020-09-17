@@ -26,7 +26,8 @@ class DramasSection extends Component {
         })
         AxiosInstance.get(`/subcategory?category_name=${this.props.category}`)
         .then(res => {
-            this.setState({data: res.data});
+            let reversedData = res.data.reverse();
+            this.setState({data: reversedData});
         })
         .catch(err =>{
             // console.log(err);
@@ -40,7 +41,6 @@ class DramasSection extends Component {
     //       });
     // }
     handleClick(item){
-        console.log("item", item);
         this.props.history.push(`/category/${item.category_name}/${item.name}/page/1`)
     }
     getVodUrl(title, id){
