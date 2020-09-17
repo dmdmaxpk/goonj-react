@@ -169,11 +169,11 @@ class Box extends React.Component {
                         step: 3
                     })
                 }
-                else if(result.code === 7){
-                    // var accessToken = result.access_token;
-                    // var refreshToken = result.refresh_token;
-                    // localStorage.setItem('accessToken', accessToken);
-                    // localStorage.setItem('refreshToken', refreshToken);
+                if(result.code === 7){
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
                     if(result.subscription_status == undefined){
                     }
                     this.subscribe();
