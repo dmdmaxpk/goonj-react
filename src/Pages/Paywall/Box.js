@@ -118,6 +118,12 @@ class Box extends React.Component {
                     const result = res.data;
                     if(result.code === 0){
                         this.setState({step: 2});
+                        if(paymentType === 'easypaisa'){
+                            var accessToken = result.access_token;
+                            var refreshToken = result.refresh_token;
+                            localStorage.setItem('accessToken', accessToken);
+                            localStorage.setItem('refreshToken', refreshToken);
+                        }
                     }
                     else if(result.code === -1){
                         // console.log('result.message: ', result.message);
