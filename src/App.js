@@ -80,8 +80,14 @@ class App extends React.Component {
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
     // }
+    
+    if((localStorage.getItem('livePermission') || localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
+      localStorage.clear();
+    }
+    
     this.installApp();
   }
+
 
   installApp=async ()=>{
     if(!this.installPrompt) return false;
