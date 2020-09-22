@@ -1,12 +1,13 @@
 var CACHE_NAME = 'Goonj';
 var urlsToCache = [
-  '/',
-  '/home',
-  '/live-tv'
+  '/index.html'
 ];
 
 // Install a service worker
 self.addEventListener('install', event => {
+  // activate a worker without waiting
+  self.skipWaiting();
+
   // Perform install steps
   // event.waitUntil(
   //   caches.open(CACHE_NAME)
@@ -31,6 +32,22 @@ self.addEventListener('install', event => {
       );
     })
   );
+
+  // Turn off cache
+  // event.waitUntil(
+  //   caches.keys().then(function(cacheNames) {
+  //     return Promise.all(
+  //       cacheNames.filter(function(cacheName) {
+  //         // Return true if you want to remove this cache,
+  //         // but remember that caches are shared across
+  //         // the whole origin
+  //         return true
+  //       }).map(function(cacheName) {
+  //         return caches.delete(cacheName);
+  //       })
+  //     );
+  //   })
+  // );
 });
 
 // Cache and return requests
