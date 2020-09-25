@@ -1,6 +1,6 @@
 var CACHE_NAME = 'Goonj';
 var urlsToCache = [
-  '/index.html'
+  // '/index.html'
 ];
 
 // Install a service worker
