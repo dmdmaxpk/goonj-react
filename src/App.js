@@ -138,7 +138,9 @@ class App extends React.Component {
             path="/source/:source/page/:pageNumber"
             component={ChannelVodPage}
           />
-          <Route exact path="/binjee" component={Binjee} />
+          <Route exact path="/binjee" component={Binjee}>
+            <Redirect to="/home" />
+          </Route>
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
           <Route exact path="/goonjplus/subscribe">

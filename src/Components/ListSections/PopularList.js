@@ -26,7 +26,7 @@ class PopularList extends Component {
         const popularList = [
             {
                 name: "Binjee",
-                url: `/binjee`,
+                url: `https://goonj.binjee.com/`,
                 thumbnail: 'channel03.png'
             },
             {
@@ -51,7 +51,7 @@ class PopularList extends Component {
             },
             {
                 name: "Binjee",
-                url: `/binjee`,
+                url: `https://goonj.binjee.com/`,
                 thumbnail: 'channel03.png'
             },
             {
