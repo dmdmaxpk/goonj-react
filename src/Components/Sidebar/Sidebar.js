@@ -109,11 +109,15 @@ export default function MiniDrawer(props) {
             <ListItemText className="sidebarTabsText" primary="Live TV" />
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
-          <Tooltip title="Binjee" placement="right">  
-            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} alt="Binjee" /></ListItemIcon>
-          </Tooltip>
-          <ListItemText className="sidebarTabsText" primary="Binjee" />
+        <ListItem button key="vods" style={{color:"white"}}>
+          <a href="https://goonj.binjee.com/">
+            <Tooltip title="Binjee" placement="right">  
+              <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} alt="Binjee" /></ListItemIcon>
+            </Tooltip>
+          </a>
+          <a href="https://goonj.binjee.com/" style={{color:"white"}}>
+            <ListItemText className="sidebarTabsText" primary="Binjee" />
+          </a>
         </ListItem>
         <Divider />
         <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
