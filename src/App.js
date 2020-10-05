@@ -152,7 +152,7 @@ class App extends React.Component {
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
-        {this.props.location.pathname.toLowerCase() !== "/binjee" ?
+        {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
             <Tooltip title="Contact us at 03401832782" placement="left">
               <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
