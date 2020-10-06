@@ -69,7 +69,10 @@ class Box extends React.Component {
             })
         })
         .catch(err =>{
-            alert(err.message);
+            // alert(err.message);
+            this.setState({
+                loading: false
+            })
         })
     }
     handleChange(e){
@@ -115,6 +118,12 @@ class Box extends React.Component {
                     const result = res.data;
                     if(result.code === 0){
                         this.setState({step: 2});
+                        if(paymentType === 'easypaisa'){
+                            var accessToken = result.access_token;
+                            var refreshToken = result.refresh_token;
+                            localStorage.setItem('accessToken', accessToken);
+                            localStorage.setItem('refreshToken', refreshToken);
+                        }
                     }
                     else if(result.code === -1){
                         // console.log('result.message: ', result.message);
@@ -147,7 +156,12 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
+                console.log(result);
                 if(result.is_allowed_to_stream === true){
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
                     if(result.subscription_status === "billed" || result.subscription_status === "trial"){
                         localStorage.setItem(permission, true);
                         localStorage.setItem(pkgIdKey, packageID2);
@@ -161,8 +175,11 @@ class Box extends React.Component {
                         step: 3
                     })
                 }
-                else if(result.code == 7){
-                    var token = result.access_token;
+                if(result.code === 7){
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
                     if(result.subscription_status == undefined){
                     }
                     this.subscribe();
