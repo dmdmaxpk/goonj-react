@@ -64,16 +64,29 @@ class App extends React.Component {
     const urlParams = new URLSearchParams(queryString);
     let Urlmsisdn = urlParams.get("msisdn");
     let UrlSource = urlParams.get("source");
+    let UrlAccessToken = urlParams.get("access_token");
+    let UrlRefreshToken = urlParams.get("refresh_token");
     if(Urlmsisdn){
       localStorage.setItem('urlMsisdn', Urlmsisdn);
     }
     if(UrlSource){
       localStorage.setItem('source', UrlSource);
     }
+    if(UrlAccessToken){
+      localStorage.setItem('accessToken', UrlAccessToken);
+    }
+    if(UrlRefreshToken){
+      localStorage.setItem('refreshToken', UrlRefreshToken);
+    }
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
     // }
+
+    if((localStorage.getItem('livePermission') || localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
+      localStorage.clear();
+    }
   }
+
 
   installApp=async ()=>{
     if(!this.installPrompt) return false;
