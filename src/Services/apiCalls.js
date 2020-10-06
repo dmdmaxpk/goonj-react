@@ -137,8 +137,10 @@ export async function RefreshTokenFunction(){
     .then(res=>{
         let result = res.data;
         // console.log("refresh auth", result)
-        localStorage.setItem('accessToken', result.access_token)
-        localStorage.setItem('refreshToken', result.refresh_token)
+        if(result.access_token && result.refresh_token){
+            localStorage.setItem('accessToken', result.access_token)
+            localStorage.setItem('refreshToken', result.refresh_token)
+        }
         return result;
     })
     .catch(err =>{
