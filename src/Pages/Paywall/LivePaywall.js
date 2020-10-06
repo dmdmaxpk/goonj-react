@@ -57,9 +57,9 @@ class LivePaywall extends Component {
                                 permission={"livePermission"}
                                 msisdnKey={"liveMsisdn"}
                                 pkgIdKey={"livePackageId"}
-                                packageID={this.state.packageID}
-                                packageID1={this.state.packageID1}
-                                packageID2={this.state.packageID2}
+                                packageID={localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : this.state.packageID}
+                                packageID1={localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : this.state.packageID1}
+                                packageID2={localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : this.state.packageID2}
                                 pkgPrice1={this.state.packagePrice1}
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
