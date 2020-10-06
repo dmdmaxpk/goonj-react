@@ -82,7 +82,7 @@ class App extends React.Component {
     //   this.props.history.push("/home");
     // }
 
-    if((localStorage.getItem('livePermission') && localStorage.getItem('CPPermission'))){
+    if((localStorage.getItem('livePermission') && localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
       localStorage.clear();
     }
   }

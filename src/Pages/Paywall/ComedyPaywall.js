@@ -56,9 +56,9 @@ class ComedyPaywall extends Component {
                                 permission={"CPPermission"}
                                 msisdnKey={"CPMsisdn"}
                                 pkgIdKey={"CPPackageId"}
-                                packageID={this.state.packageID}
-                                packageID1={this.state.packageID1}
-                                packageID2={this.state.packageID2}
+                                packageID={localStorage.getItem('CPPackageId') ? localStorage.getItem('CPPackageId') : this.state.packageID}
+                                packageID1={localStorage.getItem('CPPackageId') ? localStorage.getItem('CPPackageId') : this.state.packageID1}
+                                packageID2={localStorage.getItem('CPPackageId') ? localStorage.getItem('CPPackageId') : this.state.packageID2}
                                 pkgPrice1={this.state.packagePrice1}
                                 pkgPrice2={this.state.packagePrice2}
                                 msisdn={this.props.msisdn}
