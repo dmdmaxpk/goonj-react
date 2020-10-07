@@ -75,6 +75,7 @@ class LivePaywall extends Component {
                                 <font className="cancelText">for package conversion or cancellation, go to </font>
                                 <Link style={{color: "white !important"}} to={"/profile"}><font color="white">Profile{">"}Subscriptions</font></Link>
                             </p>
+                            <p className="cbText3">By subscribing, you are giving consent to renewal charging</p>
                             </div>
                         </div>
                     </div>
