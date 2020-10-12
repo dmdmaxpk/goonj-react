@@ -8,6 +8,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ErrorComponent from './Error';
 import Loader from '../../Components/Loader/Loader'
+import AxiosInstance from '../../Utils/AxiosInstance';
 
 
 class Unsub extends Component {
@@ -48,7 +49,7 @@ class Unsub extends Component {
     }
     getPackages(){
         let source = localStorage.getItem('source');
-        PaywallInstance.get(`/paywall?source=${source}`)
+        AxiosInstance.get(`/paywall?source=${source}`)
         .then(res =>{
             let result = res.data.data;
             this.setState({
