@@ -30,6 +30,11 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png'
             },
             {
+                name: "Markhor Champions Trophy",
+                url: '/stream/markhor-ct',
+                thumbnail: 'channel05.jpg'
+            },
+            {
                 name: "Goonj Comedy",
                 url: `/category/comedy/page/1`,
                 thumbnail: 'comedy.png'
@@ -53,6 +58,11 @@ class PopularList extends Component {
                 name: "Binjee",
                 url: `https://goonj.binjee.com/`,
                 thumbnail: 'channel03.png'
+            },
+            {
+                name: "Markhor Champions Trophy",
+                url: '/stream/markhor-ct',
+                thumbnail: 'channel05.jpg'
             },
             {
                 name: "Goonj Comedy",
