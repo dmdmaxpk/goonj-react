@@ -30,7 +30,7 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png'
             },
             {
-                name: "Markhor Cricket Champions Trophy",
+                name: "Live Markhor Cricket",
                 url: '/stream/markhor-ct',
                 thumbnail: 'channel05.jpg'
             },
@@ -60,7 +60,7 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png'
             },
             {
-                name: "Markhor Cricket Champions Trophy",
+                name: "Live Markhor Cricket",
                 url: '/stream/markhor-ct',
                 thumbnail: 'channel05.jpg'
             },
