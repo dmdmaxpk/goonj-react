@@ -60,7 +60,7 @@ class FreePlayer extends Component {
                 </div>
                 <div className="title_div">
                     <div className="title_hashTag_and_heading channelTitle"> 
-                        <div style={{textTransform: "capitalize"}}>Markhor Champions Trophy</div>
+                        <div style={{textTransform: "capitalize"}}>Markhor Cricket Champions Trophy</div>
                     </div>
 
                     <div>
