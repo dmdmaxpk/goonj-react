@@ -161,6 +161,9 @@ class App extends React.Component {
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
           </Route>
+          <Route exact path="/news">
+            <Redirect to="/stream/markhor-ct"/>
+          </Route>
           <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
