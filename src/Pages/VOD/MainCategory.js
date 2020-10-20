@@ -33,13 +33,15 @@ class MainCategory extends Component {
             )
             this.setState({subCats}, function(){
                 subCats.map(item =>{
-                    AxiosInstance.get(`/video?sub_category=${item}`)
-                    .then(res =>{
-                        // console.log(res.data);
-                        this.setState({
-                            [item] : {subCategory: item, data: res.data}
+                    if(item){
+                        AxiosInstance.get(`/video?sub_category=${item}`)
+                        .then(res =>{
+                            // console.log(res.data);
+                            this.setState({
+                                [item] : {subCategory: item, data: res.data}
+                            })
                         })
-                    })
+                    }
                 })
             })
         })
