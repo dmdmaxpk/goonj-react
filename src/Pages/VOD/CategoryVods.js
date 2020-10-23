@@ -12,7 +12,7 @@ import './vod.scss';
 import MainCategory from './MainCategory';
 
 let count,strURL;
-let subCats = ['drama', 'education', 'programs'];
+let subCats = ['drama', 'programs'];
 
 class CategoryVodPage extends Component {
     
