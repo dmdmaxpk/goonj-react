@@ -11,7 +11,8 @@ import {
     MovieOutlined,
     FilterListOutlined,
     LiveTvOutlined,
-    FastfoodOutlined
+    FastfoodOutlined,
+    SchoolOutlined
     } from '@material-ui/icons';
 import './VodComponent.scss';
 
@@ -90,6 +91,11 @@ class CategoryDD extends Component {
                 name: "Food",
                 icon: <FastfoodOutlined />,
                 category: "food"
+            },
+            {
+                name: "Education",
+                icon: <SchoolOutlined />,
+                category: "education"
             }
         ];
         return(
