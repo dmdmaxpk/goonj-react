@@ -34,11 +34,11 @@ class PopularList extends Component {
                 url: `/category/comedy/page/1`,
                 thumbnail: 'comedy.png'
             },
-            // {
-            //     name: "Markhor Cricket Championship",
-            //     url: `/category/comedy/page/1`,
-            //     thumbnail: 'channel05.jpg'
-            // },
+            {
+                name: "Zahoor Elahi T20 League",
+                url: `/stream/zet20`,
+                thumbnail: 'channel06.jpg'
+            },
             {
                 name: "Geo Aur Jeenay Do",
                 url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
@@ -63,6 +63,11 @@ class PopularList extends Component {
                 name: "Goonj Comedy",
                 url: `/category/comedy/page/1`,
                 thumbnail: 'comedy.png'
+            },
+            {
+                name: "Zahoor Elahi T20 League",
+                url: `/stream/zet20`,
+                thumbnail: 'channel06.jpg'
             },
             {
                 name: "Geo Aur Jeenay Do",
