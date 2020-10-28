@@ -61,6 +61,7 @@ class FreePlayer extends Component {
                 <div className="title_div">
                     <div className="title_hashTag_and_heading channelTitle"> 
                         <div style={{textTransform: "capitalize"}}>Zahoor Elahi T20 League</div>
+                        <p>Kashmir Kings & Gujrat Lions Presents Zahoor Elahi Shaheed T20 League - Live From Gujrat</p>
                     </div>
 
                     <div>
