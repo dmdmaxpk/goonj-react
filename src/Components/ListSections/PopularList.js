@@ -28,7 +28,7 @@ class PopularList extends Component {
                 name: "Binjee",
                 url: `https://goonj.binjee.com/`,
                 thumbnail: 'channel03.png',
-                contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Goonj Comedy",
@@ -64,7 +64,7 @@ class PopularList extends Component {
                 name: "Binjee",
                 url: `https://goonj.binjee.com/`,
                 thumbnail: 'channel03.png',
-                contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
 
             },
             {
