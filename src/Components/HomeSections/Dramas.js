@@ -64,6 +64,10 @@ class DramasSection extends Component {
                                         <span className="play_btn_position1" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                             <Img className="play_btn_image" src={require('../../Assets/playBtn.png')} style={{width: "50px"}} alt="Play" />
                                         </span>
+                                        
+                                        <div className="freeContentDiv freeContentDivRH">
+                                            <p style={{color:"white"}}>FREE</p>
+                                        </div>
                                 </div>
                                 </div>
                                 <div className="col-lg-6" >
@@ -71,38 +75,51 @@ class DramasSection extends Component {
                                     <div className="col-lg-8 col-sm-9 col-9">
                                     <div className="row height-100">
                                         <div className="col-lg-12 col-sm-4 col-4 padding_5px vodGI " onClick={()=> this.handleClick(data[1])}>
-                                        <div className="img-box relative_position square ">
+                                    <div className="img-box relative_position square ">
                                         <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.dramaLogoUrl}/${data[1].name}.jpg`} alt="thumbnail" />
-                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
-                                              <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
-                                         </span>
+                                        <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                            <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
+                                        </span>
+                                        
+                                        <div className="freeContentDiv freeContentDivRH">
+                                            <p>FREE</p>
                                         </div>
+                                    </div>
                                         </div>
                                         <div className="col-lg-6 col-sm-4 col-4 fill padding_5px vodGI" onClick={()=> this.handleClick(data[2])}>
-                                        <div className="img-box relative_position square height-100">
+                                    <div className="img-box relative_position square height-100">
                                         <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.dramaLogoUrl}/${data[2].name}.jpg`} alt="thumbnail" />
-                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
-                                              <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
-                                         </span>
+                                        <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                            <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
+                                        </span>
+                                        <div className="freeContentDiv freeContentDivRH">
+                                            <p>FREE</p>
                                         </div>
+                                    </div>
                                         </div>
                                         <div className="col-lg-6 col-sm-4 col-4 padding_5px vodGI" onClick={()=> this.handleClick(data[3])}>
-                                        <div className="img-box relative_position square height-100">
+                                    <div className="img-box relative_position square height-100">
                                         <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius" />} className="height-100 dramas_image drama_pic_2 content img_radius" src={`${config.dramaLogoUrl}/${data[3].name}.jpg`} alt="thumbnail" />
                                                <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
                                               <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
                                          </span>
+                                        <div className="freeContentDiv freeContentDivRH">
+                                            <p>FREE</p>
                                         </div>
+                                    </div>
                                         </div>
                                     </div>
                                     </div>
                                     <div className="col-lg-4 col-sm-3 col-3 padding_5px vodGI" onClick={()=> this.handleClick(data[4])}>
                                     <div className="img-box relative_position square height-100">
                                         <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2 content img_radius yoo" />} className="height-100 dramas_image drama_pic_2 content img_radius " src={`${config.dramaLogoUrl}/${data[4].name}.jpg`} alt="thumbnail" />
-                                               <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
-                                              <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
-                                         </span>
+                                        <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
+                                            <Img className="play_btn_image2" src={require('../../Assets/playBtn.png')} style={{width: "30px"}} alt="Play" />
+                                        </span>
+                                        <div className="freeContentDiv freeContentDivRH">
+                                            <p>FREE</p>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                                 </div>

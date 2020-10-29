@@ -215,8 +215,46 @@ top: 0;
 .liveChannel{
     margin-left: 4% !important;
 }
-
-
+.contentCategory{
+    width: 15px;
+    position: relative;
+    float: right;
+    bottom: 8vh;
+    right: 2vh;
+    // z-index: 9999;
+    border-radius: 12px;
+    text-align: center;
+    padding: 8px 2em 8px 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.contentCategory > img{
+    width: 15px;
+}
+.headlinesContentCategory{
+    bottom: 5vh !important;
+}
+.freeContentDiv{
+    // width: 0px;
+    height: auto;
+    position: relative;
+    float: right;
+    bottom: 4vh;
+    right: 2vh;
+    // z-index: 9999;
+    border-radius: 12px;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.freeContentDiv > p{
+    color: white;
+    font-size: x-small;
+    font-weight: 900;
+    margin: 0 !important;
+}
+.freeContentDivPL{
+    bottom: 8vh !important;
+}
 @media only screen and (min-device-width: 320px) 
 and (max-device-width: 900px) 
 and (orientation: landscape){
@@ -260,7 +298,17 @@ and (orientation: landscape){
 }
 
 
-
+@media only screen and (max-width: 1540px) {
+    .contentCategory{
+        bottom: 10vh !important;
+    }
+    .freeContentDivHL{
+        bottom: 5vh !important;
+    }
+    .freeContentDivPL{
+        bottom: 10vh !important;
+    }
+}
 @media only screen and (min-width: 1540px) {
 
     .channelListImg {
@@ -418,7 +466,34 @@ and (orientation: landscape){
         bottom: 22px;
         height: auto;
     }
-
+    .contentCategory{
+        width: 10px;
+        bottom: 8vh !important;
+        right: 1vh;
+        padding: 5px 15px 5px 5px;
+    }
+    .contentCategory > img{
+        width: 10px;
+    }
+    .popularListName{
+        text-overflow: ellipsis;
+        height: 1.5em;
+    }
+    .freeContentDiv{
+        padding: 3px 5px;
+        right: 1vh;
+    }
+    .freeContentDivPL{
+        bottom: 8vh !important;
+    }
+    .freeContentDiv > p{
+        font-size: xx-small;
+    }
+    .freeContentDivRH{
+        position: absolute;
+        bottom: 2px !important;
+        right: 2px !important;
+    }
   }
 
 @media only screen and (max-width: 375px) {
@@ -431,6 +506,13 @@ and (orientation: landscape){
     }
     .recomTitle{
         height: 100% !important;
+    }
+    .contentCategory{
+        width: 10px;
+        bottom: 9vh !important;
+    }
+    .freeContentDivPL{
+        bottom: 9.5vh !important;
     }
   }
   @media only screen and (max-width: 320px) {
