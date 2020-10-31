@@ -29,6 +29,7 @@
     "react-slick": "^0.25.2",
     "react-social-sharing": "^3.0.1",
     "react-time-ago": "^6.0.0",
+    "react-youtube": "^7.13.0",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
