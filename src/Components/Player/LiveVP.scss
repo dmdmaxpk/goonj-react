@@ -8,8 +8,10 @@
 .channelTitle{
     margin-left: 1vw;
 }
-
-
+.ytVP{
+    width: 60vw;
+    height: 60vh;
+}
 
 
 @media only screen and (min-width: 481px) {
@@ -42,6 +44,10 @@
     }
     .channelTitle{
         margin-left: 2vw;
+    }
+    .ytVP{
+        width: 93vw;
+        height: 30vh;
     }
   }
 

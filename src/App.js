@@ -27,6 +27,7 @@ import Feedback from "./Components/Feedback/Feedback";
 import MainCategory from "./Pages/VOD/MainCategory";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
 import FreeChannel from "./Pages/Live/FreeChannel";
+import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 
 
 class App extends React.Component {
@@ -142,6 +143,7 @@ class App extends React.Component {
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel} />
           <Route exact path="/stream/zet20" component={FreeChannel} />
+          <Route exact path="/stream/ffcs" component={YoutubeChannel} />
           <Route exact path="/searchresults" component={SearchPage} />
           <Route
             exact
