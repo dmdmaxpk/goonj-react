@@ -234,6 +234,7 @@ top: 0;
     bottom: 5vh !important;
 }
 .freeContentDiv{
+    visibility: hidden;
     // width: 0px;
     height: auto;
     position: relative;
@@ -246,6 +247,9 @@ top: 0;
     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.img-box:hover .freeContentDiv, .popularListDiv:hover .freeContentDiv{
+    visibility: visible;
+}
 .freeContentDiv > p{
     color: white;
     font-size: x-small;
@@ -253,6 +257,7 @@ top: 0;
     margin: 0 !important;
 }
 .freeContentDivPL{
+    visibility: hidden;
     bottom: 8vh !important;
 }
 @media only screen and (min-device-width: 320px) 
