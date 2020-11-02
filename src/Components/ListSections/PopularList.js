@@ -44,7 +44,7 @@ class PopularList extends Component {
             },
             {
                 name: "Goonj Comedy",
-                url: `/category/comedy/page/1`,
+                url: `http://comedy.goonj.pk`,
                 thumbnail: 'comedy.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
@@ -86,7 +86,7 @@ class PopularList extends Component {
             },
             {
                 name: "Goonj Comedy",
-                url: `/category/comedy/page/1`,
+                url: `http://comedy.goonj.pk`,
                 thumbnail: 'comedy.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },

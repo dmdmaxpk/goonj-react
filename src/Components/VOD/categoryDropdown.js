@@ -42,11 +42,11 @@ class CategoryDD extends Component {
     }
     render(){
         const categories = [
-            {
-                name: "Comedy",
-                icon: <img src={require('../../Assets/cp.png')} alt="Comedy Portal" />,
-                category: "comedy"
-            },
+            // {
+            //     name: "Comedy",
+            //     icon: <img src={require('../../Assets/cp.png')} alt="Comedy Portal" />,
+            //     category: "comedy"
+            // },
             {
                 name: "Corona",
                 icon: <ErrorOutlineOutlined />,

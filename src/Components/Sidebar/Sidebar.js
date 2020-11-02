@@ -127,11 +127,15 @@ export default function MiniDrawer(props) {
             <ListItemText className="sidebarTabsText" primary="FFCS" />
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
-          <Tooltip title="Comedy Portal" placement="right">
-            <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
-          </Tooltip>
-          <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+        <ListItem button key="comedyPortal" style={{color:"white"}}>
+          <a href="http://comedy.goonj.pk/">
+            <Tooltip title="Comedy Portal" placement="right">
+              <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
+            </Tooltip>
+          </a>
+          <a href="http://comedy.goonj.pk/">
+            <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+          </a>
         </ListItem>
         <Divider />
         <a href={`${window.location.origin}/profile`} style={{textDecoration: "none"}}>
