@@ -99,6 +99,9 @@ class HeadlinesSection extends Component {
                                                 <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt="thumbnail" />
                                                 <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} alt="Play" />
                                                 </div>
+                                                <div className="freeContentDiv freeContentDivHL">
+                                                    <p>FREE</p>
+                                                </div>
                                                 <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
                                                 <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>
                                             </Link>

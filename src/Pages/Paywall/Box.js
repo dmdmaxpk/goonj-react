@@ -50,7 +50,7 @@ class Box extends React.Component {
                     // console.log("status2", response.data);
                     if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
                         localStorage.setItem(permission, true);
-                        localStorage.setItem(pkgIdKey, packageID2);
+                        localStorage.setItem(pkgIdKey, response.data.subscribed_package_id);
                         localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
                         localStorage.setItem('userID', response.data.data.user_id);
                         this.props.history.push(`${url}`);
@@ -59,7 +59,7 @@ class Box extends React.Component {
             }
             else if(res.data.code === 0 && res.data.data.is_allowed_to_stream === true){
                 localStorage.setItem(permission, true);
-                localStorage.setItem(pkgIdKey, packageID2);
+                localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
                 localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
                 localStorage.setItem('userID', res.data.data.user_id);
                 this.props.history.push(`${url}`);

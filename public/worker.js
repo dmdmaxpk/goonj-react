@@ -9,13 +9,13 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 
   // Perform install steps
-  // event.waitUntil(
-  //   caches.open(CACHE_NAME)
-  //     .then(function(cache) {
-  //       // console.log('Opened cache');
-  //       return cache.addAll(urlsToCache);
-  //     })
-  // );
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        // console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 
   // Turn off cache
   event.waitUntil(

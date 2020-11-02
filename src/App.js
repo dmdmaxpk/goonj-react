@@ -26,6 +26,8 @@ import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import Feedback from "./Components/Feedback/Feedback";
 import MainCategory from "./Pages/VOD/MainCategory";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
+import FreeChannel from "./Pages/Live/FreeChannel";
+import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 
 class App extends React.Component {
   installPrompt = null;
@@ -80,8 +82,8 @@ class App extends React.Component {
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
     // }
-    
-    if((localStorage.getItem('livePermission') || localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
+
+    if((localStorage.getItem('livePermission') && localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
       localStorage.clear();
     }
     
@@ -141,7 +143,10 @@ class App extends React.Component {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel} />
+          <Route exact path="/stream/zet20" component={FreeChannel} />
+          {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
           <Route exact path="/searchresults" component={SearchPage} />
+          <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
           <Route
             exact
             path="/category/:category/page/:pageNumber"
@@ -152,11 +157,16 @@ class App extends React.Component {
             path="/source/:source/page/:pageNumber"
             component={ChannelVodPage}
           />
-          <Route exact path="/binjee" component={Binjee} />
+          <Route exact path="/binjee" component={Binjee}>
+            <Redirect to="/home" />
+          </Route>
           <Route exact path="/paywall/live" component={LivePaywall} />
           <Route exact path="/paywall/comedy" component={ComedyPaywall} />
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
+          </Route>
+          <Route exact path="/news">
+            <Redirect to="/stream/zet20"/>
           </Route>
           <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
@@ -164,7 +174,7 @@ class App extends React.Component {
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
-        {this.props.location.pathname.toLowerCase() !== "/binjee" ?
+        {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
             <Tooltip title="Contact us at 03401832782" placement="left">
               <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>

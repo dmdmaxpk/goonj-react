@@ -109,18 +109,33 @@ export default function MiniDrawer(props) {
             <ListItemText className="sidebarTabsText" primary="Live TV" />
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/binjee" button key="vods" style={{color:"white"}}>
-          <Tooltip title="Binjee" placement="right">  
-            <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} alt="Binjee" /></ListItemIcon>
-          </Tooltip>
-          <ListItemText className="sidebarTabsText" primary="Binjee" />
+        <ListItem button key="vods" style={{color:"white"}}>
+          <a href="https://goonj.binjee.com/">
+            <Tooltip title="Binjee" placement="right">  
+              <ListItemIcon className={isActive('/binjee')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/binjee.png')} alt="Binjee" /></ListItemIcon>
+            </Tooltip>
+          </a>
+          <a href="https://goonj.binjee.com/" style={{color:"white"}}>
+            <ListItemText className="sidebarTabsText" primary="Binjee" />
+          </a>
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/category/comedy/page/1" button key="comedyPortal" style={{color:"white"}}>
-          <Tooltip title="Comedy Portal" placement="right">
-            <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
-          </Tooltip>
-          <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+        {/* <ListItem component={Link} to="/stream/ffcs" button key="vods" style={{color:"white"}}>
+            <Tooltip title="FFCS" placement="right">  
+              <ListItemIcon className={isActive('/stream/ffcs')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/PopularAssets/ffcs.jpg')} alt="FFCS" /></ListItemIcon>
+            </Tooltip>
+            <ListItemText className="sidebarTabsText" primary="FFCS" />
+        </ListItem>
+        <Divider /> */}
+        <ListItem button key="comedyPortal" style={{color:"white"}}>
+          <a href="http://comedy.goonj.pk/">
+            <Tooltip title="Comedy Portal" placement="right">
+              <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
+            </Tooltip>
+          </a>
+          <a href="http://comedy.goonj.pk/">
+            <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
+          </a>
         </ListItem>
         <Divider />
         <a href={`${window.location.origin}/profile`} style={{textDecoration: "none"}}>

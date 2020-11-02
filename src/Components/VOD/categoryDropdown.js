@@ -10,7 +10,9 @@ import {
     TvOutlined,
     MovieOutlined,
     FilterListOutlined,
-    LiveTvOutlined
+    LiveTvOutlined,
+    FastfoodOutlined,
+    SchoolOutlined
     } from '@material-ui/icons';
 import './VodComponent.scss';
 
@@ -40,11 +42,11 @@ class CategoryDD extends Component {
     }
     render(){
         const categories = [
-            {
-                name: "Comedy",
-                icon: <img src={require('../../Assets/cp.png')} alt="Comedy Portal" />,
-                category: "comedy"
-            },
+            // {
+            //     name: "Comedy",
+            //     icon: <img src={require('../../Assets/cp.png')} alt="Comedy Portal" />,
+            //     category: "comedy"
+            // },
             {
                 name: "Corona",
                 icon: <ErrorOutlineOutlined />,
@@ -84,6 +86,16 @@ class CategoryDD extends Component {
                 name: "Drama",
                 icon: <LiveTvOutlined />,
                 category: "drama"
+            },
+            {
+                name: "Food",
+                icon: <FastfoodOutlined />,
+                category: "food"
+            },
+            {
+                name: "Education",
+                icon: <SchoolOutlined />,
+                category: "education"
             }
         ];
         return(

@@ -26,53 +26,87 @@ class PopularList extends Component {
         const popularList = [
             {
                 name: "Binjee",
-                url: `/binjee`,
-                thumbnail: 'channel03.png'
+                url: `https://goonj.binjee.com/`,
+                thumbnail: 'channel03.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            },
+            // {
+            //     name: "FFCS - Pakistan Qualifier",
+            //     url: `/stream/ffcs`,
+            //     thumbnail: 'ffcs.jpg',
+            //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            // },
+            {
+                name: "Zahoor Elahi T20 League",
+                url: `/stream/zet20`,
+                thumbnail: 'channel06.jpg',
+                contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
             },
             {
                 name: "Goonj Comedy",
-                url: `/category/comedy/page/1`,
-                thumbnail: 'comedy.png'
+                url: `http://comedy.goonj.pk`,
+                thumbnail: 'comedy.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Geo Aur Jeenay Do",
                 url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
-                thumbnail: 'channel01.png'
+                thumbnail: 'channel01.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Samaa News",
                 url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
-                thumbnail: 'channel02.png'
+                thumbnail: 'channel02.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
                 url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunya-news`,
-                thumbnail: 'channel04.png'
+                thumbnail: 'channel04.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Binjee",
-                url: `/binjee`,
-                thumbnail: 'channel03.png'
+                url: `https://goonj.binjee.com/`,
+                thumbnail: 'channel03.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            },
+            // {
+            //     name: "FFCS - Pakistan Qualifier",
+            //     url: `/stream/ffcs`,
+            //     thumbnail: 'ffcs.jpg',
+            //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            // },
+            {
+                name: "Zahoor Elahi T20 League",
+                url: `/stream/zet20`,
+                thumbnail: 'channel06.jpg',
+                contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
             },
             {
                 name: "Goonj Comedy",
-                url: `/category/comedy/page/1`,
-                thumbnail: 'comedy.png'
+                url: `http://comedy.goonj.pk`,
+                thumbnail: 'comedy.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Geo Aur Jeenay Do",
                 url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
-                thumbnail: 'channel01.png'
+                thumbnail: 'channel01.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Samaa News",
                 url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
-                thumbnail: 'channel02.png'
+                thumbnail: 'channel02.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
                 name: "Dunya News Khabar Ki Dunya",
                 url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunyaa-news`,
-                thumbnail: 'channel04.png'
+                thumbnail: 'channel04.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             }
         ];
 
@@ -124,6 +158,7 @@ class PopularList extends Component {
                                         <a style={{textDecoration: "none"}} href={`${item.url}`} >
                                             <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
                                             <p className="channelListName popularListName">{item.name}</p>
+                                             {item.contentCategory}
                                         </a>
                                     </div>
                                 )
