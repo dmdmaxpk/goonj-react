@@ -224,7 +224,7 @@ class Unsub extends Component {
                                 <Divider />
                                 <br />
                             </GridItem>
-                            <GridItem xs={12} sm={12} md={12} className="pkgGridItem">
+                            {/* <GridItem xs={12} sm={12} md={12} className="pkgGridItem">
                                 <p className="subPkgHeading">Comedy Portal</p>
                                 {localStorage.getItem('CPMsisdn') ?
                                     comedySubs.map(item =>
@@ -241,7 +241,7 @@ class Unsub extends Component {
                                 :
                                 <ErrorComponent paywall="comedy" />
                                 }
-                            </GridItem>
+                            </GridItem> */}
                         </GridContainer>
                     :
                         <ErrorComponent />
