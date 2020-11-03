@@ -130,13 +130,6 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
             }
           />
-          <Route
-            exact
-            path="/paywall/live"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
-            }
-          />
           <Route exact path="/privacy-policy" component={PrivacyPolicy} />
           <Route exact path="/terms-conditions" component={TermsConditions} />
           <Route exact path="/profile" component={Profile} />
@@ -160,7 +153,7 @@ class App extends React.Component {
             <Redirect to="/home" />
           </Route>
           <Route exact path="/paywall/live" component={LivePaywall} />
-          <Route exact path="/paywall/comedy" component={ComedyPaywall} />
+          {/* <Route exact path="/paywall/comedy" component={ComedyPaywall} /> */}
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
           </Route>
