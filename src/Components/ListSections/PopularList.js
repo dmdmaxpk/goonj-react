@@ -36,12 +36,12 @@ class PopularList extends Component {
             //     thumbnail: 'ffcs.jpg',
             //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
             // },
-            {
-                name: "Zahoor Elahi T20 League",
-                url: `/stream/zet20`,
-                thumbnail: 'channel06.jpg',
-                contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            },
+            // {
+            //     name: "Zahoor Elahi T20 League",
+            //     url: `/stream/zet20`,
+            //     thumbnail: 'channel06.jpg',
+            //     contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            // },
             {
                 name: "Goonj Comedy",
                 url: `http://comedy.goonj.pk`,
@@ -78,12 +78,12 @@ class PopularList extends Component {
             //     thumbnail: 'ffcs.jpg',
             //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
             // },
-            {
-                name: "Zahoor Elahi T20 League",
-                url: `/stream/zet20`,
-                thumbnail: 'channel06.jpg',
-                contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            },
+            // {
+            //     name: "Zahoor Elahi T20 League",
+            //     url: `/stream/zet20`,
+            //     thumbnail: 'channel06.jpg',
+            //     contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            // },
             {
                 name: "Goonj Comedy",
                 url: `http://comedy.goonj.pk`,
