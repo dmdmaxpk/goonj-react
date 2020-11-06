@@ -136,7 +136,7 @@ class App extends React.Component {
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel} />
           {/* <Route exact path="/stream/zet20" component={FreeChannel} /> */}
-          {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
+          <Route exact path="/stream/ffcs" component={YoutubeChannel} />
           <Route exact path="/searchresults" component={SearchPage} />
           <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
           <Route
