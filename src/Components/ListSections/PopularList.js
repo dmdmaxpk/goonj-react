@@ -30,12 +30,12 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            // {
-            //     name: "FFCS - Pakistan Qualifier",
-            //     url: `/stream/ffcs`,
-            //     thumbnail: 'ffcs.jpg',
-            //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            // },
+            {
+                name: "FFCS - Pakistan Qualifier",
+                url: `/stream/ffcs`,
+                thumbnail: 'ffcs.jpg',
+                contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            },
             // {
             //     name: "Zahoor Elahi T20 League",
             //     url: `/stream/zet20`,
@@ -72,12 +72,12 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            // {
-            //     name: "FFCS - Pakistan Qualifier",
-            //     url: `/stream/ffcs`,
-            //     thumbnail: 'ffcs.jpg',
-            //     contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            // },
+            {
+                name: "FFCS - Pakistan Qualifier",
+                url: `/stream/ffcs`,
+                thumbnail: 'ffcs.jpg',
+                contentCategory: <div className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
+            },
             // {
             //     name: "Zahoor Elahi T20 League",
             //     url: `/stream/zet20`,

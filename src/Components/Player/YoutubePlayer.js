@@ -39,7 +39,7 @@ class YoutubePlayer extends Component {
             <div className="videoPlayerContainer">
                 <div>
                     <YouTube 
-                        videoId="gerRFlEcXM8"
+                        videoId="7stkvpoN29M"
                         className="ytVP"
                         // onReady={this._onReady} 
                     />
