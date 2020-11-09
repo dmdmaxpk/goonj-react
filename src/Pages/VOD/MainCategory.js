@@ -25,7 +25,7 @@ class MainCategory extends Component {
             let data = res.data;
             let subCats = [];
             data.filter(item=>{
-                if(!(subCats.includes(item.sub_category)))
+                if(!(subCats.includes(item.sub_category)) && item.sub_category !== 'Sandy Mandy')
                 {
                     subCats.push(item.sub_category)
                 }

@@ -136,7 +136,7 @@ class App extends React.Component {
           <Route exact path="/live-tv" component={LiveTv} />
           <Route exact path="/channel/:slug" component={LiveChannel} />
           {/* <Route exact path="/stream/zet20" component={FreeChannel} /> */}
-          <Route exact path="/stream/ffcs" component={YoutubeChannel} />
+          {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
           <Route exact path="/searchresults" component={SearchPage} />
           <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
           <Route
@@ -159,6 +159,9 @@ class App extends React.Component {
           </Route>
           <Route exact path="/news">
             <Redirect to="/stream/zet20"/>
+          </Route>
+          <Route exact path="/category/drama/Sandy Mandy/page/:pageNumber" component={SubCategoryPage}>
+            <Redirect to="/404" />
           </Route>
           <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
