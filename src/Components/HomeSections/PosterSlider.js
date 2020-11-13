@@ -13,7 +13,7 @@ class PosterSlider extends Component {
     render(){
         let banners = [
             {
-                name: "01",
+                name: "hblpsl",
                 url: "/channel/hbl-psl",
                 class: "carousel-item active"
             },
