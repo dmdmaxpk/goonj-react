@@ -159,7 +159,11 @@ faderightheadline {
 .hideVM{
     display: none;
 }
-
+@media only screen and (min-width: 1920px){
+    .carouselDiv{
+        height: 100vh !important;
+    }
+}
 
 @media only screen and (min-width: 1000px) {
     .vod_page_margin_heading{
