@@ -5,7 +5,8 @@
     margin-bottom: -20vh;
 }
 .infinite-scroll-component {
-    overflow-x: hidden !important;
+    overflow-x: inherit !important;
+    overflow: initial !important;
 }
 
 .channelTag{
