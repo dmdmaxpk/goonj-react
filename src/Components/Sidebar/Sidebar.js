@@ -120,13 +120,13 @@ export default function MiniDrawer(props) {
           </a>
         </ListItem>
         <Divider />
-        {/* <ListItem component={Link} to="/stream/ffcs" button key="vods" style={{color:"white"}}>
-            <Tooltip title="FFCS" placement="right">  
-              <ListItemIcon className={isActive('/stream/ffcs')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/PopularAssets/ffcs.jpg')} alt="FFCS" /></ListItemIcon>
+        <ListItem component={Link} to="/channel/hbl-psl" button key="vods" style={{color:"white"}}>
+            <Tooltip title="HBL PSL" placement="right">  
+              <ListItemIcon className={isActive('/channel/hbl-psl')}><img style={{width:"25px", height:"25px", borderRadius: "8px"}} src={require('../../Assets/PopularAssets/hblpsl.jpg')} alt="HBLPSL" /></ListItemIcon>
             </Tooltip>
-            <ListItemText className="sidebarTabsText" primary="FFCS" />
+            <ListItemText className="sidebarTabsText" primary="HBL PSL" />
         </ListItem>
-        <Divider /> */}
+        <Divider />
         <ListItem button key="comedyPortal" style={{color:"white"}}>
           <a href="http://comedy.goonj.pk/">
             <Tooltip title="Comedy Portal" placement="right">
