@@ -12,11 +12,11 @@ class PosterSlider extends Component {
     }
     render(){
         let banners = [
-            {
-                name: "hblpslFinal",
-                url: "/channel/hbl-psl",
-                class: "carousel-item active"
-            },
+            // {
+            //     name: "hblpslFinal",
+            //     url: "/channel/hbl-psl",
+            //     class: "carousel-item active"
+            // },
             {
                 name: "02",
                 url: "#",
@@ -53,7 +53,7 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
                         {
