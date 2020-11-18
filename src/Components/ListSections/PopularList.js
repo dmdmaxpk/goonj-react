@@ -30,12 +30,12 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "HBL PSL",
-                url: `/channel/hbl-psl`,
-                thumbnail: 'hblpsl.jpg',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            },
+            // {
+            //     name: "HBL PSL",
+            //     url: `/channel/hbl-psl`,
+            //     thumbnail: 'hblpsl.jpg',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // },
             // {
             //     name: "Zahoor Elahi T20 League",
             //     url: `/stream/zet20`,
@@ -72,12 +72,12 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "HBL PSL",
-                url: `/channel/hbl-psl`,
-                thumbnail: 'hblpsl.jpg',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            },
+            // {
+            //     name: "HBL PSL",
+            //     url: `/channel/hbl-psl`,
+            //     thumbnail: 'hblpsl.jpg',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // },
             // {
             //     name: "Zahoor Elahi T20 League",
             //     url: `/stream/zet20`,
