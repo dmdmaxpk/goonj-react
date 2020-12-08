@@ -54,7 +54,7 @@ class UnSubPage extends Component {
         this.setState({ unsubConfirmed: true });
         setTimeout(() => {
           this.props.history.push('/');
-        }, 3000);
+        }, 10000);
       })
       .catch((err) => {
       });
