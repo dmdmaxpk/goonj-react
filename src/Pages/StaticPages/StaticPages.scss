@@ -4,16 +4,25 @@
     padding: 5% 10%;
 }
 .containerUnSub{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    text-align: center;
     color: white;
-    padding: 5% 10%;
     height: 92vh;
 }
 .font_size{
     font-size: large;
 }
-.unsubDiv{
-    padding-top: 20vh;
-
+.unsubDiv > h3{
+    margin-bottom: 5vh !important;
+}
+.btnSubmitUnsub{
+    margin-right: 5vw !important;
+    background-color: #30A1E6 !important;
+}
+.btnCancelUnsub{
+    background-color: red !important;
 }
 .headingPP{
     font-size: xx-large;
