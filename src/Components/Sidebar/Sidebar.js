@@ -127,13 +127,13 @@ export default function MiniDrawer(props) {
             <ListItemText className="sidebarTabsText" primary="HBL PSL" />
         </ListItem>
         <Divider /> */}
-        <ListItem button key="comedyPortal" style={{color:"white"}}>
-          <a href="http://comedy.goonj.pk/">
+        <ListItem button key="comedyPortal">
+          <a href="http://comedy.goonj.pk/" style={{color:"white"}}>
             <Tooltip title="Comedy Portal" placement="right">
               <ListItemIcon className={isActive('/category/comedy')}><img style={{width:"25px"}} src={require('../../Assets/cp.png')} alt="Comedy Portal" /></ListItemIcon>
             </Tooltip>
           </a>
-          <a href="http://comedy.goonj.pk/">
+          <a href="http://comedy.goonj.pk/" style={{color:"white"}}>
             <ListItemText className="sidebarTabsText" primary="Comedy Portal" />
           </a>
         </ListItem>

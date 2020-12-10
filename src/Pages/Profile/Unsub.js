@@ -202,7 +202,7 @@ class Unsub extends Component {
                     {localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn')  ?
                         <GridContainer className="userInfoContainer">
                             <GridItem xs={12} sm={12} md={12} className="pkgGridItem">
-                                <p className="subPkgHeading">Live tv</p>
+                                {/* <p className="subPkgHeading">Live tv</p> */}
                                 {localStorage.getItem('liveMsisdn') ?
                                     liveSubs.map(item =>
                                         <div className="subPkgDiv">
