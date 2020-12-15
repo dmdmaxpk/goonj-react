@@ -86,16 +86,18 @@ class Box extends React.Component {
         // console.log("payment", paymentType);
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor'){
+        if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor' && urlParams.get('access_token')){
             this.setState({
                 paymentType,
-                step: 'mta'
+                step: 'mta',
+                msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn') 
             }) 
         }
         else{
             this.setState({
                 paymentType,
-                step: 1
+                step: 1,
+                msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn')
             })
         }
     }
@@ -156,7 +158,7 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
-                console.log(result);
+                // console.log(result);
                 if(result.is_allowed_to_stream === true){
                     var accessToken = result.access_token;
                     var refreshToken = result.refresh_token;
