@@ -33,7 +33,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   if(pathname.split('_')[0].length === 4 && pathname.includes('_')){
   }
   else{
-    CheckCPStatus();
+    // CheckCPStatus();
   }
   return (
     <div className="header">

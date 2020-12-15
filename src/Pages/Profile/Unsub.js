@@ -52,7 +52,6 @@ class Unsub extends Component {
         AxiosInstance.get(`/paywall?source=${source}`)
         .then(res =>{
             let result = res.data.data;
-            console.log(result[0].packages[0]._id)
             this.setState({
                 liveTvDaily: result[0].packages[0].package_name,
                 liveTvWeekly: result[0].packages[1].package_name,
@@ -206,7 +205,6 @@ class Unsub extends Component {
                                 {localStorage.getItem('liveMsisdn') ?
                                     liveSubs.map(item =>
                                         <div className="subPkgDiv">
-                                            {console.log(item)}
                                             <p className="floatLeft pkgName">{item.name}</p>
                                             {currentLivePkg === item.packageID && liveSubStatus === "active" && msisdn ?
                                                 <button className="floatRight pkgSubBtn unsubBtn" onClick={()=> this.openModal(item.msisdn, item.packageID, item.setPkgId, "unsub")}>Unsubscribe</button>
