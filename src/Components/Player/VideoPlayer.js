@@ -39,12 +39,12 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = generatedToken;
-                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
+                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}`;
                 this.setState({source});
 
                 videojs.Hls.xhr.beforeRequest = function(options){
                     console.log("options", options);
-                    options.uri = options.uri+'?test=1574698730';
+                    options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
                     console.log(options);
                     return options;
                 };
