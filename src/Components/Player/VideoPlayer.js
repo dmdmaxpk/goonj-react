@@ -42,6 +42,13 @@ class VideoPlayer extends Component {
                 const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}`;
                 this.setState({source});
 
+                videojs.Hls.xhr.beforeRequest = function(options){
+                    console.log("options", options);
+                    options.uri = options.uri+'?test=1574698730';
+                    console.log(options);
+                    return options;
+                };
+                
                 this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
                 });
 
