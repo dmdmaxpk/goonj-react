@@ -43,9 +43,7 @@ class VideoPlayer extends Component {
                 this.setState({source});
 
                 videojs.Hls.xhr.beforeRequest = function(options){
-                    console.log("options", options);
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
-                    console.log(options);
                     return options;
                 };
                 
