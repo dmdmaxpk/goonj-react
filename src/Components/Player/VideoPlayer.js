@@ -44,6 +44,8 @@ class VideoPlayer extends Component {
 
                 videojs.Hls.xhr.beforeRequest = function(options){
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
+                    options.headers = options.headers || {};
+                    options.headers.Msisdn = `${localStorage.getItem('liveMsisdn')}`;
                     return options;
                 };
                 
@@ -55,6 +57,14 @@ class VideoPlayer extends Component {
                     type: "application/x-mpegURL",
                     withCredentials: true
                   });
+
+                //   window.xhook.before((request, callback) => {
+                //     // only set header request for the videojs src url (don't touch other xhr requests)
+                //     // if (request.url === SOME_VIDEO_URL) {
+                //       request.xhr.setRequestHeader('User-Agent', `msisdn_${localStorage.getItem('liveMsisdn')}`);
+                //     // }
+                //     callback();
+                //   });
         })
     })
     .catch(err =>{
