@@ -42,6 +42,7 @@ class VideoPlayer extends Component {
                 const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}`;
                 this.setState({source});
 
+                videojs.options.hls.overrideNative = true;
                 videojs.Hls.xhr.beforeRequest = function(options){
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
                     options.headers = options.headers || {};
