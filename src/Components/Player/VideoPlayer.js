@@ -49,12 +49,16 @@ class VideoPlayer extends Component {
                 videojs.Hls.xhr.beforeRequest = function(options){
                     console.log("options", options);
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
-                    // options.headers = options.headers || {};
-                    // options.headers.Msisdn = `${localStorage.getItem('liveMsisdn')}`;
                     return options;
                 };
                 
-                this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
+                this.player = videojs(this.videoNode, {html5: {
+                    nativeAudioTracks: false,
+                    nativeVideoTracks: false,
+                    hls: {
+                      overrideNative: true,
+                    }
+                  }}, {errorDisplay: false}, this.props, function onPlayerReady() {
                 });
 
                 this.player.src({
