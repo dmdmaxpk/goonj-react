@@ -47,9 +47,10 @@ class VideoPlayer extends Component {
                 videojs.options.html5.nativeVideoTracks= false
                 
                 videojs.Hls.xhr.beforeRequest = function(options){
+                    console.log("options", options);
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
-                    options.headers = options.headers || {};
-                    options.headers.Msisdn = `${localStorage.getItem('liveMsisdn')}`;
+                    // options.headers = options.headers || {};
+                    // options.headers.Msisdn = `${localStorage.getItem('liveMsisdn')}`;
                     return options;
                 };
                 
