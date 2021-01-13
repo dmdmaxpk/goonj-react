@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Plyr from 'plyr';
 import config from '../../Utils/config';
-import Hls from 'hls.js';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import { Divider } from '@material-ui/core';
 import SocialShare from '../../Components/SocialShare/SocialShare';
 import RecommendationList from '../../Components/ListSections/RecommendationList';
 import Loader from '../../Components/Loader/Loader';
-
+import videojs from 'video.js';
+import '../../Components/Player/videojs.css';
 
 class VodVideoPlayer extends Component {
     constructor(props){
@@ -42,21 +41,39 @@ class VodVideoPlayer extends Component {
         const source = item ? `//webvod.goonj.pk/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
         const video = document.querySelector('video');
         
-        const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-        if (!Hls.isSupported()) {
-            video.src = source;
-        } else {
-            const hls = new Hls();
-            hls.loadSource(source);
-            hls.attachMedia(video);
-            window.hls = hls;
+        // const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
+        // if (!Hls.isSupported()) {
+        //     video.src = source;
+        // } else {
+        //     const hls = new Hls();
+        //     hls.loadSource(source);
+        //     hls.attachMedia(video);
+        //     console.log(player.hls)
+        //     window.hls = hls;
             
-            player.on('languagechange', () => {
-                setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-            });
-        }
+        //     player.on('languagechange', () => {
+        //         setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+        //         player.source = player.source + `msisdn=${localStorage.getItem('liveMsisdn')}`
+        //     });
+        // }
         
-        window.player = player;
+        // window.player = player;
+
+        videojs.options.hls.overrideNative = true;
+        videojs.options.html5.nativeAudioTracks = false;
+        videojs.options.html5.nativeVideoTracks= false
+        
+        videojs.Hls.xhr.beforeRequest = function(options){
+            options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
+            return options;
+        };
+        
+        this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
+        });
+
+        this.player.src({
+            src: source,
+        });
     }
     removeExtension(filename){
         let file = filename.split(".");
@@ -78,9 +95,9 @@ class VodVideoPlayer extends Component {
                         {item ?
                             <GridContainer xs={12} sm={12} md={12} className="videoPlayerDiv">
                                 <GridItem className="videoPlayerGI" xs={12} sm={12} md={7}>
-                                    <video className="videoPlayer" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
-                                        <track kind="captions" label="Urdu" srcLang="ur" src="" default />
-                                        <a href="" download>Download</a>
+                                    <video ref={ node => this.videoNode = node } id='channel-player' className="videoPlayer video-js vjs-16-9" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
+                                        {/* <track kind="captions" label="Urdu" srcLang="ur" src="" default />
+                                        <a href="" download>Download</a> */}
                                     </video>
 
                                 <GridItem className="topicGI" xs={12} >
