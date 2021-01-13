@@ -90,6 +90,9 @@ faderightheadline {
     width: 30px;
 
 }
+.channelListVodHeading{
+    margin-top: 10vh !important;
+}
 .vod_page_margin_heading{
     margin-left: 2.6% !important;
     margin-top: 4vh;
@@ -222,6 +225,9 @@ faderightheadline {
     .GridContainer-grid-9 {
         margin: 0 -5px !important;
     }
+    .channelListVodHeading {
+        margin-top: 0vh !important;
+    }
     .vod_page_margin_heading {
         margin-left: 0% !important;
         margin-right: 0% !important;
@@ -255,14 +261,21 @@ faderightheadline {
 
 }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 1536px) { 
+    .channelListVodHeading {
+        margin-top: 0vh !important;
+    }
+  }
+    @media only screen and (max-width: 900px) {
     .headlineLeftFade{
         width: 12vw;
     }
     .headlineRightFade{
         width: 10vw;
     }
-     
+    .channelListVodHeading {
+        margin-top: 0vh !important;
+    }
     .vod_page_margin_heading{
         margin-left: -1% !important;
         margin-right: 4%;
@@ -478,7 +491,9 @@ faderightheadline {
         border-radius: 5px;
         height: 210px !important;
     }
-
+    .channelListVodHeading {
+        margin-top: 0vh !important;
+    }
    
   }
  

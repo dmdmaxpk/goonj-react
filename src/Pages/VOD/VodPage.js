@@ -95,7 +95,7 @@ class VodPage extends Component {
                 <div className="vod_main_div" style={{marginTop: "3%", marginLeft: "3%"}}>
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
                     <div className="vod_channel_margin_bottom">
-                    <ChannelList class="vod_page_margin_heading"/>
+                    <ChannelList class="vod_page_margin_heading channelListVodHeading"/>
                     <PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" title="Popular on Goonj"/>
                     </div>
                 </div>
