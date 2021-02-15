@@ -12,21 +12,21 @@ class PosterSlider extends Component {
     }
     render(){
         let banners = [
-            // {
-            //     name: "01",
-            //     url: "/channel/pak-sa",
-            //     class: "carousel-item active"
-            // },
+            {
+                name: "01",
+                url: "#",
+                class: "carousel-item active"
+            },
             {
                 name: "02",
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "03",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "03",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
             // {
             //     name: "04",
             //     url: "#",
