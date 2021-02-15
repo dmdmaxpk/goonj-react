@@ -12,11 +12,11 @@ class PosterSlider extends Component {
     }
     render(){
         let banners = [
-            {
-                name: "01",
-                url: "/channel/pak-sa",
-                class: "carousel-item active"
-            },
+            // {
+            //     name: "01",
+            //     url: "/channel/pak-sa",
+            //     class: "carousel-item active"
+            // },
             {
                 name: "02",
                 url: "#",
@@ -44,7 +44,7 @@ class PosterSlider extends Component {
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                     </ol>
