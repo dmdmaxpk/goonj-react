@@ -71,8 +71,8 @@ class LiveChannel extends Component {
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
-                <ChannelList classname="liveChannel"/>
-                <PopularList title="Popular on Goonj" classname="liveChannel"  />
+                    <ChannelList classname="liveChannel"/>
+                    <PopularList title="Popular on Goonj" classname="liveChannel"  />
                 </div>
             </div>
             :
