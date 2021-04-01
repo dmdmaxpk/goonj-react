@@ -55,6 +55,12 @@ class PopularList extends Component {
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
+                name: "PTV Sports",
+                url: localStorage.getItem('livePermission') === true ? `/channel/ptv-sports` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=ptv-sports` : `${config.hepage}?slug=ptv-sports`,
+                thumbnail: 'ptv-sports.jpeg',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            },
+            {
                 name: "Samaa News",
                 url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
                 thumbnail: 'channel02.png',
@@ -73,12 +79,6 @@ class PopularList extends Component {
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             // {
-            //     name: "HBL PSL",
-            //     url: `/channel/hbl-psl`,
-            //     thumbnail: 'hblpsl.jpg',
-            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            // },
-            // {
             //     name: "Zahoor Elahi T20 League",
             //     url: `/stream/zet20`,
             //     thumbnail: 'channel06.jpg',
@@ -94,6 +94,12 @@ class PopularList extends Component {
                 name: "Geo Aur Jeenay Do",
                 url: localStorage.getItem('livePermission') === true ? `/channel/geo-news/` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=geo-news` : `${config.hepage}?slug=geo-news`,
                 thumbnail: 'channel01.png',
+                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            },
+            {
+                name: "PTV Sports",
+                url: localStorage.getItem('livePermission') === true ? `/channel/ptv-sports` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=ptv-sports` : `${config.hepage}?slug=ptv-sports`,
+                thumbnail: 'ptv-sports.jpeg',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
             {
