@@ -65,7 +65,8 @@ class App extends React.Component {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let Urlmsisdn = urlParams.get("msisdn");
-    let UrlSource = urlParams.get("source");
+    let src = urlParams.get("src") ? urlParams.get("src") : '';
+    let UrlSource = src ? src : urlParams.get("source");
     let UrlAccessToken = urlParams.get("access_token");
     let UrlRefreshToken = urlParams.get("refresh_token");
     if(Urlmsisdn){
