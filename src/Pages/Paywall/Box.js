@@ -201,7 +201,7 @@ class Box extends React.Component {
         const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
         let mid = localStorage.getItem('mid');
         let tid = localStorage.getItem('tid');
-        const permissionData = (source === "affiliate_web") ?
+        const permissionData = (source !== "web") ?
             {
                 msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
                 package_id: packageID2,
