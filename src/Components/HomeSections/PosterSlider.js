@@ -27,11 +27,11 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "04",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "04",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
             // {
             //     name: "06",
             //     url: "#",
