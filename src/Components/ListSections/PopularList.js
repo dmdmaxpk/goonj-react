@@ -30,18 +30,6 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            // {
-            //     name: "HBL PSL",
-            //     url: `/channel/hbl-psl`,
-            //     thumbnail: 'hblpsl.jpg',
-            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            // },
-            // {
-            //     name: "Zahoor Elahi T20 League",
-            //     url: `/stream/zet20`,
-            //     thumbnail: 'channel06.jpg',
-            //     contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            // },
             {
                 name: "Goonj Comedy",
                 url: `http://comedy.goonj.pk`,
@@ -78,12 +66,6 @@ class PopularList extends Component {
                 thumbnail: 'channel03.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            // {
-            //     name: "Zahoor Elahi T20 League",
-            //     url: `/stream/zet20`,
-            //     thumbnail: 'channel06.jpg',
-            //     contentCategory: <div id="freeContentDiv" className="freeContentDiv freeContentDivPL"><p>FREE</p></div>
-            // },
             {
                 name: "Goonj Comedy",
                 url: `http://comedy.goonj.pk`,
