@@ -32,6 +32,7 @@ class LiveChannel extends Component {
         const msisdn = localStorage.getItem('liveMsisdn') ? localStorage.getItem('liveMsisdn') : urlMsisdn;
         const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
         const package_id = localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : urlPkgId;
+        let slug = this.props.match.params.slug;
         const statusData = {
             msisdn,
             source,
@@ -45,7 +46,7 @@ class LiveChannel extends Component {
             if(res.data.code === -1){
                 localStorage.clear();
                 // console.log("here here")
-                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
             }
             else if(result.is_allowed_to_stream === true){
                 this.setState({
@@ -55,12 +56,12 @@ class LiveChannel extends Component {
             }
             else{
                 // console.log("in here");
-                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&msisdn=${msisdn}`);
             }
             })
         }
         else{
-                this.props.history.push(`/paywall/live?slug=${this.props.match.params.slug}`);
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
         }
     }
 
