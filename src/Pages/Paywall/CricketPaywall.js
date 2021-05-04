@@ -6,7 +6,7 @@ import config from '../../Utils/config';
 import './paywall.scss'
 import { Link } from 'react-router-dom';
 
-class LivePaywall extends Component {
+class CricketPaywall extends Component {
     constructor(props) {
     super(props);
     this.state = {
@@ -46,11 +46,14 @@ class LivePaywall extends Component {
         return(
             <div className="liveComponent">
                 <div className="goonjLivePage">
-                    <div className="landing_page_background paywallContainer">
-                        <div className="liveContainer">
-                            <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} alt="Logo" />
+                    <div className="cricketPaywallBg paywallContainer">
+                        <div className="liveContainer liveCricketComponent">
+                            {/* <img className = "gLogo" src={require("../../Assets/logoGoonj.png")} alt="Logo" />
+                            <br /> */}
+                            <h1 className = "aText1 aText1b cricketText">SAFAR ME HO YA HO TV SE DOOR, KABHI BHI</h1>
+                            <h1 className = "aText1 aText1b cricketText">KAHEN BHI DEKHO EXCITING CRICKET MATCHES</h1>
+                            <h1 className = "aText1 aText1b cricketText"><font color="#9ee132">GOONJ</font> MOBILE TV PER!</h1>
                             <br />
-                            <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
                             <Box
                                 url={slug ? `/channel/${slug}` : '/live-tv'}
                                 slug={slug}
@@ -66,16 +69,19 @@ class LivePaywall extends Component {
                                 source={source}
                                 unsubStatus={"liveSub"}
                             />
-                            <div className="chargesBox lightFont">
-                            <p className="cbText1">
+                            <div className="lightFont cricketPWConsentText">
+                            {/* <p className="cbText1">
                             <font color="#319fe7">{this.state.packagePrice2}</font> charges will be deducted  
                                 from mobile balance
+                            </p> */}
+                            <p className="cbText2 cricketText">
+                                <p className="cancelText cricketText">I agree to daily recurring charges deduction from my mobile balance until Unsubscription</p>
+                                <p className="cancelText cricketText">CANCEL ANYTIME FROM
+                                    <Link style={{color: "white !important", fontWeight: "900"}} to={"/profile"}><font color="white" className=""> PROFILE{">"}SUBSCRIPTIONS</font></Link>
+                                </p>
                             </p>
-                            <p className="cbText2">
-                                <font className="cancelText">for package conversion or cancellation, go to </font>
-                                <Link style={{color: "white !important"}} to={"/profile"}><font color="white">Profile{">"}Subscriptions</font></Link>
-                            </p>
-                            <p className="cbText3">By subscribing, you are giving consent to renewal charging</p>
+                            <img className="flagsImg" src={require('../../Assets/flags.png')} />
+                            {/* <p className="cbText3">By subscribing, you are giving consent to renewal charging</p> */}
                             </div>
                         </div>
                     </div>
@@ -85,4 +91,4 @@ class LivePaywall extends Component {
     }
 }
  
-export default withRouter(LivePaywall);
+export default withRouter(CricketPaywall);

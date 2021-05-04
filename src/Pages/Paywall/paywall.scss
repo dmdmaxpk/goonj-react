@@ -1,9 +1,11 @@
 .landing_page_background {
     background-image: url("../../Assets/Background.jpg");
+}
+.paywallContainer{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 90vh;
+    height: 95vh;
     margin-bottom: 30px;
     text-align: center;
     padding-top: 3%;
@@ -11,10 +13,21 @@
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     font-weight: 900;
-
     /* display: flex; */
     /* align-items: center; */
-  }
+}
+.cricketPaywallBg{
+    background-image: url("../../Assets/cricketPaywallBg.png");
+}
+.cricketPWConsentText{
+    background-color: rgba(0, 0, 0, 0.19);
+    text-align: center !important;
+    width: 50%;
+    margin-left: 25%;
+}
+.flagsImg{
+    width: 40%;
+}
 .liveComponent{
     height: 100%;
     overflow-y: scroll;
@@ -484,6 +497,22 @@
     .btnConfirm{
         width: 30vw;
         padding: 1em;
+    }
+    .liveCricketComponent{
+        padding-top: 10vh;
+    }
+    .cricketPWConsentText{
+        width: 100% !important;
+        margin-left: 0 !important;
+        // background-color: transparent;
+    }
+    .cricketText{
+        margin: 0 1vw !important;
+        font-size: small;
+    }
+    .flagsImg{
+        width: 75%;
+        margin-top: 2vh;
     }
 }
 @media screen and (max-width: 420px) {

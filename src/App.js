@@ -28,6 +28,7 @@ import MainCategory from "./Pages/VOD/MainCategory";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
 import FreeChannel from "./Pages/Live/FreeChannel";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
+import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 
 
 class App extends React.Component {
@@ -154,7 +155,7 @@ class App extends React.Component {
             <Redirect to="/home" />
           </Route>
           <Route exact path="/paywall/live" component={LivePaywall} />
-          {/* <Route exact path="/paywall/comedy" component={ComedyPaywall} /> */}
+          <Route exact path="/paywall/cricket" component={CricketPaywall} />
           <Route exact path="/goonjplus/subscribe">
             <Redirect to="/paywall/live"/>
           </Route>
