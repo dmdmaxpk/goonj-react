@@ -13,17 +13,17 @@ class PosterSlider extends Component {
     render(){
         let banners = [
             {
-                name: "02",
+                name: "01",
                 url: "#",
                 class: "carousel-item active"
             },
             {
-                name: "03",
+                name: "02",
                 url: "#",
                 class: "carousel-item"
             },
             {
-                name: "04",
+                name: "03",
                 url: "#",
                 class: "carousel-item"
             },
