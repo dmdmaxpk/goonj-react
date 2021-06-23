@@ -14,7 +14,7 @@ class PosterSlider extends Component {
         let banners = [
             {
                 name: "01",
-                url: "/channel/geo-news",
+                url: "/channel/geo-entertainment",
                 class: "carousel-item active"
             },
             {
