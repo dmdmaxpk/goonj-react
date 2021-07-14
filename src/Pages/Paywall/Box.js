@@ -207,7 +207,7 @@ class Box extends React.Component {
                 package_id: packageID2,
                 source,
                 otp,
-                payment_source: paymentType,
+                payment_source: paymentType !== '' ? paymentType : 'telenor',
                 marketing_source: mid,
                 affiliate_unique_transaction_id: tid,
                 affiliate_mid: mid
@@ -218,7 +218,7 @@ class Box extends React.Component {
                 package_id: packageID2,
                 source,
                 otp,
-                payment_source: paymentType
+                payment_source: paymentType !== '' ? paymentType : 'telenor'
             };
 
         // console.log('permissionData: ', permissionData);

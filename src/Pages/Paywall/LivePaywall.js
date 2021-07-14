@@ -39,7 +39,7 @@ class LivePaywall extends Component {
     }
       
     render(){
-        let source = localStorage.getItem('source');
+        let source = localStorage.getItem('source') ? localStorage.getItem('source') : 'web';
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let slug = urlParams.get("slug");
