@@ -39,7 +39,7 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = generatedToken;
-                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}`;
+                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
                 this.setState({source});
 
                 videojs.options.hls.overrideNative = true;
@@ -47,7 +47,7 @@ class VideoPlayer extends Component {
                 videojs.options.html5.nativeVideoTracks= false
                 
                 videojs.Hls.xhr.beforeRequest = function(options){
-                    options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}`;
+                    options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
                     return options;
                 };
                 
