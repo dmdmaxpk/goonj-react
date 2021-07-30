@@ -10,7 +10,7 @@ export default function ErrorComponent(props){
         <GridContainer className="userInfoContainer">
             <GridItem xs={12} sm={12} md={12} className="errorGridItem">
                 <VisibilityOffIcon className="errorIcon" style={{fontSize: 100}} />
-                <p className="loginErrorText">Please <Link to={`/paywall/${paywall}?access=login`}>login</Link> to continue.</p>
+                <p className="loginErrorText">Please <Link to={`/paywall/${paywall}?access=login`}>sign-in</Link> to continue.</p>
             </GridItem>
         </GridContainer>
     )
