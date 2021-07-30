@@ -171,18 +171,25 @@ export default function MiniDrawer(props) {
           >
             <div className="">
               <IconButton
+                style={{cursor: "default"}}
                 color="inherit"
                 aria-label="open drawer"
-                onClick={handleDrawerOpen}
+                // onClick={handleDrawerOpen}
                 edge="start"
                 className={clsx(classes.menuButton, {
                   [classes.hide]: open,
                 })}
               >
-                <img src={require("../../Assets/menu.png")} alt="menu icon" />
+                <img 
+                  src={require("../../Assets/menu.png")} style={{visibility: "hidden"}} alt="menu icon" 
+                />
               </IconButton>
-              <IconButton onClick={handleDrawerClose}>
-                <img src={require("../../Assets/menu.png")} alt="menu icon" />
+              <IconButton 
+              // onClick={handleDrawerClose}
+              >
+                <img 
+                  src={require("../../Assets/menu.png")} style={{visibility: "hidden"}} alt="menu icon" 
+                />
               </IconButton>
             </div>
             <ListComponent />
