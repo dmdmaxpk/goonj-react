@@ -147,3 +147,30 @@ export async function RefreshTokenFunction(){
         console.log(err)
     })
 }
+
+
+export function subscribeEasypaisa(url){
+    var callback = function () {
+        if (typeof(url) != 'undefined') {
+            window.location = url;
+        }
+    };
+    window.gtag('event', 'conversion', {
+        'send_to': 'AW-828051162/8yrzCIrJ5-MCENqd7IoD',
+        'event_callback': callback
+    });
+    return false;   
+}
+
+export function subscribeTelenor(url){
+    var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      window.gtag('event', 'conversion', {
+          'send_to': 'AW-828051162/WoNhCPu55-MCENqd7IoD',
+          'event_callback': callback
+      });
+      return false;
+}

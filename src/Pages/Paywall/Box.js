@@ -5,6 +5,7 @@ import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import "./paywall.scss";
 import { CircularProgress } from '@material-ui/core';
+import { subscribeEasypaisa, subscribeTelenor } from '../../Services/apiCalls';
 
 class Box extends React.Component {
 
@@ -99,6 +100,14 @@ class Box extends React.Component {
                 step: 1,
                 msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn')
             })
+        }
+        if(this.props.slug === 'kpl'){
+            if(paymentType == 'telenor'){
+                subscribeTelenor();
+            }
+            if(paymentType == 'easypaisa'){
+                subscribeEasypaisa();
+            }
         }
     }
     sendOtp(){
