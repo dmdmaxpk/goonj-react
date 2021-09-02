@@ -215,7 +215,7 @@ class Box extends React.Component {
                 msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
                 package_id: packageID2,
                 source,
-                otp,
+                otp: paymentType === 'telenor' ? undefined : otp,
                 payment_source: paymentType !== '' ? paymentType : 'telenor',
                 marketing_source: mid,
                 affiliate_unique_transaction_id: tid,
