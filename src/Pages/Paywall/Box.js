@@ -101,14 +101,14 @@ class Box extends React.Component {
                 msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn')
             })
         }
-        if(this.props.slug === 'kpl'){
-            if(paymentType == 'telenor'){
-                subscribeTelenor();
-            }
-            if(paymentType == 'easypaisa'){
-                subscribeEasypaisa();
-            }
+        
+        if(paymentType == 'telenor'){
+            subscribeTelenor();
         }
+        if(paymentType == 'easypaisa'){
+            subscribeEasypaisa();
+        }
+        
     }
     sendOtp(){
         const {msisdn, paymentType} = this.state;
