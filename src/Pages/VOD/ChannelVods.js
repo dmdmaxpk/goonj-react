@@ -82,7 +82,7 @@ class ChannelVodPage extends Component {
                                 </div>
                                 <div className="vodDetailsDiv">
                                     <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.category} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link></p>
+                                    <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.category} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link> | <font style={{fontSize: "smaller"}}>{item.views_count} views</font></p>
                                 </div>
                             </GridItem>
                         )
