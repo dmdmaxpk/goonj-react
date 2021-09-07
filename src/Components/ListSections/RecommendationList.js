@@ -5,13 +5,15 @@ import ReactTimeAgo from 'react-time-ago';
 import { withRouter } from 'react-router-dom';
 import GridContainer from '../Grid/GridContainer';
 import GridItem from '../Grid/GridItem';
+import { CircularProgress } from '@material-ui/core';
 
 class RecommendationList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             recommendations: [],
-            limit: 4
+            limit: 4,
+            loading: true
         }
         this.getRecommendations = this.getRecommendations.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
@@ -24,10 +26,11 @@ class RecommendationList extends Component {
     getRecommendations(){
         const {topics} = this.props;
         let topicString = topics.toString();
-        AxiosInstance.get(`/video?topics=${topicString}&limit=${this.state.limit}`)
+        AxiosInstance.get(`/video/recommendations?id=${this.props.id}&msisdn=${localStorage.getItem('liveMsisdn')}`)
         .then(res =>{
             this.setState({
-                recommendations: res.data
+                recommendations: res.data,
+                loading: false
             });
         })
         .catch(err =>{
@@ -52,11 +55,12 @@ class RecommendationList extends Component {
         let {recommendations} = this.state;
         let pathname = window.location.pathname;
         let id = pathname.split('_')[0].split('/')[1];
+        let {loading} = this.state;
         return(
             <div className="recomListContainer">
             <p className="recomHeading">Up Next</p>
-            <GridContainer className="recomGridContainer">
-                {
+            <GridContainer className="recomGridContainer" style={{position: `${loading === true ? 'relative' : ''}`, left: `${loading === true ? '50%' : ''}`}}>
+                {this.state.loading === false ?
                     recommendations.filter(element => element._id !== id).map(item =>
                             <GridItem xs={3} sm={3} md={12} className="recomDiv" key={item._id} onClick={()=> this.handleClick(item)}>
                                 <img className="recomImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumnail} />
@@ -71,6 +75,8 @@ class RecommendationList extends Component {
                                 </div>
                             </GridItem>
                     )
+                :
+                <CircularProgress className=""/>
                 }
             </GridContainer>
             </div>

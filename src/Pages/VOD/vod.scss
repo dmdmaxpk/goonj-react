@@ -147,9 +147,18 @@
     // display: none;
 }
 .recommendationGI{
-    height: auto;
+    height: 560px;
     max-width: 32% !important;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.recommendationGI::-webkit-scrollbar{
+    background: transparent;
+    width: 5px;
+}
+.recommendationGI::-webkit-scrollbar-thumb{
+    background-color: #ccc !important;
+    border-radius: 10px;
 }
 
 .title_div{
