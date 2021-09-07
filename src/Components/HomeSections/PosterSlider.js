@@ -14,7 +14,7 @@ class PosterSlider extends Component {
         let banners = [
             {
                 name: "01",
-                url: "/channel/peshawar-football",
+                url: "/channel/discover-pakistan",
                 class: "carousel-item active"
             },
             {
@@ -37,11 +37,11 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "06",
-                url: "/channel/discover-pakistan",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "06",
+            //     url: "/channel/discover-pakistan",
+            //     class: "carousel-item"
+            // },
         ]
         return(
             <div className="posterSlider">
@@ -52,7 +52,7 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
                         {
