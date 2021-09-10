@@ -64,7 +64,7 @@ class VodVideoPlayer extends Component {
         videojs.options.html5.nativeVideoTracks= false
         
         videojs.Hls.xhr.beforeRequest = function(options){
-            options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}&category=${item.category}`;
+            options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}&category=${item.category}&video_id=${item._id}`;
             return options;
         };
         
