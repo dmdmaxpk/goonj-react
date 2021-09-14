@@ -248,6 +248,11 @@ class Box extends React.Component {
                     else{
                         localStorage.setItem(msisdnKey, msisdn);
                     }
+
+                    // google tag for tracking
+                    window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
+                    
+                    // redirecting
                     this.props.history.push(`${url}`);
                 }
             })
@@ -289,7 +294,7 @@ class Box extends React.Component {
                             <button className="arrowBtnBack" onClick={()=> this.setState({step: 0})}>
                                 <ArrowBackRoundedIcon />
                             </button>
-                            <button className="arrowBtnForward" onClick={this.sendOtp}>
+                            <button className="arrowBtnForward" onClick={(this.state.paymentType === 'telenor' && localStorage.getItem('urlMsisdn')) ? this.subscribe : this.sendOtp}>
                                 <ArrowForwardRoundedIcon />
                             </button>
                         </div>
