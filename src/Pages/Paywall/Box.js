@@ -251,6 +251,9 @@ class Box extends React.Component {
 
                     // google tag for tracking
                     window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
+
+                    // Pixel event on subscribe
+                    window.fbq('track', 'Subscribe');
                     
                     // redirecting
                     this.props.history.push(`${url}`);
