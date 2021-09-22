@@ -52,7 +52,7 @@ class LivePaywall extends Component {
                             <br />
                             <h1 className = "aText1 aText1b">WATCH LIVE TV ANYTIME, ANYWHERE!</h1>
                             <Box
-                                url={slug ? `/channel/${slug}` : '/live-tv'}
+                                url={(slug && slug !== 'null') ? `/channel/${slug}` : '/live-tv'}
                                 slug={slug}
                                 permission={"livePermission"}
                                 msisdnKey={"liveMsisdn"}
