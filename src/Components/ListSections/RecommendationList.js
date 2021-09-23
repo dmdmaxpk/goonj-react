@@ -70,7 +70,7 @@ class RecommendationList extends Component {
                                     <div className="recomendation_details_div">
                                     <p className="grey recomSource">{item.source}</p>
                                     <p className="grey recomCount">{this.kFormatter(item.views_count)} views</p>
-                                    <p className="grey"><ReactTimeAgo date={item.publish_dtm} /></p>
+                                    <p className="grey"><ReactTimeAgo date={item.publish_dtm ? item.publish_dtm : new Date()} /></p>
                                     </div>
                                 </div>
                             </GridItem>
