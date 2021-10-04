@@ -81,9 +81,21 @@
           })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
           
           ga('create', 'UA-69091505-15', 'auto');
-          ga('send', 'pageview');
+
+          // ga('send', 'pageview');
+          if(localStorage.getItem('userID')){
+            ga('set', 'signed-in', true);
+            ga('send', 'pageview', {
+              'signed-in':  true
+            });
+            console.log('signed in')
+          }
+          else{
+            ga('send', 'pageview');
+            console.log('un-signed')
+          }
         </script>
-  <!-- End Google Analytics -->
+      <!-- End Google Analytics -->
 
   <!-- Global site tag (gtag.js) - Google Ads: 828051162 -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-828051162"></script>
