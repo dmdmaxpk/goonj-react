@@ -85,8 +85,9 @@
           // ga('send', 'pageview');
           if(localStorage.getItem('userID')){
             ga('set', 'signed-in', 1);
+            ga('set', 'premium', 1);
             ga('send', 'pageview', {
-              'signed-in':  1
+              'premium':  1
             });
             console.log('signed in')
           }
