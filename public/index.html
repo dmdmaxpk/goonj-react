@@ -84,10 +84,10 @@
 
           // ga('send', 'pageview');
           if(localStorage.getItem('userID')){
-            ga('set', 'dimension1', 1);
-            ga('set', 'dimension2', 1);
+            ga('set', 'dimension1', true);
+            // ga('set', 'dimension2', 1);
             ga('send', 'pageview', {
-              'dimension1':  1
+              'dimension1':  true
             });
             console.log('signed in')
           }
