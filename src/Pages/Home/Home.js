@@ -48,10 +48,12 @@ class Home extends Component {
         }else if(e==3){
             return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" limit={21} infinite={true} subCategory="" url={`/category/news/page/1`} /></div>
         }else if(e==4){
-            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" url={`/category/entertainment/page/1`} /></div>
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" url={`/category/current_affairs/page/1`} /></div>
         }else if(e==5){
-            return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />
+            return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" url={`/category/entertainment/page/1`} /></div>
         }else if(e==6){
+            return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />
+        }else if(e==7){
             return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />
         }
     }
