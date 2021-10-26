@@ -31,7 +31,8 @@ class Box extends React.Component {
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
-        // console.log(this.props);
+        console.log(this.props);
+
         let {packageID1, packageID2, permission, pkgIdKey, msisdnKey, msisdn, url} = this.props;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -84,7 +85,8 @@ class Box extends React.Component {
         }
     }
     selectPayment(paymentType){
-        // console.log("payment", paymentType);
+
+        // console.log("selectPayment");
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor' && urlParams.get('access_token')){
@@ -234,6 +236,7 @@ class Box extends React.Component {
         PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
+
                 if(result.code === -1){
                     this.setState({loading: false});
                     alert(res.data.message);
@@ -254,6 +257,17 @@ class Box extends React.Component {
 
                     // Pixel event on subscribe
                     window.fbq('track', 'Subscribe');
+                    
+                    // useInsider
+                    window.insider_object = {
+                        "page": {
+                            "type": "Confirmation"
+                        }
+                    };
+                    const script = document.createElement("script");
+                    script.src = "//goonjtv.api.useinsider.com/ins.js?id=10006392";
+                    script.async = true;
+                    document.body.appendChild(script);
                     
                     // redirecting
                     this.props.history.push(`${url}`);
