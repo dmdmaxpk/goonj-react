@@ -17,6 +17,19 @@ import { CheckLiveStatus, CheckCPStatus } from "../../Services/apiCalls";
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 
 const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
+  if(localStorage.getItem('userID')){
+    window.ga('set', 'dimension1', true);
+    // window.ga('set', 'dimension2', 1);
+    window.ga('send', 'pageview', {
+      'dimension1':  true
+    });
+    console.log('signed in')
+  }
+  else{
+    window.ga('send', 'pageview');
+    console.log('un-signed')
+  }
+
   function signout(){
     localStorage.clear();
     window.location.reload();
