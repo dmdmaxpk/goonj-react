@@ -67,7 +67,7 @@ class Footer extends Component {
                   <a href="tel:202-555-0176"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="call us" /></a>
                   <p className="footerPs contactUsPs">
                     Call us :{'\n'}
-                    (+1) 202-555-0176, (+1) 2025-5501
+                    03401832782
                   </p>
                 </GridItem>
                 <GridItem xs={6} sm={6} md={12}>
