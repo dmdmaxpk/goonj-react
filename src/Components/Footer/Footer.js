@@ -64,7 +64,7 @@ class Footer extends Component {
               <p className="footerHeadings">Contact Us</p>
               <GridContainer>
                 <GridItem xs={6} sm={6} md={12}>
-                  <a href="tel:202-555-0176"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="call us" /></a>
+                  <a href="tel:03401832782"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="call us" /></a>
                   <p className="footerPs contactUsPs">
                     Call us :{'\n'}
                     03401832782
