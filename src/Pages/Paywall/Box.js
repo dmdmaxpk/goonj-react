@@ -264,10 +264,6 @@ class Box extends React.Component {
                             "type": "Confirmation"
                         }
                     };
-                    const script = document.createElement("script");
-                    script.src = "//goonjtv.api.useinsider.com/ins.js?id=10006392";
-                    script.async = true;
-                    document.body.appendChild(script);
                     
                     // redirecting
                     this.props.history.push(`${url}`);
