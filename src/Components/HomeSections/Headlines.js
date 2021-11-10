@@ -93,7 +93,7 @@ class HeadlinesSection extends Component {
                             <Slider className="headlinesSlider" {...settings}>
                             {this.state.data.length > 0 ?  
                                 (data.map(item =>
-                                        <div className="popularListDiv" key onClick={()=> this.handleClick(item)}>
+                                        <div className="popularListDiv" onClick={()=> this.handleClick(item)}>
                                             <Link style={{textDecoration: "none", color:"white"}}>
                                                 <div style={{position:"relative", marginBottom:"4%"}}>
                                                 <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt="thumbnail" />
