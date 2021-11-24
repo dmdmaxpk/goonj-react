@@ -23,7 +23,7 @@ class Home extends Component {
         }
     }
 
-    // update
+    // update 2
 
     closeBanner = () => {
         this.setState({
