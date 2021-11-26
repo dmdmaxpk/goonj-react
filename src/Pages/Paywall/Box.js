@@ -252,18 +252,25 @@ class Box extends React.Component {
                         localStorage.setItem(msisdnKey, msisdn);
                     }
 
-                    // google tag for tracking
-                    window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
+                    if(result.code === 0){
+                        // google tag for tracking
+                        window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
 
-                    // Pixel event on subscribe
-                    window.fbq('track', 'Subscribe');
-                    
-                    // useInsider
-                    window.insider_object = {
-                        "page": {
-                            "type": "Confirmation"
+                        // T10 League Event
+                        if(source == 'tp_t10_league'){
+                            window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/L-U1COK0iYYDENqd7IoD'})
                         }
-                    };
+
+                        // Pixel event on subscribe
+                        window.fbq('track', 'Subscribe');
+                        
+                        // useInsider
+                        window.insider_object = {
+                            "page": {
+                                "type": "Confirmation"
+                            }
+                        };
+                    }
                     
                     // redirecting
                     this.props.history.push(`${url}`);
