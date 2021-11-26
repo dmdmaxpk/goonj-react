@@ -44,7 +44,7 @@ class PopularList extends Component {
             },
             {
                 name: "T10 League",
-                url: localStorage.getItem('livePermission') === true ? `/channel/t10-league` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=t10-league` : `${config.hepage}?slug=t10-league`,
+                url: `/stream/t10-league`,
                 thumbnail: 't10league.jpg',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
@@ -80,7 +80,7 @@ class PopularList extends Component {
             },
             {
                 name: "T10 League",
-                url: localStorage.getItem('livePermission') === true ? `/channel/t10-league` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=t10-league` : `${config.hepage}?slug=t10-league`,
+                url: `/stream/t10-league`,
                 thumbnail: 't10league.jpg',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },

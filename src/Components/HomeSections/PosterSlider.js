@@ -14,7 +14,7 @@ class PosterSlider extends Component {
         let banners = [
             {
                 name: "01",
-                url: "/channel/t10-league",
+                url: "/stream/t10-league",
                 class: "carousel-item active"
             },
             {
