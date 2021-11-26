@@ -33,7 +33,7 @@ class FreePlayer extends Component {
         });
         let generatedToken = akamai_auth.generateToken();
         let token = generatedToken;
-        const source = `${this.state.urlLink}/zesl2020.m3u8?hdnts=${token}`;
+        const source = `${this.state.urlLink}/tten.m3u8?hdnts=${token}`;
         this.setState({source});
 
         this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
@@ -60,8 +60,8 @@ class FreePlayer extends Component {
                 </div>
                 <div className="title_div">
                     <div className="title_hashTag_and_heading channelTitle"> 
-                        <div style={{textTransform: "capitalize"}}>Zahoor Elahi T20 League</div>
-                        <p>Kashmir Kings & Gujrat Lions Presents Zahoor Elahi Shaheed T20 League - Live From Gujrat</p>
+                        <div style={{textTransform: "capitalize"}}>T10 League</div>
+                        {/* <p>Kashmir Kings & Gujrat Lions Presents Zahoor Elahi Shaheed T20 League - Live From Gujrat</p> */}
                     </div>
 
                     <div>
