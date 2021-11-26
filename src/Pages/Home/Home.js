@@ -23,6 +23,8 @@ class Home extends Component {
         }
     }
 
+    // update 2
+
     closeBanner = () => {
         this.setState({
             bannerDisplay: "none"
