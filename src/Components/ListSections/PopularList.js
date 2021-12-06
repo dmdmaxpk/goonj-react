@@ -42,12 +42,12 @@ class PopularList extends Component {
                 thumbnail: 'channel01.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "T10 League",
-                url: `/stream/t10-league`,
-                thumbnail: 't10league.jpg',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            },
+            // {
+            //     name: "T10 League",
+            //     url: `/stream/t10-league`,
+            //     thumbnail: 't10league.jpg',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // },
             {
                 name: "Samaa News",
                 url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
@@ -78,12 +78,12 @@ class PopularList extends Component {
                 thumbnail: 'channel01.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "T10 League",
-                url: `/stream/t10-league`,
-                thumbnail: 't10league.jpg',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            },
+            // {
+            //     name: "T10 League",
+            //     url: `/stream/t10-league`,
+            //     thumbnail: 't10league.jpg',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // },
             {
                 name: "Samaa News",
                 url: localStorage.getItem('livePermission') === true ? `/channel/samaa-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=samaa-news` : `${config.hepage}?slug=samaa-news`,
