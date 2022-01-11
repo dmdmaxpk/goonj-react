@@ -12,14 +12,14 @@ class PosterSlider extends Component {
     }
     render(){
         let banners = [
-            // {
-            //     name: "01",
-            //     url: "/stream/t10-league",
-            //     class: "carousel-item active"
-            // },
+            {
+                name: "01",
+                url: "#",
+                class: "carousel-item active"
+            },
             {
                 name: "02",
-                url: "/channel/geo-entertainment",
+                url: "#",
                 class: "carousel-item active"
             },
             {
@@ -37,11 +37,11 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "06",
-                url: "/channel/discover-pakistan",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "06",
+            //     url: "/channel/discover-pakistan",
+            //     class: "carousel-item"
+            // },
         ]
         return(
             <div className="posterSlider">
