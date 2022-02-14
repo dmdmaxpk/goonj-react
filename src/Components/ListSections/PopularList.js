@@ -54,12 +54,12 @@ class PopularList extends Component {
                 thumbnail: 'channel02.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "Dunya News Khabar Ki Dunya",
-                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunya-news`,
-                thumbnail: 'channel04.png',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            },
+            // {
+            //     name: "Dunya News Khabar Ki Dunya",
+            //     url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunya-news`,
+            //     thumbnail: 'channel04.png',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // },
             {
                 name: "Binjee",
                 url: `https://goonj.binjee.com/`,
@@ -90,12 +90,12 @@ class PopularList extends Component {
                 thumbnail: 'channel02.png',
                 contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
             },
-            {
-                name: "Dunya News Khabar Ki Dunya",
-                url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunyaa-news`,
-                thumbnail: 'channel04.png',
-                contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
-            }
+            // {
+            //     name: "Dunya News Khabar Ki Dunya",
+            //     url: localStorage.getItem('livePermission') === true ? `/channel/dunya-news` : Urlmsisdn ? `/paywall/live?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=dunya-news` : `${config.hepage}?slug=dunyaa-news`,
+            //     thumbnail: 'channel04.png',
+            //     contentCategory: <div className="contentCategory"><img src={require('../../Assets/crown.png')} /></div>
+            // }
         ];
 
         var settings = {
@@ -132,7 +132,7 @@ class PopularList extends Component {
                   }
                 }
             ]
-          };
+        };
 
         return (
             <div className={this.props.class+" "+this.props.marginTop}>
