@@ -32,11 +32,11 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "05",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "05",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
             // {
             //     name: "06",
             //     url: "/channel/discover-pakistan",
@@ -51,7 +51,7 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
