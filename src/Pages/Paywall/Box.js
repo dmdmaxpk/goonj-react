@@ -253,13 +253,18 @@ class Box extends React.Component {
                     }
 
                     if(result.code === 0){
+                        // gor mid gdn2
+                        if(source === 'gdn2' && mid === 'gdn2'){
+                            window.gtag_report_conversion()
+                        }
+                        else if(source == 'tp_t10_league'){
+                            window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/L-U1COK0iYYDENqd7IoD'})
+                        }
+
                         // google tag for tracking
                         window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
 
                         // T10 League Event
-                        if(source == 'tp_t10_league'){
-                            window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/L-U1COK0iYYDENqd7IoD'})
-                        }
 
                         // Pixel event on subscribe
                         window.fbq('track', 'Subscribe');
