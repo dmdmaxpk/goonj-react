@@ -254,10 +254,10 @@ class Box extends React.Component {
 
                     if(result.code === 0){
                         // gor mid gdn2
-                        if(source === 'gdn2' && mid === 'gdn2'){
-                            window.gtag_report_conversion()
-                        }
-                        else if(source == 'tp_t10_league'){
+                        // if(source === 'gdn2' && mid === 'gdn2'){
+                        //     window.gtag_report_conversion()
+                        // }
+                        if(source == 'tp_t10_league'){
                             window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/L-U1COK0iYYDENqd7IoD'})
                         }
 
