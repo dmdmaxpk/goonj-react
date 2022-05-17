@@ -211,6 +211,7 @@ class Box extends React.Component {
         const {msisdn, paymentType, otp} = this.state;
         const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
         let mid = localStorage.getItem('mid');
+        let marketingSrc = localStorage.getItem('marketingSrc');
         let tid = localStorage.getItem('tid');
         const permissionData = (source !== "web") ?
             {
@@ -219,7 +220,7 @@ class Box extends React.Component {
                 source,
                 otp: paymentType === 'telenor' ? undefined : otp,
                 payment_source: paymentType !== '' ? paymentType : 'telenor',
-                marketing_source: mid,
+                marketing_source: marketingSrc ? marketingSrc : mid,
                 affiliate_unique_transaction_id: tid,
                 affiliate_mid: mid
             }
