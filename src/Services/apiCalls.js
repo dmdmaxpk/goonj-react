@@ -26,10 +26,13 @@ export function getPackages(){
 };
 
 export function CheckLiveStatus(){
+    const urlParams = new URLSearchParams(queryString);
+    let marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
     let statusData = {
         source,
         msisdn: liveMsisdn,
-        package_id: livePackageId
+        package_id: livePackageId,
+        marketing_source: marketingSrc
     }
     if(liveMsisdn && livePackageId){
         PaywallInstance.post('/payment/status', statusData)

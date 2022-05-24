@@ -31,25 +31,23 @@ class Box extends React.Component {
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
-        console.log(this.props);
-
         let {packageID1, packageID2, permission, pkgIdKey, msisdnKey, msisdn, url} = this.props;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let urlMsisdn = localStorage.getItem('urlMsisdn') ? localStorage.getItem('urlMsisdn') : urlParams.get("msisdn");
+        let marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
         let statusData = {
             source: localStorage.getItem('source'),
             msisdn: urlMsisdn,
-            package_id: packageID1
+            package_id: packageID1,
+            marketing_source: marketingSrc
         }
         PaywallInstance.post('/payment/status', statusData)
         .then(res =>{
-            // console.log("status1", res.data);
             if(res.data.code === -1){
                 statusData.package_id = packageID2;
                 PaywallInstance.post('/payment/status', statusData)
                 .then(response =>{
-                    // console.log("status2", response.data);
                     if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
                         localStorage.setItem(permission, true);
                         localStorage.setItem(pkgIdKey, response.data.subscribed_package_id);
@@ -71,7 +69,6 @@ class Box extends React.Component {
             })
         })
         .catch(err =>{
-            // alert(err.message);
             this.setState({
                 loading: false
             })
@@ -85,8 +82,6 @@ class Box extends React.Component {
         }
     }
     selectPayment(paymentType){
-
-        // console.log("selectPayment");
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor' && urlParams.get('access_token')){
@@ -103,7 +98,6 @@ class Box extends React.Component {
                 msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn')
             })
         }
-        
         if(paymentType == 'telenor'){
             subscribeTelenor();
         }
@@ -123,8 +117,6 @@ class Box extends React.Component {
             package_id: packageID2
         };
 
-        // console.log('sendOtp - msisdnData: ', msisdnData);
-
         if(msisdn.length === 11){
             PaywallInstance.post('/payment/otp/send', msisdnData)
                 .then(res =>{
@@ -139,13 +131,10 @@ class Box extends React.Component {
                         }
                     }
                     else if(result.code === -1){
-                        // console.log('result.message: ', result.message);
-                        // console.log('result: ', result);
                         alert(result.message);
                     }
                 })
                 .catch(err =>{
-                    // console.log('err: ', err);
                     alert(err)
                 })
         }
@@ -169,7 +158,6 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
-                // console.log(result);
                 if(result.is_allowed_to_stream === true){
                     var accessToken = result.access_token;
                     var refreshToken = result.refresh_token;
@@ -207,11 +195,12 @@ class Box extends React.Component {
     }
 
     subscribe(){
+        const urlParams = new URLSearchParams(queryString);
         this.setState({loading: true});
         const {msisdn, paymentType, otp} = this.state;
         const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
         let mid = localStorage.getItem('mid');
-        let marketingSrc = localStorage.getItem('marketingSrc');
+        const marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
         let tid = localStorage.getItem('tid');
         const permissionData = (source !== "web") ?
             {
@@ -220,7 +209,7 @@ class Box extends React.Component {
                 source,
                 otp: paymentType === 'telenor' ? undefined : otp,
                 payment_source: paymentType !== '' ? paymentType : 'telenor',
-                marketing_source: marketingSrc ? marketingSrc : mid,
+                marketing_source: marketingSrc,
                 affiliate_unique_transaction_id: tid,
                 affiliate_mid: mid
             }
@@ -233,7 +222,6 @@ class Box extends React.Component {
                 payment_source: paymentType !== '' ? paymentType : 'telenor'
             };
 
-        // console.log('permissionData: ', permissionData);
         PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
@@ -254,17 +242,8 @@ class Box extends React.Component {
                     }
 
                     if(result.code === 0){
-                        // gor mid gdn2
-                        // if(source === 'gdn2' && mid === 'gdn2'){
-                        //     window.gtag_report_conversion()
-                        // }
-                        if(source == 'tp_t10_league'){
-                            window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/L-U1COK0iYYDENqd7IoD'})
-                        }
-
                         // google tag for tracking
-                        window.gtag('event', 'conversion', {'send_to': 'AW-828051162/GsQrCLaf6_MCENqd7IoD'});
-
+                        window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' }); 
                         // T10 League Event
 
                         // Pixel event on subscribe
