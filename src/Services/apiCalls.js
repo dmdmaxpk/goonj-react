@@ -26,6 +26,7 @@ export function getPackages(){
 };
 
 export function CheckLiveStatus(){
+    const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
     let statusData = {

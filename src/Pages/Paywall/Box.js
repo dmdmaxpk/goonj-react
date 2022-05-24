@@ -42,37 +42,40 @@ class Box extends React.Component {
             package_id: packageID1,
             marketing_source: marketingSrc
         }
-        PaywallInstance.post('/payment/status', statusData)
-        .then(res =>{
-            if(res.data.code === -1){
-                statusData.package_id = packageID2;
-                PaywallInstance.post('/payment/status', statusData)
-                .then(response =>{
-                    if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
-                        localStorage.setItem(permission, true);
-                        localStorage.setItem(pkgIdKey, response.data.subscribed_package_id);
-                        localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
-                        localStorage.setItem('userID', response.data.data.user_id);
-                        this.props.history.push(`${url}`);
-                    }
+        if(urlMsisdn){
+            PaywallInstance.post('/payment/status', statusData)
+            .then(res =>{
+                if(res.data.code === -1){
+                    statusData.package_id = packageID2;
+                    PaywallInstance.post('/payment/status', statusData)
+                    .then(response =>{
+                        if(response.data.code === 0 && response.data.data.is_allowed_to_stream === true){
+                            localStorage.setItem(permission, true);
+                            localStorage.setItem(pkgIdKey, response.data.subscribed_package_id);
+                            localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+                            localStorage.setItem('userID', response.data.data.user_id);
+                            this.props.history.push(`${url}`);
+                        }
+                    })
+                }
+                else if(res.data.code === 0 && res.data.data.is_allowed_to_stream === true){
+                    localStorage.setItem(permission, true);
+                    localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
+                    localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+                    localStorage.setItem('userID', res.data.data.user_id);
+                    this.props.history.push(`${url}`);
+                }
+                this.setState({
+                    loading: false
                 })
-            }
-            else if(res.data.code === 0 && res.data.data.is_allowed_to_stream === true){
-                localStorage.setItem(permission, true);
-                localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
-                localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
-                localStorage.setItem('userID', res.data.data.user_id);
-                this.props.history.push(`${url}`);
-            }
-            this.setState({
-                loading: false
             })
-        })
-        .catch(err =>{
-            this.setState({
-                loading: false
+            .catch(err =>{
+                this.setState({
+                    loading: false
+                })
             })
-        })
+        }
+        else this.setState({loading: false})
     }
     handleChange(e){
         if(e.target.value.length < 12){
@@ -195,6 +198,7 @@ class Box extends React.Component {
     }
 
     subscribe(){
+        const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         this.setState({loading: true});
         const {msisdn, paymentType, otp} = this.state;
