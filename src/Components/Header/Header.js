@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../Assets/logo.png";
 import "./Header.scss";
@@ -34,7 +34,10 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
     localStorage.clear();
     window.location.reload();
   };
-  setParams();
+
+  useEffect(() => {
+    setParams();
+  }, []);
 
   let pathname = history.location.pathname.split('/')[1];
   if(pathname === "channel"){
@@ -51,7 +54,7 @@ const Header = ({history,currentUser,currentRoute,hidden,ToggleMenuHidden}) => {
   return (
     <div className="header">
       <div className="header__logo-box" onClick={() => history.push("/home")}>
-        <img src={Logo} alt="logo" className="header__logo" alt="Header logo" />
+        <img src={Logo} className="header__logo" alt="Header logo" />
       </div>
 
       <Hidden mdDown >

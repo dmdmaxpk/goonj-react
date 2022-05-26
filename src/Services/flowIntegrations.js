@@ -10,9 +10,9 @@ export function setParams(){
     console.log("pkg", pkg, "source", source);
     console.log(pkg ? true : false);
     let localSource = localStorage.getItem('source');
+    localStorage.setItem('marketingSrc', marketingSrc);
     if(source){
         localStorage.setItem('source', source);
-        localStorage.setItem('marketingSrc', marketingSrc);
         localStorage.setItem('mid', mid);
         localStorage.setItem('tid', tid);
         if(pkg){
