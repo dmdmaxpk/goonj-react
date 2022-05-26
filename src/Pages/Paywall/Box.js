@@ -247,8 +247,7 @@ class Box extends React.Component {
 
                     if(result.code === 0){
                         // google tag for tracking
-                        window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' }); 
-                        // T10 League Event
+                        window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' });
 
                         // Pixel event on subscribe
                         window.fbq('track', 'Subscribe');
