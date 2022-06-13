@@ -117,7 +117,7 @@ class App extends React.Component {
           <div>
             <Header currentRoute={this.props.location.pathname} /> 
             <Sidebar />
-            <Feedback />
+            {/* <Feedback /> */}
           </div>
         ) : (
           ""
