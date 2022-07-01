@@ -116,7 +116,7 @@ class VodVideoPlayer extends Component {
 
                                    <div>
                                     <div className="views_text"> 
-                                    {this.kFormatter(item.views_count)} views
+                                    {/* {this.kFormatter(item.views_count)} views */}
                                     </div >  
                                     <SocialShare />
                                     </div> 

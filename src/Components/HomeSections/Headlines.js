@@ -103,7 +103,7 @@ class HeadlinesSection extends Component {
                                                     <p>FREE</p>
                                                 </div>
                                                 <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
-                                                <p className="headnlineSource">{item.source} . {item.views_count} views . <ReactTimeAgo date={item.publish_dtm} /></p>
+                                                <p className="headnlineSource">{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p>
                                             </Link>
                                         </div>
                                     )
