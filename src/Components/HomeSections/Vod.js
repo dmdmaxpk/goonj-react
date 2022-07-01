@@ -67,9 +67,9 @@ class VodSection extends Component {
                                         <div className="freeContentDiv freeContentDivRH">
                                             <p>FREE</p>
                                         </div>
-                                        <div className="freeContentDiv freeContentDivRH freeContentDivLH">
+                                        {/* <div className="freeContentDiv freeContentDivRH freeContentDivLH">
                                             <p>{data[0].views_count} views</p>
-                                        </div>
+                                        </div> */}
 
                                         <div className="blockOneDiv">
                                             <div className="title_and_discription">
@@ -96,9 +96,9 @@ class VodSection extends Component {
                                                 <div className="freeContentDiv freeContentDivRH">
                                                     <p>FREE</p>
                                                 </div>
-                                                <div className="freeContentDiv freeContentDivRH freeContentDivLH">
+                                                {/* <div className="freeContentDiv freeContentDivRH freeContentDivLH">
                                                     <p>{data[1].views_count} views</p>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                         <div className="col-lg-12 col-sm-6 col-6 fill padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[2])}>
@@ -110,9 +110,9 @@ class VodSection extends Component {
                                                 <div className="freeContentDiv freeContentDivRH">
                                                     <p>FREE</p>
                                                 </div>
-                                                <div className="freeContentDiv freeContentDivRH freeContentDivLH">
+                                                {/* <div className="freeContentDiv freeContentDivRH freeContentDivLH">
                                                     <p>{data[2].views_count} views</p>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -130,9 +130,9 @@ class VodSection extends Component {
                                             <div className="freeContentDiv freeContentDivRH">
                                                 <p>FREE</p>
                                             </div>
-                                            <div className="freeContentDiv freeContentDivRH freeContentDivLH">
+                                            {/* <div className="freeContentDiv freeContentDivRH freeContentDivLH">
                                                 <p>{data[3].views_count} views</p>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     <div className="col-lg-12 col-sm-6 col-6  vodGI padding_5px vod_5th_img" onClick={()=> this.handleClick(data[4])}>
@@ -144,9 +144,9 @@ class VodSection extends Component {
                                             <div className="freeContentDiv freeContentDivRH">
                                                 <p>FREE</p>
                                             </div>
-                                            <div className="freeContentDiv freeContentDivRH freeContentDivLH">
+                                            {/* <div className="freeContentDiv freeContentDivRH freeContentDivLH">
                                                 <p>{data[4].views_count} views</p>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     </div>
