@@ -2,7 +2,8 @@ export function setParams(){
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let src = urlParams.get("src") ? urlParams.get("src") : '';
-    let source = src ? src : urlParams.get("source");
+    let utmSource = urlParams.get("utm_source");
+    let source = utmSource ? utmSource : src ? src : urlParams.get("source");
     let marketingSrc = urlParams.get("marketingSrc") ? urlParams.get("marketingSrc") : 'na';
     let mid = urlParams.get("mid");
     let tid = urlParams.get("tid");
