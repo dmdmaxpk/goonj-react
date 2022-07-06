@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import AxiosInstance from '../Utils/AxiosInstance';
 import config from '../Utils/config';
 import PaywallInstance from '../Utils/PaywallInstance';
 
@@ -178,3 +179,13 @@ export function subscribeTelenor(url){
       });
       return false;
 }
+
+export function waleePageview(utmSource){
+    AxiosInstance.get(`/walee/pageview?utm_source=${utmSource}`)
+    .then(res =>{
+        const result = res.data;
+    })
+    .catch(err =>{
+        // console.log(err)
+    })
+};

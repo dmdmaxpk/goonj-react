@@ -29,6 +29,7 @@ import SubCategoryPage from "./Pages/VOD/SubCategory";
 import FreeChannel from "./Pages/Live/FreeChannel";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
+import { waleePageview } from "./Services/apiCalls";
 
 
 class App extends React.Component {
@@ -65,9 +66,10 @@ class App extends React.Component {
     }
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+    let utmSource = urlParams.get("utm_source");
     let Urlmsisdn = urlParams.get("msisdn");
     let src = urlParams.get("src") ? urlParams.get("src") : '';
-    let UrlSource = src ? src : urlParams.get("source");
+    let UrlSource = utmSource ? utmSource : src ? src : urlParams.get("source");
     let UrlAccessToken = urlParams.get("access_token");
     let UrlRefreshToken = urlParams.get("refresh_token");
     if(Urlmsisdn){
@@ -81,6 +83,9 @@ class App extends React.Component {
     }
     if(UrlRefreshToken){
       localStorage.setItem('refreshToken', UrlRefreshToken);
+    }
+    if(utmSource){
+      waleePageview(utmSource);
     }
     // if (this.props.location.pathname === "/") {
     //   this.props.history.push("/home");
