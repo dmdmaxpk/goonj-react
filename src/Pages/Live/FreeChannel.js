@@ -27,7 +27,7 @@ class FreeChannel extends Component {
                 <FreePlayer />
                 <div className="liveChannelMarginLeft">
                 <ChannelList classname="liveChannel"/>
-                <PopularList title="Popular on Goonj" classname="liveChannel"  />
+                <PopularList title="Latest on Goonj" classname="liveChannel"  />
                 </div>
             </div>
         );
