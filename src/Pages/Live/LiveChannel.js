@@ -73,7 +73,7 @@ class LiveChannel extends Component {
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
                     <ChannelList classname="liveChannel"/>
-                    <PopularList title="Popular on Goonj" classname="liveChannel"  />
+                    <PopularList title="Latest on Goonj" classname="liveChannel"  />
                 </div>
             </div>
             :
