@@ -72,6 +72,7 @@ class App extends React.Component {
     let UrlSource = utmSource ? utmSource : src ? src : urlParams.get("source");
     let UrlAccessToken = urlParams.get("access_token");
     let UrlRefreshToken = urlParams.get("refresh_token");
+    let mid = urlParams.get("mid");
     if(Urlmsisdn){
       localStorage.setItem('urlMsisdn', Urlmsisdn);
     }
@@ -87,9 +88,9 @@ class App extends React.Component {
     if(utmSource){
       waleePageview(utmSource);
     }
-    // if (this.props.location.pathname === "/") {
-    //   this.props.history.push("/home");
-    // }
+    else if(mid === 'tiktok'){
+      window.ttq.track('ViewContent');
+    }
 
     if((localStorage.getItem('livePermission') && localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
       localStorage.clear();
