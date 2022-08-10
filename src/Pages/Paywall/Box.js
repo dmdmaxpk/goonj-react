@@ -226,6 +226,10 @@ class Box extends React.Component {
                 payment_source: paymentType !== '' ? paymentType : 'telenor'
             };
 
+        if(mid === 'tiktok'){
+          window.ttq.track('ClickButton');
+        }
+
         PaywallInstance.post(`/payment/subscribe`, permissionData)
             .then(res =>{
                 const result = res.data;
@@ -258,6 +262,10 @@ class Box extends React.Component {
                                 "type": "Confirmation"
                             }
                         };
+
+                        if(mid === 'tiktok'){
+                            window.ttq.track('Subscribe');
+                        }
                     }
                     
                     // redirecting
