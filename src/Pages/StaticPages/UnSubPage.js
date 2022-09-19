@@ -28,33 +28,51 @@ class UnSubPage extends Component {
   cancel = () => {
     this.props.history.push('/');
   }
-  handleSubmit = () => {
+  handleSubmit = (packageId) => {
     let unsubData = {
       msisdn: this.state.msisdn,
       user_id: this.state.user_ID,
       source: this.state.sourcee,
-      package_id: this.state.package_ID,
+      package_id: packageId ? packageId : 'QDfG',
     };
     if(this.state.user_ID != null || this.state.msisdn != null){
     Axios.post(`${config.apiBaseUrl}/payment/status`, unsubData)
-      .then((res) => {
+      .then(async(res) => {
         let result = res.data;
         if (result.code == -1 && result.message) {
           this.setState({ messageText: "User does not exist" });
-        } else if (result.data.auto_renewal == true) {
-          Axios.post(`${config.apiBaseUrl}/payment/sms-unsub`, unsubData).then((res) => {
+        } else if (result.data.auto_renewal == true && result.data.subscription_status !== 'expired') {
+          delete unsubData.package_id;
+          
+          await Axios.post(`${config.apiBaseUrl}/payment/sms-unsub`, unsubData).then((res) => {
             let result = res.data;
           });
-          this.setState({ messageText: "You have been Unsubscribed" });
-        } else if (result.data.auto_renewal == false) {
-          this.setState({ messageText: "You are already Unsubscribed" });
+          
+          this.setState({ messageText: "You have been Unsubscribed", unsubConfirmed: true });
+          setTimeout(() => {
+            this.props.history.push('/');
+          }, 10000);
+
+        } else if (result.data.auto_renewal === false) {
+          if(!packageId){
+            this.handleSubmit('QDfC');
+          } else {
+            this.setState({ messageText: "You are already Unsubscribed" });
+          }
         } else if (result.code == -1 && !result.data.auto_renewal) {
-          this.setState({ messageText: "You do not have this package" });
+          if(!packageId){
+            this.handleSubmit('QDfC');
+          } else {
+            this.setState({ messageText: "You do not have this package" });
+          }
         }
-        this.setState({ unsubConfirmed: true });
-        setTimeout(() => {
-          this.props.history.push('/');
-        }, 10000);
+
+        if(packageId){
+          this.setState({ unsubConfirmed: true });
+          setTimeout(() => {
+            this.props.history.push('/');
+          }, 10000);
+        }
       })
       .catch((err) => {
       });
@@ -72,7 +90,7 @@ class UnSubPage extends Component {
             {this.state.unsubConfirmed === false ?
               <div className="unsubDiv">
                 <h3>Are you sure you want to unsubscribe?</h3>
-                <Button variant="contained" color="primary" className="btnSubmitUnsub" onClick={this.handleSubmit}>Confirm</Button>
+                <Button variant="contained" color="primary" className="btnSubmitUnsub" onClick={() => this.handleSubmit()}>Confirm</Button>
                 <Button variant="contained" color="secondary" className="btnCancelUnsub" onClick={this.cancel}>Cancel</Button>
               </div>
             :
