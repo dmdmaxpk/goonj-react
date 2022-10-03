@@ -51,12 +51,14 @@ class Home extends Component {
     renderComponent(e){
         if(e==0){
             return  <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />
-        }else if(e==1){
-            return  <div id="youtubeBanner" style={{display: this.state.bannerDisplay}} className="youtubeBanner">
-                        <a href="https://www.youtube.com/channel/UCE126WZCUfLqOpcxRo55KYg" target="_blank"><img src={require('../../Assets/youtube.png')} /></a>
-                        <Close style={{fill: "white"}} className="btnClose" onClick={this.closeBanner} color="primary"/>
-                    </div>
-        }else if(e==2){
+        }
+        // else if(e==1){
+        //     return  <div id="youtubeBanner" style={{display: this.state.bannerDisplay}} className="youtubeBanner">
+        //                 <a href="https://www.youtube.com/channel/UCE126WZCUfLqOpcxRo55KYg" target="_blank"><img src={require('../../Assets/youtube.png')} /></a>
+        //                 <Close style={{fill: "white"}} className="btnClose" onClick={this.closeBanner} color="primary"/>
+        //             </div>
+        // }
+        else if(e==2){
             return  <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
         }else if(e==3){
             return <DramasSection title="Pakistani Dramas" category="drama" /> 

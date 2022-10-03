@@ -43,3 +43,11 @@ button{
   border-radius: 5px;
   /* font-size: 35px; */
 }
+.playStoreRoundIcon{
+  position: fixed;
+  right: 2vw;
+  bottom: 17vh;
+  border-radius: 50%;
+  background-color: white;
+  /* color: green; */
+}

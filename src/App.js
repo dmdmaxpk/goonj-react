@@ -30,7 +30,7 @@ import FreeChannel from "./Pages/Live/FreeChannel";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 import { waleePageview } from "./Services/apiCalls";
-
+import PlayStoreIcon from "./Assets/playstore-round.webp";
 
 class App extends React.Component {
   installPrompt = null;
@@ -179,6 +179,7 @@ class App extends React.Component {
         </Switch>
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en" className="playStoreRoundIcon"><img className="playStoreRoundImg" src={PlayStoreIcon} /></a>
             <Tooltip title="Contact us at 03401832782" placement="left">
               <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
