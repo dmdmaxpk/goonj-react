@@ -1,0 +1,31 @@
+.stickyBannerContainer{
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 1vh 0 0 4vw;
+    z-index: 999999;
+    color: white;
+}
+.centerElementVertical{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.sbLogoImg{
+    width: 25vw;
+    height: 5vh;
+}
+.sbBtnGrid{
+    position: relative;
+}
+.sbBtn{
+    background-color: #4aa6e5;
+    left: 10vw;
+}
+.sbCloseIcon{
+    position: absolute;
+    top: 0;
+    right: 2vw;
+}
