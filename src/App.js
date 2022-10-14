@@ -14,23 +14,17 @@ import VodPage from "./Pages/VOD/VodPage";
 import LiveTv from "./Pages/Live/LiveTvList";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
-import ComedyPaywall from "./Pages/Paywall/ComedyPaywall";
 import Profile from "./Pages/Profile/Profile";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
-import Feedback from "./Components/Feedback/Feedback";
-import MainCategory from "./Pages/VOD/MainCategory";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
-import FreeChannel from "./Pages/Live/FreeChannel";
-import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 import { waleePageview } from "./Services/apiCalls";
-import PlayStoreIcon from "./Assets/playstore-round.webp";
+import StickyBanner from "./Components/StickyBanner/StickyBanner";
 
 class App extends React.Component {
   installPrompt = null;
@@ -179,17 +173,20 @@ class App extends React.Component {
         </Switch>
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en" className="playStoreRoundIcon"><img className="playStoreRoundImg" src={PlayStoreIcon} /></a>
+            {/* <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en" className="playStoreRoundIcon"><img className="playStoreRoundImg" src={PlayStoreIcon} /></a> */}
+            
             <Tooltip title="Contact us at 03401832782" placement="left">
               <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
             </Tooltip>
             <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a>
+            
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
             <Footer/>
           </div>
         :
           ''
         }
+        <StickyBanner />
       </div>
     );
   }
