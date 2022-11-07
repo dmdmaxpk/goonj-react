@@ -48,14 +48,14 @@ class Footer extends Component {
                 <img className="footerPlaystoreImg" src={require('../../Assets/playstore-footer.png')} alt="playstoreLink" />
               </a>
             </GridItem>
-            <Hidden mdUp>
+            {/* <Hidden mdUp>
               <GridItem xs={12} sm={12} md={3}>
                 <p className="footerHeadings">Unsubscribe via Whatsapp</p>
                 <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484">
                   <img className="footerPlaystoreImg" style={{marginTop: "-20px"}} src={require('../../Assets/whatsapp.png')} alt="playstoreLink" />
                 </a>
               </GridItem>
-            </Hidden>
+            </Hidden> */}
             <Hidden mdDown>
             <GridItem xs={6} sm={6} md={3}>
               <p className="footerHeadings">Live Channels</p>
@@ -85,13 +85,13 @@ class Footer extends Component {
                     info@goonj.com, support@goonj.com
                   </p>
                 </GridItem>
-                <GridItem xs={6} sm={6} md={12}>
+                {/* <GridItem xs={6} sm={6} md={12}>
                   <a href="mailto:support@goonj.com"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="email us" /></a>
                   <p className="footerPs contactUsPs">
                     Whatsapp :{'\n'}
                     <a target="_blank" style={{textDecoration: 'none', color: 'white'}} href="https://api.whatsapp.com/send?phone=923427729484">+923427729484</a>
                   </p>
-                </GridItem>
+                </GridItem> */}
                 <GridItem xs={6} sm={6} md={12}>
                   <p className="footerPs followUsP">Follow us : </p>
                   <a target="_blank" href="https://www.facebook.com/GoonjLive/"><img className="contactUsImg" src={require('../../Assets/fb.png')} alt="Facebook" /></a>

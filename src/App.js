@@ -175,9 +175,9 @@ class App extends React.Component {
           <div>
             {/* <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en" className="playStoreRoundIcon"><img className="playStoreRoundImg" src={PlayStoreIcon} /></a> */}
             
-            <Tooltip title="Contact us at 03401832782" placement="left">
+            {/* <Tooltip title="Contact us at 03401832782" placement="left">
               <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
-            </Tooltip>
+            </Tooltip> */}
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a> */}
             
             {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
