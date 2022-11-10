@@ -71,13 +71,13 @@ class Footer extends Component {
             <GridItem xs={6} sm={6} md={3}>
               <p className="footerHeadings">Contact Us</p>
               <GridContainer>
-                <GridItem xs={6} sm={6} md={12}>
+                {/* <GridItem xs={6} sm={6} md={12}>
                   <a href="tel:03401832782"><img className="contactUsImg" src={require('../../Assets/call.png')} alt="call us" /></a>
                   <p className="footerPs contactUsPs">
                     Call us :{'\n'}
                     03401832782
                   </p>
-                </GridItem>
+                </GridItem> */}
                 <GridItem xs={6} sm={6} md={12}>
                   <a href="mailto:support@goonj.com"><img className="contactUsImg" src={require('../../Assets/email.png')} alt="email us" /></a>
                   <p className="footerPs contactUsPs">
