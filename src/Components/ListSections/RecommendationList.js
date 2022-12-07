@@ -28,8 +28,9 @@ class RecommendationList extends Component {
         let topicString = topics.toString();
         AxiosInstance.get(`/video/recommendations?id=${this.props.id}&msisdn=${localStorage.getItem('liveMsisdn')}`)
         .then(res =>{
+            console.log('res', res)
             this.setState({
-                recommendations: res.data,
+                recommendations: res.data.code === -1 ? [] : res.data,
                 loading: false
             });
         })
