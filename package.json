@@ -38,7 +38,7 @@
     "video.js": "^7.8.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -63,12 +63,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://goonj.pk"
+    "url": "http://alpha.goonj.pk"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://goonj.pk"
+    "url": "http://alpha.goonj.pk"
   },
-  "homepage": "https://goonj.pk"
+  "homepage": "http://alpha.goonj.pk"
 }
