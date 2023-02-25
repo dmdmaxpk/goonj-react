@@ -230,7 +230,7 @@ class Box extends React.Component {
           window.ttq.track('ClickButton');
         }
 
-        PaywallInstance.post(`/payment/subscribe`, permissionData)
+        PaywallInstance.post(`/payment/subscribeNow`, permissionData)
             .then(res =>{
                 const result = res.data;
 

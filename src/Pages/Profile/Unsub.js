@@ -89,7 +89,7 @@ class Unsub extends Component {
             package_id: displayPackageId
         }
         // console.log(subData);
-        PaywallInstance.post('/payment/subscribe', subData)
+        PaywallInstance.post('/payment/subscribeNow', subData)
         .then(res =>{
             let result = res.data;
             if(result.code === -1){
