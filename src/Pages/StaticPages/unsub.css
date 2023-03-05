@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+.unsub {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  background-color: #14182a;
+  color: #d8d9db;
+}
+
+.unsub .container {
+  margin-right: auto;
+}
+
+.unsub .openModalBtn {
+  width: 90px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  background-color: #30a1e6;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-left: 50px;
+}
+
+.unsub h2{
+  font-size: x-large;
+  font-family:Helvetica;
+  margin-left: 100px;
+}
+
+input[type="number"]{
+  height: 20%;
+  width: 50%;
+  font-size: 11px;
+  padding: 9px;
+  border-radius: 20px;
+  margin-left: 20px;
+  outline: none;
+  background-color: whitesmoke;
+  -moz-unsubearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+  -webkit-unsubearance: none;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@media only screen and (min-width: 480px){
+  .font_size{
+      font-size: xx-large;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .notFoundImg{
+      width: 100vw !important;
+  }
+}

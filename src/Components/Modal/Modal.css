@@ -1,0 +1,100 @@
+/*pop css file*/
+/*rgb(14, 14, 33) blueish*/
+/*rgb(199, 199, 201) greyish */
+
+.consent{
+  color: #fcfcfc;
+  margin-top: 5px;
+  font-size: large;
+  flex-direction: column;
+}
+.modalBackground {
+  width: 1000vw;
+  height: 100vh;
+  background-color: rgb(14, 14, 33);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(40%, 120%);
+  width: 400px;
+  height: 70px;
+  border-radius: 30px;
+  background-color: #14182a;
+  box-shadow: #14182a;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.modalContainer .title {
+  display: inline-block;
+  text-align: center;
+  margin-top: -35px;
+}
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.0rem;
+  text-align: center;
+}
+
+.modalContainer .footer {
+  margin-bottom: -40px;
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: auto;
+  margin: 7px;
+  border: none;
+  background-color: #30a1e6;
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  margin-left: -60px;
+  background-color: #ff0000;
+}
+
+#confirmBtn {
+  margin-right: -50px;
+}
+
+.modalRight {
+  width: 100%;
+}
+
+.closeBtn {
+  position: fixed;
+  top: 8px;
+  /*right: 8px;*/
+  margin-right: 5vw !important;
+}
+
+
+@media only screen and (min-width: 480px){
+  .font_size{
+      font-size: xx-large;
+  }
+}
+
+@media only screen and (max-width: 480px){
+  .notFoundImg{
+      width: 100vw !important;
+  }
+}

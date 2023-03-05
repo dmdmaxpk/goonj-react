@@ -21,6 +21,7 @@ import TermsConditions from "./Pages/StaticPages/TermsConditions";
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
+import unsub from "./Pages/StaticPages/unsub";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 import { waleePageview } from "./Services/apiCalls";
@@ -167,6 +168,7 @@ class App extends React.Component {
           </Route>
           <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
+          <Route exact path="/unsub" component={unsub} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
