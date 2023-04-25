@@ -8,8 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
 import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
-import MainCategory from '../VOD/MainCategory';
-import { Close } from '@material-ui/icons';
+import PaywallInstance from '../../Utils/PaywallInstance';
 
 
 class Home extends Component {
@@ -19,17 +18,88 @@ class Home extends Component {
             loading: true,
             items: Array.from({ length: 3 }),
             hasMore: true,
-            bannerDisplay: "block"
+            bannerDisplay: "block",
+            statusCode: new URLSearchParams(this.props.location.search).get("statusCode") ? new URLSearchParams(this.props.location.search).get("statusCode") : undefined,
+            msisdn: new URLSearchParams(this.props.location.search).get("msisdn") ? new URLSearchParams(this.props.location.search).get("msisdn") : undefined
+        }
+
+        // trial or billed
+        // 01 -trial
+        // 02 - billed
+        if(this.state.statusCode === '01' || this.state.statusCode === '02') {
+            localStorage.setItem('livePermission', true);
+            console.log('live permission set to true');
+
+            if(this.state.msisdn) {
+                localStorage.setItem('liveMsisdn', this.state.msisdn);
+                console.log('live url set to ', this.state.msisdn);
+            }
         }
     }
 
     // update 2
-
     closeBanner = () => {
         this.setState({
             bannerDisplay: "none"
         })
     }
+
+    // subscribe(){
+    //     const payload = {
+    //         msisdn: localStorage.getItem('liveMsisdn'),
+    //         source: 'web',
+    //         payment_source: 'telenor',
+    //         package_id: ''
+    //     }
+
+    //     PaywallInstance.post(`/payment/subscribe`, payload)
+    //     .then(res =>{
+    //         const result = res.data;
+
+    //         if(result.code === -1){
+    //             this.setState({loading: false});
+    //             alert(res.data.message);
+    //         }
+            
+    //         else if(result.code === 9 || result.code === 10 || result.code === 11 || result.code === 0){
+    //             localStorage.setItem(permission, true);
+    //             localStorage.setItem(pkgIdKey, packageID2);
+    //             let urlMsisdn = localStorage.getItem('urlMsisdn'); 
+    //             if(urlMsisdn){
+    //                 localStorage.setItem(msisdnKey, urlMsisdn)
+    //             }
+    //             else{
+    //                 localStorage.setItem(msisdnKey, msisdn);
+    //             }
+
+    //             if(result.code === 0){
+    //                 // google tag for tracking
+    //                 window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' });
+
+    //                 // Pixel event on subscribe
+    //                 window.fbq('track', 'Subscribe');
+                    
+    //                 // useInsider
+    //                 window.insider_object = {
+    //                     "page": {
+    //                         "type": "Confirmation"
+    //                     }
+    //                 };
+
+    //                 if(mid === 'tiktok'){
+    //                     window.ttq.track('Subscribe');
+    //                 }
+    //             }
+                
+    //             // redirecting
+    //             this.props.history.push(`${url}`);
+    //         }
+    //     })
+    //     .catch(err =>{
+    //         this.setState({loading: false});
+    //         alert("Something went wrong! :(");
+    //     })
+    // }
 
     fetchMoreData = () => {
         if (this.state.items.length >= 10) {
