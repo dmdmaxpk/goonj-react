@@ -167,6 +167,7 @@ class App extends React.Component {
           </Route>
           <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
           <Route exact path="/unsubscribe" component={Unsubscribe} />
+          <Route exact path="/unsub" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
