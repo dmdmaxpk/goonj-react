@@ -16,7 +16,8 @@ class LivePaywall extends Component {
         packageID2: 'QDfG',
         doubleConsent: false,
         packagePrice1: '',
-        packagePrice2: ''
+        packagePrice2: '',
+        serviceId2: '99146'
         }
     }
     componentDidMount(){
@@ -34,6 +35,7 @@ class LivePaywall extends Component {
             packageID1: packageData[0]._id,
             packagePrice2: packageData[1].package_desc,
             packageID2: packageData[1]._id,
+            serviceId2: packageData[1].pid
         })
         })
     }
@@ -65,6 +67,7 @@ class LivePaywall extends Component {
                                 msisdn={this.props.msisdn}
                                 source={source}
                                 unsubStatus={"liveSub"}
+                                serviceId2={this.state.serviceId2}
                             />
                             <div className="chargesBox lightFont">
                             <p className="cbText1">

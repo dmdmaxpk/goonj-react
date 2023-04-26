@@ -151,7 +151,7 @@ class Box extends React.Component {
     verifyOtp(e){
         e.preventDefault();
         const {msisdn, otp} = this.state;
-        const {packageID2, url, slug, permission, pkgIdKey, msisdnKey, source} = this.props;
+        const {packageID2, url, slug, permission, pkgIdKey, msisdnKey, source, serviceId2} = this.props;
         let otpData = {
             msisdn,
             source,
@@ -180,13 +180,24 @@ class Box extends React.Component {
                     })
                 }
                 if(result.code === 7){
-                    var accessToken = result.access_token;
-                    var refreshToken = result.refresh_token;
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    if(result.subscription_status == undefined){
-                    }
-                    this.subscribe();
+                    // generate cms link
+                    PaywallInstance.post('/payment/cms-token', {msisdn, serviceId: serviceId2})
+                    .then(res => {
+                        console.log('CMS token generated: ', res.data);
+
+                        let token = res.data.response.token;
+                        window.location.href = `https://api.telenor.com.pk/cms/v1/redirect?${token}`;
+                    }).catch(err => {
+                        console.error(err);
+                    })
+
+                    // var accessToken = result.access_token;
+                    // var refreshToken = result.refresh_token;
+                    // localStorage.setItem('accessToken', accessToken);
+                    // localStorage.setItem('refreshToken', refreshToken);
+                    // if(result.subscription_status == undefined){
+                    // }
+                    // this.subscribe();
                 }
                 else{
                     alert(result.message);

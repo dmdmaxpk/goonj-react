@@ -8,13 +8,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
 import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
-import PaywallInstance from '../../Utils/PaywallInstance';
-
+import { Button, Snackbar } from '@material-ui/core';
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state ={
+            displayMessage: false,
+            message: 'You have been successfully subscribed, watch live tv anytime, anywhere',
             loading: true,
             items: Array.from({ length: 3 }),
             hasMore: true,
@@ -29,11 +30,16 @@ class Home extends Component {
         if(this.state.statusCode === '01' || this.state.statusCode === '02') {
             localStorage.setItem('livePermission', true);
             console.log('live permission set to true');
+            this.state.displayMessage = true;
 
             if(this.state.msisdn) {
                 localStorage.setItem('liveMsisdn', this.state.msisdn);
                 console.log('live url set to ', this.state.msisdn);
             }
+        }else{
+            this.state.displayMessage = false;
+            localStorage.setItem('livePermission', false);
+            console.log('live permission set to false');
         }
     }
 
@@ -155,26 +161,36 @@ class Home extends Component {
                     <div className="homeContainer">
                         <PosterSlider />
                         <div className="homeSections">
-                        <InfiniteScroll
-                            dataLength={this.state.items.length}
-                            next={this.fetchMoreData}
-                            hasMore={this.state.hasMore}
-                            >
-                            {this.state.items.map((i, index) => (
-                                <div>
-                                    {this.renderComponent(index)}
-                                </div> 
-                            ))}
-                        </InfiniteScroll>
+                            <InfiniteScroll
+                                dataLength={this.state.items.length}
+                                next={this.fetchMoreData}
+                                hasMore={this.state.hasMore}
+                                >
+                                {this.state.items.map((i, index) => (
+                                    <div>
+                                        {this.renderComponent(index)}
+                                    </div> 
+                                ))}
+                            </InfiniteScroll>
 
 
-                        {/* <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />
-                        <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
-                        <DramasSection category="entertainment" /> 
-                        <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
-                        <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
-                        <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" /> */}
+                            {/* <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />
+                            <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList"/></div>
+                            <DramasSection category="entertainment" /> 
+                            <HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" />
+                            <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports"  classname="sportsContainer" />
+                            <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" /> */}
                         </div>
+                        <Snackbar
+                                severity="success"
+                                open={this.state.displayMessage}
+                                autoHideDuration={8000}
+                                ContentProps={{
+                                    'aria-describedby': 'message-id',
+                                }}
+                                message={<span id="message-id">{this.state.message}</span>}
+                                onClose={() => this.setState({displayMessage: false})}
+                            />
                     </div>
                 }
             </div>

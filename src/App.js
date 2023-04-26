@@ -18,8 +18,6 @@ import Profile from "./Pages/Profile/Profile";
 import PageNotFound from "./Pages/StaticPages/PageNotFound";
 import PrivacyPolicy from "./Pages/StaticPages/PrivacyPolicy";
 import TermsConditions from "./Pages/StaticPages/TermsConditions";
-import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
-import { Tooltip } from "@material-ui/core";
 import Unsubscribe from "./Pages/StaticPages/UnSubPage";
 import SubCategoryPage from "./Pages/VOD/SubCategory";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
