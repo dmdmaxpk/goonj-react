@@ -186,7 +186,7 @@ class Box extends React.Component {
                         console.log('CMS token generated: ', res.data);
 
                         let token = res.data.response.token;
-                        window.location.href = `https://api.telenor.com.pk/cms/v1/redirect?${token}`;
+                        window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
                     }).catch(err => {
                         console.error(err);
                     })
