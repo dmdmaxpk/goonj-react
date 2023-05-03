@@ -181,23 +181,23 @@ class Box extends React.Component {
                 }
                 if(result.code === 7){
                     // generate cms link
-                    PaywallInstance.post('/payment/cms-token', {msisdn, serviceId: serviceId2})
-                    .then(res => {
-                        console.log('CMS token generated: ', res.data);
+                    // PaywallInstance.post('/payment/cms-token', {msisdn, serviceId: serviceId2})
+                    // .then(res => {
+                    //     console.log('CMS token generated: ', res.data);
 
-                        let token = res.data.response.token;
-                        window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
-                    }).catch(err => {
-                        console.error(err);
-                    })
+                    //     let token = res.data.response.token;
+                    //     window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
+                    // }).catch(err => {
+                    //     console.error(err);
+                    // })
 
-                    // var accessToken = result.access_token;
-                    // var refreshToken = result.refresh_token;
-                    // localStorage.setItem('accessToken', accessToken);
-                    // localStorage.setItem('refreshToken', refreshToken);
-                    // if(result.subscription_status == undefined){
-                    // }
-                    // this.subscribe();
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                    if(result.subscription_status == undefined){
+                    }
+                    this.subscribe();
                 }
                 else{
                     alert(result.message);
@@ -209,84 +209,102 @@ class Box extends React.Component {
     }
 
     subscribe(){
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        this.setState({loading: true});
         const {msisdn, paymentType, otp} = this.state;
-        const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
-        let mid = localStorage.getItem('mid');
-        const marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
-        let tid = localStorage.getItem('tid');
-        const permissionData = (source !== "web") ?
-            {
-                msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
-                package_id: packageID2,
-                source,
-                otp: paymentType === 'telenor' ? undefined : otp,
-                payment_source: paymentType !== '' ? paymentType : 'telenor',
-                marketing_source: marketingSrc,
-                affiliate_unique_transaction_id: tid,
-                affiliate_mid: mid
-            }
-            :
-            {
-                msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
-                package_id: packageID2,
-                source,
-                otp: paymentType === 'telenor' ? undefined : otp,
-                payment_source: paymentType !== '' ? paymentType : 'telenor'
-            };
 
-        if(mid === 'tiktok'){
-          window.ttq.track('ClickButton');
-        }
+        // generate cms link
+        let payload = {msisdn, serviceId: this.props.serviceId2};
+        console.log('Payload', payload);
 
-        PaywallInstance.post(`/payment/subscribe`, permissionData)
-            .then(res =>{
-                const result = res.data;
+        PaywallInstance.post('/payment/cms-token', payload)
+        .then(res => {
+            console.log('CMS token generated: ', res.data);
+            console.log('CMS token: ', res.data.response.token);
 
-                if(result.code === -1){
-                    this.setState({loading: false});
-                    alert(res.data.message);
-                }
-                else if(result.code === 9 || result.code === 10 || result.code === 11 || result.code === 0){
-                    localStorage.setItem(permission, true);
-                    localStorage.setItem(pkgIdKey, packageID2);
-                    let urlMsisdn = localStorage.getItem('urlMsisdn'); 
-                    if(urlMsisdn){
-                        localStorage.setItem(msisdnKey, urlMsisdn)
-                    }
-                    else{
-                        localStorage.setItem(msisdnKey, msisdn);
-                    }
+            let token = res.data.response.token;
+            window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
+        }).catch(err => {
+            console.error(err);
+        })
 
-                    if(result.code === 0){
-                        // google tag for tracking
-                        window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' });
 
-                        // Pixel event on subscribe
-                        window.fbq('track', 'Subscribe');
+
+        // const queryString = window.location.search;
+        // const urlParams = new URLSearchParams(queryString);
+        // this.setState({loading: true});
+        // const {packageID2, permission, url, slug, msisdnKey, pkgIdKey, source} = this.props;
+        // let mid = localStorage.getItem('mid');
+        // const marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
+        // let tid = localStorage.getItem('tid');
+        // const permissionData = (source !== "web") ?
+        //     {
+        //         msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
+        //         package_id: packageID2,
+        //         source,
+        //         otp: paymentType === 'telenor' ? undefined : otp,
+        //         payment_source: paymentType !== '' ? paymentType : 'telenor',
+        //         marketing_source: marketingSrc,
+        //         affiliate_unique_transaction_id: tid,
+        //         affiliate_mid: mid
+        //     }
+        //     :
+        //     {
+        //         msisdn: msisdn ? msisdn : localStorage.getItem('urlMsisdn'),
+        //         package_id: packageID2,
+        //         source,
+        //         otp: paymentType === 'telenor' ? undefined : otp,
+        //         payment_source: paymentType !== '' ? paymentType : 'telenor'
+        //     };
+
+        // if(mid === 'tiktok'){
+        //   window.ttq.track('ClickButton');
+        // }
+
+        // PaywallInstance.post(`/payment/subscribe`, permissionData)
+        //     .then(res =>{
+        //         const result = res.data;
+
+        //         if(result.code === -1){
+        //             this.setState({loading: false});
+        //             alert(res.data.message);
+        //         }
+        //         else if(result.code === 9 || result.code === 10 || result.code === 11 || result.code === 0){
+        //             localStorage.setItem(permission, true);
+        //             localStorage.setItem(pkgIdKey, packageID2);
+        //             let urlMsisdn = localStorage.getItem('urlMsisdn'); 
+        //             if(urlMsisdn){
+        //                 localStorage.setItem(msisdnKey, urlMsisdn)
+        //             }
+        //             else{
+        //                 localStorage.setItem(msisdnKey, msisdn);
+        //             }
+
+        //             if(result.code === 0){
+        //                 // google tag for tracking
+        //                 window.gtag('event', 'conversion', { 'send_to': 'AW-828051162/xpLgCPWNicADENqd7IoD', 'transaction_id': '' });
+
+        //                 // Pixel event on subscribe
+        //                 window.fbq('track', 'Subscribe');
                         
-                        // useInsider
-                        window.insider_object = {
-                            "page": {
-                                "type": "Confirmation"
-                            }
-                        };
+        //                 // useInsider
+        //                 window.insider_object = {
+        //                     "page": {
+        //                         "type": "Confirmation"
+        //                     }
+        //                 };
 
-                        if(mid === 'tiktok'){
-                            window.ttq.track('Subscribe');
-                        }
-                    }
+        //                 if(mid === 'tiktok'){
+        //                     window.ttq.track('Subscribe');
+        //                 }
+        //             }
                     
-                    // redirecting
-                    this.props.history.push(`${url}`);
-                }
-            })
-            .catch(err =>{
-                this.setState({loading: false});
-                alert("Something went wrong! :(");
-            })
+        //             // redirecting
+        //             this.props.history.push(`${url}`);
+        //         }
+        //     })
+        //     .catch(err =>{
+        //         this.setState({loading: false});
+        //         alert("Something went wrong! :(");
+        //     })
     }
     cancel(){
         this.setState({doubleConsent: false});
