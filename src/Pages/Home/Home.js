@@ -27,19 +27,21 @@ class Home extends Component {
         // trial or billed
         // 01 -trial
         // 02 - billed
-        if(this.state.statusCode === '01' || this.state.statusCode === '02') {
-            localStorage.setItem('livePermission', true);
-            console.log('live permission set to true');
-            this.state.displayMessage = true;
-
-            if(this.state.msisdn) {
-                localStorage.setItem('liveMsisdn', this.state.msisdn);
-                console.log('live url set to ', this.state.msisdn);
+        // 03 - already exist
+        if(this.state.statusCode === '01' || this.state.statusCode === '02' || this.state.statusCode === '03') {
+            
+            if(this.state.statusCode === '03'){
+                this.state.message = 'You are already subscribed, continue watching...';
+            }else if(this.state.statusCode === '01') {
+                this.state.message = 'You trial has been activated, continue watching...';
             }
+            
+            //{permission: true, livePackageId: QDfC, liveMsisdn: 03476733767}
+            this.state.displayMessage = true;
+            localStorage.setItem('livePermission', true);
         }else{
             this.state.displayMessage = false;
             localStorage.setItem('livePermission', false);
-            console.log('live permission set to false');
         }
     }
 

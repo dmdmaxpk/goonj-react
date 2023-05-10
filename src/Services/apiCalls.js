@@ -27,6 +27,7 @@ export function getPackages(){
 };
 
 export function CheckLiveStatus(){
+    //alert('check live status')
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let marketingSrc = urlParams.get('marketingSrc') ? urlParams.get('marketingSrc') : localStorage.getItem('marketingSrc') ? localStorage.getItem('marketingSrc') : 'na';
@@ -50,24 +51,22 @@ export function CheckLiveStatus(){
                 localStorage.removeItem('livePackageId');
                 localStorage.removeItem('liveSub');
             }
-            else if(result.is_allowed_to_stream === true){
-                if(result.subscription_status == "trial" || result.subscription_status == "billed" || (result.queued === true && result.subscription_status == "not_billed")){
-                    localStorage.setItem('livePermission', true);
-                    localStorage.setItem('liveMsisdn', liveMsisdn);
-                    localStorage.setItem('livePackageId', livePackageId);
-                    localStorage.setItem('liveSubExpiry', result.next_billing_timestamp);
-                    localStorage.setItem('userID', result.user_id);
-                    let userID = result.user_id;
-                    let localUserId = localStorage.hasOwnProperty(userID);
-                    if(localUserId === false){
-                        // console.log("check user", userID)
-                        localStorage.setItem(userID, 1);
-                        localStorage.setItem('feedback', false);
-                    }
-                    // if(refresh){
-                    //     window.location.href = window.location.pathname;
-                    // }
+            else if(result.is_allowed_to_stream === true && result.subscription_status === "trial" || result.subscription_status === "billed"){
+                localStorage.setItem('livePermission', true);
+                localStorage.setItem('liveMsisdn', liveMsisdn);
+                localStorage.setItem('livePackageId', livePackageId);
+                localStorage.setItem('liveSubExpiry', result.next_billing_timestamp);
+                localStorage.setItem('userID', result.user_id);
+                let userID = result.user_id;
+                let localUserId = localStorage.hasOwnProperty(userID);
+                if(localUserId === false){
+                    // console.log("check user", userID)
+                    localStorage.setItem(userID, 1);
+                    localStorage.setItem('feedback', false);
                 }
+                // if(refresh){
+                //     window.location.href = window.location.pathname;
+                // }
             }
             if(result.auto_renewal == true){
                 localStorage.setItem('liveSub', "active");

@@ -161,46 +161,36 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
             .then(res =>{
                 const result = res.data;
-                if(result.is_allowed_to_stream === true){
-                    var accessToken = result.access_token;
-                    var refreshToken = result.refresh_token;
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    if(result.subscription_status === "billed" || result.subscription_status === "trial"){
+                //alert(JSON.stringify(result));
+                if(result.code === 7) {
+                    localStorage.setItem(pkgIdKey, result.subscribed_package_id);
+                    localStorage.setItem(msisdnKey, msisdn);
+                    localStorage.setItem('userID', result.user_id);
+
+                    if(result.is_allowed_to_stream === true && (result.subscription_status === "billed" || result.subscription_status === "trial" || result.subscription_status === "graced")){
+                        var accessToken = result.access_token;
+                        var refreshToken = result.refresh_token;
+                        localStorage.setItem('accessToken', accessToken);
+                        localStorage.setItem('refreshToken', refreshToken);
+                        
                         localStorage.setItem(permission, true);
-                        localStorage.setItem(pkgIdKey, packageID2);
+                        localStorage.setItem(pkgIdKey, result.subscribed_package_id);
                         localStorage.setItem(msisdnKey, msisdn);
                         localStorage.setItem('userID', result.user_id);
+                        alert(`{permission: true, ${pkgIdKey}: ${result.subscribed_package_id}, ${msisdnKey}: ${msisdn}}`);
+
                         this.props.history.push(`${url}`);
-                    }
-                }
-                else if(result.subscription_status === "graced" && result.is_allowed_to_stream === false){
-                    this.setState({
-                        step: 3
-                    })
-                }
-                if(result.code === 7){
-                    // generate cms link
-                    // PaywallInstance.post('/payment/cms-token', {msisdn, serviceId: serviceId2})
-                    // .then(res => {
-                    //     console.log('CMS token generated: ', res.data);
+                    }else if(result.subscription_status === "expired" || result.subscription_status === undefined) {
+                        localStorage.setItem(permission, false);
 
-                    //     let token = res.data.response.token;
-                    //     window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
-                    // }).catch(err => {
-                    //     console.error(err);
-                    // })
-
-                    var accessToken = result.access_token;
-                    var refreshToken = result.refresh_token;
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
-                    if(result.subscription_status == undefined){
+                        this.subscribe();//this.setState({ step: 3 })
+                    }else{
+                        localStorage.setItem(permission, false);
+                        alert('You are not allowed to watch stream. Possible cause: ' + result.message);
                     }
-                    this.subscribe();
-                }
-                else{
-                    alert(result.message);
+                }else{
+                    localStorage.setItem(permission, false);
+                    alert('Invalid OTP');
                 }
             })
             .catch(err =>{
