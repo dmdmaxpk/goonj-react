@@ -32,7 +32,7 @@ class Home extends Component {
         if(this.state.respCode === '00' || this.state.respCode === '02' || this.state.respCode === '03') {
             
             if(this.state.respCode === '00') {
-                this.state.message = 'You are all set, watch LIVE TV anytime, anywhere',
+                this.state.message = 'You are all set, watch LIVE TV anytime, anywhere';
                 localStorage.setItem('livePermission', true);
             }else if(this.state.respCode === '03'){
                 this.state.message = 'You are already subscribed, continue watching...';
