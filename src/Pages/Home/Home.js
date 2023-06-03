@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 import PosterSlider from '../../Components/HomeSections/PosterSlider';
 import ChannelList from '../../Components/ListSections/ChannelList';
 import DramasSection from '../../Components/HomeSections/Dramas';
@@ -20,27 +20,34 @@ class Home extends Component {
             items: Array.from({ length: 3 }),
             hasMore: true,
             bannerDisplay: "block",
-            statusCode: new URLSearchParams(this.props.location.search).get("statusCode") ? new URLSearchParams(this.props.location.search).get("statusCode") : undefined,
+            respCode: new URLSearchParams(this.props.location.search).get("respCode") ? new URLSearchParams(this.props.location.search).get("respCode") : undefined,
             msisdn: new URLSearchParams(this.props.location.search).get("msisdn") ? new URLSearchParams(this.props.location.search).get("msisdn") : undefined
         }
 
         // trial or billed
-        // 01 -trial
-        // 02 - billed
-        // 03 - already exist
-        if(this.state.statusCode === '01' || this.state.statusCode === '02' || this.state.statusCode === '03') {
+        // 01 -trial -- 00 = billed/success/trial/pre-active
+        // 02 - billed -- 01 = error
+        // 03 - already exist -- 02 = low-balance
+        //                       03 = already subscribed
+        if(this.state.respCode === '00' || this.state.respCode === '02' || this.state.respCode === '03') {
             
-            if(this.state.statusCode === '03'){
+            if(this.state.respCode === '00') {
+                this.state.message = 'You are all set, watch LIVE TV anytime, anywhere',
+                localStorage.setItem('livePermission', true);
+            }else if(this.state.respCode === '03'){
                 this.state.message = 'You are already subscribed, continue watching...';
-            }else if(this.state.statusCode === '01') {
-                this.state.message = 'You trial has been activated, continue watching...';
+                localStorage.setItem('livePermission', true);
+            }else if(this.state.respCode === '02') {
+                this.state.message = 'Insufficiant balance, try again later';
+                localStorage.setItem('livePermission', false);
             }
             
             //{permission: true, livePackageId: QDfC, liveMsisdn: 03476733767}
             this.state.displayMessage = true;
-            localStorage.setItem('livePermission', true);
+            
         }else{
-            this.state.displayMessage = false;
+            this.state.message = 'Failed to subscribe, try again later';
+            this.state.displayMessage = true;
             localStorage.setItem('livePermission', false);
         }
     }
