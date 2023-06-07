@@ -18,6 +18,8 @@ class Box extends React.Component {
             msisdn: '',
             source: localStorage.getItem('source'),
             otp: '',
+            token: '',
+            serviceId: '99144',
             packageId: '',
             doubleConsent: false,
             radio: this.props.packageID1,
@@ -27,7 +29,8 @@ class Box extends React.Component {
         this.selectPayment = this.selectPayment.bind(this);
         this.sendOtp = this.sendOtp.bind(this);
         this.verifyOtp = this.verifyOtp.bind(this);
-        this.subscribe = this.subscribe.bind(this);
+        this.redirectOtp = this.redirectOtp.bind(this);
+        //this.subscribe = this.subscribe.bind(this);
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
@@ -148,7 +151,7 @@ class Box extends React.Component {
         }
     }
 
-    verifyOtp(e){
+    /*verifyOtp(e){
         e.preventDefault();
         const {msisdn, otp} = this.state;
         const {packageID2, url, slug, permission, pkgIdKey, msisdnKey, source} = this.props;
@@ -195,9 +198,85 @@ class Box extends React.Component {
             .catch(err =>{
                 alert(err);
             })
+    }*/
+
+    verifyOtp(e) {
+        e.preventDefault();
+        const { msisdn, otp } = this.state;
+        const { packageID2, url, slug, permission, pkgIdKey, msisdnKey, source } = this.props;
+        let otpData = {
+          msisdn,
+          source,
+          otp,
+          package_id: packageID2
+        };
+    
+        PaywallInstance.post('/payment/otp/verify', otpData)
+          .then(res =>{
+            const result = res.data;
+            if (result.is_allowed_to_stream === true) {
+              // OTP validation successful
+              var accessToken = result.access_token;
+              var refreshToken = result.refresh_token;
+              localStorage.setItem('accessToken', accessToken);
+              localStorage.setItem('refreshToken', refreshToken);
+    
+              if (result.subscription_status === "billed" || result.subscription_status === "trial") {
+                localStorage.setItem(permission, true);
+                localStorage.setItem(pkgIdKey, packageID2);
+                localStorage.setItem(msisdnKey, msisdn);
+                localStorage.setItem('userID', result.user_id);
+                this.props.history.push(`${url}`);
+              } 
+              /*else if(result.subscription_status === "graced" && result.is_allowed_to_stream === false){
+                this.setState({
+                    step: 3
+                })}*/
+              if (result.code === 7) {
+                // Subscription needs to be bypassed
+                var accessToken = result.access_token;
+                var refreshToken = result.refresh_token;
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('refreshToken', refreshToken);
+                if(result.subscription_status == undefined){
+                }
+                this.redirectOtp();
+                }
+              else {
+                // Handle other cases here
+                // For example, display a message or perform some action
+                console.log(result.message);
+                }
+            }
+          })
+          .catch(err => {
+            // Handle error here
+            // For example, display a message or perform some action
+            console.log(err);
+          });
+     }
+
+     redirectOtp() {
+        const { msisdn, serviceId, token } = this.state;
+    
+        let redirData = {
+          msisdn,
+          serviceId
+        };
+        //PaywallInstance.post('/payment/cms-token',redirData)
+        PaywallInstance.post('https://api.goonj.pk/v2/payment/cms-token', redirData)
+          .then((response) => {
+            this.token = response.data.response.token;
+            this.setState({ token });
+            // Display token in an alert
+            alert("Token: " + this.token);
+          })
+          .catch((error) => {
+            console.error("Error making API request:", error);
+          });
     }
 
-    subscribe(){
+    /*subscribe(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         this.setState({loading: true});
@@ -276,7 +355,8 @@ class Box extends React.Component {
                 this.setState({loading: false});
                 alert("Something went wrong! :(");
             })
-    }
+    }*/
+
     cancel(){
         this.setState({doubleConsent: false});
     }
@@ -310,7 +390,7 @@ class Box extends React.Component {
                             <button className="arrowBtnBack" onClick={()=> this.setState({step: 0})}>
                                 <ArrowBackRoundedIcon />
                             </button>
-                            <button className="arrowBtnForward" onClick={(this.state.paymentType === 'telenor' && localStorage.getItem('urlMsisdn')) ? this.subscribe : this.sendOtp}>
+                            <button className="arrowBtnForward" onClick={(this.state.paymentType === 'telenor' && localStorage.getItem('urlMsisdn')) ? this.redirectOtp : this.sendOtp}>
                                 <ArrowForwardRoundedIcon />
                             </button>
                         </div>
@@ -324,7 +404,7 @@ class Box extends React.Component {
                             <button className="arrowBtnBack" onClick={()=> this.setState({step: 1})}>
                                 <ArrowBackRoundedIcon />
                             </button>
-                            <button className="arrowBtnForward" onClick={this.state.paymentType === 'telenor' ? this.verifyOtp : this.subscribe}>
+                            <button className="arrowBtnForward" onClick={this.state.paymentType === 'telenor' ? this.verifyOtp : this.redirectOtp}>
                                 <ArrowForwardRoundedIcon />
                             </button>
                         </div>
