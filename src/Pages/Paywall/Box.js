@@ -270,6 +270,11 @@ class Box extends React.Component {
             this.setState({ token });
             // Display token in an alert
             alert("Token: " + this.token);
+            
+        
+            var redirectURL = 'https://apis.telenor.com.pk/cms/v1/redirect?token=' + this.token;
+            // Perform the redirect
+            window.location.href = redirectURL;
           })
           .catch((error) => {
             console.error("Error making API request:", error);

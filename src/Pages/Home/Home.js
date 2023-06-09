@@ -6,6 +6,7 @@ import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
 import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
 import MainCategory from '../VOD/MainCategory';
@@ -19,7 +20,25 @@ class Home extends Component {
             loading: true,
             items: Array.from({ length: 3 }),
             hasMore: true,
+            code: '',
             bannerDisplay: "block"
+        }
+        this.checkRespCode = this.checkRespCode.bind(this);
+    }
+
+    //respCode checks 
+    checkRespCode() {
+        console.log("checkResponse function working");
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const respCode = urlParams.get('respCode');
+        // Check the value of "respCode" and show the dialog accordingly
+        if (respCode === '03') {
+        // User is already subscribed
+            alert('Already subscribed');
+        } else if (respCode === '01') {
+        // User successfully subscribed
+            alert('Subscription successful');
         }
     }
 
@@ -107,6 +126,7 @@ class Home extends Component {
                         </div>
                     </div>
                 }
+                    {this.checkRespCode()}
             </div>
         );
     }
