@@ -102,6 +102,7 @@ class Home extends Component {
                     </div>
                 :
                     <div className="homeContainer">
+                        {this.checkRespCode()} {/* alert message 2 times, once when page loads, second when you scroll */}
                         <PosterSlider />
                         <div className="homeSections">
                         <InfiniteScroll
@@ -126,7 +127,6 @@ class Home extends Component {
                         </div>
                     </div>
                 }
-                    {this.checkRespCode()}
             </div>
         );
     }

@@ -214,40 +214,32 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/otp/verify', otpData)
           .then(res =>{
             const result = res.data;
-            if (result.is_allowed_to_stream === true) {
-              // OTP validation successful
-              var accessToken = result.access_token;
-              var refreshToken = result.refresh_token;
-              localStorage.setItem('accessToken', accessToken);
-              localStorage.setItem('refreshToken', refreshToken);
-    
-              if (result.subscription_status === "billed" || result.subscription_status === "trial") {
-                localStorage.setItem(permission, true);
-                localStorage.setItem(pkgIdKey, packageID2);
-                localStorage.setItem(msisdnKey, msisdn);
-                localStorage.setItem('userID', result.user_id);
-                this.props.history.push(`${url}`);
-              } 
-              /*else if(result.subscription_status === "graced" && result.is_allowed_to_stream === false){
-                this.setState({
-                    step: 3
-                })}*/
-              if (result.code === 7) {
-                // Subscription needs to be bypassed
-                var accessToken = result.access_token;
-                var refreshToken = result.refresh_token;
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('refreshToken', refreshToken);
-                if(result.subscription_status == undefined){
+            if(result.code === 7)
+            {
+                if(result.subscription_status === "billed")
+                {
+                    //bypass all steps and display live channel
+                    localStorage.setItem(permission, true);
+                    localStorage.setItem(pkgIdKey, packageID2);
+                    localStorage.setItem(msisdnKey, msisdn);
+                    localStorage.setItem('userID', result.user_id);
+                    this.props.history.push(`${url}`);
                 }
-                this.redirectOtp();
-                }
-              else {
-                // Handle other cases here
-                // For example, display a message or perform some action
-                console.log(result.message);
+                else{
+                    // fetch token using dynamic service id and follow all steps developed earlier
+                    var accessToken = result.access_token;
+                    var refreshToken = result.refresh_token;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                    this.redirectOtp();
                 }
             }
+            else{
+                // show popup
+                // display message.
+                console.log(result.message);
+            }
+              
           })
           .catch(err => {
             // Handle error here
@@ -395,7 +387,7 @@ class Box extends React.Component {
                             <button className="arrowBtnBack" onClick={()=> this.setState({step: 0})}>
                                 <ArrowBackRoundedIcon />
                             </button>
-                            <button className="arrowBtnForward" onClick={(this.state.paymentType === 'telenor' && localStorage.getItem('urlMsisdn')) ? this.redirectOtp : this.sendOtp}>
+                            <button className="arrowBtnForward" onClick={(this.state.paymentType === 'telenor' && localStorage.getItem('urlMsisdn')) ? this.verifyOtp : this.sendOtp}>
                                 <ArrowForwardRoundedIcon />
                             </button>
                         </div>
@@ -409,7 +401,7 @@ class Box extends React.Component {
                             <button className="arrowBtnBack" onClick={()=> this.setState({step: 1})}>
                                 <ArrowBackRoundedIcon />
                             </button>
-                            <button className="arrowBtnForward" onClick={this.state.paymentType === 'telenor' ? this.verifyOtp : this.redirectOtp}>
+                            <button className="arrowBtnForward" onClick={this.state.paymentType === 'telenor' ? this.redirectOtp : this.verifyOtp}>
                                 <ArrowForwardRoundedIcon />
                             </button>
                         </div>
