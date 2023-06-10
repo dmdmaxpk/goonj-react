@@ -25,11 +25,11 @@ class Home extends Component {
         }
 
         // trial or billed
-        // 01 -trial -- 00 = billed/success/trial/pre-active
-        // 02 - billed -- 01 = error
-        // 03 - already exist -- 02 = low-balance
-        //                       03 = already subscribed
-        if(this.state.respCode === '00' || this.state.respCode === '02' || this.state.respCode === '03') {
+        //  00 = billed/success/trial/pre-active
+        //  01 = error
+        //  02 = low-balance
+        //  03 = already subscribed
+        if(this.state.respCode === '00' || this.state.respCode === '01' || this.state.respCode === '02' || this.state.respCode === '03') {
             
             if(this.state.respCode === '00') {
                 this.state.message = 'You are all set, watch LIVE TV anytime, anywhere';
@@ -40,14 +40,16 @@ class Home extends Component {
             }else if(this.state.respCode === '02') {
                 this.state.message = 'Insufficiant balance, try again later';
                 localStorage.setItem('livePermission', false);
+            }else{
+                this.state.message = 'Failed to subscribe, try again later';
+                localStorage.setItem('livePermission', false);
             }
             
             //{permission: true, livePackageId: QDfC, liveMsisdn: 03476733767}
             this.state.displayMessage = true;
             
         }else{
-            this.state.message = 'Failed to subscribe, try again later';
-            this.state.displayMessage = true;
+            this.state.displayMessage = false;
             localStorage.setItem('livePermission', false);
         }
     }

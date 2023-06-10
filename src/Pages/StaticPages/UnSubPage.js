@@ -91,33 +91,19 @@ class UnSubPage extends Component {
         let result = res.data;
         if (result.code == -1 && result.message) {
           this.setState({ messageText: "User does not exist" });
-        } else if (result.data.auto_renewal == true && result.data.subscription_status !== 'expired') {
+        } else if (result.data.subscription_status !== 'expired') {
           delete unsubData.package_id;
           
-          await Axios.post(`${config.apiBaseUrl}/payment/sms-unsub`, unsubData).then((res) => {
-            let result = res.data;
-          });
+          await Axios.post(`${config.apiBaseUrl}/payment/sms-unsub`, unsubData);
           
           this.setState({ messageText: "You have been Unsubscribed", unsubConfirmed: true });
           setTimeout(() => {
             this.props.history.push('/');
           }, 10000);
 
-        } else if (result.data.auto_renewal === false) {
-          if(!packageId){
-            this.handleSubmit('QDfC');
-          } else {
-            this.setState({ messageText: "You are already Unsubscribed" });
-          }
-        } else if (result.code == -1 && !result.data.auto_renewal) {
-          if(!packageId){
-            this.handleSubmit('QDfC');
-          } else {
-            this.setState({ messageText: "You do not have this package" });
-          }
-        }else if(result.code === 0 && result.data.subscription_status === 'expired') {
-          this.setState({ messageText: "You are already unsubscribed" });
-        }
+        } else {
+          this.setState({ messageText: "You are already Unsubscribed" });
+        } 
 
         if(packageId){
           this.setState({ unsubConfirmed: true });
