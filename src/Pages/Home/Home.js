@@ -11,6 +11,7 @@ import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
 import MainCategory from '../VOD/MainCategory';
 import { Close } from '@material-ui/icons';
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 
 class Home extends Component {
@@ -23,24 +24,37 @@ class Home extends Component {
             code: '',
             bannerDisplay: "block"
         }
-        this.checkRespCode = this.checkRespCode.bind(this);
+        //this.checkRespCode = this.checkRespCode.bind(this);
     }
 
     //respCode checks 
-    checkRespCode() {
+    componentDidMount() {
+        // Make your API call here and handle the response
+        // Assuming you have the respCode in the state or props
+    
+        //const { respCode } = this.props;
         console.log("checkResponse function working");
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const respCode = urlParams.get('respCode');
-        // Check the value of "respCode" and show the dialog accordingly
+
         if (respCode === '03') {
-        // User is already subscribed
-            alert('Already subscribed');
+          this.addToast('You are already subscribed, continue watching', 'success');
         } else if (respCode === '01') {
-        // User successfully subscribed
-            alert('Subscription successful');
+          this.addToast('Failed to subscribe, please try again later', 'error');
+        } else if (respCode === '00') {
+          this.addToast('You are all set, continue watching anytime anywhere', 'info');
         }
-    }
+      }
+    
+      addToast = (message, appearance) => {
+        const { addToast } = this.props.toast;
+    
+        addToast(message, {
+          appearance,
+          autoDismiss: true,
+        });
+      }
 
     // update 2
 
@@ -102,7 +116,7 @@ class Home extends Component {
                     </div>
                 :
                     <div className="homeContainer">
-                        {this.checkRespCode()} {/* alert message 2 times, once when page loads, second when you scroll */}
+                        {/* {this.checkRespCode()}  alert message 2 times, once when page loads, second when you scroll */}
                         <PosterSlider />
                         <div className="homeSections">
                         <InfiniteScroll
@@ -130,6 +144,23 @@ class Home extends Component {
             </div>
         );
     }
+
 }
  
-export default Home;
+//export default Home;
+
+export default function WrappedComponent(props) {
+    return (
+      <ToastProvider>
+        <ToastComponent {...props} />
+      </ToastProvider>
+    );
+  }
+  
+  function ToastComponent(props) {
+    const toast = useToasts();
+  
+    return (
+      <Home toast={toast} {...props} />
+    );
+  }

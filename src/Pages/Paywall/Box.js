@@ -278,7 +278,7 @@ class Box extends React.Component {
               this.token = response.data.response.token;
               this.setState({ token });
               // Display token in an alert
-              alert("Token: " + this.token);
+              //alert("Token: " + this.token);
               
           
               var redirectURL = 'https://apis.telenor.com.pk/cms/v1/redirect?token=' + this.token;
