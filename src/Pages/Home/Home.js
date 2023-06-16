@@ -31,8 +31,8 @@ class Home extends Component {
     componentDidMount() {
         // Make your API call here and handle the response
         // Assuming you have the respCode in the state or props
-    
-        //const { respCode } = this.props;
+        const permission = this.props;
+        
         console.log("checkResponse function working");
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -40,10 +40,13 @@ class Home extends Component {
 
         if (respCode === '03') {
           this.addToast('You are already subscribed, continue watching', 'success');
+          localStorage.setItem(permission, true);
         } else if (respCode === '01') {
           this.addToast('Failed to subscribe, please try again later', 'error');
+          localStorage.setItem(permission, false);
         } else if (respCode === '00') {
           this.addToast('You are all set, continue watching anytime anywhere', 'info');
+          localStorage.setItem(permission, true);
         }
       }
     
