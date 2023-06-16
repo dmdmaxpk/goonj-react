@@ -40,13 +40,13 @@ class Home extends Component {
 
         if (respCode === '03') {
           this.addToast('You are already subscribed, continue watching', 'success');
-          localStorage.setItem(permission, true);
+          localStorage.setItem('livePermission', true);
         } else if (respCode === '01') {
           this.addToast('Failed to subscribe, please try again later', 'error');
-          localStorage.setItem(permission, false);
+          localStorage.setItem('livePermission', false);
         } else if (respCode === '00') {
           this.addToast('You are all set, continue watching anytime anywhere', 'info');
-          localStorage.setItem(permission, true);
+          localStorage.setItem('livePermission', true);
         }
       }
     

@@ -217,17 +217,19 @@ class Box extends React.Component {
             const result = res.data;
             if(result.code === 7)
             {
+                localStorage.setItem('liveMsisdn', msisdn);
+
                 if(result.subscription_status === "billed")
                 {
                     //bypass all steps and display live channel
-                    localStorage.setItem(permission, true);
+                    localStorage.setItem('livePermission', true);
                     localStorage.setItem(pkgIdKey, packageID2);
-                    localStorage.setItem(msisdnKey, msisdn);
                     localStorage.setItem('userID', result.user_id);
                     this.props.history.push(`${url}`);
                 }
                 else{
-                    // fetch token using dynamic service id and follow all steps developed earlier
+                    // fetch token using dynamic service id and follow all steps developed earlier\
+                    localStorage.setItem('livePermission', false);
                     var accessToken = result.access_token;
                     var refreshToken = result.refresh_token;
                     localStorage.setItem('accessToken', accessToken);
@@ -236,6 +238,7 @@ class Box extends React.Component {
                 }
             }
             else{
+                localStorage.removeItem('liveMsisdn');
                 // show popup
                 // display message.
                 console.log(result.message);
