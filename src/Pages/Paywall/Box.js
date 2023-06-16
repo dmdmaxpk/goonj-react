@@ -156,7 +156,7 @@ class Box extends React.Component {
     }
 
     //old if-else conditions
-    verifyOtp(e){
+    /*verifyOtp(e){
         e.preventDefault();
         const {msisdn, otp} = this.state;
         const {packageID2, url, slug, permission, pkgIdKey, msisdnKey, source} = this.props;
@@ -198,10 +198,10 @@ class Box extends React.Component {
             .catch(err =>{
                 alert(err);
             })
-    }
+    }*/
 
     //new if-else conditions
-    /*verifyOtp(e) {
+    verifyOtp(e) {
         e.preventDefault();
         const { msisdn, otp } = this.state;
         const { packageID2, url, slug, permission, pkgIdKey, msisdnKey, source } = this.props;
@@ -247,7 +247,7 @@ class Box extends React.Component {
             // For example, display a message or perform some action
             console.log(err);
           });
-     }*/
+     }
 
      async redirectOtp() {
         const {msisdn,  token} = this.state;
