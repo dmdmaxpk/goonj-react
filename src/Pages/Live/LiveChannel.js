@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import VideoPlayer from '../../Components/Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
@@ -12,17 +13,20 @@ class LiveChannel extends Component {
         this.state = { 
             status: false,
             loading: true
-         }
-         this.checkStatus = this.checkStatus.bind(this);
+        }
+        this.checkStatus = this.checkStatus.bind(this);
     }
+
     componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.slug !== nextProps.match.params.slug) {
+        if (this.props.match.params.slug !== nextProps.match.params.slug) {
             window.location.reload();
         }
     }
+
     componentDidMount(){
         this.checkStatus();
     }
+
     checkStatus(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -38,42 +42,44 @@ class LiveChannel extends Component {
             source,
             package_id
         }
-        if(msisdn){
 
+        // If 'source=mta', set status to true without going through paywall
+        if (source === 'mta') {
+            this.setState({
+            loading: false,
+            status: true
+            });
+        } 
+        else if (msisdn) {
             PaywallInstance.post('/payment/status', statusData)
-            .then(res =>{
-            const result = res.data.data;
-            if(res.data.code === -1){
+            .then(res => {
+                const result = res.data.data;
+                if (res.data.code === -1) {
                 localStorage.clear();
-                // console.log("here here")
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
-            }
-            else if(result.is_allowed_to_stream === true){
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${this.props.match.params.slug}&msisdn=${msisdn}&source=${source}`); // Include source in the redirection URL
+                } else if (result.is_allowed_to_stream === true) {
                 this.setState({
                     loading: false,
                     status: true
-                })
-            }
-            else{
-                // console.log("in here");
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&msisdn=${msisdn}`);
-            }
-            })
-        }
-        else{
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
+                });
+                } else {
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&msisdn=${msisdn}&source=${source}`);
+                }
+            });
+        } else {
+            this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&source=${source}`);
         }
     }
 
     render(){
         const slug = this.props.match.params.slug;
-        return(
-            this.state.loading === false & this.state.status === true ?
+        return (
+            this.state.loading === false && this.state.status === true ?
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
-                    <ChannelList classname="liveChannel"/>
-                    <PopularList title="Latest on Goonj" classname="liveChannel"  />
+                    <ChannelList classname="liveChannel" source={this.props.location.search} />
+                    <PopularList title="Latest on Goonj" classname="liveChannel" />
                 </div>
             </div>
             :
@@ -81,5 +87,5 @@ class LiveChannel extends Component {
         );
     }
 }
- 
+
 export default withRouter(LiveChannel);

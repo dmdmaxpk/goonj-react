@@ -5,13 +5,13 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
-import LiveChannel from "./Pages/Live/LiveChannel";
 import Footer from "./Components/Footer/Footer";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import ChannelVodPage from "./Pages/VOD/ChannelVods";
 import CategoryVodPage from "./Pages/VOD/CategoryVods";
 import VodPage from "./Pages/VOD/VodPage";
 import LiveTv from "./Pages/Live/LiveTvList";
+import LiveChannel from "./Pages/Live/LiveChannel";
 import Binjee from "./Pages/Binjee/Binjee";
 import LivePaywall from "./Pages/Paywall/LivePaywall";
 import Profile from "./Pages/Profile/Profile";
@@ -136,21 +136,13 @@ class App extends React.Component {
           <Route exact path="/terms-conditions" component={TermsConditions} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/live-tv" component={LiveTv} />
-          <Route exact path="/channel/:slug" component={LiveChannel} />
+          <Route exact path="/channel/:slug" component={LiveChannel} /> {/* Live Channel free if source=mta */}
           {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
           {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
           <Route exact path="/searchresults" component={SearchPage} />
           <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
-          <Route
-            exact
-            path="/category/:category/page/:pageNumber"
-            component={CategoryVodPage}
-          />
-          <Route
-            exact
-            path="/source/:source/page/:pageNumber"
-            component={ChannelVodPage}
-          />
+          <Route exact path="/category/:category/page/:pageNumber" component={CategoryVodPage}/>
+          <Route exact path="/source/:source/page/:pageNumber" component={ChannelVodPage}/>
           <Route exact path="/binjee" component={Binjee}>
             <Redirect to="/home" />
           </Route>

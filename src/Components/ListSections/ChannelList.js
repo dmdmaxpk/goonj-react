@@ -17,19 +17,41 @@ class ChannelList extends Component {
         }
         this.handleRedirect = this.handleRedirect.bind(this);
     }
+
     componentDidMount(){
         AxiosInstance.get('/live')
-        .then(res =>{
-            this.setState({data: res.data})
-        })
+            .then(res =>{
+                this.setState({data: res.data})
+            });
     }
 
     handleRedirect(item){
-        let permission = localStorage.getItem('livePermission');
-        let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        return url;
-    }
+            let permission = localStorage.getItem('livePermission');
+            let Urlmsisdn = localStorage.getItem('urlMsisdn');
+            let url;
+            
+            // Add your custom condition here to check for specific channels that don't need the paywall
+            const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+            const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
+          
+            if (isChannelWithoutPaywall) {
+              url = `/channel/${item.slug}`;
+            } else {
+              // Add the source=mta check here
+              const queryString = window.location.search;
+              const urlParams = new URLSearchParams(queryString);
+              const source = urlParams.get('source');
+          
+              url = permission
+                ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`
+                : Urlmsisdn
+                ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`
+                : `${config.hepage}?slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`;
+            }
+          
+            return url;
+          }
+
     render() {
         var settings = {
             dots: false,
@@ -39,33 +61,33 @@ class ChannelList extends Component {
             slidesToScroll: 1,
             responsive: [
                 {
-                  breakpoint: 3000,
-                  settings: {
-                    slidesToShow: 8.5,
-                    slidesToScroll: 3,
-                    initialSlide: 0,
-                    arrow: true
-                  }
+                    breakpoint: 3000,
+                    settings: {
+                        slidesToShow: 8.5,
+                        slidesToScroll: 3,
+                        initialSlide: 0,
+                        arrow: true
+                    }
                 },
                 {
-                  breakpoint: 600,
-                  settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    initialSlide: 0
-                  }
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        initialSlide: 0
+                    }
                 },
                 {
-                  breakpoint: 480,
-                  settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    initialSlide: 0,
-                    arrows: true
-                  }
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        initialSlide: 0,
+                        arrows: true
+                    }
                 }
             ]
-          };
+        };
 
         return (
             <div className={this.props.class}>
@@ -74,7 +96,7 @@ class ChannelList extends Component {
                 <fadeleft className="channelLeftFade"/>
                     {this.state.data.length > 0 ?
                         <Slider className="channelSlider" {...settings}>
-                             {
+                            {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug}>
                                         <a href={this.handleRedirect(item)}>
@@ -86,10 +108,8 @@ class ChannelList extends Component {
                                         </a>
                                     </div>
                                 )
-                               
                             }
-                         
-                         </Slider>
+                        </Slider>
                     : <Loader />
                     }
                 <faderight className="channelRightFade"/>
@@ -98,5 +118,5 @@ class ChannelList extends Component {
         );
     }
 }
- 
+
 export default ChannelList;
