@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import VideoPlayer from '../../Components/Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
@@ -6,6 +5,8 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-RXE717ZSC2');
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -49,6 +50,8 @@ class LiveChannel extends Component {
             loading: false,
             status: true
             });
+            //this.triggerChannelAccessEvent(this.props.match.params.slug);
+            this.triggerChannelAccessEvent(slug); // Trigger the event when source=mta
         } 
         else if (msisdn) {
             PaywallInstance.post('/payment/status', statusData)
@@ -70,6 +73,15 @@ class LiveChannel extends Component {
             this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&source=${source}`);
         }
     }
+
+    triggerChannelAccessEvent(channelSlug) {
+        ReactGA.initialize('G-RXE717ZSC2');
+        ReactGA.event({
+          category: 'Channel Access',
+          action: 'Channel Accessed',
+          label: channelSlug
+        });
+      }
 
     render(){
         const slug = this.props.match.params.slug;
