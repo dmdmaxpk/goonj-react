@@ -1,3 +1,4 @@
+//sidebar.js
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -102,11 +103,12 @@ export default function MiniDrawer(props) {
             <ListItemText className="sidebarTabsText" primary="Home" />
         </ListItem>
         <Divider />
-        <ListItem component={Link} to="/live-tv" button key="Live TV" style={{color:"white"}}>
-            <Tooltip title="Live TV" placement="right">
-              <ListItemIcon className={isActive('/live-tv')}><LiveTvIcon style={{fontSize:'23px'}} /></ListItemIcon>
-            </Tooltip>
-            <ListItemText className="sidebarTabsText" primary="Live TV" />
+        <ListItem component={Link} to={{pathname: "/live-tv",search: `?source=${new URLSearchParams(window.location.search).get('source')}`,}}button key="Live TV" style={{ color: "white" }}>
+                <Tooltip title="Live TV" placement="right">
+                  <ListItemIcon className={isActive('/live-tv')}>
+                    <LiveTvIcon style={{ fontSize: '23px' }} /></ListItemIcon>
+          </Tooltip>
+          <ListItemText className="sidebarTabsText" primary="Live TV" />
         </ListItem>
         <Divider />
         <ListItem button key="vods" style={{color:"white"}}>

@@ -1,3 +1,4 @@
+//ChannelList.js
 import React, { Component } from 'react';
 import AxiosInstance from "../../Utils/AxiosInstance";
 import config from '../../Utils/config';
@@ -8,6 +9,7 @@ import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { data } from 'jquery';
+import ReactGA from 'react-ga';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -29,15 +31,55 @@ class ChannelList extends Component {
             let permission = localStorage.getItem('livePermission');
             let Urlmsisdn = localStorage.getItem('urlMsisdn');
             let url;
-            
+
             // Add your custom condition here to check for specific channels that don't need the paywall
             const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
           
             if (isChannelWithoutPaywall) {
-              url = `/channel/${item.slug}`;
-            } else {
-              // Add the source=mta check here
+                // Redirect directly to channel for free if source=mta
+                url = `/channel/${item.slug}`;
+                //console.log(item.slug);
+
+                /*
+                // Create custom events for MTA channels
+                if (this.props.source === 'mta') {
+                    console.log("in if condition where live channel info to displayed");
+                    switch (item.slug) {
+                    case 'bol':
+                        console.log("MTA-bol event triggered")
+                        ReactGA.event({
+                        category: 'MTA_bol',
+                        action: 'MTA_bol_channel_visited',
+                        label: window.location.href // Include the page location in the 'label' parameter
+                        });
+                        break;
+
+                    case 'express-news':
+                        console.log("MTA-express event triggered")
+                        ReactGA.event({
+                        category: 'MTA_express',
+                        action: 'MTA_express_channel_visited',
+                        label: window.location.href // Include the page location in the 'label' parameter
+                        });
+                        break;
+
+                    case 'urdu-1':
+                        console.log("MTA-urdu1 event triggered")
+                        ReactGA.event({
+                        category: 'MTA_urdu1',
+                        action: 'MTA_urdu1_channel_visited',
+                        label: window.location.href // Include the page location in the 'label' parameter
+                        });
+                        break;
+
+                    default:
+                        break;
+                    }
+                }*/
+            } 
+            
+            else {
               const queryString = window.location.search;
               const urlParams = new URLSearchParams(queryString);
               const source = urlParams.get('source');
@@ -50,9 +92,13 @@ class ChannelList extends Component {
             }
           
             return url;
-          }
+        }
 
+        
     render() {
+
+        const { source } = this.props; // Get the 'source' prop from props
+
         var settings = {
             dots: false,
             arrows: true,

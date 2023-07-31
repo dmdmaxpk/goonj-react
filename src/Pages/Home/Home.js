@@ -1,6 +1,9 @@
+//Home.js
+import { withRouter } from 'react-router-dom';
 import React, { Component, Suspense } from 'react';
 import PosterSlider from '../../Components/HomeSections/PosterSlider';
 import ChannelList from '../../Components/ListSections/ChannelList';
+import LiveTv from '../Live/LiveTvList';
 import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
@@ -58,7 +61,13 @@ class Home extends Component {
                 //</div>
             //);
         else if (e === 2) {
-            return <div className="channelM-T"><ChannelList pageMargin="homePageMargin" classname="channelList" source={this.props.location.search} /></div>;
+            console.log(this.props.location.search);
+            return (
+                <div className="channelM-T">
+                  {/* Pass the 'source' prop to the ChannelList component */}
+                  <ChannelList source={new URLSearchParams(this.props.location.search).get('source')} />
+                </div>
+              );
         } else if (e === 3) {
             return <DramasSection title="Pakistani Dramas" category="drama" />;
         } else if (e === 4) {
@@ -104,4 +113,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default withRouter(Home);

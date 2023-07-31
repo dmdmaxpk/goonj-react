@@ -1,3 +1,4 @@
+//LiveChannel.js
 import React, { Component } from 'react';
 import VideoPlayer from '../../Components/Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
@@ -6,7 +7,11 @@ import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-RXE717ZSC2');
+
+
+// Initialize Google Analytics with your GA4 Measurement ID
+ReactGA.initialize('G-RXE717ZSC2'); 
+
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -50,8 +55,6 @@ class LiveChannel extends Component {
             loading: false,
             status: true
             });
-            //this.triggerChannelAccessEvent(this.props.match.params.slug);
-            this.triggerChannelAccessEvent(slug); // Trigger the event when source=mta
         } 
         else if (msisdn) {
             PaywallInstance.post('/payment/status', statusData)
@@ -74,15 +77,6 @@ class LiveChannel extends Component {
         }
     }
 
-    triggerChannelAccessEvent(channelSlug) {
-        ReactGA.initialize('G-RXE717ZSC2');
-        ReactGA.event({
-          category: 'Channel Access',
-          action: 'Channel Accessed',
-          label: channelSlug
-        });
-      }
-
     render(){
         const slug = this.props.match.params.slug;
         return (
@@ -90,6 +84,7 @@ class LiveChannel extends Component {
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
+                    {/* Passing 'source' prop to ChannelList component */}
                     <ChannelList classname="liveChannel" source={this.props.location.search} />
                     <PopularList title="Latest on Goonj" classname="liveChannel" />
                 </div>

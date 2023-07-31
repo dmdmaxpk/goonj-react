@@ -1,3 +1,4 @@
+//LiveTvList.js
 import React, { Component } from 'react';
 import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
@@ -25,12 +26,36 @@ class LiveTv extends Component {
          
         })
     }
-    handleRedirect(item){
+          
+    handleRedirect(item) {
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let url;
+      
+       // console.log('Item:', item);
+        //console.log('source:', this.props.source);
+      
+       // if (this.props.source === 'mta') {
+          const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+          const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
+      
+          console.log('Is Channel Without Paywall:', isChannelWithoutPaywall);
+      
+          if (isChannelWithoutPaywall) {
+            // Redirect directly to channel for free if source=mta
+            url = `/channel/${item.slug}`;
+          }
+        //} 
+          else {
+          // Add your existing logic for other scenarios (non-MTA channels) here
+          url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        }
+      
+       // console.log('Final URL:', url);
         return url;
-    }
+      }
+      
+
     render(){
         let data = this.state.data;
 
