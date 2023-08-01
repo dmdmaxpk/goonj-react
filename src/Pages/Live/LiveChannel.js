@@ -6,11 +6,11 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
 
 
 // Initialize Google Analytics with your GA4 Measurement ID
-ReactGA.initialize('G-RXE717ZSC2'); 
+//ReactGA.initialize('G-RXE717ZSC2'); 
 
 
 class LiveChannel extends Component {
