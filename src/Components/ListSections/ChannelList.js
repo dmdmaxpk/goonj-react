@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { data } from 'jquery';
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
 
 class ChannelList extends Component {
     constructor(props) {
@@ -41,8 +41,8 @@ class ChannelList extends Component {
                 url = `/channel/${item.slug}`;
                 //console.log(item.slug);
 
-                /*
-                // Create custom events for MTA channels
+                
+                /* Create custom events for MTA channels
                 if (this.props.source === 'mta') {
                     console.log("in if condition where live channel info to displayed");
                     switch (item.slug) {
