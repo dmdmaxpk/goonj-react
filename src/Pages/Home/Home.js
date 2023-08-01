@@ -65,7 +65,7 @@ class Home extends Component {
             return (
                 <div className="channelM-T">
                   {/* Pass the 'source' prop to the ChannelList component */}
-                  <ChannelList source={new URLSearchParams(this.props.location.search).get('source')} />
+                  <ChannelList  />
                 </div>
               );
         } else if (e === 3) {

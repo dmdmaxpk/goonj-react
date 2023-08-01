@@ -9,7 +9,10 @@ import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { data } from 'jquery';
-//import ReactGA from 'react-ga';
+import { withRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-RXE717ZSC2'); 
 
 class ChannelList extends Component {
     constructor(props) {
@@ -27,9 +30,15 @@ class ChannelList extends Component {
             });
     }
 
-    handleRedirect(item){
+    handleRedirect(event,item){
+            console.log("clicked");
+            event.preventDefault();
             let permission = localStorage.getItem('livePermission');
             let Urlmsisdn = localStorage.getItem('urlMsisdn');
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let urlSource = urlParams.get("source");
+            const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
             let url;
 
             // Add your custom condition here to check for specific channels that don't need the paywall
@@ -37,46 +46,18 @@ class ChannelList extends Component {
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
           
             if (isChannelWithoutPaywall) {
-                // Redirect directly to channel for free if source=mta
-                url = `/channel/${item.slug}`;
-                //console.log(item.slug);
-
-                
-                /* Create custom events for MTA channels
-                if (this.props.source === 'mta') {
+                // Create custom events for MTA channels
+                if (source === 'mta') {
                     console.log("in if condition where live channel info to displayed");
-                    switch (item.slug) {
-                    case 'bol':
-                        console.log("MTA-bol event triggered")
-                        ReactGA.event({
-                        category: 'MTA_bol',
-                        action: 'MTA_bol_channel_visited',
-                        label: window.location.href // Include the page location in the 'label' parameter
-                        });
-                        break;
 
-                    case 'express-news':
-                        console.log("MTA-express event triggered")
-                        ReactGA.event({
-                        category: 'MTA_express',
-                        action: 'MTA_express_channel_visited',
+                    console.log(`MTA-${item.slug} event triggered`);
+                    ReactGA.event({
+                        category: 'Custom Event',
+                        action: `MTA_${item.slug}`,
                         label: window.location.href // Include the page location in the 'label' parameter
-                        });
-                        break;
-
-                    case 'urdu-1':
-                        console.log("MTA-urdu1 event triggered")
-                        ReactGA.event({
-                        category: 'MTA_urdu1',
-                        action: 'MTA_urdu1_channel_visited',
-                        label: window.location.href // Include the page location in the 'label' parameter
-                        });
-                        break;
-
-                    default:
-                        break;
-                    }
-                }*/
+                    });
+                    url = `/channel/${item.slug}`;// Redirect directly to channel for free if source=mta
+                }
             } 
             
             else {
@@ -90,14 +71,19 @@ class ChannelList extends Component {
                 ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`
                 : `${config.hepage}?slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`;
             }
+
           
-            return url;
+            const { history } = this.props;
+
+            setTimeout(()=>{
+                history.push(url); 
+            },500)
+            // return url;
         }
 
         
     render() {
 
-        const { source } = this.props; // Get the 'source' prop from props
 
         var settings = {
             dots: false,
@@ -144,13 +130,18 @@ class ChannelList extends Component {
                         <Slider className="channelSlider" {...settings}>
                             {
                                 this.state.data.map(item =>
-                                    <div className="channelListDiv" key={item.slug}>
-                                        <a href={this.handleRedirect(item)}>
+                                    <div className="channelListDiv" key={item.slug} >
+                                        <a 
+                                        // href={this.handleRedirect(item)}
+                                            onClick={(event)=>this.handleRedirect(event,item)}
+                                        >
+                                    
                                             <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                             <p className="channelListName">{item.name}</p>
                                             <div className="contentCategory">
                                                 <img src={require('../../Assets/crown.png')} />
                                             </div>
+                                        
                                         </a>
                                     </div>
                                 )
@@ -165,4 +156,4 @@ class ChannelList extends Component {
     }
 }
 
-export default ChannelList;
+export default withRouter(ChannelList);

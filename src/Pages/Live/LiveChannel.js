@@ -6,11 +6,9 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
-//import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 
-
-// Initialize Google Analytics with your GA4 Measurement ID
-//ReactGA.initialize('G-RXE717ZSC2'); 
+ReactGA.initialize('G-RXE717ZSC2');
 
 
 class LiveChannel extends Component {
@@ -77,6 +75,8 @@ class LiveChannel extends Component {
         }
     }
 
+    
+
     render(){
         const slug = this.props.match.params.slug;
         return (
@@ -85,7 +85,7 @@ class LiveChannel extends Component {
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
                     {/* Passing 'source' prop to ChannelList component */}
-                    <ChannelList classname="liveChannel" source={this.props.location.search} />
+                    <ChannelList classname="liveChannel"  />
                     <PopularList title="Latest on Goonj" classname="liveChannel" />
                 </div>
             </div>

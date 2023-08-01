@@ -6,6 +6,10 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
 import './Live.scss';
 import Loader from '../../Components/Loader/Loader';
+import { withRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-RXE717ZSC2'); 
 
 class LiveTv extends Component {
     constructor(props) {
@@ -27,32 +31,48 @@ class LiveTv extends Component {
         })
     }
           
-    handleRedirect(item) {
+    handleRedirect(event,item) {
+        console.log("clicked");
+        event.preventDefault();
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let urlSource = urlParams.get("source");
+        const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
         let url;
       
-       // console.log('Item:', item);
-        //console.log('source:', this.props.source);
+        const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+        const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
       
-       // if (this.props.source === 'mta') {
-          const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
-          const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
+        //console.log('Is Channel Without Paywall:', isChannelWithoutPaywall);
       
-          console.log('Is Channel Without Paywall:', isChannelWithoutPaywall);
-      
-          if (isChannelWithoutPaywall) {
-            // Redirect directly to channel for free if source=mta
-            url = `/channel/${item.slug}`;
-          }
-        //} 
-          else {
+        if (isChannelWithoutPaywall) {
+            // Create custom events for MTA channels
+            if (source === 'mta') {
+                console.log("in if condition where live channel info to displayed");
+
+                console.log(`MTA-${item.slug} event triggered`);
+                ReactGA.event({
+                    category: 'Custom Event',
+                    action: `MTA_${item.slug}`,
+                    label: window.location.href // Include the page location in the 'label' parameter
+                });
+                url = `/channel/${item.slug}`; // Redirect directly to channel for free if source=mta
+            }
+        }
+        
+        else {
           // Add your existing logic for other scenarios (non-MTA channels) here
           url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         }
       
-       // console.log('Final URL:', url);
-        return url;
+        const { history } = this.props;
+
+        setTimeout(()=>{
+            history.push(url); 
+        },500)
+        //return url;
       }
       
 
@@ -68,7 +88,9 @@ class LiveTv extends Component {
                 {data.length > 0 ?
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
-                            <a href={this.handleRedirect(item)}>
+                            <a ///GridItem>href={this.handleRedirect(item)}
+                                onClick={(event)=>this.handleRedirect(event,item)}
+                            >
                                 <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 <p className="channelName">{item.name}</p>
                             </a>
@@ -84,4 +106,4 @@ class LiveTv extends Component {
     }
 }
  
-export default LiveTv;
+export default withRouter(LiveTv);
