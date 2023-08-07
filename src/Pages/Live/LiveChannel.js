@@ -61,7 +61,14 @@ class LiveChannel extends Component {
             })
         }
         else{
+            if(localStorage.getItem('source') === 'mta' && localStorage.getItem('freeChannels') && !!localStorage.getItem('freeChannels').includes(slug)){
+                this.setState({
+                    loading: false,
+                    status: true
+                })
+            }else{
                 this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
+            }
         }
     }
 

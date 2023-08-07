@@ -49,6 +49,15 @@ class Home extends Component {
     }
 
     renderComponent(e){
+        let source = new URLSearchParams(window.location.search).get("source");
+        if(source) {
+            localStorage.setItem('source', source);
+            localStorage.setItem('freeChannels', ['bol', 'express-news', 'urdu-1']);
+        }else{
+            localStorage.removeItem('source');
+            localStorage.removeItem('freeChannels');
+        }
+
         if(e==0){
             return  <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />
         }
