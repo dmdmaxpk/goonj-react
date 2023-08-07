@@ -9,7 +9,7 @@ import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-2TG6PV2GL9'); 
+ReactGA.initialize('G-ZLSBYDDG31'); 
 
 class LiveTv extends Component {
     constructor(props) {
@@ -32,55 +32,63 @@ class LiveTv extends Component {
     }
           
     //handleRedirect(item)
-    handleRedirect(event,item) {
+    handleRedirect(item) {
         console.log("clicked");
-        event.preventDefault();
-        let permission = localStorage.getItem('livePermission');
-        let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        // event.preventDefault(); 
+        const permission = localStorage.getItem('livePermission');
+        const Urlmsisdn = localStorage.getItem('urlMsisdn');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-        let urlSource = urlParams.get("source");
+        const urlSource = urlParams.get("source");
         const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
-        let url;
-      
-        const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
-        const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
-      
-        //console.log('Is Channel Without Paywall:', isChannelWithoutPaywall);
-      
-        if (source === 'mta') {
-            console.log("in if condition where source = mta");
-            // Create custom events for MTA channels
-            if (isChannelWithoutPaywall) {
-
-                console.log(`MTA-${item.slug} event triggered`);
-                ReactGA.event({
-                    category: 'Custom Event',
-                    action: `MTA_${item.slug}`,
-                    label: window.location.href // Include the page location in the 'label' parameter
-                });
-                url = `/channel/${item.slug}`; // Redirect directly to channel for free if source=mta
-            }
-            else if (!isChannelWithoutPaywall){
-                console.log("Paywall to be displayed");
-                url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-            }
-        }
+       
+        let url = "";
         
-        else if (source === 'web') {
-          console.log("in else condition where source = web");
-          console.log("Paywall to be displayed");
-          // Add your existing logic for other scenarios (non-MTA channels) here
-          url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        if(permission) {
+            url =`/channel/${item.slug}` 
+        } else{
+            if(Urlmsisdn)
+                url = `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}`
+            else 
+                url = `${config.hepage}?slug=${item.slug}`
         }
-      
-        const { history } = this.props;
 
-        setTimeout(()=>{
-            history.push(url); 
-        },500)
-        //return url;
-      }
+       if(source == "web"){
+           if(permission) {
+            url =`/channel/${item.slug}` 
+            } else{
+                if(Urlmsisdn)
+                    url = `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}`
+                else 
+                    url = `${config.hepage}?slug=${item.slug}`
+            }   
+        }else if(source == "mta"){
+            const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+            const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
+
+            if (isChannelWithoutPaywall) {
+                // Create custom events for MTA channels
+                console.log("in if condition where live channel info to displayed");
+                console.log(`MTA-${item.slug} event triggered`);
+                    ReactGA.event({
+                        category: 'Custom Event',
+                        action: `MTA_${item.slug}`,
+                        label: window.location.href // Include the page location in the 'label' parameter
+
+                    });
+                url = `/channel/${item.slug}`;// Redirect directly to channel for free if source=mta
+            }
+
+        }
+     
+        console.log("final url:", url)
+        // const { history } = this.props;
+
+        // setTimeout(()=>{
+        //     history.replace(url); 
+        // },500)
+        return url;
+    }
       
 
     render(){
@@ -95,8 +103,8 @@ class LiveTv extends Component {
                 {data.length > 0 ?
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
-                            <a ///href={this.handleRedirect(item)}
-                                onClick={(event)=>this.handleRedirect(event,item)}
+                            <a href={this.handleRedirect(item)}
+                                //onClick={(event)=>this.handleRedirect(event,item)}
                             >
                                 <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 <p className="channelName">{item.name}</p>

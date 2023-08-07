@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-2TG6PV2GL9');
+ReactGA.initialize('G-ZLSBYDDG31');
 
 
 class LiveChannel extends Component {
