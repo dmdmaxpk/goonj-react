@@ -9,7 +9,7 @@ import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-RXE717ZSC2'); 
+ReactGA.initialize('G-ZLSBYDDG31'); 
 
 class LiveTv extends Component {
     constructor(props) {
