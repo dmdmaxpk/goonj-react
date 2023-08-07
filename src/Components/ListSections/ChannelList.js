@@ -12,7 +12,7 @@ import { data } from 'jquery';
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-ZLSBYDDG31'); 
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 class ChannelList extends Component {
     constructor(props) {
@@ -30,6 +30,7 @@ class ChannelList extends Component {
             });
     }
 
+    //handleRedirect(item)
     handleRedirect(event,item){
             console.log("clicked");
             event.preventDefault();
@@ -45,10 +46,11 @@ class ChannelList extends Component {
             const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
           
-            if (isChannelWithoutPaywall) {
+            if (source === 'mta') {
+                console.log("in if condition where source = mta");
                 // Create custom events for MTA channels
-                if (source === 'mta') {
-                    console.log("in if condition where live channel info to displayed");
+                if (isChannelWithoutPaywall) {
+                    //console.log("in if condition where source=mta");
 
                     console.log(`MTA-${item.slug} event triggered`);
                     ReactGA.event({
@@ -58,18 +60,19 @@ class ChannelList extends Component {
                     });
                     url = `/channel/${item.slug}`;// Redirect directly to channel for free if source=mta
                 }
+
+                else {
+                    console.log("Paywall to be displayed");
+
+                    url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+                }
             } 
             
-            else {
-              const queryString = window.location.search;
-              const urlParams = new URLSearchParams(queryString);
-              const source = urlParams.get('source');
-          
-              url = permission
-                ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`
-                : Urlmsisdn
-                ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`
-                : `${config.hepage}?slug=${item.slug}${source === 'mta' ? '&source=mta' : ''}`;
+            else if (source === 'web') {
+              console.log("in else condition where source=web");
+              console.log("Paywall to be displayed");
+              
+              url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
             }
 
           
@@ -78,7 +81,8 @@ class ChannelList extends Component {
             setTimeout(()=>{
                 history.push(url); 
             },500)
-            // return url;
+
+            //return url;
         }
 
         
@@ -132,7 +136,7 @@ class ChannelList extends Component {
                                 this.state.data.map(item =>
                                     <div className="channelListDiv" key={item.slug} >
                                         <a 
-                                        // href={this.handleRedirect(item)}
+                                         //href={this.handleRedirect(item)}
                                             onClick={(event)=>this.handleRedirect(event,item)}
                                         >
                                     
