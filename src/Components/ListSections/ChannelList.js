@@ -12,7 +12,7 @@ import { data } from 'jquery';
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-ZLSBYDDG31'); 
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 class ChannelList extends Component {
     constructor(props) {
