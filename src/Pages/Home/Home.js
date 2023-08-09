@@ -52,7 +52,7 @@ class Home extends Component {
         let source = new URLSearchParams(window.location.search).get("source");
         if(source) {
             localStorage.setItem('source', source);
-            localStorage.setItem('freeChannels', ['bol', 'express-news', 'urdu-1']);
+            localStorage.setItem('freeChannels', ['bol', 'express-news', 'urdu-1','film-world','ltn-family','aplus','a1-entertainment','Aruj-tv','city-42','mashriq-tv','makkah-live','madina-live','dawn-news','pnn-news','24_news','neo-news','gtv-news','suchtv-news','aaj-news','express-entertainment']);
         }else{
             if(localStorage.getItem('source') && localStorage.getItem('source') !== 'mta') {
                 localStorage.removeItem('source');
