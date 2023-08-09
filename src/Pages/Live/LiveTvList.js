@@ -33,7 +33,7 @@ class LiveTv extends Component {
           
     //handleRedirect(item)
     handleRedirect(item) {
-        console.log("clicked");
+        //console.log("clicked");
         // event.preventDefault(); 
         const permission = localStorage.getItem('livePermission');
         const Urlmsisdn = localStorage.getItem('urlMsisdn');
@@ -63,12 +63,13 @@ class LiveTv extends Component {
                     url = `${config.hepage}?slug=${item.slug}`
             }   
         }else if(source == "mta"){
-            const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+            //const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
+            const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1','film-world','ltn-family','aplus','a1-entertainment','Aruj-tv','city-42','mashriq-tv','makkah-live','madina-live','dawn-news','pnn-news','24_news','neo-news','gtv-news','suchtv-news','aaj-news','express-entertainment'];
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
 
             if (isChannelWithoutPaywall) {
                 // Create custom events for MTA channels
-                console.log("in if condition where live channel info to displayed");
+                //console.log("in if condition where live channel info to displayed");
                 console.log(`MTA-${item.slug} event triggered`);
                     ReactGA.event({
                         category: 'Custom Event',
