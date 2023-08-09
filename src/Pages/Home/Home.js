@@ -54,7 +54,7 @@ class Home extends Component {
             localStorage.setItem('source', source);
             localStorage.setItem('freeChannels', ['bol', 'express-news', 'urdu-1']);
         }else{
-            if(localStorage.getItem('source') !== 'mta') {
+            if(localStorage.getItem('source') && localStorage.getItem('source') !== 'mta') {
                 localStorage.removeItem('source');
                 localStorage.removeItem('freeChannels');
             }
