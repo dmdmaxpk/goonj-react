@@ -28,8 +28,7 @@ class ChannelList extends Component {
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
         let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        localStorage.setItem('free', localStorage.getItem('freeChannels').includes(item.slug));
-        
+
         if(localStorage.getItem('source') === 'mta' && localStorage.getItem('freeChannels') && !!localStorage.getItem('freeChannels').includes(item.slug)) {
             return `/channel/${item.slug}`;
         }
