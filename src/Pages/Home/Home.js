@@ -29,7 +29,7 @@ class Home extends Component {
         //  01 = error
         //  02 = low-balance
         //  03 = already subscribed
-        if(this.state.respCode === '00' || this.state.respCode === '01' || this.state.respCode === '02' || this.state.respCode === '03') {
+        if(this.state.respCode === '00' || this.state.respCode === '01' || this.state.respCode === '02' || this.state.respCode === '03' || this.state.respCode === '06') {
             
             if(this.state.respCode === '00') {
                 this.state.message = 'You are all set, watch LIVE TV anytime, anywhere';
@@ -37,7 +37,7 @@ class Home extends Component {
             }else if(this.state.respCode === '03'){
                 this.state.message = 'You are already subscribed, continue watching...';
                 localStorage.setItem('livePermission', true);
-            }else if(this.state.respCode === '02') {
+            }else if(this.state.respCode === '02' || this.state.respCode === '06') {
                 this.state.message = 'Insufficiant balance, try again later';
                 localStorage.setItem('livePermission', false);
             }else{
