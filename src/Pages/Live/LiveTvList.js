@@ -26,9 +26,10 @@ class LiveTv extends Component {
         })
     }
     handleRedirect(item){
+        console.log('handleRedirect - LiveTvList.js');
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let url = permission === true ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
     render(){
