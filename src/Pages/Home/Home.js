@@ -29,6 +29,7 @@ class Home extends Component {
         //  01 = error
         //  02 = low-balance
         //  03 = already subscribed
+        //  06 = pre-active low balance
         if(this.state.respCode === '00' || this.state.respCode === '01' || this.state.respCode === '02' || this.state.respCode === '03' || this.state.respCode === '06') {
             
             if(this.state.respCode === '00') {

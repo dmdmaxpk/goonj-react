@@ -42,10 +42,17 @@ class Box extends React.Component {
             package_id: packageID1,
             marketing_source: marketingSrc
         }
+        console.log("########MSISDN: ", urlMsisdn);
+
         if(urlMsisdn){
             PaywallInstance.post('/payment/status', statusData)
             .then(res =>{
+                this.state.msisdn = msisdn ? msisdn : urlMsisdn;
+                localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+                localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
+
                 if(res.data.code === -1){
+                    console.log('HERE 1'); //error
                     statusData.package_id = packageID2;
                     PaywallInstance.post('/payment/status', statusData)
                     .then(response =>{
@@ -59,24 +66,33 @@ class Box extends React.Component {
                     })
                 }
                 else if(res.data.code === 0 && res.data.data.is_allowed_to_stream === true){
+                    console.log('HERE 2')
                     localStorage.setItem(permission, true);
                     localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
                     localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
                     localStorage.setItem('userID', res.data.data.user_id);
                     this.props.history.push(`${url}`);
+                }else{
+                    console.log('HERE 3 - ', this.state.msisdn);
+                    if(this.state.msisdn === undefined || this.state.msisdn === 'null' || this.state.msisdn === null){
+                        this.setState({
+                            loading: false
+                        })
+                    }else{
+                        this.subscribe();
+                    }
                 }
-                this.setState({
-                    loading: false
-                })
             })
             .catch(err =>{
+                console.log('HERE 4')
                 this.setState({
                     loading: false
                 })
             })
         }
-        else this.setState({loading: false})
+        else {console.log('HERE 5'); this.setState({loading: false})}
     }
+
     handleChange(e){
         if(e.target.value.length < 12){
             this.setState({
@@ -84,6 +100,7 @@ class Box extends React.Component {
             })
         }
     }
+
     selectPayment(paymentType){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -109,6 +126,7 @@ class Box extends React.Component {
         }
         
     }
+
     sendOtp(){
         const {msisdn, paymentType} = this.state;
         const {source, packageID2} = this.props;

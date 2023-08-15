@@ -45,6 +45,7 @@ class LivePaywall extends Component {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let slug = urlParams.get("slug");
+        let msisdn = urlParams.get("msisdn");
         return(
             <div className="liveComponent">
                 <div className="goonjLivePage">
@@ -64,7 +65,7 @@ class LivePaywall extends Component {
                                 packageID2={localStorage.getItem('livePackageId') ? localStorage.getItem('livePackageId') : this.state.packageID2}
                                 pkgPrice1={this.state.packagePrice1}
                                 pkgPrice2={this.state.packagePrice2}
-                                msisdn={this.props.msisdn}
+                                msisdn={this.props.msisdn || msisdn}
                                 source={source}
                                 unsubStatus={"liveSub"}
                                 serviceId2={this.state.serviceId2}
