@@ -45,10 +45,12 @@ class Box extends React.Component {
         console.log("########MSISDN: ", urlMsisdn);
 
         if(urlMsisdn){
+            localStorage.setItem('livePermission', false);
+            localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
+            this.state.msisdn = msisdn ? msisdn : urlMsisdn;
+
             PaywallInstance.post('/payment/status', statusData)
             .then(res =>{
-                this.state.msisdn = msisdn ? msisdn : urlMsisdn;
-                localStorage.setItem(msisdnKey, msisdn ? msisdn : urlMsisdn);
                 localStorage.setItem(pkgIdKey, res.data.subscribed_package_id);
 
                 if(res.data.code === -1){
