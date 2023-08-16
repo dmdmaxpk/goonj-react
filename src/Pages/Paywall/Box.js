@@ -197,7 +197,7 @@ class Box extends React.Component {
                         localStorage.setItem(pkgIdKey, result.subscribed_package_id);
                         localStorage.setItem(msisdnKey, msisdn);
                         localStorage.setItem('userID', result.user_id);
-                        alert(`{permission: true, ${pkgIdKey}: ${result.subscribed_package_id}, ${msisdnKey}: ${msisdn}}`);
+                        //alert(`{permission: true, ${pkgIdKey}: ${result.subscribed_package_id}, ${msisdnKey}: ${msisdn}}`);
 
                         this.props.history.push(`${url}`);
                     }else if(result.subscription_status === "expired" || result.subscription_status === undefined) {
