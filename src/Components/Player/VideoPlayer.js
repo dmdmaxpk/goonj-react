@@ -15,7 +15,8 @@ class VideoPlayer extends Component {
             data: [],
             thumbnail: '',
             urlLink: config.liveStreamUrl,
-            source: ''
+            source: '',
+            isMta: false
         }
         this.kFormatter = this.kFormatter.bind(this);
     }
@@ -67,20 +68,32 @@ class VideoPlayer extends Component {
                 //     // }
                 //     callback();
                 //   });
+            })
+
+            const urlParams = new URLSearchParams(window.location.search);
+            this.setState({isMta: urlParams.get("source") === 'mta' ? true : false});
         })
-    })
-    .catch(err =>{
-    })
+        .catch(err =>{
+        })
     }
+
     kFormatter(num) {
         let kFormat = Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num);
         return kFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+    
+    goBackClickHandler() {
+        window.location = '/mta'
+    }
+
     render(){
         let {data} = this.state;
         return(
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer">
+                    {
+                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className="mta_player_header">Go Back</button>) : ""
+                    }
                     <div>
                         <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
                             <source src={this.state.source} />

@@ -26,6 +26,13 @@ import { waleePageview } from "./Services/apiCalls";
 import StickyBanner from "./Components/StickyBanner/StickyBanner";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+        isMta: false
+     }
+}
+
   installPrompt = null;
   componentDidMount() {
 
@@ -90,7 +97,11 @@ class App extends React.Component {
       localStorage.clear();
     }
 
-    alert(this.source)
+    if(this.source === 'mta') {
+      this.setState({isMta: true});
+    }else{
+      this.setState({isMta: false});
+    }
   }
 
 
@@ -118,7 +129,7 @@ class App extends React.Component {
         {
           this.props.location.pathname.toLowerCase() === '/binjee' || 
           this.props.location.pathname.toLowerCase() === '/mta'  || 
-          this.source === "mta"?
+          this.state.isMta === true ?
           ("")
           :
           (<div>
@@ -181,7 +192,7 @@ class App extends React.Component {
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
             {
-              this.source === "mta" || this.props.location.pathname.toLowerCase() === '/mta' ?
+              this.state.isMta === true || this.props.location.pathname.toLowerCase() === '/mta' ?
               ("")
               :
               (<div><Footer/><StickyBanner /></div>)

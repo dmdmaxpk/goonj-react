@@ -11,7 +11,8 @@ class LiveChannel extends Component {
         super(props);
         this.state = { 
             status: false,
-            loading: true
+            loading: true,
+            isMta: false
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
@@ -21,14 +22,14 @@ class LiveChannel extends Component {
         }
     }
     componentDidMount(){
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
+        const urlParams = new URLSearchParams(window.location.search);
         if(urlParams.get("source") !== 'mta') {
             this.checkStatus();
         }else{
             this.setState({loading: false})
             this.setState({status: true})
         }
+        this.setState({isMta: urlParams.get("source") === 'mta' ? true : false});
     }
     checkStatus(){
         const queryString = window.location.search;
@@ -78,10 +79,14 @@ class LiveChannel extends Component {
             this.state.loading === false & this.state.status === true ?
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer slug={slug} />
-                <div className="liveChannelMarginLeft">
-                    <ChannelList classname="liveChannel"/>
-                    <PopularList title="Latest on Goonj" classname="liveChannel"  />
-                </div>
+                {
+                    this.state.isMta === true ? "" : (
+                    <div className="liveChannelMarginLeft">
+                        <ChannelList classname="liveChannel"/>
+                        <PopularList title="Latest on Goonj" classname="liveChannel"  />
+                    </div>
+                    )
+                }
             </div>
             :
             <Loader />
