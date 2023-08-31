@@ -21,7 +21,14 @@ class LiveChannel extends Component {
         }
     }
     componentDidMount(){
-        this.checkStatus();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if(urlParams.get("source") !== 'mta') {
+            this.checkStatus();
+        }else{
+            this.setState({loading: false})
+            this.setState({status: true})
+        }
     }
     checkStatus(){
         const queryString = window.location.search;
@@ -61,7 +68,7 @@ class LiveChannel extends Component {
             })
         }
         else{
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
+            this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
         }
     }
 

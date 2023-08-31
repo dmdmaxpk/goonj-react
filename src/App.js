@@ -6,6 +6,7 @@ import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
 import LiveChannel from "./Pages/Live/LiveChannel";
+import MTA from "./Pages/MTA/MTA";
 import Footer from "./Components/Footer/Footer";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import ChannelVodPage from "./Pages/VOD/ChannelVods";
@@ -60,6 +61,7 @@ class App extends React.Component {
     const urlParams = new URLSearchParams(queryString);
     let utmSource = urlParams.get("utm_source");
     let Urlmsisdn = urlParams.get("msisdn");
+    this.source = urlParams.get("source");
     let src = urlParams.get("src") ? urlParams.get("src") : '';
     let UrlSource = utmSource ? utmSource : src ? src : urlParams.get("source");
     let UrlAccessToken = urlParams.get("access_token");
@@ -87,6 +89,8 @@ class App extends React.Component {
     if((localStorage.getItem('livePermission') && localStorage.getItem('CPPermission') && (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')))){
       localStorage.clear();
     }
+
+    alert(this.source)
   }
 
 
@@ -111,15 +115,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.location.pathname.toLowerCase() !== "/binjee"  ? (
-          <div>
+        {
+          this.props.location.pathname.toLowerCase() === '/binjee' || 
+          this.props.location.pathname.toLowerCase() === '/mta'  || 
+          this.source === "mta"?
+          ("")
+          :
+          (<div>
             <Header currentRoute={this.props.location.pathname} /> 
             <Sidebar />
             {/* <Feedback /> */}
-          </div>
-        ) : (
-          ""
-        )}
+          </div>)
+        }
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
@@ -167,25 +174,22 @@ class App extends React.Component {
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/unsub" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
+          <Route exact path="/mta" component={MTA} />
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
-            {/* <a target="_blank" href="https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en" className="playStoreRoundIcon"><img className="playStoreRoundImg" src={PlayStoreIcon} /></a> */}
-            
-            {/* <Tooltip title="Contact us at 03401832782" placement="left">
-              <a target="_blank" href="tel:03401832782" className="customerCareIcon"><CallOutlinedIcon className="floatingLogo"/></a>
-            </Tooltip> */}
-            {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon">Unsub via Whatsapp</a> */}
-            
-            {/* <a target="_blank" href="https://api.whatsapp.com/send?phone=923427729484" className="whatsappIcon"><WhatsAppIcon className="whatsappLogo"/></a> */}
-            <Footer/>
+            {
+              this.source === "mta" || this.props.location.pathname.toLowerCase() === '/mta' ?
+              ("")
+              :
+              (<div><Footer/><StickyBanner /></div>)
+            }
           </div>
         :
           ''
         }
-        <StickyBanner />
       </div>
     );
   }
