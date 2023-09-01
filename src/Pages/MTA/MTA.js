@@ -1,11 +1,10 @@
 //MTA.js
-
 import React from 'react';
 import './MTA.css';
 import Slider from "react-slick";
-//import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 
-// ReactGA.initialize('G-6BTQVGXQMY')
+ReactGA.initialize('G-2TG6PV2GL9')
 
 const API_URL = 'https://api.goonj.pk/v2/live';
 const IMAGE_PATH = "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/live/web-thumb/";
@@ -42,11 +41,11 @@ class Home extends React.Component {
     
     // Create custom events for MTA channels
     console.log(`MTA-${item.slug} event triggered`);
-    // ReactGA.event({
-    //   category: 'Custom Event',
-    //   action: `MTA_${item.slug}`,
-    //   label: window.location.href // Include the page location in the 'label' parameter
-    // });
+    ReactGA.event({
+       category: 'Custom Event',
+       action: `MTA_${item.slug}`,
+       label: window.location.href // Include the page location in the 'label' parameter
+     });
 
     console.log('HandleRedirect - MTA.js');
     localStorage.setItem('mta', true);
