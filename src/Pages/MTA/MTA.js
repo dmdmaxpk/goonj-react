@@ -1,5 +1,8 @@
+//MTA.js
+
 import React from 'react';
 import './MTA.css';
+import Slider from "react-slick";
 //import ReactGA from 'react-ga';
 
 // ReactGA.initialize('G-6BTQVGXQMY')
@@ -52,27 +55,61 @@ class Home extends React.Component {
   };
 
   render() {
+    var sliderSettings = {
+      dots: false,
+      arrows: true,
+      infinite: true,
+      speed: 500,
+      slidesToScroll: 1,
+      responsive: [
+          {
+            breakpoint: 3000,
+            settings: {
+              slidesToShow: 8.5,
+              slidesToScroll: 3,
+              initialSlide: 0,
+              arrow: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              initialSlide: 0
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 4,
+              initialSlide: 0,
+              arrows: true
+            }
+          }
+      ]
+    };
+
     return (
       <div className="mta_app">
             <header className="mta_header">
               Goonj TV - Watch Live TV Anytime, Anywhere
             </header>
             <div className="mta_ads">Ad Space 1</div>
-            <div className="mta_grid">
-              {this.state.data.map((item) => (
-                <div
-                  key={item.id}
-                  className="mta_grid-item"
-                  onClick={() => this.handleItemClick(item)}
-                >
-                  <img
-                    src={IMAGE_PATH + item.thumbnail.replace("webp", "jpg")}
-                    alt={item.title}
-                    className="mta_item-thumbnail"
-                  />
-                  <div className="mta_item-title">{item.name}</div>
-                </div>
-              ))}
+            <div className="mta_slider">
+              <Slider {...sliderSettings}>
+                {this.state.data.map((item) => (
+                  <div key={item.id} className="mta_slider-item" onClick={() => this.handleItemClick(item)}>
+                    <img
+                      src={IMAGE_PATH + item.thumbnail.replace("webp", "jpg")}
+                      alt={item.title}
+                      className="mta_item-thumbnail"
+                    />
+                    <div className="mta_item-title">{item.name}</div>
+                  </div>
+                ))}
+              </Slider>
             </div>
             <div className="mta_ads">Ad Space 2</div>
           </div>
