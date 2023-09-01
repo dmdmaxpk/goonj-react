@@ -7,6 +7,9 @@ import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import videojs from 'video.js';
 import './videojs.css';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-2TG6PV2GL9')
 
 class VideoPlayer extends Component {
     constructor(props){
