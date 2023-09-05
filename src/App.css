@@ -9,6 +9,27 @@
   width: 40px;
   height: 40px;
 }
+
+.mta_div {
+  margin-bottom: 80px;
+}
+
+.mta_header {
+  background-color: #1B2039;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 300px;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+.mta_ads {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
 @media only screen and (min-device-width: 320px) 
 and (max-device-width: 900px) 
 and (orientation: landscape){

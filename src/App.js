@@ -1,3 +1,4 @@
+//App.js
 import React from "react";
 import "./App.css";
 import Header from "./Components/Header/Header";
@@ -129,8 +130,12 @@ class App extends React.Component {
         {
           this.props.location.pathname.toLowerCase() === '/binjee' || 
           this.props.location.pathname.toLowerCase() === '/mta'  || 
-          this.state.isMta === true ?
-          ("")
+          this.state.isMta === true || this.props.location.search.includes('source=mta') ?
+          ( <div className="mta_div"> 
+                <div className="mta_header"> Goonj TV - Watch Live TV Anytime, Anywhere</div>
+                <div className="mta_ads">Ad Space 1</div>
+            </div>
+          )
           :
           (<div>
             <Header currentRoute={this.props.location.pathname} /> 
@@ -192,15 +197,16 @@ class App extends React.Component {
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
             {
-              this.state.isMta === true || this.props.location.pathname.toLowerCase() === '/mta' ?
+              this.state.isMta === true || this.props.location.search.includes('source=mta') ?
               ("")
               :
               (<div><Footer/><StickyBanner /></div>)
             }
           </div>
-        :
+          :
           ''
         }
+
       </div>
     );
   }

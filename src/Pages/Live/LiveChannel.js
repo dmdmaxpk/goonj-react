@@ -1,3 +1,4 @@
+//LiveChannel.js
 import React, { Component } from 'react';
 import VideoPlayer from '../../Components/Player/VideoPlayer';
 import ChannelList from '../../Components/ListSections/ChannelList';
@@ -5,32 +6,31 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
+import ReactGA from 'react-ga';
+
+//ReactGA.initialize('G-2TG6PV2GL9');
+
 
 class LiveChannel extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             status: false,
-            loading: true,
-            isMta: false
-         }
-         this.checkStatus = this.checkStatus.bind(this);
+            loading: true
+        }
+        this.checkStatus = this.checkStatus.bind(this);
     }
+
     componentWillReceiveProps(nextProps) {
-        if(this.props.match.params.slug !== nextProps.match.params.slug) {
+        if (this.props.match.params.slug !== nextProps.match.params.slug) {
             window.location.reload();
         }
     }
+
     componentDidMount(){
-        const urlParams = new URLSearchParams(window.location.search);
-        if(urlParams.get("source") !== 'mta') {
-            this.checkStatus();
-        }else{
-            this.setState({loading: false})
-            this.setState({status: true})
-        }
-        this.setState({isMta: urlParams.get("source") === 'mta' ? true : false});
+        this.checkStatus();
     }
+
     checkStatus(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -46,52 +46,53 @@ class LiveChannel extends Component {
             source,
             package_id
         }
-        if(msisdn){
 
+        // If 'source=mta', set status to true without going through paywall
+        if (source === 'mta') {
+            this.setState({
+            loading: false,
+            status: true
+            });
+        } 
+        else if (msisdn) {
             PaywallInstance.post('/payment/status', statusData)
-            .then(res =>{
-            const result = res.data.data;
-            if(res.data.code === -1){
+            .then(res => {
+                const result = res.data.data;
+                if (res.data.code === -1) {
                 localStorage.clear();
-                // console.log("here here")
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${this.props.match.params.slug}&msisdn=${msisdn}`);
-            }
-            else if(result.is_allowed_to_stream === true){
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${this.props.match.params.slug}&msisdn=${msisdn}&source=${source}`); // Include source in the redirection URL
+                } else if (result.is_allowed_to_stream === true) {
                 this.setState({
                     loading: false,
                     status: true
-                })
-            }
-            else{
-                // console.log("in here");
-                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&msisdn=${msisdn}`);
-            }
-            })
-        }
-        else{
-            this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}`);
+                });
+                } else {
+                this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&msisdn=${msisdn}&source=${source}`);
+                }
+            });
+        } else {
+            this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&source=${source}`);
         }
     }
 
+    
+
     render(){
         const slug = this.props.match.params.slug;
-        return(
-            this.state.loading === false & this.state.status === true ?
+        return (
+            this.state.loading === false && this.state.status === true ?
             <div style={{marginTop: "3%"}}>
                 <VideoPlayer slug={slug} />
-                {
-                    this.state.isMta === true ? "" : (
-                    <div className="liveChannelMarginLeft">
-                        <ChannelList classname="liveChannel"/>
-                        <PopularList title="Latest on Goonj" classname="liveChannel"  />
-                    </div>
-                    )
-                }
+                <div className="liveChannelMarginLeft">
+                    {/* Passing 'source' prop to ChannelList component */}
+                    <ChannelList classname="liveChannel"  />
+                    <PopularList title="Latest on Goonj" classname="liveChannel" />
+                </div>
             </div>
             :
             <Loader />
         );
     }
 }
- 
+
 export default withRouter(LiveChannel);
