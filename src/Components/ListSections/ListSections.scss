@@ -101,7 +101,7 @@ top: 0;
 }
 
 .channelListImg{
-    width: 92%;
+    width: 90%;
     height: 230px;
     margin: 0 auto;
     border-radius: 10px;
@@ -318,14 +318,14 @@ and (orientation: landscape){
 @media only screen and (min-width: 1540px) {
 
     .channelListImg {
-        height: 300px;
+        height: 200px;
     }
 }
 
 @media only screen and (min-width: 2000px) {
 
     .channelListImg {
-        height: 350px;
+        height: 250px;
     }
 }
 
@@ -367,7 +367,7 @@ and (orientation: landscape){
 @media only screen and (max-width: 900px) {
 
     .channelListImg {
-        height: 154px;
+        height: 120px;
     }
     fadeleft {
         width: 40px;
@@ -405,8 +405,8 @@ and (orientation: landscape){
         top: 29px;
     }
     .channelListImg{
-        width: 92%;
-        height: 150px;
+        width: 87%;
+        height: 100px;
     }
     .premiumTag{
         margin-top: -2vh;
@@ -516,8 +516,8 @@ and (orientation: landscape){
        font-size: 11px;
     }
     .channelListImg{
-        width: 92%;
-        height: 140px;
+        width: 85%;
+        height: 80px;
     }
     .recomTitle{
         height: 100% !important;
@@ -535,8 +535,8 @@ and (orientation: landscape){
         font-size: 10px;
     }
     .channelListImg{
-        width: 92%;
-        height: 130px;
+        width: 80%;
+        height: 80px;
     }
     .recomImg{
         width: 140% !important;

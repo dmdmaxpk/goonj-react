@@ -62,8 +62,7 @@ class ChannelList extends Component {
                     url = `${config.hepage}?slug=${item.slug}`
             }   
         }else if(source == "mta"){
-            //const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1'];
-            const channelsWithoutPaywall = ['bol', 'express-news', 'urdu-1','film-world','ltn-family','aplus','a1-entertainment','Aruj-tv','city-42','mashriq-tv','makkah-live','madina-live','dawn-news','pnn-news','24_news','neo-news','gtv-news','suchtv-news','aaj-news','express-entertainment'];
+            const channelsWithoutPaywall = ['film-world','ltn-family','aplus','a1-entertainment','Aruj-tv','city-42','mashriq-tv','makkah-live','madina-live','dawn-news','pnn-news','24_news','neo-news','gtv-news','suchtv-news','aaj-news','express-entertainment'];
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
 
             if (isChannelWithoutPaywall) {
@@ -76,7 +75,7 @@ class ChannelList extends Component {
                         label: window.location.href // Include the page location in the 'label' parameter
 
                     });*/
-                url = `/channel/${item.slug}`;// Redirect directly to channel for free if source=mta
+                url = `/channel/${item.slug}?source=mta`;// Redirect directly to channel for free if source=mta
             }
 
         }

@@ -9,7 +9,7 @@ import Loader from '../../Components/Loader/Loader';
 import ReactGA from 'react-ga';
 
 //ReactGA.initialize('G-2TG6PV2GL9');
-
+ 
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -79,6 +79,8 @@ class LiveChannel extends Component {
 
     render(){
         const slug = this.props.match.params.slug;
+        const source = localStorage.getItem('source'); // Get the source from localStorage
+        
         return (
             this.state.loading === false && this.state.status === true ?
             <div style={{marginTop: "3%"}}>
