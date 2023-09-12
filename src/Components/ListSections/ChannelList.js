@@ -8,32 +8,76 @@ import Slider from "react-slick";
 import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { data } from 'jquery';
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 //ReactGA.initialize('G-2TG6PV2GL9'); 
 
+const API_URL = 'https://api.goonj.pk/v2/live';
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment'];
+
 class ChannelList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
-        }
+            data: [],
+            channelClick: false,
+            channelMetadata: undefined,
+            isMta: false
+        };
+        this.handleItemClick = this.handleItemClick.bind(this);
         this.handleRedirect = this.handleRedirect.bind(this);
     }
 
-    componentDidMount(){
-        AxiosInstance.get('/live')
-            .then(res =>{
-                this.setState({data: res.data})
-            });
+    componentDidMount() {
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+        
+        if (this.source === 'mta') {
+            this.setState({ isMta: true });
+            this.fetchData(); // Fetch MTA data when source is mta
+        } else {
+            this.setState({ isMta: false });
+    
+            // Fetch live-tv data when source is not mta
+            AxiosInstance.get('/live')
+                .then(res => {
+                    this.setState({ data: res.data });
+                })
+                .catch(error => {
+                    console.error('Error fetching live-tv data:', error);
+                });
+        }
     }
+    
+    
 
-    //handleRedirect(item)
+    // MTA
+    fetchData = async () => {
+        try {
+            const response = await fetch(API_URL);
+            const jsonData = await response.json();
+            const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            this.setState({ data: filteredItems });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    // MTA 
+    handleItemClick = (item) => {
+        console.log('Channel is:', item);
+        this.setState({ channelMetadata: item, channelClick: true });
+    
+        console.log('HandleRedirect - MTA.js');
+        localStorage.setItem('mta', true);
+        let url = `/channel/${item.slug}?source=mta`;
+        this.props.history.push(url); 
+    };
+
     handleRedirect(item) {
-        //console.log("clicked");
-        // event.preventDefault(); 
         const permission = localStorage.getItem('livePermission');
         const Urlmsisdn = localStorage.getItem('urlMsisdn');
         const queryString = window.location.search;
@@ -75,7 +119,6 @@ class ChannelList extends Component {
         return url;
     }
 
-        
     render() {
         var settings = {
             dots: false,
@@ -115,36 +158,43 @@ class ChannelList extends Component {
 
         return (
             <div className={this.props.class}>
-                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname+" "+this.props.class ? this.props.class:" "} />
-                <div className={"channelListContainer channelContainerMargin position-relative "+this.props.pageMargin}>
-                <fadeleft className="channelLeftFade"/>
-                    {this.state.data.length > 0 ?
+                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} />
+                <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
+                    <fadeleft className="channelLeftFade" />
+                    {this.state.data.length > 0 && this.state.isMta === false ? ( // Conditionally render the slider
                         <Slider className="channelSlider" {...settings}>
-                            {
-                                this.state.data.map(item =>
-                                    <div className="channelListDiv" key={item.slug} >
-                                        <a 
-                                         href={this.handleRedirect(item)}
-                                            //onClick={(event)=>this.handleRedirect(event,item)
-                                        >
-                                    
-                                            <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
-                                            <p className="channelListName">{item.name}</p>
-                                            <div className="contentCategory">
-                                                <img src={require('../../Assets/crown.png')} />
-                                            </div>
-                                        
-                                        </a>
-                                    </div>
-                                )
-                            }
+                            {this.state.data.map((item) => (
+                                <div className="channelListDiv" key={item.slug}>
+                                    <a href={this.handleRedirect(item)}>
+                                        <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
+                                        <p className="channelListName">{item.name}</p>
+                                        <div className="contentCategory">
+                                            <img src={require('../../Assets/crown.png')} alt="Crown" />
+                                        </div>
+                                    </a>
+                                </div>
+                            ))}
                         </Slider>
-                    : <Loader />
-                    }
-                <faderight className="channelRightFade"/>
+                    ) : (
+                        this.state.isMta === true ? (
+                        <Slider {...settings}>
+                            {this.state.data.map((item) => (
+                            <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
+                                <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
+                                <p className="channelListName">{item.name}</p>
+                                <div className="contentCategory">
+                                    <img src={require('../../Assets/crown.png')} alt="Crown" />
+                                </div>
+                            </div>
+                        ))}
+                        </Slider>)
+                            : null  
+                    )}
+                    <faderight className="channelRightFade" />
                 </div>
             </div>
         );
+
     }
 }
 

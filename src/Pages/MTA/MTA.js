@@ -38,14 +38,6 @@ class Home extends React.Component {
   handleItemClick = (item) => {
     console.log('Channel is:', item);
     this.setState({ channelMetadata: item, channelClick: true });
-    
-    /* Create custom events for MTA channels
-    console.log(`MTA-${item.slug} event triggered`);
-    ReactGA.event({
-       category: 'Custom Event',
-       action: `MTA_${item.slug}`,
-       label: window.location.href // Include the page location in the 'label' parameter
-     })*/
 
     console.log('HandleRedirect - MTA.js');
     localStorage.setItem('mta', true);
