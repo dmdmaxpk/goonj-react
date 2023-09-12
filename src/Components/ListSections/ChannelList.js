@@ -66,33 +66,17 @@ class ChannelList extends Component {
             const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
 
             if (isChannelWithoutPaywall) {
-                // Create custom events for MTA channels
-                //console.log("in if condition where live channel info to displayed");
-                /*console.log(`MTA-${item.slug} event triggered`);
-                    ReactGA.event({
-                        category: 'Custom Event',
-                        action: `MTA_${item.slug}`,
-                        label: window.location.href // Include the page location in the 'label' parameter
-
-                    });*/
                 url = `/channel/${item.slug}?source=mta`;// Redirect directly to channel for free if source=mta
             }
 
         }
      
         console.log("final url:", url)
-        // const { history } = this.props;
-
-        // setTimeout(()=>{
-        //     history.replace(url); 
-        // },500)
         return url;
     }
 
         
     render() {
-
-
         var settings = {
             dots: false,
             arrows: true,

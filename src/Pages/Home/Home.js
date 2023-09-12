@@ -14,6 +14,7 @@ import HeadlinesSection from '../../Components/HomeSections/Headlines';
 import MainCategory from '../VOD/MainCategory';
 import { Close } from '@material-ui/icons';
 
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -49,7 +50,7 @@ class Home extends Component {
 
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta');
-
+    
         if (e === 0 && !isMtaSource) {
             return <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />;
         } 
@@ -70,7 +71,8 @@ class Home extends Component {
                   <ChannelList  />
                 </div>
               );
-        } else if (e === 3) {
+              
+        }else if (e === 3) {
             return <DramasSection title="Pakistani Dramas" category="drama" />;
         } else if (e === 4) {
             return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" url={`/category/news/page/1`} /></div>;
