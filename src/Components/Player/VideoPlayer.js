@@ -9,7 +9,7 @@ import videojs from 'video.js';
 import './videojs.css';
 import ReactGA from 'react-ga';
 
-//ReactGA.initialize('G-2TG6PV2GL9')
+ReactGA.initialize('G-2TG6PV2GL9')
 
 class VideoPlayer extends Component {
     constructor(props){
@@ -86,8 +86,8 @@ class VideoPlayer extends Component {
     }
     
     goBackClickHandler() {
-        //window.location = 'https://goonj.pk//?source=mta'; //production area url
-        window.location = 'http://localhost:3000/?source=mta'; //local area url
+        window.location = 'https://goonj.pk//?source=mta'; //production area url
+        //window.location = 'http://localhost:3000/?source=mta'; //local area url
     }
 
     render(){

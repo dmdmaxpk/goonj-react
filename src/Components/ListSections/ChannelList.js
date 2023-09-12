@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-//ReactGA.initialize('G-2TG6PV2GL9'); 
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 const API_URL = 'https://api.goonj.pk/v2/live';
 const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment'];
@@ -71,51 +71,26 @@ class ChannelList extends Component {
         console.log('Channel is:', item);
         this.setState({ channelMetadata: item, channelClick: true });
     
-        console.log('HandleRedirect - MTA.js');
+        console.log('HandleItemClick -ChannelList.js');
         localStorage.setItem('mta', true);
         let url = `/channel/${item.slug}?source=mta`;
+        
+        // Create custom events for MTA channels
+        //console.log("in if condition where live channel info to displayed");
+        console.log(`MTA-${item.slug} event triggered`);
+            ReactGA.event({
+                category: 'Custom Event',
+                action: `MTA_${item.slug}`,
+                label: window.location.href // Include the page location in the 'label' parameter
+            });
+
         this.props.history.push(url); 
     };
 
     handleRedirect(item) {
-        const permission = localStorage.getItem('livePermission');
-        const Urlmsisdn = localStorage.getItem('urlMsisdn');
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const urlSource = urlParams.get("source");
-        const source = localStorage.getItem('source') ? localStorage.getItem('source') : urlSource;
-       
-        let url = "";
-        
-        if(permission) {
-            url =`/channel/${item.slug}` 
-        } else{
-            if(Urlmsisdn)
-                url = `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}`
-            else 
-                url = `${config.hepage}?slug=${item.slug}`
-        }
-
-       if(source == "web"){
-           if(permission) {
-            url =`/channel/${item.slug}` 
-            } else{
-                if(Urlmsisdn)
-                    url = `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}`
-                else 
-                    url = `${config.hepage}?slug=${item.slug}`
-            }   
-        }else if(source == "mta"){
-            const channelsWithoutPaywall = ['film-world','ltn-family','aplus','a1-entertainment','Aruj-tv','city-42','mashriq-tv','makkah-live','madina-live','dawn-news','pnn-news','24_news','neo-news','gtv-news','suchtv-news','aaj-news','express-entertainment'];
-            const isChannelWithoutPaywall = channelsWithoutPaywall.includes(item.slug);
-
-            if (isChannelWithoutPaywall) {
-                url = `/channel/${item.slug}?source=mta`;// Redirect directly to channel for free if source=mta
-            }
-
-        }
-     
-        console.log("final url:", url)
+        let permission = localStorage.getItem('livePermission');
+        let Urlmsisdn = localStorage.getItem('urlMsisdn');
+        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
 
