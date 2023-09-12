@@ -72,7 +72,7 @@ faderight {
 }
 
 .slick-next {
-    right: 20px !important;
+    right: 150px !important;
     top: 32% !important;
 }
 .slick-prev:before, .slick-next:before {
@@ -314,6 +314,7 @@ and (orientation: landscape){
     .freeContentDivPL{
         bottom: 10vh !important;
     }
+
 }
 @media only screen and (min-width: 1540px) {
 
@@ -377,6 +378,7 @@ and (orientation: landscape){
     faderight {
         width: 40px;
         right: -5px;
+        margin-left: -100px;
 
     }
 
