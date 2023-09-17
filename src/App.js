@@ -25,6 +25,7 @@ import SubCategoryPage from "./Pages/VOD/SubCategory";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 import { waleePageview } from "./Services/apiCalls";
 import StickyBanner from "./Components/StickyBanner/StickyBanner";
+import Logo from "./Assets/logo.png";
 
 class App extends React.Component {
   constructor(props) {
@@ -131,10 +132,15 @@ class App extends React.Component {
           this.props.location.pathname.toLowerCase() === '/binjee' || 
           this.props.location.pathname.toLowerCase() === '/mta'  || 
           this.state.isMta === true || this.props.location.search.includes('source=mta') ?
-          ( <div className="mta_div"> 
+          ( <div className="mta_div">
+                <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
+                  <img src={Logo}/>  
+                </a> 
+
                 <div className="mta_header"> Goonj TV - Watch Live TV Anytime, Anywhere</div>
-                <div className="mta_ads">Ad Space 1</div>
+                <div className="mta_ad1">Ad Space 1</div>
             </div>
+    
           )
           :
           (<div>
@@ -198,7 +204,10 @@ class App extends React.Component {
           <div>
             {
               this.state.isMta === true || this.props.location.search.includes('source=mta') ?
-              ("")
+              ( <div className="mta_footer_div">
+                  <div className="mta_ad2">Ad Space 2</div>
+                </div>
+              )
               :
               (<div><Footer/><StickyBanner /></div>)
             }

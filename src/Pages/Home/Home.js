@@ -3,6 +3,9 @@ import { withRouter } from 'react-router-dom';
 import React, { Component, Suspense } from 'react';
 import PosterSlider from '../../Components/HomeSections/PosterSlider';
 import ChannelList from '../../Components/ListSections/ChannelList';
+import NewsChannelList from '../../Components/ListSections/NewsChannelList';
+import EntertainmentChannelList from '../../Components/ListSections/EntertainmentChannelList';
+import IslamicChannelList from '../../Components/ListSections/IslamicChannelList';
 import LiveTv from '../Live/LiveTvList';
 import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
@@ -68,7 +71,9 @@ class Home extends Component {
             return (
                 <div className="channelM-T">
                   {/* Pass the 'source' prop to the ChannelList component */}
-                  <ChannelList  />
+                  <NewsChannelList  />
+                  <EntertainmentChannelList/>
+                  <IslamicChannelList />
                 </div>
               );
               
