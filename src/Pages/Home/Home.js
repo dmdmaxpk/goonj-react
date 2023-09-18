@@ -70,10 +70,13 @@ class Home extends Component {
             console.log(this.props.location.search);
             return (
                 <div className="channelM-T">
-                  {/* Pass the 'source' prop to the ChannelList component */}
+                  {/* Pass the 'source' prop to the ChannelList component 
+                  <ChannelList/>
+                 */}
                   <NewsChannelList  />
                   <EntertainmentChannelList/>
                   <IslamicChannelList />
+                
                 </div>
               );
               

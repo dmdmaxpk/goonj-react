@@ -101,7 +101,7 @@ top: 0;
 }
 
 .channelListImg{
-    width: 90%;
+    width: 92%;
     height: 230px;
     margin: 0 auto;
     border-radius: 10px;
@@ -314,19 +314,18 @@ and (orientation: landscape){
     .freeContentDivPL{
         bottom: 10vh !important;
     }
-
 }
 @media only screen and (min-width: 1540px) {
 
     .channelListImg {
-        height: 200px;
+        height: 300px;
     }
 }
 
 @media only screen and (min-width: 2000px) {
 
     .channelListImg {
-        height: 250px;
+        height: 350px;
     }
 }
 
@@ -368,7 +367,7 @@ and (orientation: landscape){
 @media only screen and (max-width: 900px) {
 
     .channelListImg {
-        height: 120px;
+        height: 154px;
     }
     fadeleft {
         width: 40px;
@@ -379,7 +378,6 @@ and (orientation: landscape){
         width: 40px;
         right: -5px;
         margin-left: -100px;
-
     }
 
     .popularLeftFade{
@@ -407,8 +405,8 @@ and (orientation: landscape){
         top: 29px;
     }
     .channelListImg{
-        width: 87%;
-        height: 100px;
+        width: 92%;
+        height: 150px;
     }
     .premiumTag{
         margin-top: -2vh;
@@ -518,8 +516,8 @@ and (orientation: landscape){
        font-size: 11px;
     }
     .channelListImg{
-        width: 85%;
-        height: 80px;
+        width: 92%;
+        height: 140px;
     }
     .recomTitle{
         height: 100% !important;
@@ -537,8 +535,8 @@ and (orientation: landscape){
         font-size: 10px;
     }
     .channelListImg{
-        width: 80%;
-        height: 80px;
+        width: 92%;
+        height: 130px;
     }
     .recomImg{
         width: 140% !important;

@@ -100,7 +100,8 @@ class NewsChannelList extends Component {
         var settings = {
             dots: false,
             arrows: true,
-            infinite: true,
+            infinite: false,
+            slidesToShow: this.state.data.length > 8 ? 8 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
             responsive: [
@@ -135,7 +136,7 @@ class NewsChannelList extends Component {
 
         return (
             <div className={this.props.class}>
-                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live News Channels" />
+                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live News Channels"  />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     {this.state.data.length > 0 && this.state.isMta === false ? ( // Conditionally render the slider
@@ -156,7 +157,7 @@ class NewsChannelList extends Component {
                         this.state.isMta === true ? (
                         <Slider {...settings}>
                             {this.state.data.map((item) => (
-                            <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
+                            <div className="channelListDiv"  key={item.slug} onClick={() => this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 <p className="channelListName">{item.name}</p>
                                 <div className="contentCategory">

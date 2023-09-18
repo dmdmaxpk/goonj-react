@@ -95,14 +95,16 @@ class IslamicChannelList extends Component {
         let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
-
+    //this.state.data.length > # of channels on slider ? # of channels on slider : this.state.data.length,
     render() {
         var settings = {
             dots: false,
             arrows: true,
-            infinite: true,
+            infinite: false,
+            slidesToShow: this.state.data.length > 3 ? 3 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
+
             responsive: [
                 {
                     breakpoint: 3000,
@@ -154,7 +156,7 @@ class IslamicChannelList extends Component {
                         </div>
                     ) : (
                         this.state.isMta === true ? (
-                        <div>
+                        <Slider {...settings}>
                             {this.state.data.map((item) => (
                             <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
@@ -164,7 +166,7 @@ class IslamicChannelList extends Component {
                                 </div>
                             </div>
                         ))}
-                        </div>)
+                        </Slider>)
                             : null  
                     )}
                     <faderight className="channelRightFade" />

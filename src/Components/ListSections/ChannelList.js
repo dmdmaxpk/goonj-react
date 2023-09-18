@@ -133,7 +133,7 @@ class ChannelList extends Component {
 
         return (
             <div className={this.props.class}>
-                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} />
+                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live Channels" />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     {this.state.data.length > 0 && this.state.isMta === false ? ( // Conditionally render the slider

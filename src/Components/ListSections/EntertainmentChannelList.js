@@ -100,7 +100,8 @@ class EntertainmentChannelList extends Component {
         var settings = {
             dots: false,
             arrows: true,
-            infinite: true,
+            infinite: false,
+            slidesToShow: this.state.data.length > 6 ? 6 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
             responsive: [
@@ -135,7 +136,7 @@ class EntertainmentChannelList extends Component {
 
         return (
             <div className={this.props.class}>
-                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live Entertainment Channels" />
+                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live Entertainment Channels"  />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     {this.state.data.length > 0 && this.state.isMta === false ? ( // Conditionally render the slider
