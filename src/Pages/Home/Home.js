@@ -81,7 +81,10 @@ class Home extends Component {
               );
               
         }else if (e === 3) {
+            {/* 
             return <DramasSection title="Pakistani Dramas" category="drama" />;
+            */}
+            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory="" url={`category/drama/page/1`} /></div>;
         } else if (e === 4) {
             return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" url={`/category/news/page/1`} /></div>;
         } else if (e === 5) {
@@ -89,9 +92,15 @@ class Home extends Component {
         } else if (e === 6) {
             return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" url={`/category/entertainment/page/1`} /></div>;
         } else if (e === 7) {
+            {/* 
             return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
+            */}
+            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" url={`category/sports/page/1`} /></div>;
         } else if (e === 8) {
+            {/* 
             return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />;
+            */}
+            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="programs" title="Programs" limit={100} infinite={true} subCategory="" url={`category/programs/page/1`} /></div>;
         }
     }
 
