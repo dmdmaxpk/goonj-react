@@ -7,7 +7,6 @@ import SearchPage from "./Components/SearchPage/SearchPage";
 import { withRouter } from "react-router";
 import Home from "./Pages/Home/Home";
 import LiveChannel from "./Pages/Live/LiveChannel";
-import MTA from "./Pages/MTA/MTA";
 import Footer from "./Components/Footer/Footer";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import ChannelVodPage from "./Pages/VOD/ChannelVods";
@@ -32,7 +31,6 @@ class App extends React.Component {
     super(props);
     this.state = { 
         isMta: false,
-        isLightTheme: false,
      }
 }
 
@@ -100,13 +98,6 @@ class App extends React.Component {
       localStorage.clear();
     }
 
-    /*if(this.source === 'mta2'){
-      this.setState({ isMta: true, isLightTheme: true });
-    }else{
-      this.setState({ isMta: false, isLightTheme: false });
-    }*/
-
-
     if(this.source === 'mta' || this.source === 'mta2') {
       this.setState({isMta: true});
     }else{
@@ -134,20 +125,16 @@ class App extends React.Component {
   }
 
   render() {
-    //const { isLightTheme } = this.state;
-
     return (
-      //<div className={`App ${isLightTheme ? "light-theme" : "dark-theme"}`}>
       <div>
         {
           this.props.location.pathname.toLowerCase() === '/binjee' || 
           this.props.location.pathname.toLowerCase() === '/mta'  || 
-          this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2') ?
+          this.state.isMta === true || this.props.location.search.includes('source=mta') ?
           ( <div className="mta_div">
                 <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
                   <img src={Logo}/>  
                 </a> 
-
                 <div className="mta_header"> Goonj TV - Watch Live TV Anytime, Anywhere</div>
                 <div className="mta_ad1">Ad Space 1</div>
             </div>
@@ -207,7 +194,6 @@ class App extends React.Component {
           <Route exact path="/unsubscribe" component={Unsubscribe} />
           <Route exact path="/unsub" component={Unsubscribe} />
           <Route exact path="/404" component={PageNotFound} />
-          <Route exact path="/mta" component={MTA} />
           <Route path="/:vodID" component={VodPage} />
           <Redirect to="/404" />
         </Switch>
@@ -228,7 +214,6 @@ class App extends React.Component {
         }
 
       </div>
-    //</div>
     );
   }
 }

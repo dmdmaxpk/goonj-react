@@ -52,10 +52,9 @@ class Home extends Component {
     }
 
     renderComponent(e){
-        const isMtaSource = this.props.location.search.includes('source=mta');
-        const isMtaSource2 = this.props.location.search.includes('source=mta2');
+        const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
     
-        if (e === 0 && (!isMtaSource || !isMtaSource2)){
+        if (e === 0 && (!isMtaSource )){
             return <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />;
         } 
         //else if (e === 1) {
