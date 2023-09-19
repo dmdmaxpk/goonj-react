@@ -35,7 +35,7 @@ class NewsChannelList extends Component {
         const urlParams = new URLSearchParams(queryString);
         this.source = urlParams.get("source");
         
-        if (this.source === 'mta') {
+        if (this.source === 'mta' || this.source === 'mta2') {
             this.setState({ isMta: true });
             this.fetchData(); // Fetch MTA data when source is mta
         } else {

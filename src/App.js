@@ -31,7 +31,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-        isMta: false
+        isMta: false,
+        isLightTheme: false,
      }
 }
 
@@ -99,7 +100,14 @@ class App extends React.Component {
       localStorage.clear();
     }
 
-    if(this.source === 'mta') {
+    /*if(this.source === 'mta2'){
+      this.setState({ isMta: true, isLightTheme: true });
+    }else{
+      this.setState({ isMta: false, isLightTheme: false });
+    }*/
+
+
+    if(this.source === 'mta' || this.source === 'mta2') {
       this.setState({isMta: true});
     }else{
       this.setState({isMta: false});
@@ -126,12 +134,15 @@ class App extends React.Component {
   }
 
   render() {
+    //const { isLightTheme } = this.state;
+
     return (
+      //<div className={`App ${isLightTheme ? "light-theme" : "dark-theme"}`}>
       <div>
         {
           this.props.location.pathname.toLowerCase() === '/binjee' || 
           this.props.location.pathname.toLowerCase() === '/mta'  || 
-          this.state.isMta === true || this.props.location.search.includes('source=mta') ?
+          this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2') ?
           ( <div className="mta_div">
                 <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
                   <img src={Logo}/>  
@@ -203,7 +214,7 @@ class App extends React.Component {
         {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
           <div>
             {
-              this.state.isMta === true || this.props.location.search.includes('source=mta') ?
+              this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2')  ?
               ( <div className="mta_footer_div">
                   <div className="mta_ad2">Ad Space 2</div>
                 </div>
@@ -217,6 +228,7 @@ class App extends React.Component {
         }
 
       </div>
+    //</div>
     );
   }
 }

@@ -86,8 +86,8 @@ class VideoPlayer extends Component {
     }
     
     goBackClickHandler() {
-       // window.location = 'https://goonj.pk//?source=mta'; //production area url
-        window.location = 'http://localhost:3000/?source=mta'; //local area url
+        window.location = 'https://goonj.pk//?source=mta'; //production area url
+        //window.location = 'http://localhost:3000/?source=mta'; //local area url
     }
 
     render(){

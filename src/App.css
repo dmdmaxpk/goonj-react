@@ -1,5 +1,16 @@
+/*App.css*/
 .App {
   text-align: center;
+}
+
+.light-theme {
+  background-color: white;
+  color: black;
+}
+
+.dark-theme {
+  background-color: #15142a;
+  color: #fff;
 }
 
 .customerCareIcon, .whatsappIcon, .playStoreRoundIcon {

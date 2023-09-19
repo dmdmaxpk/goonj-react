@@ -48,7 +48,7 @@ class LiveChannel extends Component {
         }
 
         // If 'source=mta', set status to true without going through paywall
-        if (source === 'mta') {
+        if (source === 'mta' || source === 'mta2') {
             this.setState({
             loading: false,
             status: true
