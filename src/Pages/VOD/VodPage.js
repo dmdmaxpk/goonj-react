@@ -14,7 +14,8 @@ class VodPage extends Component {
             data: [],
             topics: [],
             status: false,
-            loading: true
+            loading: true,
+            isLightTheme: false
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
@@ -38,6 +39,19 @@ class VodPage extends Component {
         .catch(err =>{
 
         })
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({Mta2: true});
+        }
+        else{
+            this.setState({Mta2: false});
+        }
     }
     checkStatus(cat){
         if(cat === "comedy"){
@@ -90,13 +104,14 @@ class VodPage extends Component {
 
     render(){
         let {data, topics, loading, status} = this.state;
+        const { isLightTheme } = this.state;
         return(
             data.length !== 0 && loading === false && status === true ?
                 <div className="vod_main_div" style={{marginTop: "3%", marginLeft: "3%"}}>
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
                     <div className="vod_channel_margin_bottom">
-                    <ChannelList class="vod_page_margin_heading channelListVodHeading"/>
-                    <PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" title="Latest on Goonj"/>
+                    <ChannelList class="vod_page_margin_heading channelListVodHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}/>
+                    <PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" style={{ color: isLightTheme ? "#87CEEB" : "white" }} title="Latest on Goonj"/>
                     </div>
                 </div>
             :

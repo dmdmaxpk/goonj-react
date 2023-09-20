@@ -24,7 +24,8 @@ class CategoryVodPage extends Component {
             limit: 60,
             page: this.props.match.params.pageNumber,
             isPremium: true,
-            loading: true
+            loading: true,
+            isLightTheme: false
            
         }
         this.handleClick = this.handleClick.bind(this);
@@ -39,6 +40,19 @@ class CategoryVodPage extends Component {
             behavior: "smooth"
         });
         this.getVideos();
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
     }
     countCheck(value){
         let {history} = this.props;
@@ -93,10 +107,11 @@ class CategoryVodPage extends Component {
     }
 
     render(){
+        const { isLightTheme } = this.state;
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <p className="headingVOD floatLeft">{this.props.match.params.category}</p>
+                    <p className="headingVOD floatLeft" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.props.match.params.category}</p>
                     <CategoryDD category={this.props.match.params.category} />
                 </div>
                 {this.state.data.length > 0 && subCats.includes(this.props.match.params.category) ?
@@ -115,7 +130,7 @@ class CategoryVodPage extends Component {
                                         <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
                                     </div>
                                     <div className="vodDetailsDiv">
-                                        <p className="title" onClick={()=> this.handleClick(item)}>{item.title}</p>
+                                        <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.title}</p>
                                         <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link>
                                          {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
                                         </p>

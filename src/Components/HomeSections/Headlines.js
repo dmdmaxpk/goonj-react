@@ -15,19 +15,28 @@ class HeadlinesSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            isLightTheme: false
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
         this.getDate = this.getDate.bind(this);
     }
-    handleClick(item){
+    handleClick(item) {
         let url = this.getVodUrl(item.title, item._id);
+    
+        // Check if isLightTheme is true, and conditionally modify the pathname
+        let pathname = `/${url}`;
+        if (this.state.isLightTheme) {
+            pathname += '?source=mta2';
+        }
+    
         this.props.history.push({
-            pathname: `/${url}`,
-            state: {data: item}
-          });
+            pathname: pathname,
+            state: { data: item }
+        });
     }
+z    
     componentDidMount(){
         AxiosInstance.get(`/video?category=${this.props.category}&sub_category=${this.props.subCategory}&limit=${this.props.limit}`)
         .then(res => {
@@ -36,6 +45,20 @@ class HeadlinesSection extends Component {
         .catch(err =>{
     
         });
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
+
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
@@ -85,6 +108,8 @@ class HeadlinesSection extends Component {
                 }
             ]
         };
+
+        const { isLightTheme } = this.state;
         return(
             <div className="headlinesContainer">
                 <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes} viewMoreClass={this.props.viewMoreClass}/>
@@ -102,8 +127,8 @@ class HeadlinesSection extends Component {
                                                 <div className="freeContentDiv freeContentDivHL">
                                                     <p>FREE</p>
                                                 </div>
-                                                <p className="headlineTitle">{item.title} | {this.getDate(item.publish_dtm)}</p>
-                                                <p className="headnlineSource">{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p>
+                                                <p className="headlineTitle" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.title} | {this.getDate(item.publish_dtm)}</p>
+                                                <p className="headnlineSource" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p>
                                             </Link>
                                         </div>
                                     )

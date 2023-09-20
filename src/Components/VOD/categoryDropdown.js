@@ -12,9 +12,11 @@ import {
     FilterListOutlined,
     LiveTvOutlined,
     FastfoodOutlined,
-    SchoolOutlined
+    SchoolOutlined,
+    FilterListOutlinedIcon
     } from '@material-ui/icons';
 import './VodComponent.scss';
+
 
 class CategoryDD extends Component {
     constructor(props){
@@ -22,19 +24,43 @@ class CategoryDD extends Component {
         this.state ={
             name: this.props.category,
             category: this.props.category,
-            dropdown: false
+            dropdown: false,
+            isLightTheme: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.openDropdown = this.openDropdown.bind(this);
     }
-    handleChange(e){
+    componentDidMount() {
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
+    }
+
+    handleChange(e) {
         let cat = e.target.value;
         this.setState({
             name: cat,
             category: cat
-        })
-        this.props.history.push(`/category/${cat}/page/1`);
+        });
+        
+        let path = `/category/${cat}/page/1`;
+        
+        if (this.state.isLightTheme) {
+            path += '?source=mta2';
+        }
+        
+        this.props.history.push(path);
     }
+    
     openDropdown(){
         this.setState({
             dropdown: !this.state.dropdown
@@ -98,13 +124,18 @@ class CategoryDD extends Component {
                 category: "education"
             }
         ];
+        const { isLightTheme } = this.state;
         return(
             <div className="categoryDDContainer " onBlur={this.openDropdown}>
-                <InputLabel className="catLabel" htmlFor="select" onClick={this.openDropdown}><font color = "#4aa6e5">Category filter</font> <FilterListOutlined /> </InputLabel>
-                <Select id="select" className="catSelect" name="category" value={this.state.category} onChange={this.handleChange} open={this.state.dropdown} style={{visibility: "hidden"}}>
+                <InputLabel className="catLabel" htmlFor="select" onClick={this.openDropdown}><font color = "#4aa6e5">Category filter</font> 
+                <FilterListOutlined style={{ color: '#ABEA1F' }} />
+                </InputLabel>
+                <Select id="select" className="catSelect" style={{ visibility: "hidden"}} name="category" value={this.state.category} onChange={this.handleChange} open={this.state.dropdown} >
                     {
                         categories.map(item =>
-                            <MenuItem className="catMenuItem" value={item.category}>{item.icon}{"  "} <span className="ml-2">{item.name}</span></MenuItem>
+                            <MenuItem className="catMenuItem" value={item.category}>{item.icon}{"  "} 
+                                <span className="ml-2" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</span> 
+                            </MenuItem>
                         )
                     }
                 </Select>

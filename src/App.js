@@ -144,7 +144,7 @@ class App extends React.Component {
             this.state.isMta === true || this.props.location.search.includes('source=mta') ?
             ( <div className={`mta_div ${isLightTheme ? 'light-bg' : ''}`}>
                   <div className="mta_logo">
-                    <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
+                    <a href={this.source === 'mta' ? "/?source=mta" : this.source === 'mta2' ? "/?source=mta2" : "/home" }> {/* see if i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000 */}
                       <img src={Logo}/>  
                     </a>
                   </div>  

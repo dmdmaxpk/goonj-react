@@ -16,7 +16,8 @@ class VodVideoPlayer extends Component {
             data: [],
             topics: '',
             limit: 10,
-            recommendations: []
+            recommendations: [],
+            isLightTheme: false
         }
         this.removeExtension = this.removeExtension.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
@@ -35,10 +36,28 @@ class VodVideoPlayer extends Component {
     }
     componentDidMount(){
         this.initializeVideoPlayer();
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
     }
     initializeVideoPlayer(){
         let item = this.props.data;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const isMta2 = urlParams.get("source") === "mta2";
+
         const source = item ? `//webvod.goonj.pk/vod/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
+
         const video = document.querySelector('video');
         
         // const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
@@ -87,6 +106,8 @@ class VodVideoPlayer extends Component {
     render(){
         let {topics, data} = this.props;
         let item = data;
+
+        const { isLightTheme } = this.state;
         
         return(
             data.length !== 0 ?
@@ -104,14 +125,14 @@ class VodVideoPlayer extends Component {
                                 <div className="title_div">
                                    <div className="title_hashTag_and_heading"> 
                                        <div className="title_hashTag">
-                                    {topics ?
-                                        topics.map(topic =>
-                                            <p key={item._id} className="hashtagTopic">#{topic}</p>
-                                        )
-                                        :
-                                        ''
-                                    }</div>
-                                    <div>  {item.title}</div>
+                                        {topics ?
+                                            topics.map(topic =>
+                                                <p key={item._id} className="hashtagTopic">#{topic}</p>
+                                            )
+                                            :
+                                            ''
+                                        }</div>
+                                        <div style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.title}</div>
                                     </div>
 
                                    <div>

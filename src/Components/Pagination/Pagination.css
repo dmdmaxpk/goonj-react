@@ -1,0 +1,54 @@
+/* Base styles for all screen sizes */
+.MuiPaginationItem-root {
+    background-color: #ABEA1F;
+    color: white;
+    padding: 8px 12px;
+    border: 1px solid #87CEEB;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.MuiPaginationItem-root:hover {
+    background-color: #87CEEB;
+    color: #ABEA1F;
+}
+
+/* Media query for phones */
+@media screen and (max-width: 480px) {
+    .MuiPaginationItem-root {
+        /* Adjust styles for phones */
+        font-size: 14px; /* Example: Decrease font size for phones */
+    }
+}
+
+/* Media query for tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .MuiPaginationItem-root {
+        /* Adjust styles for tablets */
+        font-size: 16px; /* Example: Slightly larger font size for tablets */
+    }
+}
+
+/* Media query for laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .MuiPaginationItem-root {
+        /* Adjust styles for laptops */
+        /* Add your styles here */
+    }
+}
+
+/* Media query for desktops */
+@media screen and (min-width: 1025px) {
+    .MuiPaginationItem-root {
+        /* Adjust styles for desktops */
+        /* Add your styles here */
+    }
+}
+
+/* Media query for TV screens */
+@media screen and (min-width: 1920px) {
+    .MuiPaginationItem-root {
+        /* Adjust styles for TV screens */
+        /* Add your styles here */
+    }
+}

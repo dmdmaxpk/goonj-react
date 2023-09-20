@@ -13,7 +13,8 @@ class RecommendationList extends Component {
         this.state = {
             recommendations: [],
             limit: 4,
-            loading: true
+            loading: true,
+            isLightTheme: false
         }
         this.getRecommendations = this.getRecommendations.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
@@ -22,6 +23,18 @@ class RecommendationList extends Component {
     }
     componentDidMount(){
         this.getRecommendations();
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
     }
     getRecommendations(){
         const {topics} = this.props;
@@ -57,9 +70,11 @@ class RecommendationList extends Component {
         let pathname = window.location.pathname;
         let id = pathname.split('_')[0].split('/')[1];
         let {loading} = this.state;
+
+        const { isLightTheme } = this.state;
         return(
             <div className="recomListContainer">
-            <p className="recomHeading">Up Next</p>
+            <p className="recomHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>Up Next</p>
             <GridContainer className="recomGridContainer" style={{position: `${loading === true ? 'relative' : ''}`, left: `${loading === true ? '50%' : ''}`}}>
                 {this.state.loading === false ?
                     recommendations.filter(element => element._id !== id).map(item =>

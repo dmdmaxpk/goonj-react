@@ -1,7 +1,9 @@
+//PaginationComponent.js
 import React, { Component } from "react";
 import Pagination from "@material-ui/lab/Pagination";
 import PaginationItem from "@material-ui/lab/PaginationItem";
 import { Link, withRouter } from "react-router-dom";
+import "./Pagination.css"
 
 class PaginationComponent extends Component {
   constructor(props) {
@@ -9,10 +11,25 @@ class PaginationComponent extends Component {
     this.state = {
       data: this.props.data,
       limit: 60,
+      isLightTheme: false
     };
     this.getUrl = this.getUrl.bind(this);
   }
   componentDidMount(){
+    // MTA
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    this.source = urlParams.get("source");
+
+    // Theme checks
+    if(this.source === 'mta2'){
+        this.setState({isLightTheme: true});
+    }
+    else{
+        this.setState({isLightTheme: false});
+    }
+
+
     this.getUrl();
   }
   getUrl(){
@@ -21,12 +38,14 @@ class PaginationComponent extends Component {
     let url = str.slice(0, -1).join('/');
     return url;
   }
+    
   render() {
+    const { isLightTheme } = this.state;
     return (
       <div>
         <Pagination
           page={parseInt(this.props.params.pageNumber)}
-          className="pagination"
+          className="MuiPaginationItem-root"
           count={
             this.props.data.length >= this.state.limit
               ? parseInt(this.props.params.pageNumber) + 1
@@ -34,10 +53,16 @@ class PaginationComponent extends Component {
           }
           size="small"
           color="primary"
+          /*type={"page"|| "first" || "last" || "next" || "previos"}*/
+          hideNextButton
+          showFirstButton
+          hidePrevButton
+          showLastButton
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`${this.getUrl()}/${item.page}`}
+              /*to={`${this.getUrl()}/${item.page}`}*/
+              to={`${this.getUrl()}/${item.page}${isLightTheme ? '?source=mta2' : ''}`}
               {...item}
             />
           )}
