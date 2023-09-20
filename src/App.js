@@ -31,6 +31,7 @@ class App extends React.Component {
     super(props);
     this.state = { 
         isMta: false,
+        isLightTheme: false
      }
 }
 
@@ -98,10 +99,18 @@ class App extends React.Component {
       localStorage.clear();
     }
 
+    //mta checks
     if(this.source === 'mta' || this.source === 'mta2') {
       this.setState({isMta: true});
     }else{
       this.setState({isMta: false});
+    }
+    // Theme checks
+    if(this.source === 'mta2'){
+      this.setState({isLightTheme: true});
+    }
+    else{
+      this.setState({isLightTheme: false});
     }
   }
 
@@ -125,94 +134,101 @@ class App extends React.Component {
   }
 
   render() {
+    const { isLightTheme } = this.state;
     return (
-      <div>
-        {
-          this.props.location.pathname.toLowerCase() === '/binjee' || 
-          this.props.location.pathname.toLowerCase() === '/mta'  || 
-          this.state.isMta === true || this.props.location.search.includes('source=mta') ?
-          ( <div className="mta_div">
-                <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
-                  <img src={Logo}/>  
-                </a> 
-                <div className="mta_header"> Goonj TV - Watch Live TV Anytime, Anywhere</div>
-                <div className="mta_ad1">Ad Space 1</div>
-            </div>
-    
-          )
-          :
-          (<div>
-            <Header currentRoute={this.props.location.pathname} /> 
-            <Sidebar />
-            {/* <Feedback /> */}
-          </div>)
-        }
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route
-            exact
-            path="/paywall/live"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
-            }
-          />
-          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
-          <Route exact path="/terms-conditions" component={TermsConditions} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/live-tv" component={LiveTv} />
-          <Route exact path="/channel/:slug" component={LiveChannel} />
-          {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
-          {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
-          <Route exact path="/searchresults" component={SearchPage} />
-          <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
-          <Route
-            exact
-            path="/category/:category/page/:pageNumber"
-            component={CategoryVodPage}
-          />
-          <Route
-            exact
-            path="/source/:source/page/:pageNumber"
-            component={ChannelVodPage}
-          />
-          <Route exact path="/binjee" component={Binjee}>
-            <Redirect to="/home" />
-          </Route>
-          <Route exact path="/paywall/live" component={LivePaywall} />
-          <Route exact path="/paywall/cricket" component={CricketPaywall} />
-          <Route exact path="/goonjplus/subscribe">
-            <Redirect to="/paywall/live"/>
-          </Route>
-          <Route exact path="/news">
-            <Redirect to="/stream/zet20"/>
-          </Route>
-          <Route exact path="/category/drama/Sandy Mandy/page/:pageNumber" component={SubCategoryPage}>
+      <div >
+        <div className={`App ${isLightTheme ? "light-theme" : "dark-theme"}`}>
+          {
+            this.props.location.pathname.toLowerCase() === '/binjee' || 
+            this.props.location.pathname.toLowerCase() === '/mta'  || 
+            this.state.isMta === true || this.props.location.search.includes('source=mta') ?
+            ( <div className={`mta_div ${isLightTheme ? 'light-bg' : ''}`}>
+                  <div className="mta_logo">
+                    <a href="/?source=mta"> {/* see if you i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000/?source=mta */}
+                      <img src={Logo}/>  
+                    </a>
+                  </div>  
+                  <div className={`mta_header ${isLightTheme ? 'mta2_header' : ''}`}> Goonj TV - Watch Live TV Anytime, Anywhere</div>
+                  <div className="mta_ad1">Ad Space 1</div>
+              </div>
+      
+            )
+            :
+            (<div>
+              <Header currentRoute={this.props.location.pathname} /> 
+              <Sidebar />
+              {/* <Feedback /> */}
+            </div>)
+          }
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+            <Route
+              exact
+              path="/paywall/live"
+              render={() =>
+                this.props.currentUser ? <Redirect to="/home" /> : <LivePaywall />
+              }
+            />
+            <Route exact path="/privacy-policy" component={PrivacyPolicy} />
+            <Route exact path="/terms-conditions" component={TermsConditions} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/live-tv" component={LiveTv} />
+            <Route exact path="/live-tv?source=mta" component={LiveTv} />
+            <Route exact path="/live-tv?source=mta2" component={LiveTv} />
+            <Route exact path="/channel/:slug" component={LiveChannel} />
+            {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
+            {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
+            <Route exact path="/searchresults" component={SearchPage} />
+            <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
+            <Route
+              exact
+              path="/category/:category/page/:pageNumber"
+              component={CategoryVodPage}
+            />
+            <Route
+              exact
+              path="/source/:source/page/:pageNumber"
+              component={ChannelVodPage}
+            />
+            <Route exact path="/binjee" component={Binjee}>
+              <Redirect to="/home" />
+            </Route>
+            <Route exact path="/paywall/live" component={LivePaywall} />
+            <Route exact path="/paywall/cricket" component={CricketPaywall} />
+            <Route exact path="/goonjplus/subscribe">
+              <Redirect to="/paywall/live"/>
+            </Route>
+            <Route exact path="/news">
+              <Redirect to="/stream/zet20"/>
+            </Route>
+            <Route exact path="/category/drama/Sandy Mandy/page/:pageNumber" component={SubCategoryPage}>
+              <Redirect to="/404" />
+            </Route>
+            <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
+            <Route exact path="/unsubscribe" component={Unsubscribe} />
+            <Route exact path="/unsub" component={Unsubscribe} />
+            <Route exact path="/404" component={PageNotFound} />
+            <Route path="/:vodID" component={VodPage} />
             <Redirect to="/404" />
-          </Route>
-          <Route exact path="/category/:category/:subCategory/page/:pageNumber" component={SubCategoryPage} />
-          <Route exact path="/unsubscribe" component={Unsubscribe} />
-          <Route exact path="/unsub" component={Unsubscribe} />
-          <Route exact path="/404" component={PageNotFound} />
-          <Route path="/:vodID" component={VodPage} />
-          <Redirect to="/404" />
-        </Switch>
-        {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
-          <div>
-            {
-              this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2')  ?
-              ( <div className="mta_footer_div">
-                  <div className="mta_ad2">Ad Space 2</div>
-                </div>
-              )
-              :
-              (<div><Footer/><StickyBanner /></div>)
-            }
-          </div>
-          :
-          ''
-        }
+          </Switch>
+          {(this.props.location.pathname.toLowerCase() !== '/terms-conditions' && this.props.location.pathname.toLowerCase() !== '/privacy-policy') ?
+            <div>
+              {
+                this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2')  ?
+                ( <div className={`mta_footer_div ${isLightTheme ? 'light-bg' : ''}`}>
+                    <div className="mta_ad2">Ad Space 2</div>
+                  </div>
+                )
+                :
+                (<div><Footer/><StickyBanner /></div>)
+              }
+            </div>
+            :
+            ''
+          }
 
+        </div>
       </div>
     );
   }

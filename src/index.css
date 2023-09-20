@@ -1,3 +1,4 @@
+/* Index.css */
 body {
   margin: 60px 0 0 0 !important;
   padding: 0;
@@ -10,6 +11,21 @@ body {
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
 }
+
+/*change theme when source=mta2
+body[source="mta2"] {
+  background-color: white !important;
+  margin: 60px 0 0 0 !important;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: helvetica;
+  backface-visibility: hidden;
+  height: 100%;
+  width: 101%;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+}*/
+
 body::-webkit-scrollbar {
   display: none;
 }

@@ -11,10 +11,25 @@ class PopularList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            isLightTheme: false
         }
         this.handleRedirect = this.handleRedirect.bind(this);
     }
+    componentDidMount() {
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
+    }
+
     handleRedirect(item){
         this.props.history.push(item)
     }
@@ -134,6 +149,7 @@ class PopularList extends Component {
             ]
         };
 
+        const { isLightTheme } = this.state;
         return (
             <div className={this.props.class+" "+this.props.marginTop}>
                 <Heading heading={this.props.title} viewMoreClass="hidden" classname={this.props.classname+" "+this.props.class ? this.props.class:" "}/>
@@ -145,7 +161,7 @@ class PopularList extends Component {
                                     <div className="popularListDiv" key={item.slug}>
                                         <a style={{textDecoration: "none"}} href={`${item.url}`} >
                                             <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
-                                            <p className="channelListName popularListName">{item.name}</p>
+                                            <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
                                              {item.contentCategory}
                                         </a>
                                     </div>

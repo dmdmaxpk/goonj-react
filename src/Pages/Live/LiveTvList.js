@@ -10,7 +10,8 @@ class LiveTv extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            isLightTheme: false
         }
         this.handleRedirect = this.handleRedirect.bind(this);
     }
@@ -24,6 +25,19 @@ class LiveTv extends Component {
         .catch(err =>{
          
         })
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
     }
     handleRedirect(item){
         console.log('handleRedirect - LiveTvList.js');
@@ -35,10 +49,12 @@ class LiveTv extends Component {
     render(){
         let data = this.state.data;
 
+        const { isLightTheme } = this.state;
         return(
             <GridContainer className="liveTvContainer">
                 <GridItem xs={12} sm={12} md={12}>
-                    <p className="heading">Live Channels</p>
+                    {/*<p className="heading">Live Channels</p>*/}
+                    <p className={`heading ${isLightTheme ? 'heading_mta2' : ''}`}>Live Channels</p>
                 </GridItem>
 
                 {data.length > 0 ?
@@ -46,7 +62,8 @@ class LiveTv extends Component {
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
                             <a href={this.handleRedirect(item)}>
                                 <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
-                                <p className="channelName">{item.name}</p>
+                                {/*<p className="channelName">{item.name}</p>*/}
+                                <p className={`channelName ${isLightTheme ? 'channelName_mta2' : ''}`}>{item.name}</p>
                             </a>
                         </GridItem>
                     )

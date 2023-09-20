@@ -23,7 +23,8 @@ class IslamicChannelList extends Component {
             data: [],
             channelClick: false,
             channelMetadata: undefined,
-            isMta: false
+            isMta: false,
+            isLightTheme: false
         };
         this.handleItemClick = this.handleItemClick.bind(this);
         this.handleRedirect = this.handleRedirect.bind(this);
@@ -52,6 +53,14 @@ class IslamicChannelList extends Component {
                     console.error('Error fetching live-tv data:', error);
                 });
         }
+
+        // Theme checks
+        if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+            this.setState({isLightTheme: false});
+        }
     }
     
     
@@ -72,10 +81,22 @@ class IslamicChannelList extends Component {
     handleItemClick = (item) => {
         console.log('Channel is:', item);
         this.setState({ channelMetadata: item, channelClick: true });
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
     
-        console.log('HandleItemClick -NewsChannelLis.js');
-        localStorage.setItem('mta', true);
-        let url = `/channel/${item.slug}?source=mta`;
+        let url= ``;
+        if(this.source === 'mta'){
+            console.log('HandleItemClick -ChannelList.js');
+            localStorage.setItem('mta', true);
+            url = `/channel/${item.slug}?source=mta`;
+        }
+        else if(this.source === 'mta2'){
+            console.log('HandleItemClick -ChannelList.js');
+            localStorage.setItem('mta2', true);
+            url = `/channel/${item.slug}?source=mta2`;
+        }
         
         // Create custom events for MTA channels
         //console.log("in if condition where live channel info to displayed");
@@ -135,32 +156,37 @@ class IslamicChannelList extends Component {
             ]
         };
 
+        const { isLightTheme } = this.state;
+
         return (
             <div className={this.props.class}>
-                <Heading heading="Live Channels" url="/live-tv" classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live Islamic Channels" />
+                <Heading heading="Live Channels" url={(this.state.isMta && this.state.isLightTheme) ? "/live-tv?source=mta2" : ((this.state.isMta) && (!this.state.isLightTheme)) ? "/live-tv?source=mta" : "/live-tv"} 
+                classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Live Islamic Channels" />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     {this.state.data.length > 0 && this.state.isMta === false ? ( // Conditionally render the slider
-                        <div>
+                        <Slider className="channelSlider" {...settings}>
                             {this.state.data.map((item) => (
                                 <div className="channelListDiv" key={item.slug}>
                                     <a href={this.handleRedirect(item)}>
                                         <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
-                                        <p className="channelListName">{item.name}</p>
+                                        {/*<p className="channelListName">{item.name}</p>*/}
+                                        <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item.name}</p>
                                         <div className="contentCategory">
                                             <img src={require('../../Assets/crown.png')} alt="Crown" />
                                         </div>
                                     </a>
                                 </div>
                             ))}
-                        </div>
+                        </Slider>
                     ) : (
                         this.state.isMta === true ? (
                         <Slider {...settings}>
                             {this.state.data.map((item) => (
                             <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
-                                <p className="channelListName">{item.name}</p>
+                                {/*<p className="channelListName">{item.name}</p>*/}
+                                <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item.name}</p>
                                 <div className="contentCategory">
                                     <img src={require('../../Assets/crown.png')} alt="Crown" />
                                 </div>

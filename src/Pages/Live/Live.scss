@@ -9,6 +9,14 @@
     text-transform: uppercase;
     margin-bottom: 5%;
   }
+
+  .heading_mta2{
+    color: #87CEEB;
+    font-weight: 900;
+    font-size: x-large;
+    text-transform: uppercase;
+    margin-bottom: 5%;
+  }
   
   .channelImg {
     width: 100%;
@@ -45,7 +53,47 @@
     /* Media query for screens smaller than 480px (mobile phones) */
     @media (max-width: 480px) {
       text-align: center !important;
-      margin-left: -70px !important;
+      margin-left: -10px !important;
+    }
+  }
+  
+  .loaderGI {
+    position: relative;
+    bottom: 10vh;
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .liveChannelMarginLeft {
+      margin-right: 12px;
+    }
+  }
+  
+  @media only screen and (min-width: 900px) {
+    .liveChannelMarginLeft {
+      margin-left: 5%;
+    }
+  }
+
+  //mta2 theme
+
+  .channelName_mta2 {
+    color: #87CEEB;
+    margin-top: 5px;
+    font-size: small;
+    font-weight: bold;
+    margin-left: 0px !important;
+    text-align: center !important;
+  
+    /* Media query for screens smaller than 768px (tablets) */
+    @media (max-width: 768px) {
+      text-align: center !important;
+      /*margin-left: -50px !important;*/
+    }
+  
+    /* Media query for screens smaller than 480px (mobile phones) */
+    @media (max-width: 480px) {
+      text-align: center !important;
+      margin-left: -10px !important;
     }
   }
   

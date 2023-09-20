@@ -19,9 +19,11 @@ class VideoPlayer extends Component {
             thumbnail: '',
             urlLink: config.liveStreamUrl,
             source: '',
-            isMta: false
+            isMta: false,
+            isLightTheme: false
         }
         this.kFormatter = this.kFormatter.bind(this);
+        this.goBackClickHandler = this.goBackClickHandler.bind(this);
     }
     UNSAFE_componentWillMount(){
         window.scrollTo({
@@ -74,10 +76,26 @@ class VideoPlayer extends Component {
             })
 
             const urlParams = new URLSearchParams(window.location.search);
-            this.setState({isMta: urlParams.get("source") === 'mta' ? true : false});
+            this.setState({isMta: urlParams.get("source") === 'mta'|| 'mta2'  ? true : false});
+            //console.log("isMTA value:",this.isMta);
+
+           
         })
         .catch(err =>{
         })
+
+        // MTA2
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+         // Theme checks
+         if(this.source === 'mta2'){
+            this.setState({isLightTheme: true});
+        }
+        else{
+         this.setState({isLightTheme: false});
+        }
     }
 
     kFormatter(num) {
@@ -86,17 +104,30 @@ class VideoPlayer extends Component {
     }
     
     goBackClickHandler() {
-        window.location = 'https://goonj.pk//?source=mta'; //production area url
-        //window.location = 'http://localhost:3000/?source=mta'; //local area url
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+
+        if(this.source === 'mta'){
+            window.location = 'https://goonj.pk//?source=mta'; //production area url
+            //window.location = 'http://localhost:3000/?source=mta'; //local area url
+        }
+        else if (this.source === 'mta2'){
+            window.location = 'https://goonj.pk//?source=mta2'; //production area url
+            //window.location = 'http://localhost:3000/?source=mta2'; //local area url
+        }        
+
     }
 
     render(){
         let {data} = this.state;
+        const { isLightTheme } = this.state;
         return(
             this.state.data.length !== 0 ? 
                 <div className="videoPlayerContainer">
                     {
-                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className="mta_player_header">Go Back</button>) : ""
+                        //this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className="mta_player_header">Go Back</button>) : ""
+                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className={`mta_player_header ${isLightTheme ? 'mta2_player_header' : ''}`}>Go Back</button>) : ""
                     }
                     <div>
                         <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
@@ -105,12 +136,12 @@ class VideoPlayer extends Component {
                         </video>
                     </div>
                     <div className="title_div">
-                        <div className="title_hashTag_and_heading channelTitle"> 
+                        <div className="title_hashTag_and_heading channelTitle " style={{ color: isLightTheme ? '#87CEEB' : 'white' }}> 
                             <div>{data.name}</div>
                         </div>
 
                         <div>
-                            <div className="views_text"> 
+                            <div className="views_text" style={{ color: isLightTheme ? '#87CEEB' : 'white' }}> 
                                 {this.kFormatter(data.views_count)} views
                             </div >  
                             <SocialShare />

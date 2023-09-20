@@ -1,7 +1,14 @@
-/*App.css*/
 .App {
   text-align: center;
 }
+.light-theme {
+  background-color: white;
+}
+
+.dark-theme {
+  background-color: #15142a;
+}
+
 
 .customerCareIcon, .whatsappIcon, .playStoreRoundIcon {
   z-index: 999999;
@@ -11,15 +18,32 @@
   height: 40px;
 }
 
+.light-bg {
+  background-color: white !important;
+}
+
 .mta_div {
+  margin-top: -90px !important;
   text-align: center;
   padding: 20px;
   background-color: #15142a;
-  margin-top: -60px !important;
+}
+
+.mta_logo {
+  margin-top: 50px !important;
 }
 
 .mta_header {
   color: #fff;
+  font-weight: 700 !important;
+  padding: 5px !important;
+  font-size: 25px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.mta2_header {
+  color: #87CEEB;
   font-weight: 700 !important;
   padding: 5px !important;
   font-size: 25px !important;
@@ -38,7 +62,7 @@
   text-align: center;
   padding: 20px;
   background-color: #15142a;
-  margin-top: 20px !important;
+  margin-top: 50px !important;
 }
 
 .mta_ad2 {
@@ -68,6 +92,12 @@ and (orientation: landscape){
     margin-bottom: 20px;
     font-size: 18px;
   }
+
+  .mta2_header {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
 }
 
 @media screen and (min-width: 151px) and (max-width: 300px) {
@@ -77,6 +107,11 @@ and (orientation: landscape){
   }
 
   .mta_header {
+    margin-bottom: 40px;
+    font-size: 20px;
+  }
+
+  .mta2_header{
     margin-bottom: 40px;
     font-size: 20px;
   }
@@ -93,6 +128,10 @@ and (orientation: landscape){
   .mta_header {
     margin-bottom: 50px;
   }
+
+  .mta2_header {
+    margin-bottom: 50px;
+  }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
@@ -105,6 +144,10 @@ and (orientation: landscape){
   .mta_header {
     margin-bottom: 100px;
   }
+
+  .mta2_header {
+    margin-bottom: 100px;
+  }
 }
 
 @media screen and (min-width: 1025px) {
@@ -115,6 +158,10 @@ and (orientation: landscape){
   }
 
   .mta_header {
+    margin-bottom: 150px;
+  }
+
+  .mta2_header {
     margin-bottom: 150px;
   }
 }

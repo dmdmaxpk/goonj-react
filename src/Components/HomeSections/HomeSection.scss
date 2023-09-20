@@ -64,11 +64,22 @@ faderightheadline {
 .heading_text{
     font-weight: 900;
 }
+.heading_text_mta2{
+    color: #87CEEB;
+    font-weight: 900;
+}
 .view_more_text{
     font-size: 12px;
     font-weight: bold;
     color: white;
 }
+
+.view_more_text_mta2{
+    font-size: 12px;
+    font-weight: bold;
+    color: #87CEEB;
+}
+
 .carouselDiv{
     height: 700px;
 }
@@ -379,9 +390,16 @@ faderightheadline {
         font-weight: 900;
         font-size: 16px;
     }
+    .heading_text_mta2{
+        font-weight: 900;
+        font-size: 16px;
+    }
     .view_more_text{
         font-size: 11px;
-  
+
+    }
+    .view_more_text_mta2{
+        font-size: 11px;
     }
     .blockOne{
         width: 100%;
@@ -656,9 +674,16 @@ faderightheadline {
         font-weight: 900;
         font-size: 13px;
     }
+    .heading_text_mta2{
+        font-weight: 900;
+        font-size: 13px;
+    }
     .view_more_text{
         font-size: 11px;
   
+    }
+    .view_more_text_mta2{
+        font-size: 11px;
     }
     .headlinesContainer{
         margin: 0 2%;
