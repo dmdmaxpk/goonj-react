@@ -124,10 +124,11 @@ class VideoPlayer extends Component {
         const { isLightTheme } = this.state;
         return(
             this.state.data.length !== 0 ? 
+            <div className='container'>
                 <div className="videoPlayerContainer">
                     {
                         //this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className="mta_player_header">Go Back</button>) : ""
-                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className={`mta_player_header ${isLightTheme ? 'mta2_player_header' : ''}`}>Go Back</button>) : ""
+                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className={`mta_player_header ${isLightTheme ? 'mta2_player_header' : ''}` }>Go Back</button>) : ""
                     }
                     <div>
                         <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
@@ -148,6 +149,7 @@ class VideoPlayer extends Component {
                         </div> 
                     </div>
                 </div>
+            </div>    
             :
             <Loader />
         );
