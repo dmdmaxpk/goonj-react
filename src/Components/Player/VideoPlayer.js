@@ -129,7 +129,16 @@ class VideoPlayer extends Component {
                 <div className="videoPlayerContainer">
                     {
                         //this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className="mta_player_header">Go Back</button>) : ""
-                        this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className={`mta_player_header ${isLightTheme ? 'mta2_player_header' : ''}` }>Go Back</button>) : ""
+                        //this.state.isMta === true ? (<button onClick={this.goBackClickHandler} className={`mta_player_header ${isLightTheme ? 'mta2_player_header' : ''}` }>Go Back</button>) : ""
+                        this.state.isMta === true ? (
+                            <div
+                                onClick={this.goBackClickHandler}
+                                className={`mta_player_header ${isLightTheme ? 'mta_player_header' : ''}`}
+                                style={{ fontSize: '50px', color: '#ABEA1F' }}
+                            >
+                                &larr;
+                            </div>
+                        ) : ''
                     }
                     <div>
                         <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
