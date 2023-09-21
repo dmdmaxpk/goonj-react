@@ -136,7 +136,7 @@ class App extends React.Component {
   render() {
     const { isLightTheme } = this.state;
     return (
-      <div >
+      
         <div className={`App ${isLightTheme ? "light-theme" : "dark-theme"}`}>
           {
             this.props.location.pathname.toLowerCase() === '/binjee' || 
@@ -229,7 +229,7 @@ class App extends React.Component {
           }
 
         </div>
-      </div>
+      
     );
   }
 }

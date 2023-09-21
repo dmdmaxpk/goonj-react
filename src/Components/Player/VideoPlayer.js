@@ -76,8 +76,9 @@ class VideoPlayer extends Component {
             })
 
             const urlParams = new URLSearchParams(window.location.search);
-            this.setState({isMta: urlParams.get("source") === 'mta'|| 'mta2'  ? true : false});
-            //console.log("isMTA value:",this.isMta);
+            //this.setState({isMta: urlParams.get("source") === 'mta'|| 'mta2'  ? true : false});
+            this.setState({isMta: urlParams.get("source") === 'mta' || urlParams.get("source") === 'mta2'});
+            console.log("isMTA value:",this.isMta);
 
            
         })
@@ -109,11 +110,11 @@ class VideoPlayer extends Component {
         this.source = urlParams.get("source");
 
         if(this.source === 'mta'){
-            window.location = 'https://goonj.pk//?source=mta'; //production area url
+            window.location = 'https://goonj.pk/?source=mta'; //production area url
             //window.location = 'http://localhost:3000/?source=mta'; //local area url
         }
         else if (this.source === 'mta2'){
-            window.location = 'https://goonj.pk//?source=mta2'; //production area url
+            window.location = 'https://goonj.pk/?source=mta2'; //production area url
             //window.location = 'http://localhost:3000/?source=mta2'; //local area url
         }        
 
