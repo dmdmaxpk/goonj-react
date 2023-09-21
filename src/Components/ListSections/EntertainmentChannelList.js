@@ -180,7 +180,7 @@ class EntertainmentChannelList extends Component {
                         </Slider>
                     ) : (
                         this.state.isMta === true ? (
-                        <Slider {...settings}>
+                        <Slider className="channelSlider" {...settings}>
                             {this.state.data.map((item) => (
                             <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
