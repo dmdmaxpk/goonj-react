@@ -10,20 +10,20 @@ $searchFontBg: url('../../Assets/searchBg.png');
 }
 
 .container-2 input#search {
-  width: 40px;
-  height: 40px;
-  border: none;
-  font-size: 14px;
-  float: left;
-  color: #262626;
-  padding-left: 20px;
-  -webkit-border-radius: 5px 0 0 5px;
-  -moz-border-radius: 5px 0 0 5px;
-  border-radius: 5px 0 0 5px;
-  color: #000;
-  outline: none;
-  width: 100%;
-  background: white;
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  font-size: 14px !important;
+  float: left !important;
+  color: #262626 !important;
+  padding-left: 20px !important;
+  -webkit-border-radius: 5px 0 0 5px !important;
+  -moz-border-radius: 5px 0 0 5px !important;
+  border-radius: 5px 0 0 5px !important;
+  color: #000 !important;
+  outline: none !important;
+  width: 100% !important;
+  background: white !important;
 
   -webkit-transition: width 0.55s ease;
   -moz-transition: width 0.55s ease;
@@ -51,41 +51,41 @@ $searchFontBg: url('../../Assets/searchBg.png');
 }
 
 .container-2 .search-icon {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  z-index: 1;
-  color: white;
-  background-image: $searchFontBg;
-  border-radius: 0 5px 5px 0;
+  position: absolute !important;
+  width: 40px !important;
+  height: 40px !important; 
+  z-index: 1 !important;
+  color: white !important;
+  background-image: $searchFontBg !important;
+  border-radius: 0 5px 5px 0 !important;
 }
 .container-2 .fa-search{
-  position: relative;
-  top: 8px;
-  left: 12px
+  position: relative !important;
+  top: 8px !important;
+  left: 0px !important;
 }
 
 .container-2 input#search:focus,
 .container-2 input#search:active {
-  color: #000;
+  color: #000 !important;
 }
 
 .container-2:hover input#search {
-  color: #000;
+  color: #000 !important;
 }
 
 .container-2:hover .search-icon {
-  color: white;
+  color: white !important;
 }
 
 @media screen and (max-width: 480px){
   .container-2{
-    width: 45vw;
+    width: 45vw !important;
   }
   .container-2 input#search{
-    border-radius: 5px;
+    border-radius: 5px !important;
   }
   .container-2 > span{
-    display: none;
+    display: none !important;
   }
 }

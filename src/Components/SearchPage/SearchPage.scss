@@ -43,3 +43,23 @@
     margin-left: 0% !important;
   }
 }
+
+.imgDiv {
+  position: relative;
+
+  .playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the play button */
+  }
+}
+
+/* Media query for smaller screens (e.g., phones) */
+@media screen and (max-width: 768px) {
+  .imgDiv {
+    .playBtn {
+      transform: translate(-50%, -50%);
+    }
+  }
+}

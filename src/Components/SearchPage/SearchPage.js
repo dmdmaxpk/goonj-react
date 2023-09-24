@@ -105,9 +105,9 @@ class SearchPage extends Component {
                                     <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
                                     
                                             <div className="imgDiv" onClick={()=> this.handleClick(item)}>
-                                                <span className="playBtn">
+                                                <div className="playBtn">
                                                     <img src={require("../../Assets/playBtn.png")} alt="Play" />
-                                                </span>
+                                                </div>
                                                 <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
                                             </div>
                                             <div className="vodDetailsDiv">
