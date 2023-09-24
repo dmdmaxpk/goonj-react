@@ -1,5 +1,5 @@
 .header {
-  height: 70px;
+  height: 80px !important;
   width: 101%;
   padding-left: 8%;
   background: #1b2039;
@@ -13,10 +13,14 @@
   right: 0;
   z-index: 40;
 
+  @media  screen and (max-width: 480px) {
+    height: 100px !important;
+  }
+
 
   @media screen and (max-width: 800px) {
     flex-direction: column;
-    // height: 120px;
+    //height: 120px !important;
   }
 
  
