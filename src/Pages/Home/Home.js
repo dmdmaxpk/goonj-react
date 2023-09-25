@@ -95,46 +95,81 @@ class Home extends Component {
                 <div className="channelM-T">
                   {/* Pass the 'source' prop to the ChannelList component 
                   <ChannelList/>
-                 */}
                   <NewsChannelList  />
                   <EntertainmentChannelList/>
                   <IslamicChannelList />
+                 */}
+                  {isMtaSource ? (
+                    <>
+                    <NewsChannelList />
+                    <EntertainmentChannelList />
+                    <IslamicChannelList />
+                    </>
+                ) : (
+                <>
+                    <ChannelList /> 
+          </>
+        )}
                 
                 </div>
               );
               
         }else if (e === 3) {
-            {/* 
-            return <DramasSection title="Pakistani Dramas" category="drama" />;
-            */}
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory=""
-             url={ this.state.Mta2 ? `/category/drama/page/1?source=mta2`:`/category/drama/page/1` }/></div>;
-
+             if(!isMtaSource){
+                return <DramasSection title="Pakistani Dramas" category="drama" />;
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory=""
+                url={ this.state.Mta2 ? `/category/drama/page/1?source=mta2`:`/category/drama/page/1` }/></div>;
+            }
         } else if (e === 4) {
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
-            url={this.state.Mta2 ? `/category/news/page/1?source=mta2`:`/category/news/page/1`} /></div>;
+            if(!isMtaSource){
+                return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
+                url={`/category/news/page/1`} /></div>
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
+                url={this.state.Mta2 ? `/category/news/page/1?source=mta2`:`/category/news/page/1`} /></div>;
+            }
         
         } else if (e === 5) {
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
-            url={this.state.Mta2 ? `/category/current_affairs/page/1?source=mta2`:`/category/current_affairs/page/1`} /></div>;
+            if(!isMtaSource){
+                return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
+                url={`/category/current_affairs/page/1`} /></div>
+            }
+
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
+                url={this.state.Mta2 ? `/category/current_affairs/page/1?source=mta2`:`/category/current_affairs/page/1`} /></div>;
+            }
         
         } else if (e === 6) {
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
-            url={this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`:`/category/entertainment/page/1`} /></div>;
+            if(!isMtaSource){
+                return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
+                url={`/category/entertainment/page/1`} /></div>
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
+                url={this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`:`/category/entertainment/page/1`} /></div>;
+            }
         
         } else if (e === 7) {
-            {/* 
-            return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
-            */}
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
-            url={this.state.Mta2 ? `/category/sports/page/1?source=mta2`:`category/sports/page/1`} /></div>;
+            if(!isMtaSource){
+                return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
+                url={this.state.Mta2 ? `/category/sports/page/1?source=mta2`:`category/sports/page/1`} /></div>;
+            }
         
         } else if (e === 8) {
-            {/* 
-            return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />;
-            */}
-            return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="programs" title="Programs" limit={100} infinite={true} subCategory="" 
-            url={this.state.Mta2 ? `/category/programs/page/1?source=mta2`:`category/programs/page/1`} /></div>;
+            if(!isMtaSource){ 
+                return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />;
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="programs" title="Programs" limit={100} infinite={true} subCategory="" 
+                url={this.state.Mta2 ? `/category/programs/page/1?source=mta2`:`category/programs/page/1`} /></div>;
+            }    
         }
     }
 
