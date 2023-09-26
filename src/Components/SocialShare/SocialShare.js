@@ -1,3 +1,4 @@
+//SocialShare.js
 import React, { Component } from 'react';
 import './SocialShare.scss';
 import Popover from '@material-ui/core/Popover';

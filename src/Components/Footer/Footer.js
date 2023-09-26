@@ -13,7 +13,7 @@ class Footer extends Component {
       <div className="footer">
           <GridContainer className="footerContainerOne">
           <Hidden mdDown> <GridItem xs={12} sm={12} md={12}>
-                <img src={require('../../Assets/logo.png')} alt="Goonj" />
+                <img src={require('../../Assets/logo.png')} alt="Goonj" style={{marginTop: "40px"}}/>
             </GridItem></Hidden>
           </GridContainer>
           <GridContainer className="footerContainerTwo">

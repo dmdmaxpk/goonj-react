@@ -1,3 +1,4 @@
+//SocialShare.scss
 .shareBtn{
     background: none;
     border: none;
@@ -15,9 +16,10 @@ font-size: small;
 font-weight: 900;
 text-transform: uppercase;
 }
-.MuiPopover-paper {
-    background-color: white !important;
-}
+//.MuiPopover-paper {
+  //  background-color: white !important;
+//}
+
 
 @media only screen and (max-width: 480px) {
   .shareBtn > img{

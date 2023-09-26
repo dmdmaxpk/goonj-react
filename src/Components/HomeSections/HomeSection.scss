@@ -248,6 +248,7 @@ faderightheadline {
       .bellow_div_padding{
           margin-top: 2%;
           padding-bottom: 0% !important;
+          
       }
     .program_lower_4 {
         margin-top: -6% !important;
@@ -479,10 +480,7 @@ faderightheadline {
 }
   }
   @media only screen and (max-width: 480px) {
-    //.img_radius{
-
-    //}  
-    
+     
     .dramaMainDivMargin{
           margin-top: -3%;
     }
@@ -755,6 +753,7 @@ faderightheadline {
 
 @media only screen and (min-device-width: 320px) 
 and (max-device-width: 900px) 
+and (max-width: 3840px)
 and (orientation: landscape) {
     .sectionContainers {
         padding: 0 6% 0 5% !important;
@@ -767,10 +766,9 @@ and (orientation: landscape) {
   
 }
 
-
 .img_radius{
     border-radius: 5px;
-    margin-left: 0px !important;
+    //margin-left: -50px !important;
 }
 .dramaBlockThree{
     height: 100%;
