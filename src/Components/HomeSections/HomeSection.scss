@@ -479,10 +479,14 @@ faderightheadline {
 }
   }
   @media only screen and (max-width: 480px) {
-      .dramaMainDivMargin{
+    //.img_radius{
+
+    //}  
+    
+    .dramaMainDivMargin{
           margin-top: -3%;
-      }
-      .headlinesContainer {
+    }
+    .headlinesContainer {
         margin-top: 5%;
     }
     .sportsContainer{
@@ -766,6 +770,7 @@ and (orientation: landscape) {
 
 .img_radius{
     border-radius: 5px;
+    margin-left: 0px !important;
 }
 .dramaBlockThree{
     height: 100%;
