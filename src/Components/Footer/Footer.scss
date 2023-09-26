@@ -56,6 +56,9 @@ $footerBg: url('../../Assets/footer-bg.png');
   .footer{
    margin-top: 2%;
   }
+  .footerHeadings{
+    margin-top: 60px !important;
+}
 }
 
 @media only screen and (max-width: 900px) {
@@ -64,6 +67,9 @@ $footerBg: url('../../Assets/footer-bg.png');
     padding-bottom: 2vh;
     height: 100%;
   }
+  .footerHeadings{
+    margin-top: 70px !important;
+}
 }
 
 @media only screen and (max-width: 640px) {
@@ -81,6 +87,14 @@ $footerBg: url('../../Assets/footer-bg.png');
     height: 100%;
     padding: 0 7%;
     margin-top: 7%;
- 
+  }
+  .footerHeadings{
+      margin-top: 60px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .footerHeadings{
+    margin-top: 50px !important;
   }
 }

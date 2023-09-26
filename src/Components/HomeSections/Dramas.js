@@ -148,7 +148,7 @@ class DramasSection extends Component {
                                 <div className="row height-100">
                                     <div className="col-lg-8 col-sm-6 col-6">
                                     <div className="row height-100">
-                                        <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI vodSecondCol" onClick={()=> this.handleClick(data[1])}>
+                                        <div className="col-lg-12 col-sm-6 col-6 padding_5px vodGI vodSecondCol"  onClick={()=> this.handleClick(data[1])}>
                                         <div className="height-100 img-box relative_position square img_padding_2nd">
                                         <Img loader={<LoaderImage classnames="height-100 dramas_image drama_pic_2  content img_radius vod" />}  className="height-100 dramas_image drama_pic_2  content img_radius vod" src={`${config.dramaLogoUrl}/${data[1].name}.jpg`} alt="thumbnail" />
                                         <span  className="play_btn_position2" style={{position: "absolute", bottom: "40%", left: "45%"}}>
