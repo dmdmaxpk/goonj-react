@@ -33,6 +33,7 @@ class App extends React.Component {
         isMta: false,
         isLightTheme: false
      }
+    this.goBackClickHandler = this.goBackClickHandler.bind(this);
 }
 
   installPrompt = null;
@@ -133,6 +134,22 @@ class App extends React.Component {
     })
   }
 
+  goBackClickHandler()  {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    this.source = urlParams.get("source");
+
+    if(this.source === 'mta'){
+        window.location = 'https://goonj.pk/?source=mta'; //production area url
+        //window.location = 'http://localhost:3000/?source=mta'; //local area url
+    }
+    else if (this.source === 'mta2'){
+        window.location = 'https://goonj.pk/?source=mta2'; //production area url
+        //window.location = 'http://localhost:3000/?source=mta2'; //local area url
+    }        
+
+}
+
   render() {
     const { isLightTheme } = this.state;
     return (
@@ -150,8 +167,32 @@ class App extends React.Component {
                   </div>  
                   <div className={`mta_header ${isLightTheme ? 'mta2_header' : ''}`}> Goonj TV - Watch Live TV Anytime, Anywhere</div>
                   <div className="mta_ad1">Ad Space 1</div>
+
+                  {/*<div onClick={this.goBackClickHandler} className={`mta_goBack ${isLightTheme ? 'mta_goBack' : ''}`}
+                      style={{ fontSize: '50px', color: this.state.isLightTheme ? '#87CEEB' : 'white', marginLeft: '-75vw', marginTop: '-1vw' }}>
+                      &larr;
+                  </div>*/}
+
+                  {/* Conditionally render the Go Back button */}
+                  {!( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2') && 
+                  (
+                    <div
+                      onClick={this.goBackClickHandler}
+                      className={`mta_goBack ${isLightTheme ? 'mta_goBack' : ''}`}
+                      style={{
+                        fontSize: '50px',
+                        color: this.state.isLightTheme
+                          ? '#87CEEB'
+                          : 'white',
+                        marginLeft: '-75vw',
+                        marginTop: '1vw',
+                      }}
+                    >
+                      &larr;
+                    </div>
+                  )}
               </div>
-      
+  
             )
             :
             (<div>
