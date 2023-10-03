@@ -88,7 +88,11 @@ class LiveChannel extends Component {
                 <div className="liveChannelMarginLeft">
                     {/* Passing 'source' prop to ChannelList component */}
                     <ChannelList classname="liveChannel"  />
+                    {/*<PopularList title="Latest on Goonj" classname="liveChannel" />*/}
+                    {!(source === 'mta' || source === 'mta2') ? (
+                    // Display PopularList only if 'source' is not 'mta' or 'mta2'
                     <PopularList title="Latest on Goonj" classname="liveChannel" />
+                ) : null}
                 </div>
             </div>
             :

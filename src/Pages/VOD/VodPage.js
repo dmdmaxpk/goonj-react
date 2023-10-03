@@ -111,7 +111,7 @@ class VodPage extends Component {
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
                     <div className="vod_channel_margin_bottom">
                     <ChannelList class="vod_page_margin_heading channelListVodHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}/>
-                    <PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" style={{ color: isLightTheme ? "#87CEEB" : "white" }} title="Latest on Goonj"/>
+                    {/*<PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" style={{ color: isLightTheme ? "#87CEEB" : "white" }} title="Latest on Goonj"/>*/}
                     </div>
                 </div>
             :

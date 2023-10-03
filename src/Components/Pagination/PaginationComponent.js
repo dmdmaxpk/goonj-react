@@ -11,6 +11,7 @@ class PaginationComponent extends Component {
     this.state = {
       data: this.props.data,
       limit: 60,
+      isDarkTheme: false,
       isLightTheme: false
     };
     this.getUrl = this.getUrl.bind(this);
@@ -21,13 +22,24 @@ class PaginationComponent extends Component {
     const urlParams = new URLSearchParams(queryString);
     this.source = urlParams.get("source");
 
-    // Theme checks
+  //// Theme checks
+    
+    if(this.source === 'mta'){
+      this.setState({isDarkTheme: true});
+    }
+    else{
+        this.setState({isDarkTheme: false});
+    }
+
+
     if(this.source === 'mta2'){
         this.setState({isLightTheme: true});
     }
     else{
         this.setState({isLightTheme: false});
     }
+
+  ////
 
 
     this.getUrl();
@@ -40,7 +52,7 @@ class PaginationComponent extends Component {
   }
     
   render() {
-    const { isLightTheme } = this.state;
+    const { isLightTheme, isDarkTheme } = this.state;
     return (
       <div>
         <Pagination
@@ -62,7 +74,7 @@ class PaginationComponent extends Component {
             <PaginationItem
               component={Link}
               /*to={`${this.getUrl()}/${item.page}`}*/
-              to={`${this.getUrl()}/${item.page}${isLightTheme ? '?source=mta2' : ''}`}
+              to={`${this.getUrl()}/${item.page}${isDarkTheme? '?source=mta' :isLightTheme ? '?source=mta2' : ''}`}
               {...item}
             />
           )}

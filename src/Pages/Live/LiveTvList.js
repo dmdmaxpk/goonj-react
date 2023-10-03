@@ -6,17 +6,23 @@ import config from '../../Utils/config';
 import './Live.scss';
 import Loader from '../../Components/Loader/Loader';
 
+const API_URL = 'https://api.goonj.pk/v2/live';
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment'];
+
 class LiveTv extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
+            isMta: false,
             isLightTheme: false
         }
+        this.handleItemClick = this.handleItemClick.bind(this);
         this.handleRedirect = this.handleRedirect.bind(this);
     }
+
     componentDidMount(){
-        AxiosInstance.get('/live')
+        /*AxiosInstance.get('/live')
         .then(res =>{
             this.setState({
                 data: res.data
@@ -24,11 +30,33 @@ class LiveTv extends Component {
         })
         .catch(err =>{
          
-        })
+        })*/
+
 
         // MTA
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+        
+        //mta
+        if (this.source === 'mta' || this.source === 'mta2') {
+            this.setState({ isMta: true });
+            this.fetchData(); // Fetch MTA data when source is mta
+        } else {
+            this.setState({ isMta: false });
+    
+            // Fetch live-tv data when source is not mta
+            AxiosInstance.get('/live')
+                .then(res => {
+                    this.setState({ data: res.data });
+                })
+                .catch(error => {
+                    console.error('Error fetching live-tv data:', error);
+                });
+        }
+
+
+        // MTA
         this.source = urlParams.get("source");
 
         // Theme checks
@@ -39,6 +67,43 @@ class LiveTv extends Component {
             this.setState({isLightTheme: false});
         }
     }
+    // MTA
+    fetchData = async () => {
+        try {
+            const response = await fetch(API_URL);
+            const jsonData = await response.json();
+            const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            this.setState({ data: filteredItems });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    // MTA 
+    handleItemClick = (item) => {
+        console.log('Channel is:', item);
+        this.setState({ channelMetadata: item, channelClick: true });
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+    
+        let url= ``;
+        if(this.source === 'mta'){
+            console.log('HandleItemClick -ChannelList.js');
+            localStorage.setItem('mta', true);
+            url = `/channel/${item.slug}?source=mta`;
+        }
+        else if(this.source === 'mta2'){
+            console.log('HandleItemClick -ChannelList.js');
+            localStorage.setItem('mta2', true);
+            url = `/channel/${item.slug}?source=mta2`;
+        }
+        
+        this.props.history.push(url); 
+    };
+
+
+
     handleRedirect(item){
         console.log('handleRedirect - LiveTvList.js');
         let permission = localStorage.getItem('livePermission');
@@ -49,7 +114,7 @@ class LiveTv extends Component {
     render(){
         let data = this.state.data;
 
-        const { isLightTheme } = this.state;
+        const { isLightTheme, isMta } = this.state;
         return(
             <GridContainer className="liveTvContainer">
                 <GridItem xs={12} sm={12} md={12}>
@@ -60,11 +125,21 @@ class LiveTv extends Component {
                 {data.length > 0 ?
                     data.map(item =>
                         <GridItem key={item.slug} xs={6} sm={4} md={2} className="liveGI">
-                            <a href={this.handleRedirect(item)}>
-                                <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
-                                {/*<p className="channelName">{item.name}</p>*/}
-                                <p className={`channelName ${isLightTheme ? 'channelName_mta2' : ''}`}>{item.name}</p>
-                            </a>
+                            {isMta ? (
+                                // If isMta is true, use handleItemClick separately
+                                <div onClick={() => this.handleItemClick(item)}>
+                                    <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
+                                    {/*<p className="channelName">{item.name}</p>*/}
+                                    <p className={`channelName ${isLightTheme ? 'channelName_mta2' : ''}`}>{item.name}</p>
+                                </div>
+                            ) : (
+                                // If isMta is false, use handleRedirect in href
+                                <a href={this.handleRedirect(item)}>
+                                    <img className="channelImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
+                                    {/*<p className="channelName">{item.name}</p>*/}
+                                    <p className={`channelName ${isLightTheme ? 'channelName_mta2' : ''}`}>{item.name}</p>
+                                </a>
+                            )}
                         </GridItem>
                     )
                 :
