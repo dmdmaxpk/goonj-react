@@ -14,7 +14,7 @@ class PosterSlider extends Component {
         let banners = [
             {
                 name: "01",
-                url: "/channel/dawn-news",
+                url: "#",
                 class: "carousel-item active"
             },
             {
@@ -32,16 +32,7 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            // {
-            //     name: "05",
-            //     url: "#",
-            //     class: "carousel-item"
-            // },
-            // {
-            //     name: "06",
-            //     url: "/channel/discover-pakistan",
-            //     class: "carousel-item"
-            // },
+            
         ]
         return(
             <div className="posterSlider">
@@ -58,9 +49,9 @@ class PosterSlider extends Component {
                         {
                             banners.map(item =>
                                 <div className={item.class} key={item.name}>
-                                    <Link to={item.url}>
+                                    {/*<Link to={item.url}>*/}
                                         <img src={`${config.bannerUrl}/${item.name}.jpg`} className="d-block w-100 slider_images_all" alt={item.name} />
-                                    </Link>
+                                    {/*</Link>*/}
                                 </div>
                             )
 

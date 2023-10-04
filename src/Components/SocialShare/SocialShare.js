@@ -45,6 +45,7 @@ class SocialShare extends Component {
                     vertical: 'top',
                     horizontal: 'center',
                     }}
+                    disableScrollLock={true} // Disable the scroll lock
                 >
                     <Facebook solid small link={shareUrl}/>
                     <Twitter solid small message="" link={shareUrl}/>

@@ -173,8 +173,13 @@ class App extends React.Component {
                       &larr;
                   </div>*/}
 
+                 
+                  {/*URLS for goBack btn feature*/}
+                  {/*!( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2')*/}
+                  {/*!( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2')*/}
+                  
                   {/* Conditionally render the Go Back button */}
-                  {!( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2') && 
+                  { !( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2') && 
                   (
                     <div
                       onClick={this.goBackClickHandler}
@@ -186,6 +191,7 @@ class App extends React.Component {
                           : 'white',
                         marginLeft: '-75vw',
                         marginTop: '1vw',
+                        cursor: 'pointer',
                       }}
                     >
                       &larr;

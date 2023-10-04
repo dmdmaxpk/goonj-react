@@ -16,6 +16,7 @@ class HeadlinesSection extends Component {
         super(props);
         this.state = {
             data: [],
+            isMta: false,
             isLightTheme: false
         }
         this.handleClick = this.handleClick.bind(this);
@@ -30,13 +31,16 @@ class HeadlinesSection extends Component {
         if (this.state.isLightTheme) {
             pathname += '?source=mta2';
         }
+        if (this.state.isMta){
+            pathname += '?source=mta';
+        }
     
         this.props.history.push({
             pathname: pathname,
             state: { data: item }
         });
     }
-z    
+
     componentDidMount(){
         AxiosInstance.get(`/video?category=${this.props.category}&sub_category=${this.props.subCategory}&limit=${this.props.limit}`)
         .then(res => {
@@ -57,6 +61,14 @@ z
         }
         else{
             this.setState({isLightTheme: false});
+        }
+
+        // mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
         }
 
     }

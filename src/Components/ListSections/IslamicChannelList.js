@@ -14,7 +14,7 @@ import ReactGA from 'react-ga';
 ReactGA.initialize('G-2TG6PV2GL9'); 
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['mashriq-tv', 'makkah-live', 'madina-live'];
+const FREE_CHANNELS = ['makkah-live', 'madina-live'];
 
 class IslamicChannelList extends Component {
     constructor(props) {
@@ -122,7 +122,7 @@ class IslamicChannelList extends Component {
             dots: false,
             arrows: true,
             infinite: false,
-            slidesToShow: this.state.data.length > 3 ? 3 : this.state.data.length,
+            slidesToShow: this.state.data.length > 2 ? 2 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
 

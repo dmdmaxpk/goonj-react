@@ -41,6 +41,11 @@ faderight {
     text-align: center;
     display: inline-flex;
 }
+
+.channelListDiv:hover {
+    cursor: pointer;
+}
+
 .react-multiple-carousel__arrow, .react-multiple-carousel__arrow:hover, .react-multiple-carousel__arrow::before, .react-multiple-carousel__arrow:focus {
     background: transparent;
     color: black;

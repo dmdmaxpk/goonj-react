@@ -14,7 +14,7 @@ import ReactGA from 'react-ga';
 ReactGA.initialize('G-2TG6PV2GL9'); 
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['city-42', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news'];
+const FREE_CHANNELS = ['city-42', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news','mashriq-tv'];
 
 class NewsChannelList extends Component {
     constructor(props) {
@@ -122,7 +122,7 @@ class NewsChannelList extends Component {
             dots: false,
             arrows: true,
             infinite: false,
-            slidesToShow: this.state.data.length > 8 ? 8 : this.state.data.length,
+            slidesToShow: this.state.data.length > 9 ? 9 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
             responsive: [
