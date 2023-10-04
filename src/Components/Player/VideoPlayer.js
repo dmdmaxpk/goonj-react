@@ -116,13 +116,13 @@ class VideoPlayer extends Component {
         else if (this.source === 'mta2'){
             window.location = 'https://goonj.pk/?source=mta2'; //production area url
             //window.location = 'http://localhost:3000/?source=mta2'; //local area url
-        }        
+        }     
 
     }
 
     render(){
         let {data} = this.state;
-        const { isLightTheme } = this.state;
+        const { isLightTheme, isMta } = this.state;
         return(
             this.state.data.length !== 0 ? 
             <div className='container'>
@@ -157,7 +157,7 @@ class VideoPlayer extends Component {
                             <div className="views_text" style={{ color: isLightTheme ? '#87CEEB' : 'white' }}> 
                                 {this.kFormatter(data.views_count)} views
                             </div >  
-                            <SocialShare />
+                            {!isMta && <SocialShare />}
                         </div> 
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import GridContainer from '../../Components/Grid/GridContainer';
 import GridItem from '../../Components/Grid/GridItem';
 import { Divider } from '@material-ui/core';
 import SocialShare from '../../Components/SocialShare/SocialShare';
-import RecommendationList from '../../Components/ListSections/RecommendationList';
+//import RecommendationList from '../../Components/ListSections/RecommendationList';
 import Loader from '../../Components/Loader/Loader';
 import videojs from 'video.js';
 import '../../Components/Player/videojs.css';
@@ -17,6 +17,7 @@ class VodVideoPlayer extends Component {
             topics: '',
             limit: 10,
             recommendations: [],
+            isMta: false,
             isLightTheme: false
         }
         this.removeExtension = this.removeExtension.bind(this);
@@ -49,6 +50,9 @@ class VodVideoPlayer extends Component {
         else{
             this.setState({isLightTheme: false});
         }
+
+        //share btn conditionally           
+        this.setState({isMta: urlParams.get("source") === 'mta' || urlParams.get("source") === 'mta2'});
     }
     initializeVideoPlayer(){
         let item = this.props.data;
@@ -107,7 +111,7 @@ class VodVideoPlayer extends Component {
         let {topics, data} = this.props;
         let item = data;
 
-        const { isLightTheme } = this.state;
+        const { isLightTheme, isMta } = this.state;
         
         return(
             data.length !== 0 ?
@@ -139,18 +143,17 @@ class VodVideoPlayer extends Component {
                                     <div className="views_text"> 
                                     {/* {this.kFormatter(item.views_count)} views */}
                                     </div >  
-                                    <SocialShare />
+                                        {!isMta && <SocialShare />}
                                     </div> 
 
                                 </div>
                                 </GridItem>
                                 </GridItem>
-                                <GridItem xs={12} sm={12} md={5} className="recommendationGI">
-                                    <RecommendationList topics={topics} id={item._id} />
-                                </GridItem>
+
+                                
                                
                                 
-                                <Divider />
+                                
                             </GridContainer>
                         :''}
                     </GridItem>

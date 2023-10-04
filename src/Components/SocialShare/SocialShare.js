@@ -37,10 +37,12 @@ class SocialShare extends Component {
                     open={this.state.popover}
                     anchorEl="btnShare"
                     onClose={this.handleClose}
+                    
                     anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'center',
                     }}
+                    
                     transformOrigin={{
                     vertical: 'top',
                     horizontal: 'center',

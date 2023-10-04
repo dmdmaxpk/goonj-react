@@ -179,22 +179,26 @@ class App extends React.Component {
                   {/*!( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2')*/}
                   
                   {/* Conditionally render the Go Back button */}
-                  { !( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2') && 
+                  { !( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2') && 
                   (
                     <div
                       onClick={this.goBackClickHandler}
                       className={`mta_goBack ${isLightTheme ? 'mta_goBack' : ''}`}
                       style={{
                         fontSize: '50px',
-                        color: this.state.isLightTheme
-                          ? '#87CEEB'
-                          : 'white',
                         marginLeft: '-75vw',
-                        marginTop: '1vw',
+                        marginTop: '-15px',
+                        marginBottom: '15px',
                         cursor: 'pointer',
                       }}
                     >
-                      &larr;
+                      <img
+                        src={require('../src/Assets/goBackWhite.png')} 
+                        style={{
+                        width: '30px', 
+                        height: '30px', 
+                        }}
+                      />
                     </div>
                   )}
               </div>
