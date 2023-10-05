@@ -186,9 +186,9 @@ class EntertainmentChannelList extends Component {
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 {/*<p className="channelListName">{item.name}</p>*/}
                                 <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item.name}</p>
-                                <div className="contentCategory">
+                                {/*<div className="contentCategory">
                                     <img src={require('../../Assets/crown.png')} alt="Crown" />
-                                </div>
+                                </div>*/}
                             </div>
                         ))}
                         </Slider>)

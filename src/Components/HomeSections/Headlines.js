@@ -121,7 +121,7 @@ class HeadlinesSection extends Component {
             ]
         };
 
-        const { isLightTheme } = this.state;
+        const { isLightTheme, isMta } = this.state;
         return(
             <div className="headlinesContainer">
                 <Heading headlineMargin="headlineMargin" heading={this.props.title} url={this.props.url} classes={this.props.classes} viewMoreClass={this.props.viewMoreClass}/>
@@ -136,9 +136,12 @@ class HeadlinesSection extends Component {
                                                 <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt="thumbnail" />
                                                 <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} alt="Play" />
                                                 </div>
-                                                <div className="freeContentDiv freeContentDivHL">
-                                                    <p>FREE</p>
-                                                </div>
+                                                {(!isMta && !isLightTheme) && (
+                                                    <div className="freeContentDiv freeContentDivHL">
+                                                        <p>FREE</p>
+                                                    </div>
+                                                )}
+
                                                 <p className="headlineTitle" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.title} | {this.getDate(item.publish_dtm)}</p>
                                                 <p className="headnlineSource" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p>
                                             </Link>

@@ -165,15 +165,9 @@ class App extends React.Component {
                       <img src={Logo}/>  
                     </a>
                   </div>  
-                  <div className={`mta_header ${isLightTheme ? 'mta2_header' : ''}`}> Goonj TV - Watch Live TV Anytime, Anywhere</div>
+                  {/*<div className={`mta_header ${isLightTheme ? 'mta2_header' : ''}`}> Goonj TV - Watch Live TV Anytime, Anywhere</div>*/}
                   <div className="mta_ad1">Ad Space 1</div>
 
-                  {/*<div onClick={this.goBackClickHandler} className={`mta_goBack ${isLightTheme ? 'mta_goBack' : ''}`}
-                      style={{ fontSize: '50px', color: this.state.isLightTheme ? '#87CEEB' : 'white', marginLeft: '-75vw', marginTop: '-1vw' }}>
-                      &larr;
-                  </div>*/}
-
-                 
                   {/*URLS for goBack btn feature*/}
                   {/*!( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2')*/}
                   {/*!( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2')*/}

@@ -51,6 +51,16 @@
   margin-bottom: 10px !important;
 }
 
+@media screen and (max-width: 480px){
+  .mta_header{
+    font-size: 18px !important;
+  }
+  .mta2_header{
+    font-size: 18px !important;
+  }
+
+}
+
 .mta_ad1 {
   background-color: #f0f0f0;
   padding: 20px;
