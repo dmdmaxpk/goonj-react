@@ -31,6 +31,12 @@
 
 .mta_logo {
   margin-top: 50px !important;
+  margin-bottom: 30px !important;
+  /*margin-left: 20px !important;
+  margin-right: 20px !important;*/
+  display: flex !important;
+  justify-content: center !important; 
+  align-items: center !important;
 }
 
 .mta_header {
