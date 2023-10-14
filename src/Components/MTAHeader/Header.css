@@ -22,7 +22,7 @@
 }
 
 .back-button a {
-    font-size: 22px;
+    font-size: 16px;
     color: rgb(174, 174, 182);
 }
 
@@ -34,7 +34,7 @@
 }
 
 .center-logo img {
-    max-width: 100px;
+    max-width: 80px;
 }
 
 .mtaAd {
