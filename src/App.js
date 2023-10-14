@@ -24,7 +24,7 @@ import SubCategoryPage from "./Pages/VOD/SubCategory";
 import CricketPaywall from "./Pages/Paywall/CricketPaywall";
 import { waleePageview } from "./Services/apiCalls";
 import StickyBanner from "./Components/StickyBanner/StickyBanner";
-import Logo from "./Assets/logo.png";
+import MTAHeader from "./Components/MTAHeader/MTAHeader";
 
 class App extends React.Component {
   constructor(props) {
@@ -159,56 +159,8 @@ class App extends React.Component {
             this.props.location.pathname.toLowerCase() === '/binjee' || 
             this.props.location.pathname.toLowerCase() === '/mta'  || 
             this.state.isMta === true || this.props.location.search.includes('source=mta') ?
-            ( <div className={`mta_div ${isLightTheme ? 'light-bg' : ''}`}>
-                  <div className="mta_logo">
-                    <a href={this.source === 'mta' ? "/?source=mta" : this.source === 'mta2' ? "/?source=mta2" : "/home" }> {/* see if i need to change this goonj.pk/?source=mta or not. Rn its working for localhost:3000 */}
-                      <img src={Logo}/>  
-                    </a>
-                  </div>  
-                  {/*<div className={`mta_header ${isLightTheme ? 'mta2_header' : ''}`}> Goonj TV - Watch Live TV Anytime, Anywhere</div>*/}
-                  <div className="mta_ad1">Ad Space 1</div>
-
-                  {/*URLS for goBack btn feature*/}
-                  {/*!( window.location.href === 'http://localhost:3000/?source=mta' || window.location.href === 'http://localhost:3000/?source=mta2')*/}
-                  {/*!( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2')*/}
-                  
-                  {/* Conditionally render the Go Back button */}
-                  { !( window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/?source=mta2') && 
-                  (
-                    <div
-                      className={`mta_goBack ${isLightTheme ? 'mta_goBack' : ''}`}
-                      style={{
-                        fontSize: '50px',
-                        marginLeft: '-75vw',
-                        marginTop: '-15px',
-                        marginBottom: '15px',
-                      }}
-                    >
-                      {isLightTheme ? (
-                              <img
-                                  onClick={this.goBackClickHandler}
-                                  src={require('../src/Assets/goBackBlue.png')}
-                                  style={{
-                                      width: '30px',
-                                      height: '30px',
-                                      cursor: 'pointer',
-                                  }}
-                              />
-                          ) : (
-                              <img
-                                  onClick={this.goBackClickHandler}
-                                  src={require('../src/Assets/goBackWhite.png')}
-                                  style={{
-                                      width: '30px',
-                                      height: '30px',
-                                      cursor: 'pointer',
-                                  }}
-                              />
-                          )}
-                    </div>
-                  )}
-              </div>
-  
+            ( 
+              <MTAHeader/>
             )
             :
             (<div>
