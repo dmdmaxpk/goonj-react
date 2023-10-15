@@ -19,6 +19,16 @@ class VodPage extends Component {
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
+    
+    componentWillUnmount() {
+        window.removeEventListener('popstate', this.handleBackButtonPress);
+    }
+
+    handleBackButtonPress = (event) => {
+        this.props.history.push('/?source=mta');
+        event.preventDefault();
+    };
+
     componentWillReceiveProps(nextProps) {
         if(this.props.match.params.vodID !== nextProps.match.params.vodID) {
             window.location.reload();
@@ -52,6 +62,8 @@ class VodPage extends Component {
         else{
             this.setState({Mta2: false});
         }
+
+        window.addEventListener('popstate', this.handleBackButtonPress);
     }
     checkStatus(cat){
         if(cat === "comedy"){
