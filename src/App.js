@@ -25,6 +25,8 @@ import { waleePageview } from "./Services/apiCalls";
 import StickyBanner from "./Components/StickyBanner/StickyBanner";
 import MTAHeader from "./Components/MTAHeader/MTAHeader";
 
+import './App.css'
+
 class App extends React.Component {
   constructor(props) {
     super(props);

@@ -6,12 +6,11 @@
     margin: -80px 0 0 0;
 }
 
-@media screen and (min-width: 400px) and (max-width: 500px) {
+@media screen and (min-width: 400px) and (max-width: 600px) {
     .mainMtaContainer {
         height: 120px;
     }
 }
-
 
 .mtaHeader {
     display: flex;

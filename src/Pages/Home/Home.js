@@ -12,6 +12,7 @@ import PopularList from '../../Components/ListSections/PopularList';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
+import './Home.scss'
 
 
 class Home extends Component {
