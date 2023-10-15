@@ -192,7 +192,7 @@ class Home extends Component {
                         <Loader color="secondary" />
                     </div>
                 :
-                    <div className="homeContainer">
+                    <div className="mainHomeContainer">
                         <PosterSlider />
                         <div className="homeSections">
                         <InfiniteScroll

@@ -107,7 +107,7 @@ class VodPage extends Component {
         const { isLightTheme } = this.state;
         return(
             data.length !== 0 && loading === false && status === true ?
-                <div className="vod_main_div" style={{marginTop: "3%", marginLeft: "3%"}}>
+                <div style={{marginLeft: "10px", marginTop: (this.source === 'mta' || this.source === 'mta2' ? "30px" : "100px")}}>
                     <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
                     <div className="vod_channel_margin_bottom">
                     <ChannelList class="vod_page_margin_heading channelListVodHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}/>

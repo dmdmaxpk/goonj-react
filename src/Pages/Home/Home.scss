@@ -1,3 +1,20 @@
+.mainHomeContainer {
+    padding: 30px;
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+    .mainHomeContainer {
+      padding: 2px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+    .mainHomeContainer {
+      padding: 20px;
+    }
+}
+
+
 .homeSections{
     position: relative;
     bottom: 20vh;
