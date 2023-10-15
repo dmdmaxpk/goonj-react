@@ -138,16 +138,10 @@ class App extends React.Component {
     const urlParams = new URLSearchParams(queryString);
     this.source = urlParams.get("source");
 
-    if(this.source === 'mta'){
-        window.location = 'https://goonj.pk/?source=mta'; //production area url
-        //window.location = 'http://localhost:3000/?source=mta'; //local area url
+    if(this.source === 'mta' || this.source === 'mta2'){
+        window.location = `/?source=${this.source}`;
     }
-    else if (this.source === 'mta2'){
-        window.location = 'https://goonj.pk/?source=mta2'; //production area url
-        //window.location = 'http://localhost:3000/?source=mta2'; //local area url
-    }        
-
-}
+  }
 
   render() {
     const { isLightTheme } = this.state;

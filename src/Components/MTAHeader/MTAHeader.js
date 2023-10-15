@@ -7,13 +7,9 @@ function goBack() {
     const urlParams = new URLSearchParams(queryString);
     const source = urlParams.get("source");
 
-    if(source === 'mta'){
-        window.location = 'https://goonj.pk/?source=mta'; //production area url
+    if(source === 'mta' || source === 'mta2'){
+        window.location.href = `/?source=${source}`;
     }
-    else if (source === 'mta2'){
-        window.location = 'https://goonj.pk/?source=mta2'; //production area url
-    }     
-
 }
 
 function MTAHeader() {
