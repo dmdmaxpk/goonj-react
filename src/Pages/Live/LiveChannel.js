@@ -83,7 +83,7 @@ class LiveChannel extends Component {
         
         return (
             this.state.loading === false && this.state.status === true ?
-            <div style={{marginTop: (source === 'mta' || source === 'mta2' ? "25%" : "3%")}}>
+            <div style={{marginTop: (source === 'mta' || source === 'mta2' ? "20%" : "3%")}}>
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
                     {/* Passing 'source' prop to ChannelList component */}

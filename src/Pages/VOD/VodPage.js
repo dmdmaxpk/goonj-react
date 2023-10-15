@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ChannelList from '../../Components/ListSections/ChannelList';
-import PopularList from '../../Components/ListSections/PopularList';
 import VodVideoPlayer from './vodVideoPlayer';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import PaywallInstance from '../../Utils/PaywallInstance';
@@ -19,16 +18,6 @@ class VodPage extends Component {
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
-    
-    componentWillUnmount() {
-        window.removeEventListener('popstate', this.handleBackButtonPress);
-    }
-
-    handleBackButtonPress = (event) => {
-        this.props.history.push('/?source=mta');
-        event.preventDefault();
-    };
-
     componentWillReceiveProps(nextProps) {
         if(this.props.match.params.vodID !== nextProps.match.params.vodID) {
             window.location.reload();
@@ -63,8 +52,17 @@ class VodPage extends Component {
             this.setState({Mta2: false});
         }
 
-        window.addEventListener('popstate', this.handleBackButtonPress);
+
+        this._isMounted = true;
+        window.onpopstate = ()=> {
+            if(this._isMounted) {
+                if(this.source === 'mta' || this.source === 'mta2') {
+                    window.location.href = `/?source=${this.source}`
+                }
+            }
+        }
     }
+
     checkStatus(cat){
         if(cat === "comedy"){
             const queryString = window.location.search;
