@@ -111,7 +111,7 @@ class CategoryVodPage extends Component {
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <p className="headingVOD floatLeft" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.props.match.params.category}</p>
+                    <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.props.match.params.category.toUpperCase()}</p>
                     <CategoryDD category={this.props.match.params.category} />
                 </div>
                 {this.state.data.length > 0 && subCats.includes(this.props.match.params.category) ?

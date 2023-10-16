@@ -1,15 +1,15 @@
 .vodCategoryContainer{
-    padding: 5% 5% 5% 8%;
-    margin-top: -150px !important;
+    padding: 0% 5% 5% 8%;
+    margin-top: 10px !important;
 
     /* Media query for screens smaller than 768px (tablets) */
     @media (max-width: 1000px) {
-        margin-top: -100px !important;
+        margin-top: 30px !important;
       }
     
       /* Media query for screens smaller than 480px (mobile phones) */
       @media (max-width: 480px) {
-        margin-top: -100px !important;
+        margin-top: 30px !important;
       }
 }
 
@@ -251,9 +251,6 @@
     }
     .catSelect{
         width: 100% !important;
-    }
-    .vodCategoryContainer{
-        padding: 10% 5% 5% 8%;
     }
     .vod_page_margin{
         margin-top: 0px;
