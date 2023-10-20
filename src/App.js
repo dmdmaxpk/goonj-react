@@ -35,22 +35,7 @@ class App extends React.Component {
         isLightTheme: false
      }
     this.goBackClickHandler = this.goBackClickHandler.bind(this);
-  }
-
-  useEffect = (() => {
-    const handleBackButton = (event) => {
-      event.preventDefault(); // Prevent the default back button behavior
-      // You can add your custom logic here, for example, show a confirmation modal or do nothing
-    };
-
-    // Add the event listener for the back button
-    window.addEventListener('backbutton', handleBackButton);
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('backbutton', handleBackButton);
-    };
-  }, []);
+}
 
   installPrompt = null;
   componentDidMount() {
@@ -155,9 +140,9 @@ class App extends React.Component {
     const urlParams = new URLSearchParams(queryString);
     this.source = urlParams.get("source");
 
-    // if(this.source === 'mta' || this.source === 'mta2'){
-    //     window.location = `/?source=${this.source}`;
-    // }
+    if(this.source === 'mta' || this.source === 'mta2'){
+        window.location = `/?source=${this.source}`;
+    }
   }
 
   render() {
