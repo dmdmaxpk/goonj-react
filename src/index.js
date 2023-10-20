@@ -36,9 +36,11 @@ applyTheme();
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
         <App />
       </PersistGate>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
