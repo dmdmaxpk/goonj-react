@@ -30,6 +30,17 @@ class Home extends Component {
 
     componentDidMount() {
         this.checkMta();
+        this.backButtonListener = this.handleBackButton.bind(this);
+        window.addEventListener('backbutton', this.backButtonListener);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('backbutton', this.backButtonListener);
+    }
+
+    handleBackButton(event) {
+        event.preventDefault(); // Prevent the default back button behavior
+        // You can add your custom logic here
     }
 
     checkMta() {
