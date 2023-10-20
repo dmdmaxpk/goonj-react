@@ -28,21 +28,6 @@ class Home extends Component {
         }
     }
 
-    componentDidMount() {
-        this.checkMta();
-        this.backButtonListener = this.handleBackButton.bind(this);
-        window.addEventListener('backbutton', this.backButtonListener);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('backbutton', this.backButtonListener);
-    }
-
-    handleBackButton(event) {
-        event.preventDefault(); // Prevent the default back button behavior
-        // You can add your custom logic here
-    }
-
     checkMta() {
         // MTA
         const queryString = window.location.search;
@@ -90,6 +75,19 @@ class Home extends Component {
         })
     }
 
+    componentDidMount = () => {
+        this.checkMta();
+        this._isMounted = true;
+        window.onpopstate = ()=> {
+            if(this._isMounted) {
+                if(this.source === 'mta' || this.source === 'mta2') {
+                    window.location.reload();
+                    // this.props.history.push(`/?source=?${this.state.source}`)
+                    // window.location.href = `/`
+                }
+            }
+        }
+    }
     
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');

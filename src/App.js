@@ -34,7 +34,6 @@ class App extends React.Component {
         isMta: false,
         isLightTheme: false
      }
-    this.goBackClickHandler = this.goBackClickHandler.bind(this);
 }
 
   installPrompt = null;
@@ -133,16 +132,6 @@ class App extends React.Component {
     this.setState({
       installButton:false
     })
-  }
-
-  goBackClickHandler()  {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    this.source = urlParams.get("source");
-
-    if(this.source === 'mta' || this.source === 'mta2'){
-        window.location = `/?source=${this.source}`;
-    }
   }
 
   render() {
