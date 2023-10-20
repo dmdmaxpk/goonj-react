@@ -57,7 +57,7 @@ class VodPage extends Component {
         window.onpopstate = ()=> {
             if(this._isMounted) {
                 if(this.source === 'mta' || this.source === 'mta2') {
-                    this.props.history.push(`/?source=?${this.source}`)
+                    this.props.history.push(`/?source=${this.source}`)
                     // window.location.href = `/`
                 }
             }
