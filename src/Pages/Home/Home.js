@@ -74,20 +74,6 @@ class Home extends Component {
             loading: false
         })
     }
-
-    componentDidMount = () => {
-        this.checkMta();
-        this._isMounted = true;
-        window.onpopstate = ()=> {
-            if(this._isMounted) {
-                if(this.source === 'mta' || this.source === 'mta2') {
-                    window.location.reload();
-                    // this.props.history.push(`/?source=?${this.state.source}`)
-                    // window.location.href = `/`
-                }
-            }
-        }
-    }
     
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
