@@ -1,21 +1,18 @@
 //Home.js
 import { withRouter } from 'react-router-dom';
-import React, { Component, Suspense } from 'react';
+import React, { Component } from 'react';
 import PosterSlider from '../../Components/HomeSections/PosterSlider';
 import ChannelList from '../../Components/ListSections/ChannelList';
 import NewsChannelList from '../../Components/ListSections/NewsChannelList';
 import EntertainmentChannelList from '../../Components/ListSections/EntertainmentChannelList';
 import IslamicChannelList from '../../Components/ListSections/IslamicChannelList';
-import LiveTv from '../Live/LiveTvList';
 import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
-import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
-import MainCategory from '../VOD/MainCategory';
-import { Close } from '@material-ui/icons';
+import './Home.scss'
 
 
 class Home extends Component {
@@ -29,10 +26,6 @@ class Home extends Component {
             Mta: false,
             Mta2: false
         }
-    }
-
-    componentDidMount() {
-        this.checkMta();
     }
 
     checkMta() {
@@ -81,7 +74,6 @@ class Home extends Component {
             loading: false
         })
     }
-
     
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
@@ -192,7 +184,7 @@ class Home extends Component {
                         <Loader color="secondary" />
                     </div>
                 :
-                    <div className="homeContainer">
+                    <div className="mainHomeContainer">
                         <PosterSlider />
                         <div className="homeSections">
                         <InfiniteScroll
