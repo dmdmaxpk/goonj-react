@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css'; // Import your CSS file
+import './Header.css';
 import Logo from "../../Assets/logo.png";
 
 function goBack() {

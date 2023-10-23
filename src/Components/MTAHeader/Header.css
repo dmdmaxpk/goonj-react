@@ -22,7 +22,7 @@
     display: flex;
     flex-wrap: wrap;
     display: flex;
-    height: 60px;
+    height: 60px !important;
     justify-content: center;
     align-items: center;
 }
@@ -31,6 +31,7 @@
     flex: 50%;
     position: absolute;
     left: 4%;
+    cursor: pointer;
 }
 
 .back-button a {
@@ -39,6 +40,7 @@
 }
 
 .center-logo {
+    text-align: center;
     flex: 50%;
     position: absolute;
     left: 50%;
@@ -46,8 +48,18 @@
 }
 
 .center-logo img {
-    max-width: 80px;
+    text-align: center;
+    margin-top: 10px;
+    max-width: 140px !important;
 }
+
+/*.center-logo{
+    margin-top: 50px !important;
+    margin-bottom: 30px !important;
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important;
+}*/
 
 .mtaAd {
     background-color: #f0f0f0;
