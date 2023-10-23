@@ -1,5 +1,5 @@
 .mainMtaContainer {
-    height: 160px;
+    height: 80px;
     background-color: #15142a;
     padding-left: 12px;
     padding-right: 12px;
@@ -8,13 +8,13 @@
 
 @media screen and (min-width: 300px) and (max-width: 500px) {
     .mainMtaContainer {
-        height: 120px;
+        height: 60px;
     }
 }
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
     .mainMtaContainer {
-        height: 120px;
+        height: 60px;
     }
 }
 
