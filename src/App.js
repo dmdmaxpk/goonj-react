@@ -210,7 +210,7 @@ class App extends React.Component {
               {
                 this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2')  ?
                 ( <div className={`mta_footer_div ${isLightTheme ? 'light-bg' : ''}`}>
-                    <div className="mta_ad2">Ad Space 2</div>
+                    <div className="mta_ad2" style={{display: 'none'}}>Ad Space 2</div>
                   </div>
                 )
                 :

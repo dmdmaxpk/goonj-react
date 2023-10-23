@@ -25,7 +25,7 @@ function MTAHeader() {
                     <img src={Logo} alt="Goonj" />
                 </div>
             </div>
-            <div className="mtaAd">Ad Space 1</div>
+            <div className="mtaAd" style={{display: 'none'}}>Ad Space 1</div>
         </div>
     );
 }
