@@ -21,6 +21,7 @@ class ChannelVodPage extends Component {
             skip: 60,
             limit: 60,
             page: this.props.match.params.pageNumber,
+            isMta: false,
             loading: false
         }
         this.handleClick = this.handleClick.bind(this);
@@ -33,6 +34,19 @@ class ChannelVodPage extends Component {
             behavior: "smooth"
         });
         this.getVideos();
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+        // mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
+        }
+
     }
     getVideos(){
         this.setState({loading: true});
@@ -52,8 +66,13 @@ class ChannelVodPage extends Component {
     
     handleClick(item){
         let url = this.getVodUrl(item.title, item._id);
+        // source=mta check
+        let pathname = `/${url}`;
+        if (this.state.isMta){
+            pathname += '?source=mta';
+        }
         this.props.history.push({
-            pathname: `/${url}`,
+            pathname: pathname,
             state: {data: item}
           });
     }

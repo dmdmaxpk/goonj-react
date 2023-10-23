@@ -22,6 +22,7 @@ class SubCategoryPage extends Component {
             limit: 60,
             page: this.props.match.params.pageNumber,
             isPremium: true,
+            isMta: false,
             loading: true
            
         }
@@ -37,10 +38,22 @@ class SubCategoryPage extends Component {
             behavior: "smooth"
         });
         this.getVideos();
+
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+        // mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
+        }
     }
     countCheck(value){
         let {history} = this.props;
-       if(value==0){
+        if(value==0){
             count--;
             history.push(`/category/${this.props.match.params.category}/page/${count}`);
         } if(value==1){
@@ -73,6 +86,13 @@ class SubCategoryPage extends Component {
         let {history} = this.props;
         let cat = this.props.match.params.category;
         let url = this.getVodUrl(item.title, item._id);
+
+        // source=mta check
+        let pathname = `/${url}`;
+        if (this.state.isMta){
+            pathname += '?source=mta';
+        }
+
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
             let Urlmsisdn = localStorage.getItem("urlMsisdn");
@@ -80,7 +100,11 @@ class SubCategoryPage extends Component {
             permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
         else{
-            history.push(`/${url}`);
+            //history.push(`/${url}`);
+            this.props.history.push({
+            pathname: pathname,
+            state: {data: item}
+          });
         }
     }
     getVodUrl(title, id){
@@ -91,6 +115,7 @@ class SubCategoryPage extends Component {
     }
 
     render(){
+        const isMta = this.state;
         return(
             <div className="vodCategoryContainer">
                 <div>

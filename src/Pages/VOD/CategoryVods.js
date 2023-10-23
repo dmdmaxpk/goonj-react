@@ -25,6 +25,7 @@ class CategoryVodPage extends Component {
             page: this.props.match.params.pageNumber,
             isPremium: true,
             loading: true,
+            isMta: false,
             isLightTheme: false
            
         }
@@ -52,6 +53,13 @@ class CategoryVodPage extends Component {
         }
         else{
             this.setState({isLightTheme: false});
+        }
+        // mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
         }
     }
     countCheck(value){
@@ -96,7 +104,15 @@ class CategoryVodPage extends Component {
             permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
         else{
-            history.push(`/${url}`);
+            let pathname = `/${url}`;
+            if (this.state.isMta){
+                pathname += '?source=mta';
+            }
+            //history.push(`/${url}`);
+            this.props.history.push({
+                pathname: pathname,
+                state: { data: item }
+            });
         }
     }
     getVodUrl(title, id){

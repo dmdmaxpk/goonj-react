@@ -7,12 +7,24 @@ class MainCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isMta: false,
             subCats: []
         }
         this.getSubCategories = this.getSubCategories.bind(this);
     }
     componentDidMount(){
-        this.getSubCategories()
+        this.getSubCategories();
+        // MTA
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        this.source = urlParams.get("source");
+        // mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
+        }
     }
     componentWillReceiveProps(nextProps) {
         if(this.props.data !== nextProps.data || this.props.category !== nextProps.category) {
@@ -48,13 +60,14 @@ class MainCategory extends Component {
     }
 
     render(){
+        const isMta = this.state;
         return(
             <div className="">
                 {this.state.subCats.length > 0 ?
                     this.state.subCats.map(item =>
                         this.state[item] ?
                             <div>
-                                <Headlines category="" subCategory={item} title={item} limit={12} infinite={false} url={`/category/${this.props.category}/${item}/page/1`} classes="zeroPadding" viewMoreClass={this.state[item].data.length < 12 ? "hideVM" : ''} />
+                                <Headlines category="" subCategory={item} title={item} limit={12} infinite={false} url={`/category/${this.props.category}/${item}/page/1${isMta ? '?source=mta' : ' '}`} classes="zeroPadding" viewMoreClass={this.state[item].data.length < 12 ? "hideVM" : ''} />
                             </div>
                         :
                             ''
