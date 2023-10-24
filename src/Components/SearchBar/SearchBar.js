@@ -1,6 +1,6 @@
 import React from "react";
 import "./SearchBar.scss";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import { selectSearchItems } from "../../Redux/Search/search-selectors";
 import { connect } from "react-redux";
 import { compose } from "redux";

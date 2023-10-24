@@ -99,7 +99,6 @@ class EntertainmentChannelList extends Component {
         }
         
         // Create custom events for MTA channels
-        //console.log("in if condition where live channel info to displayed");
         console.log(`MTA-${item.slug} event triggered`);
             ReactGA.event({
                 category: 'Custom Event',

@@ -1,6 +1,6 @@
 import React from "react";
 import "./SearchItem.scss";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import { IMAGE_BASE_URL, POSTER_SIZE } from "../../Config/config";
 import imdb from "../../Assets/imdb.png";
 import star from "../../Assets/star.png";

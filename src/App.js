@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
 import SearchPage from "./Components/SearchPage/SearchPage";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import LiveChannel from "./Pages/Live/LiveChannel";
 import Footer from "./Components/Footer/Footer";

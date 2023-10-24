@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../Assets/logo.png";
 import "./Header.scss";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import {
   selectCurrentUser,
