@@ -10,6 +10,9 @@ import '../ListSections/ListSections.scss'
 import Loader from '../Loader/Loader';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 class HeadlinesSection extends Component {
     constructor(props) {
@@ -39,6 +42,22 @@ class HeadlinesSection extends Component {
             pathname: pathname,
             state: { data: item }
         });
+
+        //GA4
+        console.log("MTA is: ",this.state.isMta);
+        if(this.state.isMta){
+            console.log("MTA Vod is invoked in Headlines!");
+            console.log("VOD Channel is: ", pathname);
+            const fullURL = pathname;
+            console.log("Vod URL landed on through Headlines: ", pathname);
+            // Trigger a custom event with the full URL as the page_location parameter
+            console.log(`MTA_VOD_Play event triggered`);
+            ReactGA.event({
+                category: 'Custom Event',
+                    action: 'MTA_VOD_Play',
+                    label: fullURL // Include the page location in the 'label' parameter
+            });
+        }
     }
 
     componentDidMount(){

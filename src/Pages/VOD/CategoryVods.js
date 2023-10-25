@@ -10,6 +10,9 @@ import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
 import './vod.scss';
 import MainCategory from './MainCategory';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 let count,strURL;
 let subCats = ['drama', 'programs'];
@@ -94,17 +97,17 @@ class CategoryVodPage extends Component {
         }
     }
     handleClick(item){
-        let {history} = this.props;
-        let cat = this.props.match.params.category;
+        //let {history} = this.props;
         let url = this.getVodUrl(item.title, item._id);
+        let pathname = `/${url}`;
+        let cat = this.props.match.params.category;
         if(cat === "comedy"){
             let permission = localStorage.getItem('CPPermission');
             let Urlmsisdn = localStorage.getItem("urlMsisdn");
             // localStorage.setItem('urlMsisdn', Urlmsisdn);
             permission ? this.props.history.push(`/${url}`) : (Urlmsisdn ? this.props.history.push(`/paywall/comedy?postUrl=${url}&msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}`) : window.location.href = `${config.hepage}?postUrl=${url}`);
         }
-        else{
-            let pathname = `/${url}`;
+        else{ 
             if (this.state.isMta){
                 pathname += '?source=mta';
             }
@@ -114,6 +117,22 @@ class CategoryVodPage extends Component {
                 state: { data: item }
             });
         }
+        //GA4
+        console.log("MTA is: ",this.state.isMta);
+        if(this.state.isMta){
+            console.log("MTA Vod is invoked in CategoryVods!");
+            console.log("VOD Channel is: ", pathname);
+            const fullURL = pathname;
+            console.log("Vod URL landed on through CategoryVods: ", pathname);
+            // Trigger a custom event with the full URL as the page_location parameter
+            console.log(`MTA_VOD_Play event triggered`);
+            ReactGA.event({
+                category: 'Custom Event',
+                    action: 'MTA_VOD_Play',
+                    label: fullURL // Include the page location in the 'label' parameter
+            });
+        }
+
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');

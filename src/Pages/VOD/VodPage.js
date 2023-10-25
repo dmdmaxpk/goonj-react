@@ -66,22 +66,22 @@ class VodPage extends Component {
             }
         }
         
+        /*
         // Extract the dynamic part of the URL (slug)
         const dynamicurl = window.location.pathname;
         const dynamicPart = dynamicurl.split('/').pop(); // Extract the last part of the pathname
-
         console.log("VOD Channel is: ", dynamicPart);
-
         // Construct the full URL with the dynamicPart
         const fullURL = `https://goonj.pk/${dynamicPart}?source=mta`;
         console.log("VOD URL landed on: ", fullURL);
-
         // Trigger a custom event with the full URL as the page_location parameter
         ReactGA.event({
             category: 'Custom Event',
             action: 'MTA_VOD_Play',
             label: fullURL // Include the page location in the 'label' parameter
         });
+        */
+
     }
 
     checkStatus(cat){

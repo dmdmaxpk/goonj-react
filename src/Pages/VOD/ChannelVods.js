@@ -11,6 +11,9 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 import PaginationComponent from '../../Components/Pagination/PaginationComponent'
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-2TG6PV2GL9'); 
 
 
 class ChannelVodPage extends Component {
@@ -75,6 +78,23 @@ class ChannelVodPage extends Component {
             pathname: pathname,
             state: {data: item}
           });
+        
+        //GA4
+        console.log("MTA is: ",this.state.isMta);
+        if(this.state.isMta){
+            console.log("MTA Vod is invoked in ChannelVods!");
+            console.log("VOD Channel is: ", pathname);
+            const fullURL = pathname;
+            console.log("Vod URL landed on through ChannelVods: ", pathname);
+            // Trigger a custom event with the full URL as the page_location parameter
+            console.log(`MTA_VOD_Play event triggered`);
+            ReactGA.event({
+                category: 'Custom Event',
+                    action: 'MTA_VOD_Play',
+                    label: fullURL // Include the page location in the 'label' parameter
+            });
+        }
+          
     }
     getVodUrl(title, id){
         let specialCharStr = title.replace(/[^\w\s]/gi, '');
