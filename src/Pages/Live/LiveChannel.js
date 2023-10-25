@@ -32,17 +32,19 @@ class LiveChannel extends Component {
 
         // Extract the dynamic part of the URL (slug)
         const { slug } = this.props.match.params;
-        console.log("Live Channel is: ",slug);
+        //console.log("Live Channel is: ",slug);
 
         const fullURL = `https://goonj.pk/channel/${slug}?source=mta`;
-        console.log("Live URL landed on: ", fullURL);
+        //console.log("Live URL landed on: ", fullURL);
 
         // Trigger a custom event with the full URL as the page_location parameter
+        console.log(`MTA_Live_Play event triggered`);
         ReactGA.event({
             category: 'Custom Event',
                 action: 'MTA_Live_Play',
                 label: fullURL // Include the page location in the 'label' parameter
         });
+
     }
 
     checkStatus(){
@@ -88,8 +90,6 @@ class LiveChannel extends Component {
             this.props.history.push(`/paywall/${slug !== 'pak-zim' ? 'live' : 'cricket'}?slug=${slug}&source=${source}`);
         }
     }
-
-    
 
     render(){
         const slug = this.props.match.params.slug;
