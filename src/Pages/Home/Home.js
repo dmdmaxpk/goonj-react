@@ -16,7 +16,9 @@ import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
 import MainCategory from '../VOD/MainCategory';
 import { Close } from '@material-ui/icons';
+import ReactGA from 'react-ga';
 
+ReactGA.initialize('G-2TG6PV2GL9');
 
 class Home extends Component {
     constructor(props) {
@@ -40,9 +42,7 @@ class Home extends Component {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         this.source = urlParams.get("source");
-
         // Theme checks
-
         if(this.source === 'mta'){
             this.setState({Mta: true});
         }
@@ -56,8 +56,6 @@ class Home extends Component {
         else{
             this.setState({Mta2: false});
         }
-
-        
     }
 
     closeBanner = () => {
@@ -85,8 +83,36 @@ class Home extends Component {
     
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
-        console.log("MTA value: ",isMtaSource);
         
+        
+        console.log("Mta Value:", this.state.Mta);
+        if(this.state.Mta){
+            let fullURL = "";
+            if(window.location.href === "https://goonj.pk/?source=mta"){
+                fullURL = "https://goonj.pk/?source=mta";
+                console.log("URL: ", fullURL);
+
+                // Trigger a custom event with the full URL as the page_location parameter
+                console.log(`MTA_Landing_Page event triggered`);
+                ReactGA.event({
+                    category: 'Custom Event',
+                        action: 'MTA_Landing_Page',
+                        label: fullURL // Include the page location in the 'label' parameter
+                });
+            }
+            else if(window.location.href === "https://goonj.pk/home/?source=mta"){
+                fullURL = "https://goonj.pk/home/?source=mta";
+                console.log("URL: ", fullURL); 
+
+                // Trigger a custom event with the full URL as the page_location parameter
+                console.log(`MTA_Landing_Page_Home event triggered`);
+                ReactGA.event({
+                    category: 'Custom Event',
+                        action: 'MTA_Landing_Page_Home',
+                        label: fullURL // Include the page location in the 'label' parameter
+                });
+            }    
+        }
         
         if (e === 0 && (!isMtaSource )){
             return <PopularList pageMargin="homePageMargin" title="Latest on Goonj" class="popularContainer" />;
@@ -101,7 +127,6 @@ class Home extends Component {
                 //</div>
             //);
         else if (e === 2) {
-            console.log(this.props.location.search);
             return (
                 <div className="channelM-T">
                   {/* Pass the 'source' prop to the ChannelList component 

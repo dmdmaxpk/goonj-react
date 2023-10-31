@@ -27,17 +27,16 @@ class HeadlinesSection extends Component {
         this.getDate = this.getDate.bind(this);
     }
     handleClick(item) {
-        let url = this.getVodUrl(item.title, item._id);
-    
-        // Check if isLightTheme is true, and conditionally modify the pathname
+        let url = this.getVodUrl(item.title, item._id);    
         let pathname = `/${url}`;
+        console.log("URl: ",url);
         if (this.state.isLightTheme) {
             pathname += '?source=mta2';
         }
         if (this.state.isMta){
             pathname += '?source=mta';
         }
-    
+        
         this.props.history.push({
             pathname: pathname,
             state: { data: item }
@@ -48,8 +47,9 @@ class HeadlinesSection extends Component {
         if(this.state.isMta){
             console.log("MTA Vod is invoked in Headlines!");
             console.log("VOD Channel is: ", pathname);
-            const fullURL = pathname;
-            console.log("Vod URL landed on through Headlines: ", pathname);
+            //const fullURL = pathname;
+            const fullURL = `https://goonj.pk${pathname}`;
+            console.log("Vod URL landed on through Headlines: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
             ReactGA.event({

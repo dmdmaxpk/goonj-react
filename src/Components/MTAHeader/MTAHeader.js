@@ -13,7 +13,8 @@ function goBack() {
 }
 
 function MTAHeader() {
-    const shouldHideBackButton = (window.location.href === 'https://goonj.pk/?source=mta' ? true : false);
+    const shouldHideBackButton = ((window.location.href === 'https://goonj.pk/?source=mta' || window.location.href === 'https://goonj.pk/home/?source=mta') ? true : false);
+    /*const shouldHideBackButton = (window.location.href === 'http://localhost:3000/?source=mta' ? true : false);*/
 
     return (
         <div className="mainMtaContainer">

@@ -84,8 +84,9 @@ class ChannelVodPage extends Component {
         if(this.state.isMta){
             console.log("MTA Vod is invoked in ChannelVods!");
             console.log("VOD Channel is: ", pathname);
-            const fullURL = pathname;
-            console.log("Vod URL landed on through ChannelVods: ", pathname);
+            //const fullURL = pathname;
+            const fullURL = `https://goonj.pk${pathname}`;
+            console.log("Vod URL landed on through ChannelVods: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
             ReactGA.event({

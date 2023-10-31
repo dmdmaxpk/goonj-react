@@ -99,6 +99,7 @@ class CategoryVodPage extends Component {
     handleClick(item){
         //let {history} = this.props;
         let url = this.getVodUrl(item.title, item._id);
+        console.log("URl: ",url);
         let pathname = `/${url}`;
         let cat = this.props.match.params.category;
         if(cat === "comedy"){
@@ -122,8 +123,9 @@ class CategoryVodPage extends Component {
         if(this.state.isMta){
             console.log("MTA Vod is invoked in CategoryVods!");
             console.log("VOD Channel is: ", pathname);
-            const fullURL = pathname;
-            console.log("Vod URL landed on through CategoryVods: ", pathname);
+            //const fullURL = pathname;
+            const fullURL = `https://goonj.pk${pathname}`;
+            console.log("Vod URL landed on through CategoryVods: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
             ReactGA.event({

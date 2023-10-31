@@ -108,11 +108,11 @@ class NewsChannelList extends Component {
 
         //Overall Mta Channels event
         //console.log("Live Channel is: ",item.slug);
-        const fullURL = `https://goonj.pk/channel/$${item.slug}source=mta`;
+        const fullURL = `https://goonj.pk/channel/${item.slug}?source=mta`;
         //console.log("Live URL landed on: ", fullURL);
 
         // Trigger a custom event with the full URL as the page_location parameter
-        console.log(`MTA_Live_Play event triggered`);
+        console.log(`MTA_Live_Play event triggered from NewsList.js`);
         ReactGA.event({
             category: 'Custom Event',
                 action: 'MTA_Live_Play',

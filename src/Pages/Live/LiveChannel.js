@@ -6,9 +6,9 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
-import ReactGA from 'react-ga';
+//import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-2TG6PV2GL9');
+//ReactGA.initialize('G-2TG6PV2GL9');
  
 
 class LiveChannel extends Component {
@@ -29,7 +29,7 @@ class LiveChannel extends Component {
 
     componentDidMount(){
         this.checkStatus();
-
+        /*
         // Extract the dynamic part of the URL (slug)
         const { slug } = this.props.match.params;
         //console.log("Live Channel is: ",slug);
@@ -44,7 +44,7 @@ class LiveChannel extends Component {
                 action: 'MTA_Live_Play',
                 label: fullURL // Include the page location in the 'label' parameter
         });
-
+        */
     }
 
     checkStatus(){

@@ -105,8 +105,8 @@ class SubCategoryPage extends Component {
         else{
             //history.push(`/${url}`);
             this.props.history.push({
-            pathname: pathname,
-            state: {data: item}
+                pathname: pathname,
+                state: {data: item}
           });
         }
        
@@ -115,8 +115,9 @@ class SubCategoryPage extends Component {
         if(this.state.isMta){
             console.log("MTA Vod is invoked in SubCategory!");
             console.log("VOD Channel is: ", pathname);
-            const fullURL = pathname;
-            console.log("Vod URL landed on through SubCategory: ", pathname);
+            //const fullURL = pathname;
+            const fullURL = `https://goonj.pk${pathname}`;
+            console.log("Vod URL landed on through SubCategory: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
             ReactGA.event({
