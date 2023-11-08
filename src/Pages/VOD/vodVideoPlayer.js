@@ -8,6 +8,7 @@ import SocialShare from '../../Components/SocialShare/SocialShare';
 import Loader from '../../Components/Loader/Loader';
 import videojs from 'video.js';
 import '../../Components/Player/videojs.css';
+import '../../Pages/VOD/vodVideoPlayer.css';
 
 class VodVideoPlayer extends Component {
     constructor(props){
@@ -22,6 +23,7 @@ class VodVideoPlayer extends Component {
         }
         this.removeExtension = this.removeExtension.bind(this);
         this.kFormatter = this.kFormatter.bind(this);
+        this.initializePreRollAd = this.initializePreRollAd.bind(this);
         this.initializeVideoPlayer = this.initializeVideoPlayer.bind(this);
         this.showError = this.showError.bind(this)
     }
@@ -36,6 +38,7 @@ class VodVideoPlayer extends Component {
         return kFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     componentDidMount(){
+        this.initializePreRollAd();
         this.initializeVideoPlayer();
 
         // MTA
@@ -50,10 +53,42 @@ class VodVideoPlayer extends Component {
         else{
             this.setState({isLightTheme: false});
         }
-
         //share btn conditionally           
         this.setState({isMta: urlParams.get("source") === 'mta' || urlParams.get("source") === 'mta2'});
+
     }
+
+    initializePreRollAd() {
+        // Pre-roll ad source URL
+        const preRollAdSource = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_preroll_skippable&sz=640x480&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
+
+        // Create a new video element for the ad
+        const adVideoElement = document.createElement('video');
+        adVideoElement.className = 'video-js vjs-16-9 ad-player'; // You can customize this class as needed
+
+        // Append the ad video element to the parent container
+        this.adPlayerContainer.appendChild(adVideoElement);
+
+        // Initialize the Video.js player for the pre-roll ad
+        this.adPlayer = videojs(adVideoElement, {}, () => {
+            // Set the source for the pre-roll ad
+            this.adPlayer.src({
+                src: preRollAdSource,
+                type: 'video/mp4', // Adjust the type as per your ad source
+                //type: "application/x-mpegURL",
+            });
+
+            // Autoplay the ad (if desired)
+            this.adPlayer.play();
+        });
+
+        /* Listen for the 'ended' event on the ad player
+        this.adPlayer.on('ended', () => {
+            // Play your main content here
+            console.log('Pre-roll ad has ended. Now playing the main content.');
+        });*/
+    }
+
     initializeVideoPlayer(){
         let item = this.props.data;
         const queryString = window.location.search;
@@ -63,24 +98,6 @@ class VodVideoPlayer extends Component {
         const source = item ? `//webvod.goonj.pk/vod/${this.removeExtension(item.file_name)}_,baseline_144,main_360,main_480,.m4v.urlset/master.m3u8` : '';
 
         const video = document.querySelector('video');
-        
-        // const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-        // if (!Hls.isSupported()) {
-        //     video.src = source;
-        // } else {
-        //     const hls = new Hls();
-        //     hls.loadSource(source);
-        //     hls.attachMedia(video);
-        //     console.log(player.hls)
-        //     window.hls = hls;
-            
-        //     player.on('languagechange', () => {
-        //         setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-        //         player.source = player.source + `msisdn=${localStorage.getItem('liveMsisdn')}`
-        //     });
-        // }
-        
-        // window.player = player;
 
         videojs.options.hls.overrideNative = true;
         videojs.options.html5.nativeAudioTracks = false;
@@ -98,6 +115,7 @@ class VodVideoPlayer extends Component {
             src: source,
         });
     }
+
     removeExtension(filename){
         let file = filename.split(".");
         return file[0];
@@ -120,10 +138,19 @@ class VodVideoPlayer extends Component {
                         {item ?
                             <GridContainer xs={12} sm={12} md={12} className="videoPlayerDiv">
                                 <GridItem className="videoPlayerGI" xs={12} sm={12} md={7}>
-                                    <video ref={ node => this.videoNode = node } id='channel-player' className="videoPlayer video-js vjs-16-9" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
-                                        {/* <track kind="captions" label="Urdu" srcLang="ur" src="" default />
-                                        <a href="" download>Download</a> */}
-                                    </video>
+                                <div className="videoPlayerDiv">
+                                    <div className="ad-player-container">
+                                        <div ref={node => this.adPlayerContainer = node}>
+                                        </div>
+                                    </div>   
+
+                                    <div className="video-player-container">
+                                        <video ref={ node => this.videoNode = node } id='channel-player' className="videoPlayer video-js vjs-16-9" autoPlay controls crossOrigin playsInline poster={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} onError={this.showError} >
+                                            {/* <track kind="captions" label="Urdu" srcLang="ur" src="" default />
+                                            <a href="" download>Download</a> */}
+                                        </video>
+                                    </div>
+                                </div>    
 
                                 <GridItem className="topicGI" xs={12} >
                                 <div className="title_div">
@@ -148,12 +175,7 @@ class VodVideoPlayer extends Component {
 
                                 </div>
                                 </GridItem>
-                                </GridItem>
-
-                                
-                               
-                                
-                                
+                                </GridItem>              
                             </GridContainer>
                         :''}
                     </GridItem>

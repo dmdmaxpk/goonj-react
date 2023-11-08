@@ -1,0 +1,18 @@
+/* CSS styles */
+.videoPlayerDiv {
+    position: relative;
+  }
+  
+  .ad-player-container {
+    position: relative;
+    /*position: absolute;*/
+    top: 0;
+    left: 0;
+    z-index: 1; /* Display on top of video player */
+  }
+  
+  .video-player-container {
+    position: relative; /* Maintain normal flow */
+    z-index: 0;
+  }
+  
