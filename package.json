@@ -37,7 +37,8 @@
     "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "video.js": "^7.21.5",
-    "videojs-contrib-ads": "^7.3.2",
+    "videojs": "^1.0.0",
+    "videojs-contrib-ads": "^6.9.0",
     "videojs-ima": "^2.2.0"
   },
   "scripts": {
