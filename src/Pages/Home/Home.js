@@ -67,10 +67,10 @@ class Home extends Component {
     
     handleMta() {
         console.log("Mta Value:", this.state.Mta);
-    
         //GA4
         if (this.state.Mta) {
             let fullURL = "";
+            console.log(window.location.href);
             if(window.location.href === "https://goonj.pk/?source=mta"){
                 fullURL = "https://goonj.pk/?source=mta";
                 console.log("URL: ", fullURL);
@@ -95,7 +95,6 @@ class Home extends Component {
                         label: fullURL // Include the page location in the 'label' parameter
                 });
             }    
-
         }
     }
     

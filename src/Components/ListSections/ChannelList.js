@@ -106,20 +106,6 @@ class ChannelList extends Component {
                 label: window.location.href // Include the page location in the 'label' parameter
             });
 
-        //Overall Mta Channels event
-        //console.log("Live Channel is: ",item.slug);
-        const fullURL = `https://goonj.pk/channel/${item.slug}?source=mta`;
-        //const fullURL = `https://goonj.pk/channel/${url}?source=mta`;
-        //console.log("Live URL landed on: ", fullURL);
-
-        // Trigger a custom event with the full URL as the page_location parameter
-        console.log(`MTA_Live_Play event triggered from ChannelList.js`);
-        ReactGA.event({
-            category: 'Custom Event',
-                action: 'MTA_Live_Play',
-                label: fullURL // Include the page location in the 'label' parameter
-        });
-
         this.props.history.push(url); 
     };
 
