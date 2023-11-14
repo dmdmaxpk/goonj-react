@@ -68,34 +68,20 @@ class Home extends Component {
     handleMta() {
         console.log("Mta Value:", this.state.Mta);
         //GA4
-        if (this.state.Mta) {
-            let fullURL = "";
-            console.log(window.location.href);
-            if(window.location.href === "https://goonj.pk/?source=mta"){
-                fullURL = "https://goonj.pk/?source=mta";
-                console.log("URL: ", fullURL);
+        //let fullURL = "";
 
-                // Trigger a custom event with the full URL as the page_location parameter
-                console.log(`MTA_Landing_Page event triggered`);
-                ReactGA.event({
-                    category: 'Custom Event',
-                        action: 'MTA_Landing_Page',
-                        label: fullURL // Include the page location in the 'label' parameter
-                });
-            }
-            else if(window.location.href === "https://goonj.pk/home/?source=mta"){
-                fullURL = "https://goonj.pk/home/?source=mta";
-                console.log("URL: ", fullURL); 
+        console.log(window.location.href);
+        let fullURL = "https://goonj.pk/?source=mta";
+        console.log("URL: ", fullURL);
 
-                // Trigger a custom event with the full URL as the page_location parameter
-                console.log(`MTA_Landing_Page event triggered`);
-                ReactGA.event({
-                    category: 'Custom Event',
-                        action: 'MTA_Landing_Page',
-                        label: fullURL // Include the page location in the 'label' parameter
-                });
-            }    
-        }
+        // Trigger a custom event with the full URL as the page_location parameter
+        console.log(`MTA_Landing_Page event triggered`);
+        ReactGA.event({
+            category: 'Custom Event',
+                action: 'MTA_Landing_Page',
+                label: fullURL // Include the page location in the 'label' parameter
+                //label: window.location.href
+        });
     }
     
     closeBanner = () => {
