@@ -45,7 +45,21 @@ class VideoPlayer extends Component {
                 });
                 let generatedToken = akamai_auth.generateToken();
                 let token = generatedToken;
-                const source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
+
+                let source = '';
+                console.log("isMTA value:",this.state.isMta);
+                // Conditionally include quality setting '360p' for MTA source
+                if (this.state.isMta) {
+                    let qualitySetting =  '360p'; 
+                    let hlsLinkWithQuality = `${this.state.data.hls_link.replace('.m3u8', `_${qualitySetting}/index.m3u8`)}`;
+
+                    source = `${this.state.urlLink}/${hlsLinkWithQuality}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
+
+                }
+                else{
+                    source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
+                }
+                console.log("URL is : ", source);
                 this.setState({source});
 
                 videojs.options.hls.overrideNative = true;
@@ -74,13 +88,7 @@ class VideoPlayer extends Component {
                 //     callback();
                 //   });
             })
-
-            const urlParams = new URLSearchParams(window.location.search);
-            //this.setState({isMta: urlParams.get("source") === 'mta'|| 'mta2'  ? true : false});
-            this.setState({isMta: urlParams.get("source") === 'mta' || urlParams.get("source") === 'mta2'});
-            console.log("isMTA value:",this.isMta);
-
-           
+   
         })
         .catch(err =>{
         })
@@ -97,6 +105,15 @@ class VideoPlayer extends Component {
         else{
          this.setState({isLightTheme: false});
         }
+
+        // Mta check
+        if(this.source === 'mta'){
+            this.setState({isMta: true});
+        }
+        else{
+            this.setState({isMta: false});
+        }
+       
     }
 
     kFormatter(num) {

@@ -37,7 +37,7 @@ class Home extends Component {
         this.checkMta();
     }
     
-    checkMta() {
+    checkMta(){
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         this.source = urlParams.get("source");
@@ -63,8 +63,9 @@ class Home extends Component {
                 //console.log("source mta2 is: ", this.state.Mta2);
             });
         }
+    }
     
-    handleMta() {
+    handleMta(){
         console.log("Mta Value:", this.state.Mta);
         //GA4
         //let fullURL = "";
@@ -97,7 +98,7 @@ class Home extends Component {
         this.setState({
             items: this.state.items.concat(Array.from({ length: 1 }))
         });
-    };
+    }
 
     UNSAFE_componentWillMount(){
         this.setState({
