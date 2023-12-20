@@ -63,7 +63,6 @@ class Home extends Component {
                 //console.log("source mta2 is: ", this.state.Mta2);
             });
         }
-    }
     
     handleMta() {
         console.log("Mta Value:", this.state.Mta);
