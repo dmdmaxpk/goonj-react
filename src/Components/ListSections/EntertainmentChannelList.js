@@ -10,11 +10,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { withRouter } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import { data } from 'jquery';
 
 ReactGA.initialize('G-2TG6PV2GL9'); 
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'express-entertainment'];
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'express-entertainment', 'green-tv-ent'];
 
 class EntertainmentChannelList extends Component {
     constructor(props) {
@@ -71,6 +72,7 @@ class EntertainmentChannelList extends Component {
             const response = await fetch(API_URL);
             const jsonData = await response.json();
             const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            console.log('Filtered Items:', filteredItems);
             this.setState({ data: filteredItems });
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -121,7 +123,7 @@ class EntertainmentChannelList extends Component {
             dots: false,
             arrows: true,
             infinite: false,
-            slidesToShow: this.state.data.length > 6 ? 6 : this.state.data.length,
+            slidesToShow: this.state.data.length > 7 ? 7 : this.state.data.length,
             speed: 500,
             slidesToScroll: 1,
             responsive: [

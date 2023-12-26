@@ -14,7 +14,7 @@ import ReactGA from 'react-ga';
 ReactGA.initialize('G-2TG6PV2GL9'); 
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment'];
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment', 'green-tv-ent'];
 
 class ChannelList extends Component {
     constructor(props) {
@@ -47,7 +47,10 @@ class ChannelList extends Component {
             // Fetch live-tv data when source is not mta
             AxiosInstance.get('/live')
                 .then(res => {
-                    this.setState({ data: res.data });
+                    //this.setState({ data: res.data });
+                    // Exclude 'green-tv-ent'
+                    const filteredData = res.data.filter(item => item.slug !== 'green-tv-ent');
+                    this.setState({ data: filteredData });
                 })
                 .catch(error => {
                     console.error('Error fetching live-tv data:', error);
@@ -63,7 +66,7 @@ class ChannelList extends Component {
         }
     }
     
-    // MTA
+    // MTA channels
     fetchData = async () => {
         try {
             const response = await fetch(API_URL);
