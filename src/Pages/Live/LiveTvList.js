@@ -73,6 +73,30 @@ class LiveTv extends Component {
             const response = await fetch(API_URL);
             const jsonData = await response.json();
             const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            // add hardcoded green channel object
+            filteredItems.push(
+                {
+                    _id: "WcW2VDb",
+                    ad_tag: "",
+                    views_count: 2,
+                    name: "Green TV Entertainment",
+                    hls_link: "greenent.m3u8",
+                    slug: "green-tv-ent",
+                    thumbnail: "green-ent.jpg",
+                    package_id: [
+                    "QDfG",
+                    "QDfC"
+                    ],
+                    seq: 492,
+                    is_streamable: false,
+                    category: "entertainment"
+                }
+            )
+            filteredItems.sort((a, b) => {
+                if(a.seq > b.seq) return 1;
+                if(a.seq < b.seq) return -1;
+                else return 0;
+            })
             this.setState({ data: filteredItems });
         } catch (error) {
             console.error('Error fetching data:', error);
