@@ -1,4 +1,3 @@
-
 const config = {
     development: {
         apiBaseUrl: "https://api.goonj.pk/v2",
@@ -10,7 +9,7 @@ const config = {
         dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://localhost/hepage",
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
+        streamKey: 'e9bf48c16653b130688bdf412302ad0a'
     },
     staging: {
         apiBaseUrl: 'https://api.goonj.pk/v2',
@@ -24,7 +23,7 @@ const config = {
         // liveStreamUrl: "//kaios.streamax.io",
         // streamKey: '72fb58000a0d1561f60da877b5a009fb'
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
+        streamKey: 'e9bf48c16653b130688bdf412302ad0a'
     },
     production: {
         apiBaseUrl: "https://api.goonj.pk/v2",
@@ -36,7 +35,7 @@ const config = {
         dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://hepage.goonj.pk",
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '4db8dd0a0cf9271e4f7fe2fe8ded6fe3'
+        streamKey: 'e9bf48c16653b130688bdf412302ad0a'
     }
 }
 
