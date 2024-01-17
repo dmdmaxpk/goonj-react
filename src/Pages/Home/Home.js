@@ -134,8 +134,8 @@ class Home extends Component {
                  */}
                   {isMtaSource ? (
                     <>
-                    <NewsChannelList />
                     <EntertainmentChannelList />
+                    <NewsChannelList />
                     <IslamicChannelList />
                     </>
                 ) : (
@@ -147,7 +147,28 @@ class Home extends Component {
                 </div>
               );
               
-        }else if (e === 3) {
+        } else if (e === 3) {
+            if(!isMtaSource){
+                return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
+                url={`/category/entertainment/page/1`} /></div>
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
+                url={ this.state.Mta ? `/category/entertainment/page/1?source=mta`: this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`: `/category/entertainment/page/1` }/></div>;
+            }
+        
+        }
+        else if (e === 4) {
+            if(!isMtaSource){
+                return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
+            }
+            else{
+                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
+                url={ this.state.Mta ? `/category/sports/page/1?source=mta`: this.state.Mta2 ? `/category/sports/page/1?source=mta2`: `/category/sports/page/1` }/></div>;
+            }
+        
+        }
+        else if (e === 5) {
              if(!isMtaSource){
                 return <DramasSection title="Pakistani Dramas" category="drama" />;
             }
@@ -155,7 +176,7 @@ class Home extends Component {
                 return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory=""
                 url={ this.state.Mta ? `/category/drama/page/1?source=mta`: this.state.Mta2 ? `/category/drama/page/1?source=mta2`: `/category/drama/page/1` }/></div>;
             }
-        } else if (e === 4) {
+        } else if (e === 6) {
             if(!isMtaSource){
                 return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
                 url={`/category/news/page/1`} /></div>
@@ -165,7 +186,7 @@ class Home extends Component {
                 url={ this.state.Mta ? `/category/news/page/1?source=mta`: this.state.Mta2 ? `/category/news/page/1?source=mta2`: `/category/news/page/1` }/></div>;
             }
         
-        } else if (e === 5) {
+        } else if (e === 7) {
             if(!isMtaSource){
                 return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
                 url={`/category/current_affairs/page/1`} /></div>
@@ -176,26 +197,7 @@ class Home extends Component {
                 url={ this.state.Mta ? `/category/current_affairs/page/1?source=mta`: this.state.Mta2 ? `/category/current_affairs/page/1?source=mta2`: `/category/current_affairs/page/1` }/></div>;
             }
         
-        } else if (e === 6) {
-            if(!isMtaSource){
-                return <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
-                url={`/category/entertainment/page/1`} /></div>
-            }
-            else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/entertainment/page/1?source=mta`: this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`: `/category/entertainment/page/1` }/></div>;
-            }
-        
-        } else if (e === 7) {
-            if(!isMtaSource){
-                return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
-            }
-            else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/sports/page/1?source=mta`: this.state.Mta2 ? `/category/sports/page/1?source=mta2`: `/category/sports/page/1` }/></div>;
-            }
-        
-        } else if (e === 8) {
+        }  else if (e === 8) {
             if(!isMtaSource){ 
                 return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />;
             }

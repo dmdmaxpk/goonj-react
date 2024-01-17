@@ -55,7 +55,7 @@ class PosterSlider extends Component {
         let mtaBanners = [
             {
                 name: "07",
-                url: "#",
+                url: "https://goonj.pk/channel/green-tv-ent?source=mta",
                 class: "carousel-item active"
             },
             {
@@ -97,10 +97,10 @@ class PosterSlider extends Component {
                     <div className="carousel-inner carouselDiv">
                         {
                             activeBanners.map(item =>
-                                <div className={item.class} key={item.name}>
-                                    {/*<Link to={item.url}>*/}
+                                <div className={item.class} key={item.name} onClick={()=> item?.url !=='#' ? window.open(item.url, '_self') : ()=> {}}>
+                                    {/* <Link to={item.url}> */}
                                         <img src={`${config.bannerUrl}/${item.name}.jpg`} className="d-block w-100 slider_images_all" alt={item.name} />
-                                    {/*</Link>*/}
+                                    {/* </Link> */}
                                 </div>
                             )
 
