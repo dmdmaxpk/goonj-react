@@ -6,6 +6,7 @@ import PopularList from '../../Components/ListSections/PopularList';
 import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
+import GreenEntertainment from '../../Components/ListSections/GreenEntertainment';
 //import ReactGA from 'react-ga';
 
 //ReactGA.initialize('G-2TG6PV2GL9');
@@ -100,12 +101,22 @@ class LiveChannel extends Component {
             <div style={{marginTop: (source === 'mta' || source === 'mta2' ? "20%" : "3%")}}>
                 <VideoPlayer slug={slug} />
                 <div className="liveChannelMarginLeft">
+                        {(source === 'mta' || source === 'mta2') && slug === 'green-tv-ent' ?
+                            <div style={{marginTop: '2vh'}}>
+                                <GreenEntertainment />
+                            </div>
+                        :
+                            null
+                        }
                     {/* Passing 'source' prop to ChannelList component */}
                     <ChannelList classname="liveChannel"  />
                     {/*<PopularList title="Latest on Goonj" classname="liveChannel" />*/}
                     {!(source === 'mta' || source === 'mta2') ? (
                     // Display PopularList only if 'source' is not 'mta' or 'mta2'
-                    <PopularList title="Latest on Goonj" classname="liveChannel" />
+                    <>
+                        <PopularList title="Latest on Goonj" classname="liveChannel" />
+                    </>
+                    
                 ) : null}
                 </div>
             </div>

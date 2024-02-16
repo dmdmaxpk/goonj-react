@@ -31,22 +31,26 @@ class YoutubePlayer extends Component {
     }
     render(){
         const opts = {
-            // height: '390',
-            width: '70vw',
+            height: '50vh',
+            playerVars: {
+                // https://developers.google.com/youtube/player_parameters
+                autoplay: 1,
+              },        
             
           };
         return(
             <div className="videoPlayerContainer">
                 <div>
                     <YouTube 
-                        videoId="7stkvpoN29M"
+                        videoId={this.props.videoId}
                         className="ytVP"
+                        opts={opts}
                         // onReady={this._onReady} 
                     />
                 </div>
-                <div className="title_div">
+                <div className="title_div" style={{marginBottom: '2vh'}}>
                     <div className="title_hashTag_and_heading channelTitle"> 
-                        <div style={{textTransform: "capitalize"}}>FFCS - Pakistan Qualifier</div>
+                        <div style={{textTransform: "capitalize"}}>{this.props.title}</div>
                     </div>
 
                     <div>

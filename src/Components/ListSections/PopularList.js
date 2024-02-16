@@ -141,7 +141,7 @@ class PopularList extends Component {
                 {
                   breakpoint: 480,
                   settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 2,
                     arrows: true
                   }
@@ -155,20 +155,38 @@ class PopularList extends Component {
                 <Heading heading={this.props.title} viewMoreClass="hidden" classname={this.props.classname+" "+this.props.class ? this.props.class:" "}/>
                 <div className={"channelListContainer position-relative "+this.props.pageMargin}>
                     <fadeleft className="popularLeftFade"/>
-                        <Slider className="propularSlider" {...settings}>
-                            {popularList.length > 0 ?
-                                popularList.map(item =>
-                                    <div className="popularListDiv" key={item.slug}>
-                                        <a style={{textDecoration: "none"}} href={`${item.url}`} >
-                                            <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
-                                            <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
-                                             {item.contentCategory}
-                                        </a>
-                                    </div>
-                                )
-                                : <Loader />
-                            }
-                         </Slider>
+                        {this.props.data ?
+                            <Slider className="propularSlider" {...settings}>
+                                {this.props?.data.length > 0 ?
+                                    this.props?.data.map(item =>
+                                        <div className="popularListDiv" key={item.playlistId}>
+                                            <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}`} >
+                                                <img className="popularListImg" src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} alt={item?.thumbnail} />
+                                                <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
+                                                {item.contentCategory}
+                                            </a>
+                                        </div>
+                                    )
+                                    : <Loader />
+                                }
+                            </Slider>
+                        :
+                            <Slider className="propularSlider" {...settings}>
+                                {popularList.length > 0 ?
+                                    popularList.map(item =>
+                                        <div className="popularListDiv" key={item.slug}>
+                                            <a style={{textDecoration: "none"}} href={`${item.url}`} >
+                                                <img className="popularListImg" src={require(`../../Assets/PopularAssets/${item.thumbnail}`)} alt={item.thumbnail} />
+                                                <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
+                                                {item.contentCategory}
+                                            </a>
+                                        </div>
+                                    )
+                                    : <Loader />
+                                }
+                            </Slider>
+
+                        }
                     <faderight className="popularRightFade"/>
                 </div>
             </div>

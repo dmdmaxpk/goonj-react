@@ -9,7 +9,8 @@ const config = {
         dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://localhost/hepage",
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '5314abb582f54d54f75d439c25d48c22'
+        streamKey: '5314abb582f54d54f75d439c25d48c22',
+        googleApiKey: 'AIzaSyCTU6eO5bKyXa06RAimh75pqdI9BZcvxgA'
     },
     staging: {
         apiBaseUrl: 'https://api.goonj.pk/v2',
@@ -23,7 +24,8 @@ const config = {
         // liveStreamUrl: "//kaios.streamax.io",
         // streamKey: '72fb58000a0d1561f60da877b5a009fb'
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '5314abb582f54d54f75d439c25d48c22'
+        streamKey: '5314abb582f54d54f75d439c25d48c22',
+        googleApiKey: 'AIzaSyCTU6eO5bKyXa06RAimh75pqdI9BZcvxgA'
     },
     production: {
         apiBaseUrl: "https://api.goonj.pk/v2",
@@ -35,7 +37,8 @@ const config = {
         dramaLogoUrl: "https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/dramas",
         hepage: "http://hepage.goonj.pk",
         liveStreamUrl: "//weblive.goonj.pk",
-        streamKey: '5314abb582f54d54f75d439c25d48c22'
+        streamKey: '5314abb582f54d54f75d439c25d48c22',
+        googleApiKey: 'AIzaSyCTU6eO5bKyXa06RAimh75pqdI9BZcvxgA'
     }
 }
 

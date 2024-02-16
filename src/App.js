@@ -26,6 +26,8 @@ import StickyBanner from "./Components/StickyBanner/StickyBanner";
 import MTAHeader from "./Components/MTAHeader/MTAHeader";
 
 import './App.css'
+import YtPlaylistPage from "./Pages/VOD/YtPlaylistVods";
+import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 
 class App extends React.Component {
   constructor(props) {
@@ -155,6 +157,8 @@ class App extends React.Component {
           }
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/green-tv-ent/:playlistId" component={YtPlaylistPage} />
+            <Route exact path="/green-tv-ent/:playlistId/:videoId" component={YoutubeChannel} />
             <Route exact path="/home" component={Home} />
             <Route
               exact
@@ -167,8 +171,6 @@ class App extends React.Component {
             <Route exact path="/terms-conditions" component={TermsConditions} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/live-tv" component={LiveTv} />
-            <Route exact path="/live-tv?source=mta" component={LiveTv} />
-            <Route exact path="/live-tv?source=mta2" component={LiveTv} />
             <Route exact path="/channel/:slug" component={LiveChannel} />
             {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
             {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
