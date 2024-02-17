@@ -160,7 +160,7 @@ class PopularList extends Component {
                                 {this.props?.data.length > 0 ?
                                     this.props?.data.map(item =>
                                         <div className="popularListDiv" key={item.playlistId}>
-                                            <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}`} >
+                                            <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}?source=mta`} >
                                                 <img className="popularListImg" src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} alt={item?.thumbnail} />
                                                 <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
                                                 {item.contentCategory}
