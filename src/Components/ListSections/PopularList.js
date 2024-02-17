@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import config from '../../Utils/config';
+import { withRouter } from 'react-router-dom';
 
 class PopularList extends Component {
     constructor(props) {
@@ -160,7 +161,7 @@ class PopularList extends Component {
                                 {this.props?.data.length > 0 ?
                                     this.props?.data.map(item =>
                                         <div className="popularListDiv" key={item.playlistId}>
-                                            <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}?source=mta`} >
+                                            <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}${this.props.location.search.includes('source=mta') ? '?source=mta' : ''}`} >
                                                 <img className="popularListImg" src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} alt={item?.thumbnail} />
                                                 <p className="channelListName popularListName" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
                                                 {item.contentCategory}
@@ -194,4 +195,4 @@ class PopularList extends Component {
     }
 }
  
-export default PopularList;
+export default withRouter(PopularList);

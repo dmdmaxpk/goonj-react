@@ -30,7 +30,7 @@ class YoutubeChannel extends Component {
                 <YoutubePlayer videoId={this.props.match.params.videoId} title={title} />
                 <div className="liveChannelMarginLeft">
                 <ChannelList classname="liveChannel"/>
-                <PopularList title="Latest on Goonj" classname="liveChannel"  />
+                {/* <PopularList title="Latest on Goonj" classname="liveChannel"  /> */}
                 </div>
             </div>
         );
