@@ -24,10 +24,11 @@ class YoutubeChannel extends Component {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const title = urlParams.get("title");
+        const source = urlParams.get('source');
         // const slug = this.props.match.params.slug;
         return(
             <div style={{marginTop: "12vh"}}>
-                <YoutubePlayer videoId={this.props.match.params.videoId} title={title} />
+                <YoutubePlayer videoId={this.props.match.params.videoId} title={title} source={source} />
                 <div className="liveChannelMarginLeft">
                 <ChannelList classname="liveChannel"/>
                 {/* <PopularList title="Latest on Goonj" classname="liveChannel"  /> */}

@@ -57,7 +57,11 @@ class YoutubePlayer extends Component {
                         {/* <div className="views_text"> 
                             {this.kFormatter(data.views_count)} views
                         </div >   */}
-                        <SocialShare />
+                        {this.props?.source === 'mta' ?
+                            null
+                        :
+                            <SocialShare />
+                        }
                     </div> 
                 </div>
             </div>
