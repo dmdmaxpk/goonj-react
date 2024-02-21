@@ -1,11 +1,11 @@
 /* Base styles for all screen sizes */
 .MuiPaginationItem-root {
     background-color: #ABEA1F;
-    color: white;
-    padding: 8px 12px;
+    padding: 2px 12px !important;
+    /* color: white;
     border: 1px solid #87CEEB;
     border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .MuiPaginationItem-root:hover {
