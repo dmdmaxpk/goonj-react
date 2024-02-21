@@ -10,7 +10,7 @@ class PaginationComponent extends Component {
     super(props);
     this.state = {
       data: this.props.data,
-      limit: 60,
+      limit: this.props?.limit ?? 60,
       isDarkTheme: false,
       isLightTheme: false
     };

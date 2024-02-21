@@ -157,7 +157,7 @@ class App extends React.Component {
           }
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/green-tv-ent/:playlistId" component={YtPlaylistPage} />
+            <Route exact path="/green-tv-ent/:playlistId/page/:pageNumber" component={YtPlaylistPage} />
             <Route exact path="/green-tv-ent/:playlistId/:videoId" component={YoutubeChannel} />
             <Route exact path="/home" component={Home} />
             <Route

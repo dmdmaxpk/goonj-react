@@ -117,7 +117,7 @@ class YtPlaylistPage extends Component {
                         }
                         <GridItem sm={12} md={12} xs={12} >
                             <div className="paginationDiv">
-                                <PaginationComponent params={this.props.match.params} data={this.state.data} />
+                                <PaginationComponent params={this.props.match.params} data={this.state.data} limit={50} />
                             </div>
                         </GridItem>
                     </GridContainer>
