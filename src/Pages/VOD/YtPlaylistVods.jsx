@@ -91,7 +91,7 @@ class YtPlaylistPage extends Component {
                     :
                     <GridContainer>
                         {this.state.loading === false ?
-                            this.state.data.map(item =>
+                            this.state.data.reverse().map(item =>
                                 <GridItem className="vodGridItem" style={{marginBottom: '4vh !important'}} xs={6} md={6} lg={2}>
                                     {this.state.data.length!=0?
                                     <div>

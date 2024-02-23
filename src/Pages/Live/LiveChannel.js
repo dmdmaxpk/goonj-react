@@ -106,10 +106,9 @@ class LiveChannel extends Component {
                                 <GreenEntertainment />
                             </div>
                         :
-                            null
+                            <ChannelList classname="liveChannel"  />
                         }
                     {/* Passing 'source' prop to ChannelList component */}
-                    <ChannelList classname="liveChannel"  />
                     {/*<PopularList title="Latest on Goonj" classname="liveChannel" />*/}
                     {!(source === 'mta' || source === 'mta2') ? (
                     // Display PopularList only if 'source' is not 'mta' or 'mta2'

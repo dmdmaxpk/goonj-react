@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PopularList from './PopularList';
+import React, { Component } from 'react';
+import GreenDramas from '../GreenDramas/GreenDramas';
 
 export default class GreenEntertainment extends Component {
     constructor(props) {
@@ -46,7 +46,7 @@ export default class GreenEntertainment extends Component {
 
         return (
             <>
-                <PopularList data={greenDramas} title="Dramas" classname="liveChannel" />
+                <GreenDramas data={greenDramas} />
             </>
         )
     }
