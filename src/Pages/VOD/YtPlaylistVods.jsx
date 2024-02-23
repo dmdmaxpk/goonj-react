@@ -71,29 +71,33 @@ class YtPlaylistPage extends Component {
     }
 
     componentDidMount() {
-        console.log('this.props', this.props.match.params.playlistId);
         this.getPlaylist();
         this.getPlaylistDramas();
     };
 
     
     render(){
-        console.log('data', this.state.data)
-        console.log('title', this.state.title)
         const { isLightTheme } = this.state;
+        const dramas = this.state.data.filter((item) => 
+            item.snippet.resourceId.videoId !== this.props.match.params.videoId
+        );
         return(
             <div className="vodCategoryContainer">
-                <div>
-                    <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.state.title.toUpperCase()}</p>
-                </div>
-                {this.state.data.length === 0 ?
+                {this.props?.disableHeading ?
+                    null
+                :
+                    <div>
+                        <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.state.title.toUpperCase()}</p>
+                    </div>
+                }
+                {dramas.length === 0 ?
                     <></>
                     :
                     <GridContainer>
                         {this.state.loading === false ?
-                            this.state.data.reverse().map(item =>
-                                <GridItem className="vodGridItem" style={{marginBottom: '4vh !important'}} xs={6} md={6} lg={2}>
-                                    {this.state.data.length!=0?
+                            dramas?.reverse()?.map((item, index) =>
+                                <GridItem className={`vodGridItem ${index % 2 === 0 && this.props.className ? this.props.className : ''}`} style={{marginBottom: '4vh !important'}} xs={6} md={6} lg={2}>
+                                    {dramas.length!=0?
                                     <div>
                                     <div className="imgDiv" onClick={()=> this.handleClick(item)}>
                                         <span className="playBtn">
@@ -104,7 +108,7 @@ class YtPlaylistPage extends Component {
                                     <div className="vodDetailsDiv" style={{textAlign: 'center'}}>
                                         <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.snippet.title}</p>
                                         <p className="source"><ReactTimeAgo className="daysAgo" date={item.snippet.publishedAt}/>
-                                         {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
+                                        {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
                                         </p>
                                         {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
                                     </div></div>
@@ -115,11 +119,15 @@ class YtPlaylistPage extends Component {
                             )
                         : <Loader />
                         }
-                        <GridItem sm={12} md={12} xs={12} >
-                            <div className="paginationDiv">
-                                <PaginationComponent params={this.props.match.params} data={this.state.data} limit={50} />
-                            </div>
-                        </GridItem>
+                        {this.props?.disablePagination ? 
+                            null
+                        :
+                            <GridItem sm={12} md={12} xs={12} >
+                                <div className="paginationDiv">
+                                    <PaginationComponent params={this.props.match.params} data={this.state.data} limit={50} />
+                                </div>
+                            </GridItem>
+                        }
                     </GridContainer>
                 }
             </div>

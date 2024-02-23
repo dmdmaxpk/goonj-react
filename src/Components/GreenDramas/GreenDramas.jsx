@@ -17,14 +17,14 @@ class GreenDramas extends Component{
                 <>
                  <GridContainer style={{marginLeft: '-1vw'}}>
                     {this.state.loading === false ?
-                this.props.data.map(item =>
-                    <GridItem className="vodGridItem" style={{marginBottom: '4vh !important'}} xs={6} md={6} lg={2}>
-                        {this.props.data.length!=0?
+                    this.props.data.map(item =>
+                    <GridItem className="" xs={6} md={6} lg={2}>
+                        {this.props.data.length != 0 ?
                         <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? '?source=mta' : ''}`} >
                             <div className="imgDiv" >
-                                <img style={{width: '35vw'}} src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} className="videoLogo" alt="" />
+                                <img src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} className="videoLogo" alt="" />
                             </div>
-                            <div className="vodDetailsDiv" style={{textAlign: 'center'}}>
+                            <div className="" style={{textAlign: 'center'}}>
                                 <p className="title" style={{ color: "white" }}>{item.name}</p>
                             </div>
                         </a>

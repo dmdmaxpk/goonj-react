@@ -67,3 +67,6 @@ button{
   background-color: white;
   /* color: green; */
 }
+.marginRight5px {
+  margin-right: 10px !important;
+}
