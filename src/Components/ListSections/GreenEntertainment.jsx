@@ -10,9 +10,9 @@ export default class GreenEntertainment extends Component {
     
     render() {
         const greenDramas = [
-            // {playlistId: 'PLs2CG9JU32b6vqj8XCbS0GqeYWrIdF4T0', name: 'Kabli Pulao', thumbnail: 'channel02.png'},
+             {playlistId: 'PLs2CG9JU32b6vqj8XCbS0GqeYWrIdF4T0', name: 'Kabli Pulao', thumbnail: 'KABLI PULAO.jpg'},
             {playlistId: 'PLs2CG9JU32b5X5vMk5qRfUHR7PJpR9ht5', name: 'Jindo', thumbnail: 'JINDO.jpg'},
-            // {playlistId: 'PLs2CG9JU32b4G9eUZ0CXVre0CXJgzOJbJ', name: 'Nauroz', thumbnail: 'channel02.png'},
+            {playlistId: 'PLs2CG9JU32b4G9eUZ0CXVre0CXJgzOJbJ', name: 'Nauroz', thumbnail: 'NAUROZ.jpg'},
             {playlistId: 'PLs2CG9JU32b5u89QIvVXowiDrBcFaCn6j', name: 'Jeevan Nagar', thumbnail: 'JEEVAN NAGAR.jpg'},
             {playlistId: 'PLs2CG9JU32b51JhgFUUEcgV8lh5kq_kAi', name: 'Tumharey Husn Kay Naam', thumbnail: 'TUMHAREY HUSN KAY NAAM.jpg'},
             {playlistId: 'PLs2CG9JU32b5UKvnzUVjQEZO95asLTgZ0', name: 'Standup Girl', thumbnail: 'STANDUP GIRL.jpg'},
@@ -20,7 +20,7 @@ export default class GreenEntertainment extends Component {
             // {playlistId: 'PLs2CG9JU32b6IPJTflvjKk0qSswFpBo3p', name: 'Mohabbat Satrangi', thumbnail: 'channel02.png'},
             // {playlistId: 'PLs2CG9JU32b45e7UA849qZ4NcRJSPMqTD', name: 'Serial Killer', thumbnail: 'channel02.png'},
             {playlistId: 'PLs2CG9JU32b4iAMLdzNQV3VEKxVM7XGl1', name: '22 Qadam', thumbnail: '22 QADAM.jpg'},
-            // {playlistId: 'PLs2CG9JU32b4rScQ5TPxsUo33vgtrB1zy', name: 'Ek Jhooti Love Story', thumbnail: 'channel02.png'},
+            {playlistId: 'PLs2CG9JU32b4rScQ5TPxsUo33vgtrB1zy', name: 'Ek Jhooti Love Story', thumbnail: 'EK JHOOTI LOVE STORY.jpg'},
             {playlistId: 'PLs2CG9JU32b7iF3Iszyd63vxm47qeYysE', name: 'Akhara', thumbnail: 'AKHARA.jpg'},
             {playlistId: 'PLs2CG9JU32b7-TTBNOH7KRS7E74bWXjgJ', name: 'Mor Chaal', thumbnail: 'MOR CHAAL.jpg'},
             // {playlistId: 'PLs2CG9JU32b52Ul6IU80wdqFFCq1zZdv1', name: 'Shikaar', thumbnail: 'channel02.png'},
