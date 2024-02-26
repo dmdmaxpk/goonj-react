@@ -105,7 +105,7 @@ class YtPlaylistPage extends Component {
                                         </span>
                                         <img src={item.snippet.thumbnails.standard.url} width={item.snippet.thumbnails.standard.width} height={item.snippet.thumbnails.standard.height} className="videoLogo" alt="" />
                                     </div>
-                                    <div className="vodDetailsDiv" style={{textAlign: 'center'}}>
+                                    <div className="" style={{textAlign: 'center'}}>
                                         <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.snippet.title}</p>
                                         <p className="source"><ReactTimeAgo className="daysAgo" date={item.snippet.publishedAt}/>
                                         {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
