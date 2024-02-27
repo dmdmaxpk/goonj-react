@@ -80,6 +80,8 @@ class YtPlaylistPage extends Component {
         const { isLightTheme } = this.state;
         const dramas = this.state.data.filter((item) => 
             item.snippet.resourceId.videoId !== this.props.match.params.videoId
+            &&
+            item?.snippet?.title !== 'Private video'
         );
         return(
             <div className="vodCategoryContainer">
@@ -103,7 +105,7 @@ class YtPlaylistPage extends Component {
                                         <span className="playBtn">
                                             <img src={require("../../Assets/playBtn.png")} alt="Play" />
                                         </span>
-                                        <img src={item.snippet.thumbnails.standard.url} width={item.snippet.thumbnails.standard.width} height={item.snippet.thumbnails.standard.height} className="videoLogo" alt="" />
+                                        <img src={item?.snippet?.thumbnails?.standard?.url} width={item?.snippet?.thumbnails?.standard?.width} height={item?.snippet?.thumbnails?.standard?.height} className="videoLogo" alt="" />
                                     </div>
                                     <div className="" style={{textAlign: 'center'}}>
                                         <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.snippet.title}</p>
