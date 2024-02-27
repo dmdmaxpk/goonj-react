@@ -1,7 +1,8 @@
 /* Base styles for all screen sizes */
 .MuiPaginationItem-root {
-    background-color: #ABEA1F;
+    background-color: #2691d5;
     padding: 2px 12px !important;
+    /* background-color: #ABEA1F; */
     /* color: white;
     border: 1px solid #87CEEB;
     border-radius: 4px;
