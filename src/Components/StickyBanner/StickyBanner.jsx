@@ -14,7 +14,7 @@ class StickyBanner extends Component {
         sessionStorage.setItem('playStoreBanner', true);
     }
     redirectToPlayStore = () => {
-        window.open("https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en", "_blank");
+        window.open(this.props.appLink, "_blank");
     }
     closeBanner = () => {
         sessionStorage.setItem('playStoreBanner', false);
@@ -28,7 +28,7 @@ class StickyBanner extends Component {
                 <Hidden mdUp>
                     <Grid className='stickyBannerContainer' container>
                         <Grid className='sbLogoGrid' xs={4} sm={4} md={4} lg={4} item>
-                            <img className='centerElementVertical sbLogoImg' src={require('../../Assets/logo.png')} />
+                            <img className='centerElementVertical sbLogoImg' src={this.props.imgSource} />
                         </Grid>
                         <Grid xs={4} sm={4} md={4} lg={4} item>
                             <p>Install our app for a better experience</p>

@@ -1,5 +1,5 @@
 .stickyBannerContainer{
-    position: sticky;
+    position: fixed;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 1vh 0 0 4vw;
@@ -14,11 +14,12 @@
     transform: translateY(-50%);
 }
 .sbLogoImg{
-    width: 25vw;
+    width: 15vw;
     height: 5vh;
-    margin-left: -70px !important;
+    margin-left: -60px !important;
 }
 .sbBtnGrid{
+    margin-left: -15px !important;
     position: relative;
 }
 .sbBtn{

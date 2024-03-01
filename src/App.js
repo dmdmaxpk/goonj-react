@@ -28,7 +28,8 @@ import MTAHeader from "./Components/MTAHeader/MTAHeader";
 import './App.css'
 import YtPlaylistPage from "./Pages/VOD/YtPlaylistVods";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
-
+import GoonjAppLogo from './Assets/logo.png';
+import MTAAppLogo from './Assets/mta.png';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -147,8 +148,12 @@ class App extends React.Component {
             this.state.isMta === true || this.props.location.search.includes('source=mta') ?
             ( 
               <MTAHeader/>
+              
+              
             )
+            
             :
+            
             (<div>
               <Header currentRoute={this.props.location.pathname} /> 
               <Sidebar />
@@ -211,14 +216,22 @@ class App extends React.Component {
             <div>
               {
                 this.state.isMta === true || this.props.location.search.includes('source=mta') || this.props.location.search.includes('source=mta2')  ?
-                ( <div className={`mta_footer_div ${isLightTheme ? 'light-bg' : ''}`}>
-                    <div className="mta_ad2" style={{display: 'none'}}>Ad Space 2</div>
+                (
+                  <>
+                  <div className={`mta_footer_div ${isLightTheme ? 'light-bg' : ''}`}>
+                  <div className="mta_ad2" style={{display: 'none'}}>Ad Space 2</div>
                   </div>
+                  <div>
+                    <StickyBanner appLink={'https://play.google.com/store/apps/details?id=com.telenor.pakistan.mytelenor&hl=en_US'} imgSource={MTAAppLogo} />
+                  </div>
+                  </>
                 )
                 :
-                (<div><Footer/><StickyBanner /></div>)
+                (<div><Footer/><StickyBanner appLink={'https://play.google.com/store/apps/details?id=com.dmdmax.goonj&hl=en'} imgSource={GoonjAppLogo} /></div>)
               }
             </div>
+            
+            
             :
             ''
           }
@@ -227,6 +240,7 @@ class App extends React.Component {
       
     );
   }
+
 }
 
 export default withRouter(App);
