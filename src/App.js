@@ -30,6 +30,7 @@ import YtPlaylistPage from "./Pages/VOD/YtPlaylistVods";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 import GoonjAppLogo from './Assets/logo.png';
 import MTAAppLogo from './Assets/mta.png';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +41,17 @@ class App extends React.Component {
 }
 
   installPrompt = null;
+  initGA = (measurementId) => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', measurementId);
+  };
+
   componentDidMount() {
+    this.initGA('G-2TG6PV2GL9');
     // console.log("Listening for Install prompt");
     window.addEventListener('beforeinstallprompt',e=>{
       // For older browsers
@@ -234,6 +245,7 @@ class App extends React.Component {
             :
             ''
           }
+        
 
         </div>
       

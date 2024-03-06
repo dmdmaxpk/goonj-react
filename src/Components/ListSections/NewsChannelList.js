@@ -9,9 +9,7 @@ import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { withRouter } from 'react-router-dom';
-import ReactGA from 'react-ga';
-
-ReactGA.initialize('G-2TG6PV2GL9'); 
+import { trackEvent } from '../../Utils/functions';
 
 const API_URL = 'https://api.goonj.pk/v2/live';
 const FREE_CHANNELS = ['city-42', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news','mashriq-tv'];
@@ -101,11 +99,7 @@ class NewsChannelList extends Component {
         
         // Create custom events for MTA channels
         console.log(`MTA-${item.slug} event triggered`);
-            ReactGA.event({
-                category: 'Custom Event',
-                action: `MTA_${item.slug}`,
-                label: window.location.href // Include the page location in the 'label' parameter
-            });
+        trackEvent('Custom Event', `MTA_${item.slug}`, window.location.href);
 
         this.props.history.push(url); 
     };

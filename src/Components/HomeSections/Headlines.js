@@ -10,9 +10,7 @@ import '../ListSections/ListSections.scss'
 import Loader from '../Loader/Loader';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import ReactTimeAgo from 'react-time-ago/commonjs/ReactTimeAgo';
-import ReactGA from 'react-ga';
-
-ReactGA.initialize('G-2TG6PV2GL9'); 
+import { trackEvent } from '../../Utils/functions';
 
 class HeadlinesSection extends Component {
     constructor(props) {
@@ -52,11 +50,7 @@ class HeadlinesSection extends Component {
             console.log("Vod URL landed on through Headlines: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
-            ReactGA.event({
-                category: 'Custom Event',
-                    action: 'MTA_VOD_Play',
-                    label: fullURL // Include the page location in the 'label' parameter
-            });
+            trackEvent('Custom Event', 'MTA_VOD_Play', fullURL);
         }
     }
 

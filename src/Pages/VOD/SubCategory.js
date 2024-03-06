@@ -9,9 +9,7 @@ import PaginationComponent from '../../Components/Pagination/PaginationComponent
 import Loader from '../../Components/Loader/Loader';
 import CategoryDD from '../../Components/VOD/categoryDropdown';
 import './vod.scss';
-import ReactGA from 'react-ga';
-
-ReactGA.initialize('G-2TG6PV2GL9'); 
+import { trackEvent } from '../../Utils/functions';
 
 let count,strURL;
 
@@ -120,11 +118,7 @@ class SubCategoryPage extends Component {
             console.log("Vod URL landed on through SubCategory: ", fullURL);
             // Trigger a custom event with the full URL as the page_location parameter
             console.log(`MTA_VOD_Play event triggered`);
-            ReactGA.event({
-                category: 'Custom Event',
-                    action: 'MTA_VOD_Play',
-                    label: fullURL // Include the page location in the 'label' parameter
-            });
+            trackEvent('Custom Event', 'MTA_VOD_Play', fullURL);
         }
 
     }

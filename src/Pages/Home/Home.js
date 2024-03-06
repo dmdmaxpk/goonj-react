@@ -17,8 +17,7 @@ import HeadlinesSection from '../../Components/HomeSections/Headlines';
 import MainCategory from '../VOD/MainCategory';
 import { Close } from '@material-ui/icons';
 import ReactGA from 'react-ga';
-
-ReactGA.initialize('G-2TG6PV2GL9');
+import { trackEvent } from '../../Utils/functions';
 
 class Home extends Component {
     constructor(props) {
@@ -68,20 +67,9 @@ class Home extends Component {
     handleMta(){
         console.log("Mta Value:", this.state.Mta);
         //GA4
-        //let fullURL = "";
-
-        console.log(window.location.href);
-        let fullURL = "https://goonj.pk/?source=mta";
-        console.log("URL: ", fullURL);
-
         // Trigger a custom event with the full URL as the page_location parameter
         console.log(`MTA_Landing_Page event triggered`);
-        ReactGA.event({
-            category: 'Custom Event',
-                action: 'MTA_Landing_Page',
-                label: fullURL // Include the page location in the 'label' parameter
-                //label: window.location.href
-        });
+        trackEvent('Custom Event', 'MTA_Landing_Page', "https://goonj.pk/?source=mta");
     }
     
     closeBanner = () => {
