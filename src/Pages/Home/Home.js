@@ -18,6 +18,8 @@ import MainCategory from '../VOD/MainCategory';
 import { Close } from '@material-ui/icons';
 import ReactGA from 'react-ga';
 import { trackEvent } from '../../Utils/functions';
+import AdvertComponent from '../../Components/MTA/AdBanner';
+import HomeMTAAdBanner from '../../Assets/MTABannerHome.png';
 
 class Home extends Component {
     constructor(props) {
@@ -123,6 +125,12 @@ class Home extends Component {
                   {isMtaSource ? (
                     <>
                     <EntertainmentChannelList />
+                    <AdvertComponent
+                        imageUrl={HomeMTAAdBanner}
+                        redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
+                        eventTag="MTA_MONTHLY_ULTIMATE_OFFER"
+                        className={'marginBottom2vh'}
+                    />
                     <NewsChannelList />
                     <IslamicChannelList />
                     </>

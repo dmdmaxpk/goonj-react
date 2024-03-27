@@ -31,6 +31,10 @@
   margin-bottom: 10px !important;
 }
 
+.marginBottom2vh {
+  margin-bottom: 2vh !important;
+}
+
 @media screen and (max-width: 480px){
   .mta_header{
     font-size: 18px !important;

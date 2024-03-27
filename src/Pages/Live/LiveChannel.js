@@ -8,7 +8,8 @@ import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
 import GreenEntertainment from '../../Components/ListSections/GreenEntertainment';
 import { trackEvent } from '../../Utils/functions';
- 
+import AdvertComponent from '../../Components/MTA/AdBanner';
+import ChannelMtaBanner from '../../Assets/MTABannerChannel.png';
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -97,6 +98,12 @@ class LiveChannel extends Component {
                 <div className="liveChannelMarginLeft">
                         {(source === 'mta' || source === 'mta2') && slug === 'green-tv-ent' ?
                             <div style={{marginTop: '2vh'}}>
+                                <AdvertComponent
+                                    imageUrl={ChannelMtaBanner}
+                                    redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/weekly-easycardmax/"
+                                    eventTag="MTA_WEEKLY_EASYCARD_MAX"
+                                    className="marginBottom2vh"
+                                />
                                 <GreenEntertainment />
                             </div>
                         :
