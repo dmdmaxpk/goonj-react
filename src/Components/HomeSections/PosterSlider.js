@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
-
+import AdvertComponent from '../MTA/AdBanner';
 
 class PosterSlider extends Component {
     constructor(props) {
@@ -97,7 +97,9 @@ class PosterSlider extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
-                    </ol>
+                        </ol>
+                        
+
                     <div className="carousel-inner carouselDiv">
                         {
                             activeBanners.map(item =>
