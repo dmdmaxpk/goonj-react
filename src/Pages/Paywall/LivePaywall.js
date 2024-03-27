@@ -5,6 +5,7 @@ import Box from './Box';
 import config from '../../Utils/config';
 import './paywall.scss'
 import { Link } from 'react-router-dom';
+import ConsentButton from '../../Components/ConsentSubscriptionForm';
 
 class LivePaywall extends Component {
     constructor(props) {
@@ -17,9 +18,11 @@ class LivePaywall extends Component {
         doubleConsent: false,
         packagePrice1: '',
         packagePrice2: '',
-        serviceId2: '99146'
-        }
+        serviceId2: '99146',
+        open:false,
+               }
     }
+    
     componentDidMount(){
         let livePermission = localStorage.getItem('livePermission');
         if(livePermission === true){
@@ -39,13 +42,14 @@ class LivePaywall extends Component {
         })
         })
     }
-      
+    
     render(){
         let source = localStorage.getItem('source') ? localStorage.getItem('source') : 'web';
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let slug = urlParams.get("slug");
         let msisdn = urlParams.get("msisdn");
+        
         return(
             <div className="liveComponent">
                 <div className="goonjLivePage">

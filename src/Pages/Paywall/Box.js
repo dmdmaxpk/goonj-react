@@ -4,8 +4,11 @@ import { withRouter } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import "./paywall.scss";
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, Link } from '@material-ui/core';
 import { subscribeEasypaisa, subscribeTelenor } from '../../Services/apiCalls';
+import ConsentButton from '../../Components/ConsentSubscriptionForm';
+
+
 
 class Box extends React.Component {
 
@@ -14,20 +17,24 @@ class Box extends React.Component {
         this.state = {
             data: [],
             paymentType: '',
-            step: 0, 
+            step: 3, 
             msisdn: '',
             source: localStorage.getItem('source'),
             otp: '',
             packageId: '',
             doubleConsent: false,
             radio: this.props.packageID1,
-            loading: true
+            loading: true,
+            showConsentForm:false,
+            open: true
         }
+        
         this.handleChange = this.handleChange.bind(this);
         this.selectPayment = this.selectPayment.bind(this);
         this.sendOtp = this.sendOtp.bind(this);
         this.verifyOtp = this.verifyOtp.bind(this);
         this.subscribe = this.subscribe.bind(this);
+        // this.giveConsent=this.giveConsent.bind(this);
         this.cancel = this.cancel.bind(this);
     }
     componentDidMount(){
@@ -228,12 +235,12 @@ class Box extends React.Component {
         PaywallInstance.post('/payment/cms-token', payload)
         .then(res => {
             console.log('CMS token generated: ', res.data);
-            console.log('CMS token: ', res.data.response.token);
-
+            // console.log('CMS token: ', res.data.response.token);
+            this.handleClose();
             let token = res.data.response.token;
             window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
         }).catch(err => {
-            console.error(err);
+            console.error('error', err);
         })
 
 
@@ -320,6 +327,13 @@ class Box extends React.Component {
         this.setState({doubleConsent: false});
     }
 
+    
+    handleOpen = () => {
+        console.log('triggered')
+        this.setState({open:true});
+    }
+    handleClose=()=>this.setState({open:false});
+
     render() {
         return (
             <div className="box">
@@ -332,9 +346,12 @@ class Box extends React.Component {
                     this.state.step === 0 ?
                         <div>
                             <p>Subscribe Now</p>
+                            
+                                
                             <button className="btnSub" onClick={()=> this.selectPayment('telenor')}>
                                 <img className="btnSubImg" src={require("../../Assets/telenorBtn.png")} alt="Telenor Subscribe Button" />
-                            </button>
+                                </button>
+                                
                             <p className="orText">- OR -</p>
                             <button className="btnSub" onClick={()=> this.selectPayment('easypaisa')}>
                                 <img className="btnSubImg" src={require("../../Assets/easypaisaBtn.png")} alt="Easypaisa Subscribe Button" />
@@ -366,24 +383,26 @@ class Box extends React.Component {
                             <button className="arrowBtnForward" onClick={this.state.paymentType === 'telenor' ? this.verifyOtp : this.subscribe}>
                                 <ArrowForwardRoundedIcon />
                             </button>
-                        </div>
+                            </div>
                         :
                     this.state.step == 'mta' ?
                         <div>
                             <p>Are you sure you sure you want to subscribe?</p>
-                            <button className="btnConfirm" onClick={this.subscribe}>
+                            <button className="btnConfirm" onClick={this.handleOpen}>
                                 Confirm
                             </button>
                         </div>
                     :
                         <div className="">
                             <p className="text1">Are you sure<br />you want to subscribe?</p>
-                            <button className="btnSubConfirm" onClick={this.subscribe}>
+                            <button className="btnSubConfirm" onClick={this.handleOpen}>
                                 <img className="confirmBtnImg" src={require("../../Assets/Shape-2.png")} alt="Confirm" />
                                 <p className="btnConfirmText">Confirm</p>
                             </button>
                         </div>
                 }
+                
+                <ConsentButton open={this.state.open} onClose={this.handleClose} onConfirm={this.subscribe} />
             </div>
         );
     }

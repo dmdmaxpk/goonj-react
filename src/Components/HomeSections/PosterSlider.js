@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import config from '../../Utils/config';
 import { Link } from 'react-router-dom';
-
+import AdvertComponent from '../MTA/AdBanner';
 
 class PosterSlider extends Component {
     constructor(props) {
@@ -58,26 +58,26 @@ class PosterSlider extends Component {
                 url: "https://goonj.pk/channel/green-tv-ent?source=mta",
                 class: "carousel-item active"
             },
-            {
-                name: "08",
-                url: "#",
-                class: "carousel-item"
-            },
-            {
-                name: "09",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "08",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
+            // {
+            //     name: "09",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
             {
                 name: "10",
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "11",
-                url: "#",
-                class: "carousel-item"
-            },   
+            // {
+            //     name: "11",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },   
         ]
 
         //if condition to check which banner to use
@@ -88,12 +88,14 @@ class PosterSlider extends Component {
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-interval="3000">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> */}
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> */}
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
-                    </ol>
+                        </ol>
+                        
+
                     <div className="carousel-inner carouselDiv">
                         {
                             activeBanners.map(item =>
