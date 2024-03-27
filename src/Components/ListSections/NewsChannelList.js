@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['city-42', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news','mashriq-tv'];
+const FREE_CHANNELS = ['city-42', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news','mashriq-tv',"city41-news","metro1-news"];
 
 class NewsChannelList extends Component {
     constructor(props) {

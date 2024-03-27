@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'express-entertainment', 'green-tv-ent'];
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'express-entertainment', 'green-tv-ent', "mehran-tv","aaj-entertainment","aplus","rohi_tv","filmax"];
 
 class EntertainmentChannelList extends Component {
     constructor(props) {
