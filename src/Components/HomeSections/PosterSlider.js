@@ -63,21 +63,21 @@ class PosterSlider extends Component {
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "09",
-                url: "#",
-                class: "carousel-item"
-            },
+            // {
+            //     name: "09",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },
             {
                 name: "10",
                 url: "#",
                 class: "carousel-item"
             },
-            {
-                name: "11",
-                url: "#",
-                class: "carousel-item"
-            },   
+            // {
+            //     name: "11",
+            //     url: "#",
+            //     class: "carousel-item"
+            // },   
         ]
 
         //if condition to check which banner to use
@@ -87,11 +87,15 @@ class PosterSlider extends Component {
             <div className="posterSlider">
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-interval="3000">
                     <ol className="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        {activeBanners.map((item, index) => {
+                            return <li data-target="#carouselExampleIndicators" data-slide-to={String(index)} className={index === 0 ? "active" : ''}></li>
+                        })
+
+                        }
+                        {/* <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> */}
                         {/* <li data-target="#carouselExampleIndicators" data-slide-to="5"></li> */}
                     </ol>
                     <div className="carousel-inner carouselDiv">
