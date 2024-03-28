@@ -231,9 +231,9 @@ class App extends React.Component {
                   <div className={`mta_footer_div ${isLightTheme ? 'light-bg' : ''}`}>
                   <div className="mta_ad2" style={{display: 'none'}}>Ad Space 2</div>
                   </div>
-                  <div>
+                  {/* <div>
                     <StickyBanner appLink={navigator?.userAgent?.includes('iPhone') ? 'https://apps.apple.com/pk/app/my-telenor/id1087721779' : 'https://play.google.com/store/apps/details?id=com.telenor.pakistan.mytelenor&hl=en_US'} imgSource={MTAAppLogo} />
-                  </div>
+                  </div> */}
                   </>
                 )
                 :

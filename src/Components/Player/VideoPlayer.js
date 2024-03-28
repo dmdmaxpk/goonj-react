@@ -53,8 +53,11 @@ class VideoPlayer extends Component {
                     let qualitySetting =  '360p'; 
                     let hlsLinkWithQuality = `${this.state.data.hls_link.replace('.m3u8', `_${qualitySetting}/index.m3u8`)}`;
 
-                    source = `${this.state.urlLink}/${hlsLinkWithQuality}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
-
+                    if (this.props.slug === 'a1-entertainment') {
+                        source = 'https://sscsott.com/pk/A1GE/index.m3u8';
+                    } else {
+                        source = `${this.state.urlLink}/${hlsLinkWithQuality}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
+                    }
                 }
                 else{
                     source = `${this.state.urlLink}/${this.state.data.hls_link}?hdnts=${token}&msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
