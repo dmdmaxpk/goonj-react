@@ -22,8 +22,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    background-image: linear-gradient(to right, silver,  pink) !important;
-    /* background-image: linear-gradient(to right, blueviolet , yellow) !important; */
+    background-image: linear-gradient(to right, #C6C4D9, #D4BCD4, #C6C4D9) !important; 
     border: 2px solid blueviolet;
     box-shadow:24px;
     padding: 16px;
@@ -77,7 +76,7 @@
     background-color: yellow !important;
 }
 .consent-box .confirm-button {
-    background-color: red;
+    background-color:#D92B70;
     color:white; /* Change text color on hover */
     border-radius: 14px;
 }
@@ -85,7 +84,10 @@
     color: white; /* Change the color to whatever you desire */
     text-decoration: underline; /* Underline the text */
     cursor: pointer; /* Set cursor to pointer to indicate it's clickable */
-    border: none;
-    border-radius: 8px;
+    background-color: transparent !important;
+    border:"none" !important;
+    box-shadow: none !important;
+    padding: none !important;
+    outline: none !important;
 
 }
