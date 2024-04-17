@@ -19,7 +19,7 @@ import { Close } from '@material-ui/icons';
 import ReactGA from 'react-ga';
 import { trackEvent } from '../../Utils/functions';
 import AdvertComponent from '../../Components/MTA/AdBanner';
-import HomeMTAAdBanner from '../../Assets/MTABannerHome.png';
+import HomeMTAAdBanner from '../../Assets/HomePageBanner.png';
 
 class Home extends Component {
     constructor(props) {

@@ -6,6 +6,8 @@ import Modal from '@material-ui/core/Modal';
 import "./ConsentStyling.css";
 import {useState} from "react";
 import telenor from "./telenor.jpg";
+import axios from "axios"; // Import Axios
+
 
 
 
@@ -23,16 +25,35 @@ import telenor from "./telenor.jpg";
 
 // }; 
 const ConsentButton = (props) => {
-    const [consent, setConsent] = useState(null);
+const [consent, setConsent] = useState(null);
     console.log(props);
-  
-    const handleButtonClick = (value) => {
+    const [token,setToken]=useState(null);
+
+    const handleButtonClick = async (value) => {
       setConsent(value);
       // Add your JavaScript functionality here based on the user's choice
       if (value === 'yes') {
+        try {
+          // Generate token using Tokenization API
+          const tokenResponse = await axios.post("https://apis.telenor.com.pk/oauthtoken/v1/generate");
+          const generatedToken = tokenResponse.data.token;
+  
+          // Use the generated token for subsequent requests
+          setToken(generatedToken);
+  
+          // Generate consent tokens using the generated token
+          const consentResponse = await axios.post(
+            "https://apis.telenor.com.pk/cms/v1/token",
+            { token: generatedToken }
+          );
+          console.log("Consent tokens generated:", consentResponse.data);
+        }
         // Handle 'Yes' consent
-        console.log('User consented: Yes');
-      } else if (value === 'no') {
+        catch (error) {
+          console.error("Error:", error);
+        }
+      }
+        else if (value === 'no') {
         // Handle 'No' consent
         console.log('User consented: No');
       }
@@ -42,6 +63,18 @@ const ConsentButton = (props) => {
         console.log('props', props);
         // props.onOpen()
     }, [props])
+    const submitConsent = async () => {
+      try {
+        // Submit consent using the generated token
+        const submitResponse = await axios.post(
+          "https://apis.telenor.com.pk/cms/v1/consent",
+          { token: token }
+        );
+        console.log("Consent submitted:", submitResponse.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
     return(
         <div>
             {/* <Button className="subscription-button" onClick={props.onOpen}>Subscription</Button> */}
@@ -61,12 +94,14 @@ const ConsentButton = (props) => {
                 </p></Typography>
             <Typography id="modal-modal-description" sx={{mt:2}}>
             <button className="confirm-button" onClick={() => props.onConfirm()}>Confirm</button>
-            <button className="cancel-button" onClick={()=> props.onClose()}>cancel</button>
+            <Typography variant="button" color="secondary" component="span" onClick={props.onClose} style={{ cursor: 'pointer',color:"white" }}>
+          Cancel
+        </Typography>
             <h2>
             
             Inclusive of all taxes.
             </h2>
-            </Typography> 
+            </Typography>
             </Box>
             </Modal>
             
