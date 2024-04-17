@@ -128,7 +128,7 @@ class Home extends Component {
                     <AdvertComponent
                         imageUrl={HomeMTAAdBanner}
                         redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
-                        eventTag="MTA_MONTHLY_ULTIMATE_OFFER"
+                        eventTag="HOMEPAGE_AD_BANNER"
                         className={'marginBottom2vh'}
                     />
                     <NewsChannelList />

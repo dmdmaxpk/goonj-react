@@ -101,7 +101,7 @@ class LiveChannel extends Component {
                                 <AdvertComponent
                                     imageUrl={ChannelMtaBanner}
                                     redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/weekly-easycardmax/"
-                                    eventTag="MTA_WEEKLY_EASYCARD_MAX"
+                                    eventTag="GREEN_ENTERTAINMENT_AD_BANNER"
                                     className="marginBottom2vh"
                                 />
                                 <GreenEntertainment />
