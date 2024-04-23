@@ -7,6 +7,7 @@ import "./paywall.scss";
 import { CircularProgress, Link } from '@material-ui/core';
 import { subscribeEasypaisa, subscribeTelenor } from '../../Services/apiCalls';
 import ConsentButton from '../../Components/ConsentSubscriptionForm';
+import Axios from 'axios';
 
 
 
@@ -26,9 +27,12 @@ class Box extends React.Component {
             radio: this.props.packageID1,
             loading: true,
             showConsentForm:false,
-            open: true
+            open: false,
+            showConsent: false,
+            token: undefined,
         }
-        
+        // this.handleConfirmAction = this.handleConfirmAction.bind(this);
+        // this.submitConsent= this.submitConsent.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.selectPayment = this.selectPayment.bind(this);
         this.sendOtp = this.sendOtp.bind(this);
@@ -224,7 +228,8 @@ class Box extends React.Component {
                 alert(err);
             })
     }
-
+    
+    
     subscribe(){
         const {msisdn, paymentType, otp} = this.state;
 
@@ -325,6 +330,10 @@ class Box extends React.Component {
     }
     cancel(){
         this.setState({doubleConsent: false});
+    };
+
+    setToken = (tokenValue) => {
+        this.setState({token: tokenValue})
     }
 
     
@@ -401,8 +410,17 @@ class Box extends React.Component {
                             </button>
                         </div>
                 }
-                
-                <ConsentButton open={this.state.open} onClose={this.handleClose} onConfirm={this.subscribe} />
+                <ConsentButton
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    onConfirm={this.subscribe}
+                    submitConsent={this.submitConsent}
+                    setToken={this.setToken}
+                    msisdn={'03468586076'}
+                    // msisdn={this.state.msisdn}
+                    subscribe={this.subscribe}
+                />
+ 
             </div>
         );
     }
