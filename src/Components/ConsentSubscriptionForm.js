@@ -4,77 +4,103 @@ import Button from "@material-ui/core/Button"
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import "./ConsentStyling.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import telenor from "./telenor.jpg";
 import axios from "axios"; // Import Axios
-
-
-
-
-// const style={
-//     position:"absolute",
-//     top:"50%",
-//     left:"50%",
-//     transform:"translate ("-50%", "-50%")",
-//     width:400,
-//     bgcolor: 'background.paper',
-//     border:"2px solid #000",
-//     boxShadow:24,
-//     p:4,
-//     variant:"outlined",
-
-// }; 
+import PaywallInstance from "../Utils/PaywallInstance";
+ 
 const ConsentButton = (props) => {
-const [consent, setConsent] = useState(null);
-    console.log(props);
-    const [token,setToken]=useState(null);
+  const { msisdn } = props;
+  const [consent, setConsent] = useState(null);
+  const [token, setToken] = useState(null);
+  const [cmsTokenDetails, setCmsTokenDetails] = useState({});
+  console.log(msisdn, 'msisdn')
 
-    const handleButtonClick = async (value) => {
-      setConsent(value);
-      // Add your JavaScript functionality here based on the user's choice
-      if (value === 'yes') {
-        try {
-          // Generate token using Tokenization API
-          const tokenResponse = await axios.post("https://apis.telenor.com.pk/oauthtoken/v1/generate");
-          const generatedToken = tokenResponse.data.token;
+  const submitConsent = async() => {
+    try {
+      // Submit consent using the generated token
+      const submitResponse = await axios.post("https://apis.telenor.com.pk/cms/v1/consent", 
+      { cid: cmsTokenDetails?.response?.correlationId, action: 'submit', token: cmsTokenDetails?.response.token })
+      .then(res => {
+        const result = res.data;
+      })
+      console.log("Consent submitted:", submitResponse.data);
+      window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${cmsTokenDetails?.response.token}`;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   
-          // Use the generated token for subsequent requests
-          setToken(generatedToken);
-  
-          // Generate consent tokens using the generated token
-          const consentResponse = await axios.post(
-            "https://apis.telenor.com.pk/cms/v1/token",
-            { token: generatedToken }
-          );
-          console.log("Consent tokens generated:", consentResponse.data);
-        }
-        // Handle 'Yes' consent
-        catch (error) {
-          console.error("Error:", error);
-        }
-      }
-        else if (value === 'no') {
-        // Handle 'No' consent
-        console.log('User consented: No');
-      }
-    };
+  const preFetchToken = async (value) => {
+    PaywallInstance.post('/payment/cms-token', {serviceId: '99146', msisdn: msisdn})
+        .then(res => {
+          const result = res.data;
+          console.log('CMS token generated: ', result);
+          let token = result.response.token;
+          console.log('token', token);
+          setCmsTokenDetails(result);
+          // window.location.href = `https://apis.telenor.com.pk/cms/v1/redirect?token=${token}`;
+        }).catch(err => {
+            console.error('error', err);
+        })
+  };
+
+  useEffect(()=>{
+    if (props?.open && props.msisdn) preFetchToken();
+    console.log("props", props);
+  }, [props.open]);
+
+    //       // Use the generated token for subsequent requests
+    //       setToken(generatedToken);
+    //       props.setToken(generatedToken);
+    //       // Generate consent tokens using the generated token
+    //       const consentResponse = await axios.post(
+    //         "https://apis.telenor.com.pk/cms/v1/token",
+    //         { serviceId: '99146', msisdn: '03468586076', channel: 'API' },
+    //         {headers: {
+    //           'Authorization': `Bearer ${generatedToken}`
+    //         }}
+    //       ).then(res => {
+    //         submitConsent();
+    //       })
+    //       .catch(error => {
+    //         console.log('error', error);
+    //       })
+    //       console.log("Consent tokens generated:", consentResponse.data);
+    //     if (typeof props.onConfirm==="function")
+    //       {props.onConfirm();}
+    //       else if (value === 'no') {
+    //         console.log('User consented: No');
+    //     }
+    //   }
+    //     // Handle 'Yes' consent
+    //     catch (error) {
+    //       console.error("Error:", error);
+    //     }
+    //   }
+    //     else if (value === 'no') {
+    //     // Handle 'No' consent
+    //     console.log('User consented: No');
+    //   }
+    // };
     
-    React.useEffect(()=> {
-        console.log('props', props);
-        // props.onOpen()
-    }, [props])
-    const submitConsent = async () => {
-      try {
-        // Submit consent using the generated token
-        const submitResponse = await axios.post(
-          "https://apis.telenor.com.pk/cms/v1/consent",
-          { token: token }
-        );
-        console.log("Consent submitted:", submitResponse.data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
+    // const submitConsent = async () => {
+    //   try {
+    //     // Submit consent using the generated token
+    //     const submitResponse = await axios.post(
+    //       "https://apis.telenor.com.pk/cms/v1/consent",
+    //       { cid: token }
+    //     );
+    //     console.log("Consent submitted:", submitResponse.data);
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //   }
+    // };
+    
+    // React.useEffect(()=> {
+    //     console.log('props', props);
+    //     // props.onOpen()
+    // }, [props])
     return(
         <div>
             {/* <Button className="subscription-button" onClick={props.onOpen}>Subscription</Button> */}
@@ -93,7 +119,7 @@ const [consent, setConsent] = useState(null);
                 <p>Lorem ipsum is placeholder text commonly used in the graphic, print,</p>
                 </p></Typography>
             <Typography id="modal-modal-description" sx={{mt:2}}>
-            <button className="confirm-button" onClick={() => props.onConfirm()}>Confirm</button>
+            <button className="confirm-button"  onClick={submitConsent}>Confirm</button>
             <Typography variant="button" color="secondary" component="span" onClick={props.onClose} style={{ cursor: 'pointer',color:"white" }}>
           Cancel
         </Typography>
