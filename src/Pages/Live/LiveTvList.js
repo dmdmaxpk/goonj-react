@@ -12,6 +12,7 @@ const FREE_CHANNELS = [
     'ltn-family',
     'aplus',
     'a1-entertainment',
+    'lahorerang-news',
     // 'Aruj-tv',
     // 'city-42',
     'mashriq-tv',

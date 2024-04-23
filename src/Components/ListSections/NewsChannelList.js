@@ -22,6 +22,7 @@ const FREE_CHANNELS = [
 //  'suchtv-news',
 //  'aaj-news',
 'mashriq-tv',
+'lahorerang-news',
 "city41-news",
 "metro1-news"];
 
