@@ -15,6 +15,7 @@ const API_URL = 'https://api.goonj.pk/v2/live';
 const FREE_CHANNELS = [
 //  'city-42',
  'dawn-news',
+ 'abn-news',
  'pnn-news',
  '24_news',
  'neo-news',
