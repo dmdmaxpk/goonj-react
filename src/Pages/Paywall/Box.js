@@ -18,7 +18,7 @@ class Box extends React.Component {
         this.state = {
             data: [],
             paymentType: '',
-            step: 3, 
+            step: 0, 
             msisdn: '',
             source: localStorage.getItem('source'),
             otp: '',
@@ -30,6 +30,7 @@ class Box extends React.Component {
             open: false,
             showConsent: false,
             token: undefined,
+            consentBoxDetails: undefined
         }
         // this.handleConfirmAction = this.handleConfirmAction.bind(this);
         // this.submitConsent= this.submitConsent.bind(this);
@@ -103,7 +104,7 @@ class Box extends React.Component {
                 })
             })
         }
-        else {console.log('HERE 5'); this.setState({loading: false})}
+        else {this.setState({loading: false})};
     }
 
     handleChange(e){
@@ -190,7 +191,7 @@ class Box extends React.Component {
             package_id: packageID2
         }
         PaywallInstance.post('/payment/otp/verify', otpData)
-            .then(res =>{
+            .then(async (res) =>{
                 const result = res.data;
                 //alert(JSON.stringify(result));
                 if(result.code === 7) {
@@ -213,8 +214,7 @@ class Box extends React.Component {
                         this.props.history.push(`${url}`);
                     }else if(result.subscription_status === "expired" || result.subscription_status === undefined) {
                         localStorage.setItem(permission, false);
-
-                        this.subscribe();//this.setState({ step: 3 })
+                        await this.fetchTokenAndModal();
                     }else{
                         localStorage.setItem(permission, false);
                         alert('You are not allowed to watch stream. Possible cause: ' + result.message);
@@ -229,7 +229,24 @@ class Box extends React.Component {
             })
     }
     
-    
+    fetchTokenAndModal = async () => {
+        const {msisdn, paymentType, otp} = this.state;
+
+        // generate cms link
+        let payload = {msisdn, serviceId: this.props.serviceId2};
+        console.log('Payload', payload);
+
+        PaywallInstance.post('/payment/v2/cms-token', payload)
+        .then(res => {
+            const result = res.data;
+            console.log('cms token v2 result', result);
+            this.setState({consentBoxDetails: result?.response, open: true});
+
+        }).catch(err => {
+            console.error('error', err);
+        })
+    }
+
     subscribe(){
         const {msisdn, paymentType, otp} = this.state;
 
@@ -412,13 +429,14 @@ class Box extends React.Component {
                 }
                 <ConsentButton
                     open={this.state.open}
-                    onClose={this.handleClose}
+                    onClose={()=> {this.setState({step: 0}); this.handleClose(); }}
                     onConfirm={this.subscribe}
                     submitConsent={this.submitConsent}
                     setToken={this.setToken}
-                    msisdn={'03468586076'}
-                    // msisdn={this.state.msisdn}
+                    msisdn={this.state.msisdn}
                     subscribe={this.subscribe}
+                    serviceId={this.props.serviceId2}
+                    data={this.state.consentBoxDetails}
                 />
  
             </div>
