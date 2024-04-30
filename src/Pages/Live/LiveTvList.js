@@ -13,6 +13,7 @@ const FREE_CHANNELS = [
     'aplus',
     'a1-entertainment',
     'lahorerang-news',
+    'abn-news',
     // 'Aruj-tv',
     // 'city-42',
     'mashriq-tv',

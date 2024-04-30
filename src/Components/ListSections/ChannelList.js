@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
 
 const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['film-world', 'ltn-family', 'abn-news', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment', 'green-tv-ent'];
+const FREE_CHANNELS = ['film-world', 'ltn-family', 'aplus', 'a1-entertainment', 'Aruj-tv', 'city-42', 'mashriq-tv', 'makkah-live', 'madina-live', 'dawn-news', 'pnn-news', '24_news', 'neo-news', 'gtv-news', 'suchtv-news', 'aaj-news', 'express-entertainment', 'green-tv-ent'];
 
 class ChannelList extends Component {
     constructor(props) {
