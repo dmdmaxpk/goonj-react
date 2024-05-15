@@ -19,7 +19,9 @@ import { Close } from '@material-ui/icons';
 import ReactGA from 'react-ga';
 import { trackEvent } from '../../Utils/functions';
 import AdvertComponent from '../../Components/MTA/AdBanner';
-import HomeMTAAdBanner from '../../Assets/HomePageBanner.png';
+import HomeMTAAdBanner from '../../Assets/MTABannerHome.png';
+import DynamicDataList from '../../Components/ListSections/DynamicDataList';
+import ShortFilmsPlaylist from '../../Components/shortFilms&DW/ShortFilmsPlaylist';
 
 class Home extends Component {
     constructor(props) {
@@ -97,7 +99,60 @@ class Home extends Component {
     }
 
     
+    
     renderComponent(e){
+        const topShortMoviesList = [
+            // {
+            //     name: 'Dusri Shadi',
+            //     videoUrl: 'https://drive.google.com/file/d/13R9FsYFPNFG7Y2toM-hcEneAEsuh4cIq/view?usp=sharing',
+            //     thumbnail: 'DUSRISHADI'
+            // },
+            // {
+            //     name: 'Mithaie',
+            //     videoUrl: 'https://drive.google.com/file/d/1WQXYcpaC2uHdXjpjwq0JcNhRM-eEqH9T/view?usp=sharing',
+            //     thumbnail: 'MITHAIE'
+            // },
+            {
+                name: 'Washing Machine',
+                videoUrl: 'https://drive.google.com/file/d/1WZeafdNasgFJCOiPlCtWmzcdOqaYchr9/view?usp=sharing',
+                thumbnail: 'https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/shortfilms/WASHINGMACHINE.jpg'
+            },
+            {
+                name: 'Marriage on Divorce',
+                videoUrl: 'https://drive.google.com/file/d/1WZeafdNasgFJCOiPlCtWmzcdOqaYchr9/view?usp=sharing',
+                thumbnail: 'https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/shortfilms/MARRIAGEONDIVORCE.jpg'
+            },
+            // {
+            //     name: 'Injection',
+            //     videoUrl: 'https://drive.google.com/file/d/1tPcbxkr-LJmz6NY1AVrasLcm0GXD9oiQ/view?usp=sharing',
+            //     thumbnail: 'INJECTION'
+            // },
+            // {
+            //     name: 'Dhoka',
+            //     videoUrl: 'https://drive.google.com/file/d/18szX7ZnVG1028qvQV98H6kK7aoAF-tpj/view?usp=sharing',
+            //     thumbnail: 'DHOKA'
+            // },
+            {
+                name: 'False Truth',
+                videoUrl: 'https://drive.google.com/file/d/1U9mG7c7YKBcNh4xUY_L5Ny1GIlW3TwuW/view?usp=sharing',
+                thumbnail: 'https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/shortfilms/FALSETRUTH.jpg'
+            },
+            {
+                name: 'Underestimate',
+                videoUrl: 'https://drive.google.com/file/d/1PnyWmEOp407Z_Mr1G5BxLrueJA7I6G3y/view?usp=sharing',
+                thumbnail: 'https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/shortfilms/UNDERESTIMATE.jpg'
+            },
+            // {
+            //     name: 'Munna Electrician',
+            //     videoUrl: 'https://drive.google.com/file/d/1NDMp2TUjCLuasanEQi-yW3FRznoOLCll/view?usp=sharing',
+            //     thumbnail: 'MUNNAELECTRICIAN'
+            // },
+            // {
+            //     name: 'Doll',
+            //     videoUrl: 'https://drive.google.com/file/d/147LTvLdOy7HgtEY6DZ-AD6pl9FSz1pDm/view?usp=sharing',
+            //     thumbnail: 'DOLL'
+            // },
+        ]
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
         
         
@@ -124,15 +179,18 @@ class Home extends Component {
                  */}
                   {isMtaSource ? (
                     <>
-                    <EntertainmentChannelList />
-                    <AdvertComponent
-                        imageUrl={HomeMTAAdBanner}
-                        redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
-                        eventTag="MTA_MONTHLY_ULTIMATE_OFFER"
-                        className={'marginBottom2vh'}
-                    />
-                    <NewsChannelList />
-                    <IslamicChannelList />
+                        <EntertainmentChannelList />
+                        <AdvertComponent
+                            imageUrl={HomeMTAAdBanner}
+                            redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
+                            eventTag="HOMEPAGE_AD_BANNER"
+                            className={'marginBottom2vh'}
+                        />
+                        <ShortFilmsPlaylist/>
+                        <NewsChannelList />
+                        <IslamicChannelList />
+                        <DynamicDataList data={topShortMoviesList} />
+
                     </>
                 ) : (
                 <>
@@ -149,8 +207,8 @@ class Home extends Component {
                 url={`/category/entertainment/page/1`} /></div>
             }
             else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/entertainment/page/1?source=mta`: this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`: `/category/entertainment/page/1` }/></div>;
+                // return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="entertainment" title="Entertainment" limit={21} infinite={true} subCategory="" 
+                // url={ this.state.Mta ? `/category/entertainment/page/1?source=mta`: this.state.Mta2 ? `/category/entertainment/page/1?source=mta2`: `/category/entertainment/page/1` }/></div>;
             }
         
         }
@@ -159,8 +217,8 @@ class Home extends Component {
                 return <VodSection apiLink={`/video?category=sports&limit=5`} title="Sports" category="sports" classname="sportsContainer" />;
             }
             else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/sports/page/1?source=mta`: this.state.Mta2 ? `/category/sports/page/1?source=mta2`: `/category/sports/page/1` }/></div>;
+                // return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="sports" title="Sports" limit={60} infinite={true} subCategory="" 
+                // url={ this.state.Mta ? `/category/sports/page/1?source=mta`: this.state.Mta2 ? `/category/sports/page/1?source=mta2`: `/category/sports/page/1` }/></div>;
             }
         
         }
@@ -169,8 +227,8 @@ class Home extends Component {
                 return <DramasSection title="Pakistani Dramas" category="drama" />;
             }
             else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory=""
-                url={ this.state.Mta ? `/category/drama/page/1?source=mta`: this.state.Mta2 ? `/category/drama/page/1?source=mta2`: `/category/drama/page/1` }/></div>;
+                // return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="drama" title="Pakistani Dramas" limit={100} infinite={true} subCategory=""
+                // url={ this.state.Mta ? `/category/drama/page/1?source=mta`: this.state.Mta2 ? `/category/drama/page/1?source=mta2`: `/category/drama/page/1` }/></div>;
             }
         } else if (e === 6) {
             if(!isMtaSource){
@@ -178,8 +236,8 @@ class Home extends Component {
                 url={`/category/news/page/1`} /></div>
             }
             else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/news/page/1?source=mta`: this.state.Mta2 ? `/category/news/page/1?source=mta2`: `/category/news/page/1` }/></div>;
+                // return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="news" title="Headlines" limit={21} infinite={true} subCategory="" 
+                // url={ this.state.Mta ? `/category/news/page/1?source=mta`: this.state.Mta2 ? `/category/news/page/1?source=mta2`: `/category/news/page/1` }/></div>;
             }
         
         } else if (e === 7) {
@@ -188,19 +246,19 @@ class Home extends Component {
                 url={`/category/current_affairs/page/1`} /></div>
             }
 
-            else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
-                url={ this.state.Mta ? `/category/current_affairs/page/1?source=mta`: this.state.Mta2 ? `/category/current_affairs/page/1?source=mta2`: `/category/current_affairs/page/1` }/></div>;
-            }
+            // else{
+            //     return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="current_affairs" title="Current Affairs" limit={21} infinite={false} subCategory="" 
+            //     url={ this.state.Mta ? `/category/current_affairs/page/1?source=mta`: this.state.Mta2 ? `/category/current_affairs/page/1?source=mta2`: `/category/current_affairs/page/1` }/></div>;
+            
         
         }  else if (e === 8) {
             if(!isMtaSource){ 
                 return <VodSection title="Programs" apiLink={`/video?category=programs&limit=5`} category="programs" classname="programsContainer" />;
             }
-            else{
-                return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="programs" title="Programs" limit={100} infinite={true} subCategory="" 
-                url={ this.state.Mta ? `/category/programs/page/1?source=mta`: this.state.Mta2 ? `/category/programs/page/1?source=mta2`: `/category/programs/page/1` }/></div>;
-            }    
+            // else{
+            //     return <div className="Homeheadlines"><HeadlinesSection style={{ top: "2%" }} category="programs" title="Programs" limit={100} infinite={true} subCategory="" 
+            //     url={ this.state.Mta ? `/category/programs/page/1?source=mta`: this.state.Mta2 ? `/category/programs/page/1?source=mta2`: `/category/programs/page/1` }/></div>;
+            // }    
         }
     }
 
