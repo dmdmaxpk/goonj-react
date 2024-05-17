@@ -1,31 +1,25 @@
-//NewsChannelList.js
-import React, { Component } from 'react';
+import React, {Component} from "react";
 import AxiosInstance from "../../Utils/AxiosInstance";
-import config from '../../Utils/config';
-import Heading from '../HomeSections/Heading';
-import './ListSections.scss';
+import config from "../../Utils/config";
+import Heading from "../HomeSections/Heading";
 import Slider from "react-slick";
 import Loader from '../Loader/Loader';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
+import './ListSections.scss';
 
-const API_URL = 'https://api.goonj.pk/v2/live';
-const FREE_CHANNELS = ['makkah-live', 'madina-live'];
-
-class DynamicDataList extends Component {
-    constructor(props) {
+class DynamicDataList extends Component{
+    constructor(props){
         super(props);
-        this.state = {
-            data: [],
+        this.state={
+            data: this.props.data,
             channelClick: false,
             channelMetadata: undefined,
             isMta: false,
-            isLightTheme: false
+            isLightTheme: false,
         };
-        this.handleItemClick = this.handleItemClick.bind(this);
-        this.handleRedirect = this.handleRedirect.bind(this);
     }
 
     componentDidMount() {
@@ -36,20 +30,8 @@ class DynamicDataList extends Component {
         
         if (this.source === 'mta' || this.source === 'mta2') {
             this.setState({ isMta: true });
-            this.fetchData(); // Fetch MTA data when source is mta
         } else {
             this.setState({ isMta: false });
-    
-            // Fetch live-tv data when source is not mta
-            AxiosInstance.get('/live')
-                .then(res => {
-                    // Filter channels based on the 'category' field
-                    const newsChannels = res.data.filter(channel => channel.category === 'islam');
-                    this.setState({ data: newsChannels });
-                })
-                .catch(error => {
-                    console.error('Error fetching live-tv data:', error);
-                });
         }
 
         // Theme checks
@@ -61,55 +43,13 @@ class DynamicDataList extends Component {
         }
     }
     
-    
-
-    // MTA
-    fetchData = async () => {
-        try {
-            const response = await fetch(API_URL);
-            const jsonData = await response.json();
-            const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
-            this.setState({ data: filteredItems });
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
     // MTA 
     handleItemClick = (item) => {
-        //console.log('Channel is:', item);
-        this.setState({ channelMetadata: item, channelClick: true });
-        // MTA
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        this.source = urlParams.get("source");
-    
-        let url= ``;
-        if(this.source === 'mta'){
-            console.log('HandleItemClick -ChannelList.js');
             localStorage.setItem('mta', true);
-            url = `/channel/${item.slug}?source=mta`;
-        }
-        else if(this.source === 'mta2'){
-            console.log('HandleItemClick -ChannelList.js');
-            localStorage.setItem('mta2', true);
-            url = `/channel/${item.slug}?source=mta2`;
-        }
-        
-        // Create custom events for MTA channels
-        console.log(`MTA-${item.slug} event triggered`);
-        trackEvent('Custom Event', `MTA_${item.slug}`, window.location.href);
-
+            const url = `category/${item.category}/page/1?source=mta`;
         this.props.history.push(url); 
     };
 
-    handleRedirect(item) {
-        let permission = localStorage.getItem('livePermission');
-        let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
-        return url;
-    }
-    //this.state.data.length > # of channels on slider ? # of channels on slider : this.state.data.length,
     render() {
         var settings = {
             dots: false,
@@ -148,18 +88,17 @@ class DynamicDataList extends Component {
                 }
             ]
         };
-
         const { isLightTheme } = this.state;
 
         return (
             <div className={this.props.class}>
                 {console.log("This is the name of the class:", this.props.class)}
-                <Heading heading={this.props.heading} url={(this.state.isMta && this.state.isLightTheme) ? "/live-tv?source=mta2" : ((this.state.isMta) && (!this.state.isLightTheme)) ? "/live-tv?source=mta" : "/live-tv"} 
-                classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category="Islamic Channels" />
+                <Heading heading={this.props.heading}
+                classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category={this.props.heading} />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     <Slider className="channelSlider" {...settings}>
-                        {this.props.data.map((item, index) => (
+                        {this.state?.data?.map((item, index) => (
                         <div className="channelListDiv" key={index} onClick={() => this.handleItemClick(item)}>
                             <img className="channelListImg" src={item.thumbnail} alt={item?.name} />
                             <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item?.name}</p>
