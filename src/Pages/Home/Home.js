@@ -138,8 +138,18 @@ class Home extends Component {
                         />
                         <NewsChannelList />
                         <IslamicChannelList />
-                        <div className="Homeheadlines"><HeadlinesSection style={{top:"2%"}} category="short_films" title="Short Films" limit={21} infinite={false} subCategory="" 
-                url={`/category/short_films/page/1?source=mta`} /></div>
+                        <div className="Homeheadlines">
+                            <HeadlinesSection
+                                style={{top:"2%"}}
+                                category="short_films"
+                                title="Short
+                                Films"
+                                limit={21}
+                                infinite={false}
+                                subCategory="" 
+                                url={`/category/short_films/page/1?source=mta`}
+                            />
+                        </div>
                     </>
                 ) : (
                 <>
