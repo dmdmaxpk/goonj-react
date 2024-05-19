@@ -136,6 +136,16 @@ class Home extends Component {
                                 {name:"Pakistani Dramas", category:"digital_world", thumbnail:"https://reviewit.pk/wp-content/uploads/2023/07/Green-tv-dramas.jpg"},
                             ]}
                         />
+
+                        <DynamicDataList
+                            heading="Talk SHOWS"
+                            data={[
+                                {playlistId: "PLBRFejfMt3Zmy9_cM7_CeBhc2Lflsej8I", name:"Voice Over Man", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/VOM.jpg"},
+                                {playlistId:"PLNGRp6zc1uUsXUQGAGcvyi5yMsYjMQ27D", name:"I Don't Know - Presented by Telenor 4G", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/IDK.jpg"},
+                                {playlistId:"PLNGRp6zc1uUv5imLTWsMlRC2kF30ucdEO", name:"To Be Honest 3.0 Presented by Telenor 4G", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/TBH.jpg"}
+                            ]}
+                            onClick={(item) => {return `/green-tv-ent/${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? '?source=mta' : ''}`}}
+                        />
                         <NewsChannelList />
                         <IslamicChannelList />
                         <div className="Homeheadlines">

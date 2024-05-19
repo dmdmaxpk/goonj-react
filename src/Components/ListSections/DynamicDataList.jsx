@@ -45,9 +45,14 @@ class DynamicDataList extends Component{
     
     // MTA 
     handleItemClick = (item) => {
+        if (this.props?.onClick) {
+            const redirectUrl = this.props.onClick(item);
+            this.props.history.push(redirectUrl);
+        } else {
             localStorage.setItem('mta', true);
             const url = `category/${item.category}/page/1?source=mta`;
-        this.props.history.push(url); 
+            this.props.history.push(url);
+        }
     };
 
     render() {
