@@ -6,20 +6,17 @@ import ChannelList from '../../Components/ListSections/ChannelList';
 import NewsChannelList from '../../Components/ListSections/NewsChannelList';
 import EntertainmentChannelList from '../../Components/ListSections/EntertainmentChannelList';
 import IslamicChannelList from '../../Components/ListSections/IslamicChannelList';
-import LiveTv from '../Live/LiveTvList';
 import DramasSection from '../../Components/HomeSections/Dramas';
 import VodSection from '../../Components/HomeSections/Vod';
 import PopularList from '../../Components/ListSections/PopularList';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from '../../Components/Loader/Loader';
-import './Home.scss';
 import HeadlinesSection from '../../Components/HomeSections/Headlines';
-import MainCategory from '../VOD/MainCategory';
-import { Close } from '@material-ui/icons';
-import ReactGA from 'react-ga';
 import { trackEvent } from '../../Utils/functions';
 import AdvertComponent from '../../Components/MTA/AdBanner';
 import HomeMTAAdBanner from '../../Assets/MTABannerHome.png';
+import DynamicDataList from '../../Components/ListSections/DynamicDataList';
+import './Home.scss';
 
 class Home extends Component {
     constructor(props) {
@@ -97,6 +94,7 @@ class Home extends Component {
     }
 
     
+    
     renderComponent(e){
         const isMtaSource = this.props.location.search.includes('source=mta' || 'source=mta2');
         
@@ -124,15 +122,44 @@ class Home extends Component {
                  */}
                   {isMtaSource ? (
                     <>
-                    <EntertainmentChannelList />
-                    <AdvertComponent
-                        imageUrl={HomeMTAAdBanner}
-                        redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
-                        eventTag="HOMEPAGE_AD_BANNER"
-                        className={'marginBottom2vh'}
-                    />
-                    <NewsChannelList />
-                    <IslamicChannelList />
+                        <EntertainmentChannelList />
+                        <AdvertComponent
+                            imageUrl={HomeMTAAdBanner}
+                            redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
+                            eventTag="HOMEPAGE_AD_BANNER"
+                            className={'marginBottom2vh'}
+                        />
+                        <DynamicDataList
+                            heading="Exclusive Short Films and drama"
+                            data={[
+                                {name:"Short Films", category:"short_films", thumbnail:"https://marilynfilms.com/wp-content/uploads/Your-First-Films-Need-To-Be-Short-Films.jpg"},
+                                {name:"Pakistani Dramas", category:"digital_world", thumbnail:"https://reviewit.pk/wp-content/uploads/2023/07/Green-tv-dramas.jpg"},
+                            ]}
+                        />
+
+                        <DynamicDataList
+                            heading="Talk SHOWS"
+                            data={[
+                                {playlistId: "PLBRFejfMt3Zmy9_cM7_CeBhc2Lflsej8I", name:"Voice Over Man", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/VOM.jpg"},
+                                {playlistId:"PLNGRp6zc1uUsXUQGAGcvyi5yMsYjMQ27D", name:"I Don't Know - Presented by Telenor 4G", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/IDK.jpg"},
+                                {playlistId:"PLNGRp6zc1uUv5imLTWsMlRC2kF30ucdEO", name:"To Be Honest 3.0 Presented by Telenor 4G", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/TBH.jpg"}
+                            ]}
+                            onClick={(item) => {return `/green-tv-ent/${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? '?source=mta' : ''}`}}
+                        />
+                        <NewsChannelList />
+                        <IslamicChannelList />
+                        <div className="Homeheadlines">
+                            <HeadlinesSection
+                                style={{top:"2%"}}
+                                category="short_films"
+                                title="Short
+                                Films"
+                                limit={21}
+                                infinite={false}
+                                subCategory="" 
+                                url={`/category/short_films/page/1?source=mta`}
+                            />
+                        </div>
                     </>
                 ) : (
                 <>

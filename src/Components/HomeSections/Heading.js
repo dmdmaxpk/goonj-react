@@ -36,11 +36,14 @@ class Heading extends Component {
                              <h4 className={`heading_text ${isLightTheme ? 'heading_text_mta2' : ''}`}>{this.props.category || this.props.heading}</h4>
                             
                             </div>
-                            <div className={this.props.viewMoreClass+" homeHeadlineViewMore"}>
-                                {/*<Link className="view_more_text" to={this.props.url}>View More</Link>*/}
-                                <Link className={`view_more_text ${isLightTheme ? 'view_more_text_mta2' : ''}`} to={this.props.url}>View More</Link>
-
-                            </div>
+                            {this.props.url ? 
+                                <div className={this.props.viewMoreClass+" homeHeadlineViewMore"}>
+                                    {/*<Link className="view_more_text" to={this.props.url}>View More</Link>*/}
+                                    <Link className={`view_more_text ${isLightTheme ? 'view_more_text_mta2' : ''}`} to={this.props.url}>View More</Link>
+                                </div>
+                            :
+                                null
+                            }
                     </div>
                 </div>    
             </div>
