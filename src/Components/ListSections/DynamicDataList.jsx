@@ -9,6 +9,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
 import './ListSections.scss';
+import {Link} from 'react-router-dom';
+import {Img} from 'react-image'
+import LoaderImage from '../../Components/Loader/ImageLoader'
+
+
 
 class DynamicDataList extends Component{
     constructor(props){
@@ -56,7 +61,7 @@ class DynamicDataList extends Component{
     };
 
     render() {
-        var settings = {
+        var verticalSettings = {
             dots: false,
             arrows: true,
             infinite: false,
@@ -93,16 +98,53 @@ class DynamicDataList extends Component{
                 }
             ]
         };
+
+        var horizontalSettings = {
+            dots: false,
+            arrows: true,
+            infinite: this.props.infinite,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                  breakpoint: 3000,
+                  settings: {
+                    slidesToShow: 6.4,
+                    slidesToScroll: 3,
+                    infinite: this.props.infinite,
+                    arrow: true
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                    
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    arrows: true
+                  }
+                }
+            ]
+        };
         const { isLightTheme } = this.state;
 
         return (
+            this.props.layout === 'vertical' ?
             <div className={this.props.class}>
                 {console.log("This is the name of the class:", this.props.class)}
                 <Heading heading={this.props.heading}
                 classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category={this.props.heading} />
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
-                    <Slider className="channelSlider" {...settings}>
+                    <Slider className="channelSlider" {...verticalSettings}>
                         {this.state?.data?.map((item, index) => (
                         <div className="channelListDiv" key={index} onClick={() => this.handleItemClick(item)}>
                             <img className="channelListImg" src={item.thumbnail} alt={item?.name} />
@@ -113,7 +155,41 @@ class DynamicDataList extends Component{
                     <faderight className="channelRightFade" />
                 </div>
             </div>
-        );
+            :
+            <div className="headlinesContainer">
+                <Heading headlineMargin="headlineMargin" heading={this.props.heading} url={this.props.url} classes={this.props.classes} viewMoreClass={this.props.viewMoreClass}/>
+                        <div className="position-relative">
+                            <fadeleftheadline className="headlineLeftFade"/>
+                            <Slider className="headlinesSlider" {...horizontalSettings}>
+                            {this.state.data.length > 0 ?  
+                                (this.state.data.map(item =>
+                                        <div className="popularListDiv" onClick={()=> this.handleItemClick(item)}>
+                                            <Link style={{textDecoration: "none", color:"white"}}>
+                                                <div style={{position:"relative", marginBottom:"4%"}}>
+                                                <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={item.thumbnail} alt={item?.name} />
+                                                <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} alt="Play" />
+                                                </div>
+                                                {(!this.state.isMta && !isLightTheme) && (
+                                                    <div className="freeContentDiv freeContentDivHL">
+                                                        <p>FREE</p>
+                                                    </div>
+                                                )}
+
+                                                <p className="headlineTitle" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
+                                                {/* <p className="headnlineSource" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p> */}
+                                            </Link>
+                                        </div>
+                                    )
+                                )
+                                  : <Loader/>
+                                }
+                            </Slider>
+                            <faderightheadline className="headlineRightFade"/>
+                            </div>
+               
+            </div>
+                )
+        
 
     }
 }

@@ -179,9 +179,14 @@ class CategoryVodPage extends Component {
                         : <Loader />
                         }
                         <GridItem sm={12} md={12} xs={12} >
-                            <div className="paginationDiv">
-                                <PaginationComponent params={this.props.match.params} data={this.state.data} />
-                            </div>
+                            {
+                            this.state.isMta?
+                                null
+                            :
+                                <div className="paginationDiv">
+                                    <PaginationComponent params={this.props.match.params} data={this.state.data} />    
+                                </div>
+                            }
                         </GridItem>
                     </GridContainer>
                 }
