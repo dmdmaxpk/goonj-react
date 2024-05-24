@@ -130,6 +130,7 @@ class Home extends Component {
                             className={'marginBottom2vh'}
                         />
                         <DynamicDataList
+                            layout='vertical'
                             heading="Exclusive Short Films and drama"
                             data={[
                                 {name:"Short Films", category:"short_films", thumbnail:"https://marilynfilms.com/wp-content/uploads/Your-First-Films-Need-To-Be-Short-Films.jpg"},
@@ -138,6 +139,7 @@ class Home extends Component {
                         />
 
                         <DynamicDataList
+                            layout="horizontal"
                             heading="Talk SHOWS"
                             data={[
                                 {playlistId: "PLBRFejfMt3Zmy9_cM7_CeBhc2Lflsej8I", name:"Voice Over Man", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/VOM.jpg"},

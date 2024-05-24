@@ -121,7 +121,7 @@ class YtPlaylistPage extends Component {
                             )
                         : <Loader />
                         }
-                        {this.props?.disablePagination ? 
+                        {/* {this.props?.disablePagination ? 
                             null
                         :
                             <GridItem sm={12} md={12} xs={12} >
@@ -129,7 +129,7 @@ class YtPlaylistPage extends Component {
                                     <PaginationComponent params={this.props.match.params} data={this.state.data} limit={50} />
                                 </div>
                             </GridItem>
-                        }
+                        } */}
                     </GridContainer>
                 }
             </div>
