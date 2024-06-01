@@ -142,8 +142,12 @@ class CategoryVodPage extends Component {
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.props.match.params.category.toUpperCase()}</p>
-                    <CategoryDD category={this.props.match.params.category} />
+                    <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{((this.props.match.params.category).split('_').join(' ')).toUpperCase()}</p>
+                    {this.state.isMta ?
+                        null
+                    :
+                        <CategoryDD category={this.props.match.params.category} />
+                    }
                 </div>
                 {this.state.data.length > 0 && subCats.includes(this.props.match.params.category) ?
                     <MainCategory category={this.props.match.params.category} />
@@ -175,9 +179,14 @@ class CategoryVodPage extends Component {
                         : <Loader />
                         }
                         <GridItem sm={12} md={12} xs={12} >
-                            <div className="paginationDiv">
-                                <PaginationComponent params={this.props.match.params} data={this.state.data} />
-                            </div>
+                            {
+                            this.state.isMta?
+                                null
+                            :
+                                <div className="paginationDiv">
+                                    <PaginationComponent params={this.props.match.params} data={this.state.data} />    
+                                </div>
+                            }
                         </GridItem>
                     </GridContainer>
                 }

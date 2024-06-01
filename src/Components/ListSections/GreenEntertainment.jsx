@@ -39,9 +39,9 @@ export default class GreenEntertainment extends Component {
             {playlistId: 'PLs2CG9JU32b4SRVIsZ7mnRUQxKhVZ-4lB', name: '101 Talaqain', thumbnail: '101 - TALAQAIN.jpg'},
             {playlistId: 'PLs2CG9JU32b5Tn0j3JC9NtKx9RmDvlxoF', name: 'Gumn', thumbnail: 'GUMN.jpg'},
             {playlistId: 'PLs2CG9JU32b5L1Rt_IyZumpryulwW5r7D', name: 'Fanaa', thumbnail: 'FANAA.jpg '},
-            {playlistId: "PLBRFejfMt3Zmy9_cM7_CeBhc2Lflsej8I", name:"Voice Over Man", thumbnail:"VOM.jpg"},
-            {playlistId:"PLNGRp6zc1uUsXUQGAGcvyi5yMsYjMQ27D", name:"I Don't Know - Presented by Telenor 4G", thumbnail:"IDK.jpg"},
-            {playlistId:"PLNGRp6zc1uUv5imLTWsMlRC2kF30ucdEO", name:"To Be Honest 3.0 Presented by Telenor 4G", thumbnail:"TBH.jpg"}
+            // {playlistId: "PLBRFejfMt3Zmy9_cM7_CeBhc2Lflsej8I", name:"Voice Over Man", thumbnail:"VOM.jpg"},
+            // {playlistId:"PLNGRp6zc1uUsXUQGAGcvyi5yMsYjMQ27D", name:"I Don't Know - Presented by Telenor 4G", thumbnail:"IDK.jpg"},
+            // {playlistId:"PLNGRp6zc1uUv5imLTWsMlRC2kF30ucdEO", name:"To Be Honest 3.0 Presented by Telenor 4G", thumbnail:"TBH.jpg"}
 
         ]
 
