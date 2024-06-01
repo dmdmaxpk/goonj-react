@@ -8,12 +8,15 @@ import '../../Pages/VOD/vod.scss';
 import InfiniteScroll from "react-infinite-scroll-component";
 import ReactTimeAgo from 'react-time-ago';
 import Loader from '../../Components/Loader/Loader';
-import './SearchPage.scss'
-
+import './SearchPage.scss';
 
 class SearchPage extends Component {
     constructor(props) {
         super(props);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const source = urlParams.get("source");
+
         this.state = {
             data: [],
             skip: 30,
@@ -21,25 +24,27 @@ class SearchPage extends Component {
             page: this.props.match.params.pageNumber,
             loading: true,
             hasMoree: true,
-            noData: false
+            noData: false,
+            isMta: source === 'mta' ? true : false
         }
         this.handleClick = this.handleClick.bind(this);
         this.getVodUrl = this.getVodUrl.bind(this);
     }
-
+    
     fetchingData = () =>{
+        console.log('this.props', this.props.history.location.state)
         let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
-        let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${this.state.skip}`;
+        let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${this.state.skip}&category=${this.state.isMta ? 'short_films,digital_world': ''}`;
         this.setState({noData: false, loading: false})
         AxiosInstance.get(apiUrl)
         .then(res =>{
             this.setState({data: this.state.data.concat(res.data)});
         })
-        this.state.skip = this.state.skip+30;
+        this.state.skip = this.state.skip + 30;
     }
     componentDidMount(){
-        let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
-        let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${0}`;
+        let searchValue = this.props?.history?.location?.state?.searchValue ? this.props.history.location.state.searchValue : " ";
+        let apiUrl = `/search?term=${searchValue}&limit=${this.state.limit}&skip=${0}&category=${this.state.isMta ? 'short_films,digital_world': ''}`;
         this.setState({noData: false, loading: true})
         AxiosInstance.get(apiUrl)
         .then(res =>{
@@ -54,8 +59,8 @@ class SearchPage extends Component {
   }
     componentWillReceiveProps(nextProps, nextState) {
         if(this.state.data !== nextState.data){
-          let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
-          let apiUrl = `/search?term=${searchValue}&limit=${30}&skip=${0}`;
+          let searchValue = this.props?.history?.location?.state?.searchValue ? this.props.history.location.state.searchValue : " ";
+          let apiUrl = `/search?term=${searchValue}&limit=${30}&skip=${0}&category=${this.state.isMta ? 'short_films,digital_world': ''}`;
           this.setState({noData: false, loading: true});
           AxiosInstance.get(apiUrl)
           .then(res =>{
@@ -88,7 +93,7 @@ class SearchPage extends Component {
         return url;
     }
     render(){
-        let searchValue = this.props.history.location.state.searchValue ? this.props.history.location.state.searchValue : " ";
+        let searchValue = this.props?.history?.location?.state?.searchValue ? this.props.history.location.state.searchValue : " ";
         return(
             <div className="vodCategoryContainer">
                 <p className="searchHeading">Search result for: {searchValue}</p>
@@ -124,7 +129,7 @@ class SearchPage extends Component {
                             :
                             this.state.loading === false && this.state.noData === true ?
                             <GridItem xs={12} sm={12} md={12} style={{textAlign: "center"}}>
-                                <img src={require('../../Assets/nodata-found.png')} alt="Not Found" />
+                                <img style={{width: '100%'}} src={require('../../Assets/nodata-found.png')} alt="Not Found" />
                             </GridItem>
                             :
                             ''

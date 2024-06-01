@@ -189,7 +189,7 @@ class App extends React.Component {
             <Route exact path="/channel/:slug" component={LiveChannel} />
             {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
             {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
-            <Route exact path="/searchresults" component={SearchPage} />
+            <Route path="/searchresults" component={SearchPage} />
             <Route path='/category/comedy/page/:pageNumber' component={() => { window.location = 'http://comedy.goonj.pk'; return null;} }/>
             <Route
               exact
