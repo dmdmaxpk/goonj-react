@@ -63,7 +63,7 @@ function MTAHeader(props) {
             <div className='SearchContainer'>
             <span className='SearchBar'>
                 <input className="first-search" style={{border: '1px solid white', borderRight: 'none'}} type="text" placeholder='Search' name="search" value={value} onChange={handleChange}/>
-                <button style={{border: '1px solid white', borderLeft: 'none'}} id="Icon"><i className='fa fa-search' for="icon"></i></button>
+                <button style={{border: '1px solid white', borderLeft: 'none'}} id="icon"><i className='fa fa-search' for="icon"></i></button>
             </span>
             </div>
         </div>

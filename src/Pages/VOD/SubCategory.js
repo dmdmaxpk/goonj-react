@@ -134,7 +134,10 @@ class SubCategoryPage extends Component {
         return(
             <div className="vodCategoryContainer">
                 <div>
-                    <h4 className="headingVOD floatLeft"><Link style={{color: "#2691D5"}} to={`/category/${this.props.match.params.category}/page/1`}>{this.props.match.params.category}</Link> {">"} {this.props.match.params.subCategory}</h4>
+                    <h4 className="headingVOD">
+                        {/* <Link style={{color: "#2691D5"}} to={`/category/${this.props.match.params.category}/page/1`}>
+                        {this.props.match.params.category?.split('_')?.join(' ')}</Link> {">"} */}
+                        {this.props.match.params.subCategory}</h4>
                     {/* <CategoryDD category={this.props.match.params.category} /> */}
                 </div>
                     <GridContainer>
@@ -161,11 +164,15 @@ class SubCategoryPage extends Component {
                             )
                         : <Loader />
                         }
-                        <GridItem sm={12} md={12} xs={12} >
-                            <div className="paginationDiv">
-                                <PaginationComponent params={this.props.match.params} data={this.state.data} />
-                            </div>
-                        </GridItem>
+                        {this.state.isMta ?
+                                null
+                            :
+                            <GridItem sm={12} md={12} xs={12} >
+                                <div className="paginationDiv">
+                                    <PaginationComponent params={this.props.match.params} data={this.state.data} />
+                                </div>
+                            </GridItem>
+                        }
                     </GridContainer>
             </div>
         );

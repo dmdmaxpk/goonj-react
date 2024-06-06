@@ -13,7 +13,7 @@ import MainCategory from './MainCategory';
 import { trackEvent } from '../../Utils/functions';
 
 let count,strURL;
-let subCats = ['drama', 'programs'];
+let subCats = ['drama', 'programs', 'digital_world'];
 
 class CategoryVodPage extends Component {
     
