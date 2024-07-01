@@ -9,7 +9,7 @@ import Loader from '../../Components/Loader/Loader';
 import GreenEntertainment from '../../Components/ListSections/GreenEntertainment';
 import { trackEvent } from '../../Utils/functions';
 import AdvertComponent from '../../Components/MTA/AdBanner';
-import ChannelMtaBanner from '../../Assets/GreenEntertainmentBanner.png';
+import ChannelMtaBanner from '../../Assets/MTABannerChannel.png';
 
 class LiveChannel extends Component {
     constructor(props) {
