@@ -121,7 +121,8 @@ class Box extends React.Component {
         if((localStorage.getItem('urlMsisdn') || urlParams.get('msisdn')) && paymentType == 'telenor' && urlParams.get('access_token')){
             this.setState({
                 paymentType,
-                step: 'mta',
+                // step: 'mta',
+                open: true,
                 msisdn: urlParams.get('msisdn') ? urlParams.get('msisdn') : localStorage.getItem('urlMsisdn') 
             }) 
         }
@@ -231,7 +232,6 @@ class Box extends React.Component {
     
     fetchTokenAndModal = async () => {
         const {msisdn, paymentType, otp} = this.state;
-
         // generate cms link
         let payload = {msisdn, serviceId: this.props.serviceId2};
         console.log('Payload', payload);
@@ -241,7 +241,6 @@ class Box extends React.Component {
             const result = res.data;
             console.log('cms token v2 result', result);
             this.setState({consentBoxDetails: result?.response, open: true});
-
         }).catch(err => {
             console.error('error', err);
         })
@@ -358,6 +357,7 @@ class Box extends React.Component {
         console.log('triggered')
         this.setState({open:true});
     }
+
     handleClose=()=>this.setState({open:false});
 
     render() {
@@ -430,11 +430,8 @@ class Box extends React.Component {
                 <ConsentButton
                     open={this.state.open}
                     onClose={()=> {this.setState({step: 0}); this.handleClose(); }}
-                    onConfirm={this.subscribe}
-                    submitConsent={this.submitConsent}
                     setToken={this.setToken}
                     msisdn={this.state.msisdn}
-                    subscribe={this.subscribe}
                     serviceId={this.props.serviceId2}
                     data={this.state.consentBoxDetails}
                 />
