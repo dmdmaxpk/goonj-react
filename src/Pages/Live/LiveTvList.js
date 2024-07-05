@@ -32,7 +32,8 @@ const FREE_CHANNELS = [
     "metro1-news",
     "filmax",
     "makkah-live",
-    "madina-live"
+    "madina-live",
+    'aan-tv'
 ];
 
 class LiveTv extends Component {
