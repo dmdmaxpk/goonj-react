@@ -24,7 +24,9 @@ const FREE_CHANNELS = [
     "aplus",
     "rohi_tv",
     "filmax",
-    "aan-tv"
+    "aan-tv",
+    "kay2-tv",
+    "bol-entertainment"
 ];
    
 class EntertainmentChannelList extends Component {
