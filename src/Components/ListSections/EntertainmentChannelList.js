@@ -31,7 +31,7 @@ const FREE_CHANNELS = [
 const newChannelLinks = [
     {slug: "Jalwa", newLink:"https://www.mjunoon.tv/embedplayer/jalwa-tv-live.html", thumbnail:"jalwa.png"},
     {slug: "8xm", newLink:"https://www.mjunoon.tv/embedplayer/8xm-live.html", thumbnail:"eightXM.png"},
-    {slug: 'Khyber TV', newLink: 'https://mjunoon.tv/embedplayer/avt-khyber-tv-live.html', thumbnail:"KhyberTv.png" },
+    {slug: 'Khyber TV', newLink: 'https://mjunoon.tv/embedplayer/avt-khyber-tv-live.html', thumbnail:"khyber-tv.png" },
     {slug: "K2", newLink:"https://www.mjunoon.tv/embedplayer/kay2-tv-live.html", thumbnail:"k2.png"},
     // {slug: "Raavi", newLink:"https://www.mjunoon.tv/embedplayer/kay2-tv-live.html", thumbnail: 'raavi'},
 ];
