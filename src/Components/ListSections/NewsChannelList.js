@@ -28,11 +28,11 @@ const FREE_CHANNELS = [
 "metro1-news"];
 
 const newChannelLinks = [
-    {slug: 'Dunya News', newLink: 'https://dunyanews.tv/live/', thumbnail: 'dunya-news.png' },
+    // {slug: 'Dunya News', newLink: 'https://dunyanews.tv/live/', thumbnail: 'dunya-news.png' },
     {slug: "G Tv", newLink:"https://live.gtvnewshd.com/livelan/stream.m3u8", thumbnail:"gtv.png"},
-    {slug: 'Lahore News', newLink: 'https://lahorenews.tv/live/', thumbnail: 'lahore-news.png' },
+    // {slug: 'Lahore News', newLink: 'https://lahorenews.tv/live/', thumbnail: 'lahore-news.png' },
     {slug: "Suno News", newLink:"http://live.sunonews.tv:1935/sunotv/live/playlist.m3u8", thumbnail:"suno-news.png"},
-    {slug: "AVT Khyber News", newLink:"https://mjunoon.tv/embedplayer/khyber-news-live.html", thumbnail:"khyber-news.png"}
+    {slug: "Khyber News", newLink:"https://mjunoon.tv/embedplayer/khyber-news-live.html", thumbnail:"khyber-news.png"}
 ];
 
 class NewsChannelList extends Component {
