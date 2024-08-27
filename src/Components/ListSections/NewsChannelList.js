@@ -27,6 +27,14 @@ const FREE_CHANNELS = [
 "city41-news",
 "metro1-news"];
 
+const newChannelLinks = [
+    {slug: 'Dunya News', newLink: 'https://dunyanews.tv/live/', thumbnail: 'dunya-news.png' },
+    {slug: "G Tv", newLink:"https://live.gtvnewshd.com/livelan/stream.m3u8", thumbnail:"gtv.png"},
+    {slug: 'Lahore News', newLink: 'https://lahorenews.tv/live/', thumbnail: 'lahore-news.png' },
+    {slug: "Suno News", newLink:"http://live.sunonews.tv:1935/sunotv/live/playlist.m3u8", thumbnail:"suno-news.png"},
+    {slug: "AVT Khyber News", newLink:"https://mjunoon.tv/embedplayer/khyber-news-live.html", thumbnail:"khyber-news.png"}
+];
+
 class NewsChannelList extends Component {
     constructor(props) {
         super(props);
@@ -80,8 +88,34 @@ class NewsChannelList extends Component {
     fetchData = async () => {
         try {
             const response = await fetch(API_URL);
-            const jsonData = await response.json();
-            const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            let jsonData = await response.json();
+            let filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            const customChannels = newChannelLinks.map((item, index) => {
+                return {
+                    _id: `${item?.slug}-${index}`,
+                    ad_tag: "",
+                    views_count: 0,
+                    name: item?.slug,
+                    hls_link: "",
+                    slug: item?.slug,
+                    thumbnail: item?.thumbnail,
+                    package_id: [
+                    "QDfG",
+                    "QDfC"
+                    ],
+                    seq: index,
+                    is_streamable: false,
+                    category: "entertainment",
+                    redirectLink: item?.newLink
+                }
+            });
+            filteredItems = filteredItems?.concat(customChannels);
+            filteredItems.sort((a, b) => {
+                if(a.seq > b.seq) return 1;
+                if(a.seq < b.seq) return -1;
+                else return 0;
+            })
+            
             this.setState({ data: filteredItems });
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -98,7 +132,7 @@ class NewsChannelList extends Component {
         const urlParams = new URLSearchParams(queryString);
         this.source = urlParams.get("source");
     
-        let url= ``;
+        let url=``;
         if(this.source === 'mta'){
             console.log('HandleItemClick -ChannelList.js');
             localStorage.setItem('mta', true);
@@ -116,11 +150,14 @@ class NewsChannelList extends Component {
 
         this.props.history.push(url); 
     };
+    handleCustomChannelRedirect(link){
+        this.props.history.push(`/channel/custom?source=mta&link=${link}`);
+    }
 
     handleRedirect(item) {
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let url =permission === true ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
 
@@ -189,7 +226,7 @@ class NewsChannelList extends Component {
                         this.state.isMta === true ? (
                         <Slider className='channelSlider' {...settings}>
                             {this.state.data.map((item) => (
-                            <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
+                            <div className="channelListDiv" key={item.slug} onClick={item?.redirectLink ? () => this.handleCustomChannelRedirect(item.redirectLink)  : ()=> this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 {/*<p className="channelListName">{item.name}</p>*/}
                                 <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item.name}</p>

@@ -28,6 +28,13 @@ const FREE_CHANNELS = [
     "kay2-tv",
     "bol-entertainment"
 ];
+const newChannelLinks = [
+    {slug: "Jalwa", newLink:"https://www.mjunoon.tv/embedplayer/jalwa-tv-live.html", thumbnail:"jalwa.png"},
+    {slug: "8xm", newLink:"https://www.mjunoon.tv/embedplayer/8xm-live.html", thumbnail:"eightXM.png"},
+    {slug: 'AVT Khyber', newLink: 'https://mjunoon.tv/embedplayer/avt-khyber-tv-live.html', thumbnail:"KhyberTv.png" },
+    {slug: "K2", newLink:"https://www.mjunoon.tv/embedplayer/kay2-tv-live.html", thumbnail:"k2.png"},
+    {slug: "Raavi", newLink:"https://www.mjunoon.tv/embedplayer/kay2-tv-live.html", thumbnail: 'raavi'},
+];
    
 class EntertainmentChannelList extends Component {
     constructor(props) {
@@ -83,7 +90,7 @@ class EntertainmentChannelList extends Component {
         try {
             const response = await fetch(API_URL);
             const jsonData = await response.json();
-            const filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
+            let filteredItems = jsonData.filter(item => FREE_CHANNELS.includes(item.slug));
             console.log('Filtered Items:', filteredItems);
 
             // add hardcoded green channel object
@@ -105,6 +112,26 @@ class EntertainmentChannelList extends Component {
                     category: "entertainment"
                 }
             )
+            const customChannels = newChannelLinks.map((item, index) => {
+                return {
+                    _id: `${item?.slug}-${index}`,
+                    ad_tag: "",
+                    views_count: 0,
+                    name: item?.slug,
+                    hls_link: "",
+                    slug: item?.slug,
+                    thumbnail: item?.thumbnail,
+                    package_id: [
+                    "QDfG",
+                    "QDfC"
+                    ],
+                    seq: index,
+                    is_streamable: false,
+                    category: "entertainment",
+                    redirectLink: item?.newLink
+                }
+            });
+            filteredItems = filteredItems?.concat(customChannels);
             filteredItems.sort((a, b) => {
                 if(a.seq > b.seq) return 1;
                 if(a.seq < b.seq) return -1;
@@ -118,7 +145,6 @@ class EntertainmentChannelList extends Component {
 
     // MTA 
     handleItemClick = (item) => {
-        //console.log('Channel is:', item);
         this.setState({ channelMetadata: item, channelClick: true });
         // MTA
         const queryString = window.location.search;
@@ -143,11 +169,14 @@ class EntertainmentChannelList extends Component {
 
         this.props.history.push(url); 
     };
+    handleCustomChannelRedirect(link){
+        this.props.history.push(`/channel/custom?source=mta&link=${link}`)
+    }
 
     handleRedirect(item) {
         let permission = localStorage.getItem('livePermission');
         let Urlmsisdn = localStorage.getItem('urlMsisdn');
-        let url = permission ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
+        let url = permission === true ? `/channel/${item.slug}` : Urlmsisdn ? `/paywall/${item.slug !== 'pak-zim' ? 'live' : 'cricket'}?msisdn=${Urlmsisdn ? Urlmsisdn : (localStorage.getItem('liveMsisdn') || localStorage.getItem('CPMsisdn'))}&slug=${item.slug}` : `${config.hepage}?slug=${item.slug}`;
         return url;
     }
 
@@ -216,7 +245,7 @@ class EntertainmentChannelList extends Component {
                         this.state.isMta === true ? (
                         <Slider className="channelSlider" {...settings}>
                             {this.state.data.map((item) => (
-                            <div className="channelListDiv" key={item.slug} onClick={() => this.handleItemClick(item)}>
+                            <div className="channelListDiv" key={item.slug} onClick={item?.redirectLink ? () => this.handleCustomChannelRedirect(item.redirectLink)  : ()=> this.handleItemClick(item)}>
                                 <img className="channelListImg" src={`${config.channelLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} alt={item.thumbnail} />
                                 {/*<p className="channelListName">{item.name}</p>*/}
                                 <p className={`channelListName ${isLightTheme ? 'channelListName_mta2' : ''}`}>{item.name}</p>

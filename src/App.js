@@ -30,6 +30,7 @@ import YtPlaylistPage from "./Pages/VOD/YtPlaylistVods";
 import YoutubeChannel from "./Pages/Live/YoutubeChannel";
 import GoonjAppLogo from './Assets/logo.png';
 import MTAAppLogo from './Assets/mta.png';
+import LiveTvReDirect from "./Pages/LiveTvReDirect";
 
 class App extends React.Component {
   constructor(props) {
@@ -186,6 +187,7 @@ class App extends React.Component {
             <Route exact path="/terms-conditions" component={TermsConditions} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/live-tv" component={LiveTv} />
+            <Route path="/channel/custom" component={LiveTvReDirect}/>
             <Route exact path="/channel/:slug" component={LiveChannel} />
             {/* <Route exact path="/stream/t10-league" component={FreeChannel} /> */}
             {/* <Route exact path="/stream/ffcs" component={YoutubeChannel} /> */}
