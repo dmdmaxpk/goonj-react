@@ -133,8 +133,8 @@ class Home extends Component {
                             layout='vertical'
                             heading="Exclusive Short Films and drama"
                             data={[
-                                {name:"Short Films", category:"short_films", thumbnail:"https://marilynfilms.com/wp-content/uploads/Your-First-Films-Need-To-Be-Short-Films.jpg"},
-                                {name:"Pakistani Dramas", category:"digital_world", thumbnail:"https://reviewit.pk/wp-content/uploads/2023/07/Green-tv-dramas.jpg"},
+                                {name:"Short Films", category:"short_films", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/others/shortFilms.jpg"},
+                                {name:"Pakistani Dramas", category:"digital_world", thumbnail:"https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/static-content/others/pakistaniDramas.jpg"},
                             ]}
                         />
 
