@@ -10,6 +10,7 @@ import GreenEntertainment from '../../Components/ListSections/GreenEntertainment
 import { trackEvent } from '../../Utils/functions';
 import AdvertComponent from '../../Components/MTA/AdBanner';
 import ChannelMtaBanner from '../../Assets/MTABannerChannel.png';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 class LiveChannel extends Component {
     constructor(props) {
@@ -98,17 +99,31 @@ class LiveChannel extends Component {
                 <div className="liveChannelMarginLeft">
                         {(source === 'mta' || source === 'mta2') && slug === 'green-tv-ent' ?
                             <div style={{marginTop: '2vh'}}>
-                                <AdvertComponent
+                                {/* <AdvertComponent
                                     imageUrl={ChannelMtaBanner}
                                     redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/weekly-easycardmax/"
                                     eventTag="GREEN_ENTERTAINMENT_AD_BANNER"
                                     className="marginBottom2vh"
+                                /> */}
+                                <GoogleAdBanner
+                                    adUnitPath="/23081330779/goonj_web_body"
+                                    sizes={[[320, 50], [320, 100]]}
+                                    divId="div_goonj_web_body"
+                                    targeting={{ goonj_section: [slug] }}
                                 />
                                 <GreenEntertainment />
                             </div>
                         :
+                        <div>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_body"
+                                sizes={[[320, 50], [320, 100]]}
+                                divId="div_goonj_web_body"
+                                targeting={{ goonj_section: [slug] }}
+                            />
                             <ChannelList classname="liveChannel"  />
-                        }
+                        </div>
+                    }
                     {/* Passing 'source' prop to ChannelList component */}
                     {/*<PopularList title="Latest on Goonj" classname="liveChannel" />*/}
                     {!(source === 'mta' || source === 'mta2') ? (

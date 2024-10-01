@@ -7,9 +7,10 @@ import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import ReactGA from 'react-ga';
 import videojs from 'video.js';
-import 'videojs-contrib-ads';
 import 'videojs-ima';
 import './videojs.css';
+import * as videojsContribAds from 'videojs-contrib-ads';
+window.videojsContribAds = videojsContribAds;
 
 ReactGA.initialize('G-2TG6PV2GL9')
 
@@ -80,16 +81,15 @@ class VideoPlayer extends Component {
                     if (this.ads) {
                         // this.ads(); // Ensure the ads plugin is initialized
                         this.ima({
-                            id: 'content_video',
-                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinearvpaid2js&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
+                            id: 'channel-player',
+                            adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?slotname=/124319096/external/ad_rule_samples&sz=640x480&ciu_szs=300x250&cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&url=&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&vad_type=linear&vpos=preroll&pod=1&ppos=1&lip=true&min_ad_duration=0&max_ad_duration=30000&vrid=6376&cmsid=496&video_doc_id=short_onecue&kfa=0&tfcd=0',
                             debug: true,
+                            autoplay: true,
+                            disableFlashAds: true,
+                            showCountdown: false,
+                            autoPlayAdBreaks: true,
+                            showControlsForJSAds: false,
                         });
-                        console.log('this.player.ads', this.player().ads)
-                        if (this.player.ads) {
-                            this.player.ads.requestAds();
-                        } else {
-                            console.error('Ads plugin is not initialized.');
-                        }
                     } else {
                         console.error('Ads plugin is not available.');
                     }
@@ -101,12 +101,18 @@ class VideoPlayer extends Component {
                     withCredentials: true
                 });
 
-                this.player.on('ads-ad-started', () => {
-                    console.log('Ad started');
+                this.player.on('adsready', (ad) => {
+                    console.log("Ads are ready. Requesting to play ad...", this.player);
+                    this.player.ima().initializeAdDisplayContainer();
+                    this.player.ima().requestAds(); // This requests and plays the pre-roll ad.
                 });
                   
-                  this.player.on('ads-ad-ended', () => {
-                    console.log('Ad ended');
+                this.player.on('ads-ad-started', (ad) => {
+                    console.log('Ad started', ad);
+                });
+                  
+                  this.player.on('ads-ad-ended', (ad) => {
+                    console.log('Ad ended', ad);
                 });
                   
                   this.player.on('adserror', (error) => {
@@ -213,62 +219,3 @@ class VideoPlayer extends Component {
 }
  
 export default VideoPlayer;
-
-// import videojs from 'video.js';
-// import 'videojs-contrib-ads'; // Import ads plugin
-// import 'videojs-ima'; // Import IMA plugin
-// import 'video.js/dist/video-js.css'; // Ensure you have video.js styles
-
-// class VideoPlayer extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.videoNode = React.createRef(); // Create a ref for the video node
-//     }
-
-//     componentDidMount() {
-//         // Initialize the video.js player
-//         this.player = videojs(this.videoNode.current, { 
-//             errorDisplay: false 
-//         }, function onPlayerReady() {
-//             console.log('Player is ready, initializing ads...');
-//             // Initialize ads plugin
-//             if (this.ads) {
-//                 // this.ads(); // Ensure the ads plugin is initialized
-//                 this.ima({
-//                     id: 'content_video',
-//                     adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=', // Your ad URL
-//                     debug: true,
-//                 });
-//                 if (this.player.ads) {
-//                     this.player.ads.requestAds();
-//                 } else {
-//                     console.error('Ads plugin is not initialized.');
-//                 }
-//             } else {
-//                 console.error('Ads plugin is not available.');
-//             }
-//         });
-        
-//         // Set the video source
-//         this.player.src({
-//             src: 'your-video-url.m3u8', // Replace with your video source
-//             type: 'application/x-mpegURL', // Replace with your video type
-//         });
-//     }
-
-//     componentWillUnmount() {
-//         if (this.player) {
-//             this.player.dispose(); // Dispose of the player on unmount
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <video ref={this.videoNode} className="video-js vjs-16-9" />
-//             </div>
-//         );
-//     }
-// }
-
-// export default VideoPlayer;

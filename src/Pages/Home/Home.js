@@ -17,6 +17,7 @@ import AdvertComponent from '../../Components/MTA/AdBanner';
 import HomeMTAAdBanner from '../../Assets/MTABannerHome.png';
 import DynamicDataList from '../../Components/ListSections/DynamicDataList';
 import './Home.scss';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 class Home extends Component {
     constructor(props) {
@@ -123,11 +124,17 @@ class Home extends Component {
                   {isMtaSource ? (
                     <>
                         <EntertainmentChannelList />
-                        <AdvertComponent
+                        {/* <AdvertComponent
                             imageUrl={HomeMTAAdBanner}
                             redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
                             eventTag="HOMEPAGE_AD_BANNER"
                             className={'marginBottom2vh'}
+                        /> */}
+                        <GoogleAdBanner
+                            adUnitPath="/23081330779/goonj_web_top"
+                            sizes={[[320, 100], [320, 50]]}
+                            divId="div_goonj_web_top"
+                            targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
                         />
                         <DynamicDataList
                             layout='vertical'
