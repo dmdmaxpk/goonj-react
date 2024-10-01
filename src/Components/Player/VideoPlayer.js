@@ -5,9 +5,11 @@ import akamai_auth from 'akamai-edge-auth-generator';
 import AxiosInstance from '../../Utils/AxiosInstance';
 import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
-import videojs from 'video.js';
-import './videojs.css';
 import ReactGA from 'react-ga';
+import videojs from 'video.js';
+import 'videojs-contrib-ads';
+import 'videojs-ima';
+import './videojs.css';
 
 ReactGA.initialize('G-2TG6PV2GL9')
 
@@ -73,15 +75,36 @@ class VideoPlayer extends Component {
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
                     return options;
                 };
-                
+                console.log('initiating player...')
                 this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
+                    console.log('Player is ready');
+                    console.log('initiating ads...')
+                    this.ads();
+                    this.ima({
+                        id: 'content_video',
+                        adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=',
+                        debug: true,
+                    });
+                    this.ima.requestAds();
                 });
 
                 this.player.src({
                     src: source,
                     type: "application/x-mpegURL",
                     withCredentials: true
-                  });
+                });
+
+                this.player.on('ads-ad-started', () => {
+                    console.log('Ad started');
+                });
+                  
+                  this.player.on('ads-ad-ended', () => {
+                    console.log('Ad ended');
+                });
+                  
+                  this.player.on('adserror', (error) => {
+                    console.error('Ad error:', error);
+                });
 
                 //   window.xhook.before((request, callback) => {
                 //     // only set header request for the videojs src url (don't touch other xhr requests)

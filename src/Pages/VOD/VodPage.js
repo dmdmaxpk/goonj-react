@@ -133,7 +133,7 @@ class VodPage extends Component {
         return(
             data.length !== 0 && loading === false && status === true ?
                 <div style={{marginLeft: "10px", marginTop: (this.source === 'mta' || this.source === 'mta2' ? "30px" : "100px")}}>
-                    <VodVideoPlayer  data={data !== [] ? data : ''} topics={topics !== [] ? topics : ''}/> 
+                    <VodVideoPlayer  data={data?.length !== 0 ? data : ''} topics={topics.length !== 0 ? topics : ''}/> 
                     <div className="vod_channel_margin_bottom">
                     <ChannelList class="vod_page_margin_heading channelListVodHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}/>
                     {/*<PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" style={{ color: isLightTheme ? "#87CEEB" : "white" }} title="Latest on Goonj"/>*/}
