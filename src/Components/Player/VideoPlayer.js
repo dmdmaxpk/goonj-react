@@ -76,18 +76,25 @@ class VideoPlayer extends Component {
                     return options;
                 };
                 console.log('initiating player...')
-                this.player = videojs(this.videoNode, {errorDisplay: false}, this.props, function onPlayerReady() {
-                    console.log('Player is ready');
-                    console.log('initiating ads...')
-                    this.ads();
-                    this.ima({
-                        id: 'content_video',
-                        adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=',
-                        debug: true,
-                    });
-                    this.ima.requestAds();
+                this.player = videojs(this.videoNode, {errorDisplay: false}, function onPlayerReady() {
+                    if (this.ads) {
+                        // this.ads(); // Ensure the ads plugin is initialized
+                        this.ima({
+                            id: 'content_video',
+                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/23081330779/goonj_web_preroll&description_url=https%3A%2F%2Fgoonj.pk%2Fchannel%2Fgreen-tv-ent%3Fsource%3Dmta&tfcd=0&npa=0&sz=400x300%7C640x480&cust_params=goonj_section%3Dentertainment&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=',
+                            debug: true,
+                        });
+                        console.log('this.player.ads', this.ima)
+                        if (this.player.ads) {
+                            this.player.ads.requestAds();
+                        } else {
+                            console.error('Ads plugin is not initialized.');
+                        }
+                    } else {
+                        console.error('Ads plugin is not available.');
+                    }
                 });
-
+                
                 this.player.src({
                     src: source,
                     type: "application/x-mpegURL",
@@ -206,3 +213,62 @@ class VideoPlayer extends Component {
 }
  
 export default VideoPlayer;
+
+// import videojs from 'video.js';
+// import 'videojs-contrib-ads'; // Import ads plugin
+// import 'videojs-ima'; // Import IMA plugin
+// import 'video.js/dist/video-js.css'; // Ensure you have video.js styles
+
+// class VideoPlayer extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.videoNode = React.createRef(); // Create a ref for the video node
+//     }
+
+//     componentDidMount() {
+//         // Initialize the video.js player
+//         this.player = videojs(this.videoNode.current, { 
+//             errorDisplay: false 
+//         }, function onPlayerReady() {
+//             console.log('Player is ready, initializing ads...');
+//             // Initialize ads plugin
+//             if (this.ads) {
+//                 // this.ads(); // Ensure the ads plugin is initialized
+//                 this.ima({
+//                     id: 'content_video',
+//                     adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=', // Your ad URL
+//                     debug: true,
+//                 });
+//                 if (this.player.ads) {
+//                     this.player.ads.requestAds();
+//                 } else {
+//                     console.error('Ads plugin is not initialized.');
+//                 }
+//             } else {
+//                 console.error('Ads plugin is not available.');
+//             }
+//         });
+        
+//         // Set the video source
+//         this.player.src({
+//             src: 'your-video-url.m3u8', // Replace with your video source
+//             type: 'application/x-mpegURL', // Replace with your video type
+//         });
+//     }
+
+//     componentWillUnmount() {
+//         if (this.player) {
+//             this.player.dispose(); // Dispose of the player on unmount
+//         }
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 <video ref={this.videoNode} className="video-js vjs-16-9" />
+//             </div>
+//         );
+//     }
+// }
+
+// export default VideoPlayer;
