@@ -81,7 +81,7 @@ class VideoPlayer extends Component {
                         // this.ads(); // Ensure the ads plugin is initialized
                         this.ima({
                             id: 'content_video',
-                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/23081330779/goonj_web_preroll&description_url=https%3A%2F%2Fgoonj.pk%2Fchannel%2Fgreen-tv-ent%3Fsource%3Dmta&tfcd=0&npa=0&sz=400x300%7C640x480&cust_params=goonj_section%3Dentertainment&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=',
+                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
                             debug: true,
                         });
                         console.log('this.player.ads', this.ima)
