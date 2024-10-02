@@ -7,10 +7,14 @@ import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import ReactGA from 'react-ga';
 import videojs from 'video.js';
-import 'videojs-ima';
-import './videojs.css';
 import * as videojsContribAds from 'videojs-contrib-ads';
 window.videojsContribAds = videojsContribAds;
+import 'videojs-ima';
+import './videojs.css';
+
+videojs.options.hls.overrideNative = true;
+videojs.options.html5.nativeAudioTracks = false;
+videojs.options.html5.nativeVideoTracks= false
 
 ReactGA.initialize('G-2TG6PV2GL9')
 
@@ -28,6 +32,7 @@ class VideoPlayer extends Component {
         this.kFormatter = this.kFormatter.bind(this);
         this.goBackClickHandler = this.goBackClickHandler.bind(this);
     }
+    
     UNSAFE_componentWillMount(){
         window.scrollTo({
             top: 0,
@@ -68,10 +73,6 @@ class VideoPlayer extends Component {
                 console.log("URL is : ", source);
                 this.setState({source});
 
-                videojs.options.hls.overrideNative = true;
-                videojs.options.html5.nativeAudioTracks = false;
-                videojs.options.html5.nativeVideoTracks= false
-                
                 videojs.Hls.xhr.beforeRequest = function(options){
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
                     return options;
@@ -79,6 +80,7 @@ class VideoPlayer extends Component {
                 console.log('initiating player...')
                 this.player = videojs(this.videoNode, {errorDisplay: false}, function onPlayerReady() {
                     if (this.ads) {
+                        videojs.log.level('debug');  // Enable video.js debug logs
                         // this.ads(); // Ensure the ads plugin is initialized
                         this.ima({
                             id: 'channel-player',
@@ -90,10 +92,6 @@ class VideoPlayer extends Component {
                             autoPlayAdBreaks: true,
                             showControlsForJSAds: false,
                         });
-
-                        // if (this.ads) {
-                        //     this.player.ima().requestAds(); // This requests and plays the pre-roll ad.
-                        // }
                     } else {
                         console.error('Ads plugin is not available.');
                     }
@@ -197,7 +195,7 @@ class VideoPlayer extends Component {
                     */   
                     }
                     <div>
-                        <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, "autoplay": true, "preload": "none"}} webkit-playsinline>
+                        <video ref={ node => this.videoNode = node } id='channel-player' className="video-js vjs-16-9" autoPlay controls poster={`${config.channelLogoUrl}/${this.state.thumbnail.split(".")[0]}.jpg`} data-setup={{"fluid": true, autoplay: true, preload: "auto"}} webkit-playsinline>
                             <source src={this.state.source} />
                             <a href="" download>Download</a>
                         </video>
