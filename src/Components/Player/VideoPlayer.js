@@ -7,9 +7,9 @@ import Loader from '../Loader/Loader';
 import SocialShare from '../SocialShare/SocialShare';
 import ReactGA from 'react-ga';
 import videojs from 'video.js';
+import * as videojsContribAds from 'videojs-contrib-ads';
 import 'videojs-ima';
 import './videojs.css';
-import * as videojsContribAds from 'videojs-contrib-ads';
 window.videojsContribAds = videojsContribAds;
 
 videojs.options.hls.overrideNative = true;
@@ -78,19 +78,18 @@ class VideoPlayer extends Component {
                     return options;
                 };
                 console.log('initiating player...')
+                videojs.log.level('debug');  // Enable video.js debug logs
                 this.player = videojs(this.videoNode, {errorDisplay: false}, function onPlayerReady() {
                     if (this.ads) {
-                        videojs.log.level('debug');  // Enable video.js debug logs
-                        // this.ads(); // Ensure the ads plugin is initialized
                         this.ima({
                             id: 'channel-player',
-                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
+                            adTagUrl: `https://pubads.g.doubleclick.net/gampad/ads?iu=/23081330779/goonj_web_preroll&amp;description_url=https%3A%2F%2Fgoonj.pk%2Fchannel%2F${data.slug}%3Fsource%3Dmta&amp;tfcd=0&amp;npa=0&amp;sz=400x300%7C640x480&amp;cust_params=goonj_section%3D${data.category}&amp;gdfp_req=1&amp;unviewed_position_start=1&amp;output=vast&amp;env=vp&amp;impl=s&amp;correlator=`,
                             debug: true,
                             autoplay: true,
-                            disableFlashAds: true,
-                            showCountdown: false,
-                            autoPlayAdBreaks: true,
-                            showControlsForJSAds: false,
+                            // disableFlashAds: true,
+                            // showCountdown: false,
+                            // autoPlayAdBreaks: true,
+                            // showControlsForJSAds: false,
                         });
                     } else {
                         console.error('Ads plugin is not available.');
