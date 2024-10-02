@@ -8,9 +8,9 @@ import SocialShare from '../SocialShare/SocialShare';
 import ReactGA from 'react-ga';
 import videojs from 'video.js';
 import 'videojs-ima';
+import './videojs.css';
 import * as videojsContribAds from 'videojs-contrib-ads';
 window.videojsContribAds = videojsContribAds;
-import './videojs.css';
 
 videojs.options.hls.overrideNative = true;
 videojs.options.html5.nativeAudioTracks = false;
