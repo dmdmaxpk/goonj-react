@@ -82,7 +82,7 @@ class VideoPlayer extends Component {
                         // this.ads(); // Ensure the ads plugin is initialized
                         this.ima({
                             id: 'channel-player',
-                            adTagUrl: 'http://pubads.g.doubleclick.net/gampad/ads?slotname=/124319096/external/ad_rule_samples&sz=640x480&ciu_szs=300x250&cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&url=&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&vad_type=linear&vpos=preroll&pod=1&ppos=1&lip=true&min_ad_duration=0&max_ad_duration=30000&vrid=6376&cmsid=496&video_doc_id=short_onecue&kfa=0&tfcd=0',
+                            adTagUrl: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=',
                             debug: true,
                             autoplay: true,
                             disableFlashAds: true,
@@ -90,6 +90,10 @@ class VideoPlayer extends Component {
                             autoPlayAdBreaks: true,
                             showControlsForJSAds: false,
                         });
+
+                        // if (this.ads) {
+                        //     this.player.ima().requestAds(); // This requests and plays the pre-roll ad.
+                        // }
                     } else {
                         console.error('Ads plugin is not available.');
                     }
