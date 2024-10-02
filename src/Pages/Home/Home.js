@@ -130,12 +130,14 @@ class Home extends Component {
                             eventTag="HOMEPAGE_AD_BANNER"
                             className={'marginBottom2vh'}
                         /> */}
-                        <GoogleAdBanner
-                            adUnitPath="/23081330779/goonj_web_top"
-                            sizes={[[320, 100], [320, 50]]}
-                            divId="div_goonj_web_top"
-                            targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
-                        />
+                        <div style={{margin: '1vh 1vw'}}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_top"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_top"
+                                targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
+                            />
+                        </div>
                         <DynamicDataList
                             layout='vertical'
                             heading="Exclusive Short Films and drama"

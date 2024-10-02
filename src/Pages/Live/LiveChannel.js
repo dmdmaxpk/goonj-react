@@ -105,22 +105,26 @@ class LiveChannel extends Component {
                                     eventTag="GREEN_ENTERTAINMENT_AD_BANNER"
                                     className="marginBottom2vh"
                                 /> */}
+                                <div style={{margin: '1vh 1vw'}}>
+                                    <GoogleAdBanner
+                                        adUnitPath="/23081330779/goonj_web_body"
+                                        sizes={[[320, 50], [320, 100]]}
+                                        divId="div_goonj_web_body"
+                                        targeting={{ goonj_section: [slug] }}
+                                    />
+                                </div>
+                                <GreenEntertainment />
+                            </div>
+                        :
+                        <div>
+                            <div style={{margin: '1vh 1vw'}}>
                                 <GoogleAdBanner
                                     adUnitPath="/23081330779/goonj_web_body"
                                     sizes={[[320, 50], [320, 100]]}
                                     divId="div_goonj_web_body"
                                     targeting={{ goonj_section: [slug] }}
                                 />
-                                <GreenEntertainment />
                             </div>
-                        :
-                        <div>
-                            <GoogleAdBanner
-                                adUnitPath="/23081330779/goonj_web_body"
-                                sizes={[[320, 50], [320, 100]]}
-                                divId="div_goonj_web_body"
-                                targeting={{ goonj_section: [slug] }}
-                            />
                             <ChannelList classname="liveChannel"  />
                         </div>
                     }

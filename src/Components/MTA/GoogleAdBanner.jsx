@@ -40,11 +40,7 @@ const GoogleAdBanner = ({ adUnitPath, sizes, divId, targeting }) => {
     });
   }, [adUnitPath, sizes, divId, targeting]);
 
-  return (
-    <div style={{margin: '1vh 1vw'}}>
-      <div id={divId} style={{ minWidth: sizes[0][0], minHeight: sizes[0][1] }} />;
-    </div>
-  ) 
+  return <div id={divId} style={{ minWidth: sizes[0][0], minHeight: sizes[0][1] }} />;
 };
 
 export default GoogleAdBanner;
