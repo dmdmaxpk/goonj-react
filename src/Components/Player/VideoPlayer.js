@@ -12,10 +12,6 @@ window.videojsContribAds = videojsContribAds;
 import 'videojs-ima';
 import './videojs.css';
 
-videojs.options.hls.overrideNative = true;
-videojs.options.html5.nativeAudioTracks = false;
-videojs.options.html5.nativeVideoTracks= false
-
 ReactGA.initialize('G-2TG6PV2GL9')
 
 class VideoPlayer extends Component {
@@ -72,6 +68,10 @@ class VideoPlayer extends Component {
                 }
                 console.log("URL is : ", source);
                 this.setState({source});
+
+                videojs.options.hls.overrideNative = true;
+                videojs.options.html5.nativeAudioTracks = false;
+                videojs.options.html5.nativeVideoTracks= false
 
                 videojs.Hls.xhr.beforeRequest = function(options){
                     options.uri = `${options.uri}?msisdn=${localStorage.getItem('liveMsisdn')}&uid=${localStorage.getItem('userID')}`;
