@@ -158,6 +158,14 @@ class Home extends Component {
                             onClick={(item) => {return `/green-tv-ent/${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? '?source=mta' : ''}`}}
                         />
                         <NewsChannelList />
+                        <div style={{margin: '1vh 1vw'}}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_body"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_body"
+                                targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
+                            />
+                        </div>
                         <IslamicChannelList />
                         <div className="Homeheadlines">
                             <HeadlinesSection

@@ -5,6 +5,7 @@ import AxiosInstance from '../../Utils/AxiosInstance';
 import config from '../../Utils/config';
 import './Live.scss';
 import Loader from '../../Components/Loader/Loader';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 const API_URL = 'https://api.goonj.pk/v2/live';
 const FREE_CHANNELS = [
@@ -211,6 +212,15 @@ class LiveTv extends Component {
                 <GridItem xs={12} sm={12} md={12}>
                     {/*<p className="heading">Live Channels</p>*/}
                     <p className={`heading ${isLightTheme ? 'heading_mta2' : ''}`}>Live Channels</p>
+                 {/* Top Google Ad Banner */}
+                    <div style={{ margin: '1vh 1vw' }}>
+                        <GoogleAdBanner
+                            adUnitPath="/23081330779/goonj_web_top"
+                            sizes={[[320, 100], [320, 50]]}
+                            divId="div_goonj_web_top"
+                            targeting={{ goonj_section: ['live'] }} // Replace 'live' with other sections as needed
+                        />
+                    </div> 
                 </GridItem>
 
                 {data.length > 0 ?
@@ -238,6 +248,14 @@ class LiveTv extends Component {
                     <Loader />
                 </GridItem>
                 }
+                <div style={{margin: '1vh 1vw'}}>
+                    <GoogleAdBanner
+                        adUnitPath="/23081330779/goonj_web_body"
+                        sizes={[[320, 100], [320, 50]]}
+                        divId="div_goonj_web_body"
+                        targeting={{ goonj_section: ['live'] }} // Replace 'home' with other sections as needed
+                    />
+                </div>
             </GridContainer>
         );
     }

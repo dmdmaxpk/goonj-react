@@ -13,6 +13,7 @@ import MainCategory from './MainCategory';
 import ReactGA from 'react-ga';
 import { withRouter } from "react-router-dom";
 import Axios from 'axios';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 ReactGA.initialize('G-2TG6PV2GL9'); 
 
@@ -92,6 +93,15 @@ class YtPlaylistPage extends Component {
                         <p style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{this.state.title.toUpperCase()}</p>
                     </div>
                 }
+                {/* Top Ad Banner */}
+                <div style={{ margin: '1vh 1vw' }}>
+                    <GoogleAdBanner
+                        adUnitPath="/23081330779/goonj_web_top"
+                        sizes={[[320, 100], [320, 50]]}
+                        divId="div_goonj_web_top"
+                        targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
+                    />
+                </div>
                 {dramas.length === 0 ?
                     <></>
                     :
@@ -132,6 +142,15 @@ class YtPlaylistPage extends Component {
                         } */}
                     </GridContainer>
                 }
+                {/* Bottom Ad Banner */}
+                <div style={{ margin: '1vh 1vw' }}>
+                    <GoogleAdBanner
+                        adUnitPath="/23081330779/goonj_web_body"
+                        sizes={[[320, 100], [320, 50]]}
+                        divId="div_goonj_web_body"
+                        targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
+                    />
+                </div>
             </div>
         );
     }
