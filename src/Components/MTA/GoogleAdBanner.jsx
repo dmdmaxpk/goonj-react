@@ -35,10 +35,13 @@ const GoogleAdBanner = ({ adUnitPath, sizes, divId, targeting }) => {
     });
 
     // Display the ad slot
-    window.googletag.cmd.push(() => {
-      window.googletag.display(divId);
-    });
-  }, [adUnitPath, sizes, divId, targeting]);
+    if (window?.adsbygoogle) {
+      console.log('window?.adsbygoogle loaded', window?.adsbygoogle);
+      window.googletag.cmd.push(() => {
+        window.googletag.display(divId);
+      });
+    }
+  }, [divId]);
 
   return <div id={divId} style={{ minWidth: sizes[0][0], minHeight: sizes[0][1] }} />;
 };
