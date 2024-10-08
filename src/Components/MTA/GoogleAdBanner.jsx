@@ -34,13 +34,20 @@ const GoogleAdBanner = ({ adUnitPath, sizes, divId, targeting }) => {
       window.googletag.enableServices();
     });
 
-    // Display the ad slot
-    // if (window?.adsbygoogle) {
-      console.log('window?.adsbygoogle loaded', window?.adsbygoogle);
-      window.googletag.cmd.push(() => {
-        window.googletag.display(divId);
-      });
-    // }
+    // Poll for adsbygoogle to be available and then push the ads
+    const intervalId = setInterval(() => {
+      if (window.adsbygoogle) {
+        console.log('window.adsbygoogle loaded:', window.adsbygoogle);
+        // Push ads and display the slot
+        window.googletag.cmd.push(() => {
+          window.googletag.display(divId);
+        });
+        clearInterval(intervalId); // Clear the interval once adsbygoogle is loaded
+      }
+    }, 100); // Check every 100 milliseconds
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
   }, [divId]);
 
   return <div id={divId} style={{ minWidth: sizes[0][0], minHeight: sizes[0][1] }} />;
