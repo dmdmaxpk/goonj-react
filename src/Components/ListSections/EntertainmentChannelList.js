@@ -167,7 +167,8 @@ class EntertainmentChannelList extends Component {
         console.log(`MTA-${item.slug} event triggered`);
         trackEvent('Custom Event', `MTA_${item.slug}`, window.location.href);
 
-        this.props.history.push(url); 
+        // this.props.history.push(url); 
+        window.location.href = url;
     };
     handleCustomChannelRedirect(link){
         this.props.history.push(`/channel/custom?source=mta&link=${link}`)

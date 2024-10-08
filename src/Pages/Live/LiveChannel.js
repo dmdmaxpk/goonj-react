@@ -7,9 +7,6 @@ import PaywallInstance from '../../Utils/PaywallInstance';
 import { withRouter } from 'react-router-dom';
 import Loader from '../../Components/Loader/Loader';
 import GreenEntertainment from '../../Components/ListSections/GreenEntertainment';
-import { trackEvent } from '../../Utils/functions';
-import AdvertComponent from '../../Components/MTA/AdBanner';
-import ChannelMtaBanner from '../../Assets/MTABannerChannel.png';
 import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 class LiveChannel extends Component {
@@ -107,13 +104,21 @@ class LiveChannel extends Component {
                                 /> */}
                                 <div style={{margin: '1vh 1vw'}}>
                                     <GoogleAdBanner
-                                        adUnitPath="/23081330779/goonj_web_body"
-                                        sizes={[[320, 50], [320, 100]]}
-                                        divId="div_goonj_web_body"
-                                        targeting={{ goonj_section: [slug] }}
+                                        adUnitPath="/23081330779/goonj_web_top"
+                                        sizes={[[320, 100], [320, 50]]}
+                                        divId="div_goonj_web_top"
+                                        targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
                                     />
                                 </div>
                                 <GreenEntertainment />
+                                <div style={{margin: '1vh 1vw'}}>
+                                    <GoogleAdBanner
+                                        adUnitPath="/23081330779/goonj_web_body"
+                                        sizes={[[320, 100], [320, 50]]}
+                                        divId="div_goonj_web_body"
+                                        targeting={{ goonj_section: ['home'] }} // Replace 'home' with other sections as needed
+                                    />
+                                </div>
                             </div>
                         :
                         <div>

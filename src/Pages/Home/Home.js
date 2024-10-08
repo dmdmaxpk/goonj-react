@@ -124,12 +124,6 @@ class Home extends Component {
                   {isMtaSource ? (
                     <>
                         <EntertainmentChannelList />
-                        {/* <AdvertComponent
-                            imageUrl={HomeMTAAdBanner}
-                            redirectUrl="https://www.telenor.com.pk/personal/telenor/offers/monthly-ultimate-offer/"
-                            eventTag="HOMEPAGE_AD_BANNER"
-                            className={'marginBottom2vh'}
-                        /> */}
                         <div style={{margin: '1vh 1vw'}}>
                             <GoogleAdBanner
                                 adUnitPath="/23081330779/goonj_web_top"

@@ -37,7 +37,7 @@ const GoogleAdBanner = ({ adUnitPath, sizes, divId, targeting }) => {
     // Poll for adsbygoogle to be available and then push the ads
     const intervalId = setInterval(() => {
       if (window.adsbygoogle) {
-        console.log('window.adsbygoogle loaded:', window.adsbygoogle);
+        console.log('window.adsbygoogle loaded:', divId, window.adsbygoogle);
         // Push ads and display the slot
         window.googletag.cmd.push(() => {
           window.googletag.display(divId);
