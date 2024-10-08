@@ -95,18 +95,18 @@ class YtPlaylistPage extends Component {
                     </div>
                 }
                 {/* Top Ad Banner */}
-                <div style={{ margin: '1vh 1vw' }}>
-                    <GoogleAdBanner
-                        adUnitPath="/23081330779/goonj_web_top"
-                        sizes={[[320, 100], [320, 50]]}
-                        divId="div_goonj_web_top"
-                        targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
-                    />
-                </div>
                 {dramas.length === 0 ?
                     <></>
                     :
                     <GridContainer>
+                        <div style={{ margin: '1vh 1vw' }}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_top"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_top"
+                                targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
+                            />
+                        </div>
                         {this.state.loading === false ?
                             dramas?.reverse()?.map((item, index) =>
                                 <GridItem className={`vodGridItem ${index % 2 === 0 && this.props.className ? this.props.className : ''}`} style={{marginBottom: '4vh !important'}} xs={6} md={6} lg={2}>
@@ -141,17 +141,17 @@ class YtPlaylistPage extends Component {
                                 </div>
                             </GridItem>
                         } */}
+                        <div style={{ margin: '1vh 1vw' }}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_body"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_body"
+                                targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
+                            />
+                        </div>
                     </GridContainer>
                 }
                 {/* Bottom Ad Banner */}
-                <div style={{ margin: '1vh 1vw' }}>
-                    <GoogleAdBanner
-                        adUnitPath="/23081330779/goonj_web_body"
-                        sizes={[[320, 100], [320, 50]]}
-                        divId="div_goonj_web_body"
-                        targeting={{ goonj_section: ['YtPlaylistPage'] }} // Replace 'home' with other sections as needed
-                    />
-                </div>
             </div>
         );
     }
