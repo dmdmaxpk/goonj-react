@@ -39,8 +39,10 @@ class YtPlaylistPage extends Component {
     }
 
     getPlaylist = async() => {
-        const playlistId = this.props.match.params.playlistId;
+        const playlistIdQuery = this.props.match.params.playlistId;
+        const playlistId = playlistIdQuery?.split('_')[1];
         console.log('playlistId', playlistId)
+
         Axios.get(`https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&&key=${config.googleApiKey}`)
         .then(res => {
             const result = res.data;
@@ -53,7 +55,8 @@ class YtPlaylistPage extends Component {
     }
 
     getPlaylistDramas = async() => {
-        const playlistId = this.props.match.params.playlistId;
+        const playlistIdQuery = this.props.match.params.playlistId;
+        const playlistId = playlistIdQuery?.split('_')[1];
         console.log('playlistId', playlistId)
         Axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=50&key=${config.googleApiKey}`)
         .then(res => {

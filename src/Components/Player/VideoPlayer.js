@@ -55,6 +55,7 @@ class VideoPlayer extends Component {
                 let token = generatedToken;
 
                 let source = '';
+                const slug = this.props.slug;
                 console.log("isMTA value:",this.state.isMta);
                 // Conditionally include quality setting '360p' for MTA source
                 if (this.state.isMta) {
@@ -83,7 +84,7 @@ class VideoPlayer extends Component {
                     if (this.ads) {
                         this.ima({
                             id: 'channel-player',
-                            adTagUrl: `https://pubads.g.doubleclick.net/gampad/ads?iu=/23081330779/goonj_web_preroll&amp;description_url=https%3A%2F%2Fgoonj.pk%2Fchannel%2F${data.slug}%3Fsource%3Dmta&amp;tfcd=0&amp;npa=0&amp;sz=400x300%7C640x480&amp;cust_params=goonj_section%3D${data.category}&amp;gdfp_req=1&amp;unviewed_position_start=1&amp;output=vast&amp;env=vp&amp;impl=s&amp;correlator=`,
+                            adTagUrl: `https://pubads.g.doubleclick.net/gampad/ads?iu=/23081330779/goonj_web_preroll&description_url=https%3A%2F%2Fgoonj.pk%2Fchannel%2F${slug}%3Fsource%3Dmta&tfcd=0&npa=0&sz=400x300%7C640x480&cust_params=goonj_section%3D${data?.category}&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=${new Date().getTime()}`,
                             debug: true,
                             autoplay: true,
                             // disableFlashAds: true,

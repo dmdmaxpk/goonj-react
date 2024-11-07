@@ -20,7 +20,7 @@ class GreenDramas extends Component{
                     this.props.data.map(item =>
                     <GridItem className="" xs={6} md={6} lg={2}>
                         {this.props.data.length != 0 ?
-                        <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? `?source=mta&name=${item.name}` : `?name=${item.name}`}`} >
+                        <a style={{textDecoration: "none"}} href={`/green-tv-ent/${item?.name?.split(' ').join('-')}_${item.playlistId}/page/1${this.props.location.search.includes('source=mta') ? `?source=mta&name=${item.name}` : `?name=${item.name}`}`} >
                             <div className="imgDiv" >
                                 <img src={`https://content-dmd.s3.eu-central-1.amazonaws.com/TP-Content/Sliders/green-ent-dramas/${item.thumbnail}`} className="videoLogo" alt="" />
                             </div>
