@@ -12,7 +12,6 @@ import './ListSections.scss';
 import {Link} from 'react-router-dom';
 import {Img} from 'react-image'
 import LoaderImage from '../../Components/Loader/ImageLoader'
-import GoogleAdBanner from "../MTA/GoogleAdBanner";
 
 
 
@@ -142,16 +141,6 @@ class DynamicDataList extends Component{
             <div className={this.props.class}>
                 {console.log("This is the name of the class:", this.props.class)}
                 <Heading heading={this.props.heading} classname={this.props.classname + " " + (this.props.class ? this.props.class : "")} category={this.props.heading} />
-                
-                <div style={{margin: '1vh 1vw'}}>
-                    <GoogleAdBanner
-                        adUnitPath="/23081330779/goonj_web_top"
-                        sizes={[[320, 100], [320, 50]]}
-                        divId="div_goonj_web_top"
-                        targeting={{ goonj_section: [this.props?.heading] }}
-                    />
-                </div>
-                
                 <div className={"channelListContainer channelContainerMargin position-relative " + this.props.pageMargin}>
                     <fadeleft className="channelLeftFade" />
                     <Slider className="channelSlider" {...verticalSettings}>
@@ -164,66 +153,38 @@ class DynamicDataList extends Component{
                     </Slider>
                     <faderight className="channelRightFade" />
                 </div>
-
-                
-                <div style={{margin: '1vh 1vw'}}>
-                    <GoogleAdBanner
-                        adUnitPath="/23081330779/goonj_web_body"
-                        sizes={[[320, 100], [320, 50]]}
-                        divId="div_goonj_web_body"
-                        targeting={{ goonj_section: [this.props?.heading] }}
-                    />
-                </div>
             </div>
             :
             <div className="headlinesContainer">
                 <Heading headlineMargin="headlineMargin" heading={this.props.heading} url={this.props.url} classes={this.props.classes} viewMoreClass={this.props.viewMoreClass}/>
-                    <div style={{margin: '1vh 1vw'}}>
-                        <GoogleAdBanner
-                            adUnitPath="/23081330779/goonj_web_top"
-                            sizes={[[320, 100], [320, 50]]}
-                            divId="div_goonj_web_top"
-                            targeting={{ goonj_section: [this.props?.heading] }}
-                        />
-                    </div>
-
-                    <div className="position-relative">
-                        <fadeleftheadline className="headlineLeftFade"/>
-                        <Slider className="headlinesSlider" {...horizontalSettings}>
-                        {this.state.data.length > 0 ?  
-                            (this.state.data.map(item =>
-                                    <div className="popularListDiv" onClick={()=> this.handleItemClick(item)}>
-                                        <Link style={{textDecoration: "none", color:"white"}}>
-                                            <div style={{position:"relative", marginBottom:"4%"}}>
-                                            <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={item.thumbnail} alt={item?.name} />
-                                            <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} alt="Play" />
+                <div className="position-relative">
+                    <fadeleftheadline className="headlineLeftFade"/>
+                    <Slider className="headlinesSlider" {...horizontalSettings}>
+                    {this.state.data.length > 0 ?  
+                        (this.state.data.map(item =>
+                                <div className="popularListDiv" onClick={()=> this.handleItemClick(item)}>
+                                    <Link style={{textDecoration: "none", color:"white"}}>
+                                        <div style={{position:"relative", marginBottom:"4%"}}>
+                                        <Img loader={<LoaderImage classnames="popularListImg" />} className="popularListImg" src={item.thumbnail} alt={item?.name} />
+                                        <Img style={{position:"absolute", left:"43%", bottom:"37%"}} className="headlinesPlayBtn" src={require('../../Assets/playBtn.png')} alt="Play" />
+                                        </div>
+                                        {(!this.state.isMta && !isLightTheme) && (
+                                            <div className="freeContentDiv freeContentDivHL">
+                                                <p>FREE</p>
                                             </div>
-                                            {(!this.state.isMta && !isLightTheme) && (
-                                                <div className="freeContentDiv freeContentDivHL">
-                                                    <p>FREE</p>
-                                                </div>
-                                            )}
+                                        )}
 
-                                            <p className="headlineTitle" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
-                                            {/* <p className="headnlineSource" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p> */}
-                                        </Link>
-                                    </div>
-                                )
+                                        <p className="headlineTitle" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.name}</p>
+                                        {/* <p className="headnlineSource" style={{ color: isLightTheme ? "#87CEEB" : "white" }}>{item.source} . <ReactTimeAgo date={item.publish_dtm} /></p> */}
+                                    </Link>
+                                </div>
                             )
-                                : <Loader/>
-                            }
-                        </Slider>
-                        <faderightheadline className="headlineRightFade"/>
-                    </div>
-
-                    <div style={{margin: '1vh 1vw'}}>
-                        <GoogleAdBanner
-                            adUnitPath="/23081330779/goonj_web_body"
-                            sizes={[[320, 100], [320, 50]]}
-                            divId="div_goonj_web_body"
-                            targeting={{ goonj_section: [this.props?.heading] }}
-                        />
-                    </div>
+                        )
+                            : <Loader/>
+                        }
+                    </Slider>
+                    <faderightheadline className="headlineRightFade"/>
+                </div>
             </div>
                 )
         

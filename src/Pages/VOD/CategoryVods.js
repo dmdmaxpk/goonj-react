@@ -11,6 +11,7 @@ import CategoryDD from '../../Components/VOD/categoryDropdown';
 import './vod.scss';
 import MainCategory from './MainCategory';
 import { trackEvent } from '../../Utils/functions';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 let count,strURL;
 let subCats = ['drama', 'programs', 'digital_world'];
@@ -150,7 +151,35 @@ class CategoryVodPage extends Component {
                     }
                 </div>
                 {this.state.data.length > 0 && subCats.includes(this.props.match.params.category) ?
-                    <MainCategory category={this.props.match.params.category} />
+                    <>
+                        {this.state.isMta ?
+                            <div style={{margin: '1vh 1vw'}}>
+                                <GoogleAdBanner
+                                    adUnitPath="/23081330779/goonj_web_top"
+                                    sizes={[[320, 100], [320, 50]]}
+                                    divId="div_goonj_web_top"
+                                    targeting={{ goonj_section: [this.props?.heading] }}
+                                />
+                            </div>
+                        :
+                            null
+                        }
+
+                        <MainCategory category={this.props.match.params.category} />
+                        
+                        {this.state.isMta ?
+                            <div style={{margin: '1vh 1vw'}}>
+                                <GoogleAdBanner
+                                    adUnitPath="/23081330779/goonj_web_top"
+                                    sizes={[[320, 100], [320, 50]]}
+                                    divId="div_goonj_web_top"
+                                    targeting={{ goonj_section: [this.props?.heading] }}
+                                />
+                            </div>
+                        :
+                            null
+                        }
+                    </>
                     :
                     <GridContainer>
                         {this.state.loading === false ?
