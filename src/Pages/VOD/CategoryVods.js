@@ -170,9 +170,9 @@ class CategoryVodPage extends Component {
                         {this.state.isMta ?
                             <div style={{margin: '1vh 1vw'}}>
                                 <GoogleAdBanner
-                                    adUnitPath="/23081330779/goonj_web_top"
+                                    adUnitPath="/23081330779/div_goonj_web_body"
                                     sizes={[[320, 100], [320, 50]]}
-                                    divId="div_goonj_web_top"
+                                    divId="div_goonj_web_body"
                                     targeting={{ goonj_section: [this.props?.heading] }}
                                 />
                             </div>
@@ -183,28 +183,54 @@ class CategoryVodPage extends Component {
                     :
                     <GridContainer>
                         {this.state.loading === false ?
-                            this.state.data.map(item =>
-                                <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
-                                    {this.state.data.length!=0?
-                                    <div>
-                                    <div className="imgDiv" onClick={()=> this.handleClick(item)}>
-                                        <span className="playBtn">
-                                            <img src={require("../../Assets/playBtn.png")} alt="Play" />
-                                        </span>
-                                        <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
+                            <>
+                                {this.state.isMta ?
+                                    <div style={{margin: '1vh 1vw'}}>
+                                        <GoogleAdBanner
+                                            adUnitPath="/23081330779/goonj_web_top"
+                                            sizes={[[320, 100], [320, 50]]}
+                                            divId="div_goonj_web_top"
+                                            targeting={{ goonj_section: [this.props?.heading] }}
+                                        />
                                     </div>
-                                    <div className="vodDetailsDiv">
-                                        <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.title}</p>
-                                        <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link>
-                                         {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
-                                        </p>
-                                        {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
-                                    </div></div>
-                                    :
-                                    ''
-                                        }
-                                </GridItem>
-                            )
+                                :
+                                    null
+                                }
+                                {this.state.data.map(item =>
+                                    <GridItem className="vodGridItem" xs={6} md={6} lg={2}>
+                                        {this.state.data.length!=0?
+                                        <div>
+                                        <div className="imgDiv" onClick={()=> this.handleClick(item)}>
+                                            <span className="playBtn">
+                                                <img src={require("../../Assets/playBtn.png")} alt="Play" />
+                                            </span>
+                                            <img src={`${config.videoLogoUrl}/${item.thumbnail.split(".")[0]}.jpg`} className="videoLogo" alt={item.thumbnail} />
+                                        </div>
+                                        <div className="vodDetailsDiv">
+                                            <p className="title" style={{ color: isLightTheme ? "#87CEEB" : "white" }} onClick={()=> this.handleClick(item)}>{item.title}</p>
+                                            <p className="source"><Link to={`/source/${item.source}/page/1`}>{item.source} | <ReactTimeAgo className="daysAgo" date={item.publish_dtm}/></Link>
+                                            {/* | <font style={{fontSize: "smaller"}}>{item.views_count} views</font> */}
+                                            </p>
+                                            {/* <p className="daysAgo"><ReactTimeAgo date={item.publish_dtm} /></p> */}
+                                        </div></div>
+                                        :
+                                        ''
+                                            }
+                                    </GridItem>
+                                )}
+                                {this.state.isMta ?
+                                    <div style={{margin: '1vh 1vw'}}>
+                                        <GoogleAdBanner
+                                            adUnitPath="/23081330779/div_goonj_web_body"
+                                            sizes={[[320, 100], [320, 50]]}
+                                            divId="div_goonj_web_body"
+                                            targeting={{ goonj_section: [this.props?.heading] }}
+                                        />
+                                    </div>
+                                :
+                                    null
+                                }
+                            </>
                         : <Loader />
                         }
                         <GridItem sm={12} md={12} xs={12} >

@@ -42,7 +42,7 @@ class YoutubePlayer extends Component {
             <div className="videoPlayerContainer">
                 <div>
                     <YouTube 
-                        videoId={this.props.videoId}
+                        videoId={this.props?.videoId?.split('~')[1]}
                         className="ytVP"
                         opts={opts}
                         // onReady={this._onReady} 

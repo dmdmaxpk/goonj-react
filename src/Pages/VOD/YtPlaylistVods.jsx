@@ -70,9 +70,13 @@ class YtPlaylistPage extends Component {
     }
 
     handleClick = (item) => {
-        console.log('item', item);
+        const playlistId=this.props.match.params.playlistId;
+        const videoId=item.snippet.resourceId.videoId;
+        const title= item.snippet.title;
+        const episodeName = title.replace(/\s+/g, '-').toLowerCase();
+
         // this.props.history.push(`/green-tv-ent/${this.props.match.params.playlistId}/${item.snippet.resourceId.videoId}?title=${item.snippet.title}${this.props.location.search.includes('source=mta') ? '&source=mta' : ''}`)
-        window.location.href = `/green-tv-ent/${this.props.match.params.playlistId}/${item.snippet.resourceId.videoId}?title=${item.snippet.title}${this.props.location.search.includes('source=mta') ? '&source=mta' : ''}`;
+        window.location.href = `/green-tv-ent/${playlistId}/${episodeName}~${videoId}?${this.props.location.search.includes('source=mta') ? 'source=mta' : ''}`;
     }
 
     componentDidMount() {

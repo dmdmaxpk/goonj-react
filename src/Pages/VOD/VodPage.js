@@ -6,6 +6,7 @@ import PaywallInstance from '../../Utils/PaywallInstance';
 import Loader from '../../Components/Loader/Loader';
 import { withRouter } from 'react-router-dom';
 import { trackEvent } from '../../Utils/functions';
+import GoogleAdBanner from '../../Components/MTA/GoogleAdBanner';
 
 class VodPage extends Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class VodPage extends Component {
             topics: [],
             status: false,
             loading: true,
-            isLightTheme: false
+            isLightTheme: false,
+            isMta: false
          }
          this.checkStatus = this.checkStatus.bind(this);
     }
@@ -51,6 +53,9 @@ class VodPage extends Component {
         }
         else{
             this.setState({Mta2: false});
+        }
+        if (this.source === 'mta') {
+            this.setState({isMta: true})
         }
 
 
@@ -133,9 +138,33 @@ class VodPage extends Component {
         return(
             data.length !== 0 && loading === false && status === true ?
                 <div style={{marginLeft: "10px", marginTop: (this.source === 'mta' || this.source === 'mta2' ? "30px" : "100px")}}>
-                    <VodVideoPlayer  data={data?.length !== 0 ? data : ''} topics={topics.length !== 0 ? topics : ''}/> 
+                    <VodVideoPlayer  data={data?.length !== 0 ? data : ''} topics={topics.length !== 0 ? topics : ''}/>
+                    {this.state.isMta ?
+                        <div style={{margin: '1vh 1vw'}}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/goonj_web_top"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_top"
+                                targeting={{ goonj_section: ['vod'] }}
+                            />
+                        </div>
+                    :
+                        null
+                    }
                     <div className="vod_channel_margin_bottom">
                     <ChannelList class="vod_page_margin_heading channelListVodHeading" style={{ color: isLightTheme ? "#87CEEB" : "white" }}/>
+                    {this.state.isMta ?
+                        <div style={{margin: '1vh 1vw'}}>
+                            <GoogleAdBanner
+                                adUnitPath="/23081330779/div_goonj_web_body"
+                                sizes={[[320, 100], [320, 50]]}
+                                divId="div_goonj_web_body"
+                                targeting={{ goonj_section: ['vod'] }}
+                            />
+                        </div>
+                    :
+                        null
+                    }
                     {/*<PopularList marginTop="vodMarginTop" class="vod_page_margin_heading" style={{ color: isLightTheme ? "#87CEEB" : "white" }} title="Latest on Goonj"/>*/}
                     </div>
                 </div>

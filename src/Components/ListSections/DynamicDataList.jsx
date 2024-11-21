@@ -56,7 +56,8 @@ class DynamicDataList extends Component{
         } else {
             localStorage.setItem('mta', true);
             const url = `category/${item.category}/page/1?source=mta`;
-            this.props.history.push(url);
+            // this.props.history.push(url);
+            window.location.href = url;
         }
     };
 
